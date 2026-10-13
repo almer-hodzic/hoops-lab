@@ -1,0 +1,501 @@
+{
+  "dataset": {
+    "team_rows": 1314,
+    "season_start": "1979-80",
+    "season_end": "2025-26",
+    "train_rows": 954,
+    "validation_rows": 150,
+    "test_rows": 210
+  },
+  "feature_columns": [
+    "league_ortg_estimate",
+    "league_pace",
+    "league_ts_pct",
+    "w_points_per_75",
+    "w_assists_per_75",
+    "w_rebounds_per_75",
+    "w_turnovers_per_75",
+    "w_steals_per_75",
+    "w_blocks_per_75",
+    "w_offensive_rebounds_per_75",
+    "w_defensive_rebounds_per_75",
+    "w_relative_ts",
+    "w_true_shooting_pct",
+    "w_usage_pct",
+    "w_assist_pct",
+    "w_turnover_pct",
+    "w_total_rebound_pct",
+    "w_three_point_attempt_rate",
+    "w_free_throw_rate",
+    "w_age",
+    "w_per",
+    "team_3par_from_players",
+    "team_ftr_from_players",
+    "team_ast_to_tov_from_players",
+    "minutes_top1_share",
+    "minutes_top3_share",
+    "minutes_top5_share",
+    "minutes_hhi",
+    "rotation_players_500",
+    "rotation_players_1000",
+    "weighted_usage_top3",
+    "usage_pressure",
+    "spacing_proxy",
+    "rebounding_proxy",
+    "defense_box_proxy"
+  ],
+  "model_metrics": {
+    "actual_ortg": {
+      "formula": {
+        "validation": {
+          "mae": 3.1734708066721837,
+          "rmse": 3.7008315231632003,
+          "r2": -0.005051206658967189
+        },
+        "test": {
+          "mae": 3.9456683490295106,
+          "rmse": 4.448706154590431,
+          "r2": -0.36494665464805087
+        }
+      },
+      "linear": {
+        "validation": {
+          "mae": 0.06555472968511376,
+          "rmse": 0.08430626228351833,
+          "r2": 0.999478434050714
+        },
+        "test": {
+          "mae": 0.11225008388017245,
+          "rmse": 0.1318408934989001,
+          "r2": 0.9988011950922151
+        }
+      },
+      "ridge": {
+        "validation": {
+          "mae": 0.06547815237750844,
+          "rmse": 0.08481887216296523,
+          "r2": 0.9994720721822316
+        },
+        "test": {
+          "mae": 0.11080424801102444,
+          "rmse": 0.13050021473615936,
+          "r2": 0.9988254522166328
+        }
+      },
+      "hist_gradient_boosting": {
+        "validation": {
+          "mae": 0.12400992813626771,
+          "rmse": 0.25024556079151794,
+          "r2": 0.9954046105369025
+        },
+        "test": {
+          "mae": 1.2791470411372665,
+          "rmse": 2.2172392945432304,
+          "r2": 0.6609424883857093
+        }
+      }
+    },
+    "actual_drtg": {
+      "formula": {
+        "validation": {
+          "mae": 2.170245823357771,
+          "rmse": 2.6325944838374964,
+          "r2": 0.31148260064482847
+        },
+        "test": {
+          "mae": 2.272055803000258,
+          "rmse": 2.8231425236285976,
+          "r2": 0.3004332617586589
+        }
+      },
+      "linear": {
+        "validation": {
+          "mae": 3.4866393461828906,
+          "rmse": 3.861533964455254,
+          "r2": -0.481380773941819
+        },
+        "test": {
+          "mae": 4.299456154679871,
+          "rmse": 4.6665981297518915,
+          "r2": -0.9114561974538704
+        }
+      },
+      "ridge": {
+        "validation": {
+          "mae": 3.444019811876619,
+          "rmse": 3.8164551571905063,
+          "r2": -0.4469959428914003
+        },
+        "test": {
+          "mae": 4.221773555848696,
+          "rmse": 4.5891073647988625,
+          "r2": -0.8485022422836244
+        }
+      },
+      "hist_gradient_boosting": {
+        "validation": {
+          "mae": 2.587547199062187,
+          "rmse": 3.0171440973921024,
+          "r2": 0.09564469508156304
+        },
+        "test": {
+          "mae": 6.222906640242939,
+          "rmse": 6.637648183019836,
+          "r2": -2.8671587829219423
+        }
+      }
+    },
+    "actual_pace": {
+      "formula": {
+        "validation": {
+          "mae": 1.6258365278948808,
+          "rmse": 2.002709843954131,
+          "r2": 0.5044986734563743
+        },
+        "test": {
+          "mae": 1.5611849951037604,
+          "rmse": 1.8948202989124434,
+          "r2": 0.09417345195426807
+        }
+      },
+      "linear": {
+        "validation": {
+          "mae": 1.6306415379575447,
+          "rmse": 2.064625816684652,
+          "r2": 0.47338713615880923
+        },
+        "test": {
+          "mae": 2.0832093238036338,
+          "rmse": 2.5583362737694832,
+          "r2": -0.6512933990370466
+        }
+      },
+      "ridge": {
+        "validation": {
+          "mae": 1.6243502738868532,
+          "rmse": 2.0559776037701387,
+          "r2": 0.4777896015275347
+        },
+        "test": {
+          "mae": 2.0535967023265345,
+          "rmse": 2.5212656061134755,
+          "r2": -0.6037851449202511
+        }
+      },
+      "hist_gradient_boosting": {
+        "validation": {
+          "mae": 1.7465308641950326,
+          "rmse": 2.2282060504525703,
+          "r2": 0.38663434426850574
+        },
+        "test": {
+          "mae": 2.3240565985286206,
+          "rmse": 2.8130181021450507,
+          "r2": -0.9964297893701926
+        }
+      }
+    }
+  },
+  "selected_models": {
+    "actual_ortg": "ridge",
+    "actual_drtg": "formula",
+    "actual_pace": "formula"
+  },
+  "coefficient_sanity": {
+    "actual_ortg": {
+      "top_coefficients": [
+        {
+          "feature": "w_points_per_75",
+          "coefficient": 3.534553228412425
+        },
+        {
+          "feature": "w_turnovers_per_75",
+          "coefficient": -0.12417177610204355
+        },
+        {
+          "feature": "w_assists_per_75",
+          "coefficient": 0.09359556114314582
+        },
+        {
+          "feature": "w_per",
+          "coefficient": 0.09358382581214642
+        },
+        {
+          "feature": "w_usage_pct",
+          "coefficient": -0.0899979157598636
+        },
+        {
+          "feature": "team_3par_from_players",
+          "coefficient": 0.08324934961283441
+        },
+        {
+          "feature": "league_pace",
+          "coefficient": 0.05870120325040529
+        },
+        {
+          "feature": "w_assist_pct",
+          "coefficient": -0.058223310674373696
+        },
+        {
+          "feature": "w_relative_ts",
+          "coefficient": 0.05751370002263112
+        },
+        {
+          "feature": "w_offensive_rebounds_per_75",
+          "coefficient": 0.05455806948009467
+        },
+        {
+          "feature": "w_true_shooting_pct",
+          "coefficient": 0.05431535980939195
+        },
+        {
+          "feature": "league_ortg_estimate",
+          "coefficient": 0.04903192117103172
+        }
+      ],
+      "flags": [
+        "Ridge assigns positive offensive coefficient to turnover percentage."
+      ]
+    },
+    "actual_drtg": {
+      "top_coefficients": [
+        {
+          "feature": "league_ortg_estimate",
+          "coefficient": 1.7921123244702688
+        },
+        {
+          "feature": "w_defensive_rebounds_per_75",
+          "coefficient": -1.4809324600204263
+        },
+        {
+          "feature": "team_3par_from_players",
+          "coefficient": 1.4206461079449921
+        },
+        {
+          "feature": "league_pace",
+          "coefficient": -1.237828313657541
+        },
+        {
+          "feature": "defense_box_proxy",
+          "coefficient": -1.230605587851187
+        },
+        {
+          "feature": "w_offensive_rebounds_per_75",
+          "coefficient": 1.1729790266057307
+        },
+        {
+          "feature": "w_steals_per_75",
+          "coefficient": -1.1601085956862107
+        },
+        {
+          "feature": "minutes_hhi",
+          "coefficient": -1.0345488841913322
+        },
+        {
+          "feature": "w_three_point_attempt_rate",
+          "coefficient": -0.8532878097100363
+        },
+        {
+          "feature": "w_turnovers_per_75",
+          "coefficient": -0.8398931449195675
+        },
+        {
+          "feature": "league_ts_pct",
+          "coefficient": -0.8130391967041515
+        },
+        {
+          "feature": "w_per",
+          "coefficient": 0.7366920166770683
+        }
+      ],
+      "flags": []
+    },
+    "actual_pace": {
+      "top_coefficients": [
+        {
+          "feature": "league_pace",
+          "coefficient": 3.6728989355970634
+        },
+        {
+          "feature": "w_per",
+          "coefficient": 2.411243686285246
+        },
+        {
+          "feature": "w_points_per_75",
+          "coefficient": -2.25469466671694
+        },
+        {
+          "feature": "w_usage_pct",
+          "coefficient": 1.2842303943005713
+        },
+        {
+          "feature": "league_ortg_estimate",
+          "coefficient": 1.2620713033464526
+        },
+        {
+          "feature": "team_3par_from_players",
+          "coefficient": 1.042755063419368
+        },
+        {
+          "feature": "w_assists_per_75",
+          "coefficient": 0.9004154023768368
+        },
+        {
+          "feature": "league_ts_pct",
+          "coefficient": -0.7369762080593185
+        },
+        {
+          "feature": "minutes_top3_share",
+          "coefficient": 0.6678748476309283
+        },
+        {
+          "feature": "w_age",
+          "coefficient": -0.6585044601574666
+        },
+        {
+          "feature": "w_assist_pct",
+          "coefficient": -0.6430872805137638
+        },
+        {
+          "feature": "minutes_top5_share",
+          "coefficient": -0.5640487573003738
+        }
+      ],
+      "flags": []
+    }
+  },
+  "famous_team_checks": [
+    {
+      "season": "1985-86",
+      "team_name": "Boston Celtics",
+      "actual_ortg": 111.8,
+      "pred_ortg": 111.8,
+      "actual_drtg": 102.6,
+      "pred_drtg": 107.8,
+      "actual_pace": 101.2,
+      "pred_pace": 102.21
+    },
+    {
+      "season": "1995-96",
+      "team_name": "Chicago Bulls",
+      "actual_ortg": 115.2,
+      "pred_ortg": 115.13,
+      "actual_drtg": 101.8,
+      "pred_drtg": 108.16,
+      "actual_pace": 91.1,
+      "pred_pace": 92.22
+    },
+    {
+      "season": "2000-01",
+      "team_name": "Los Angeles Lakers",
+      "actual_ortg": 108.4,
+      "pred_ortg": 108.49,
+      "actual_drtg": 104.8,
+      "pred_drtg": 103.71,
+      "actual_pace": 91.7,
+      "pred_pace": 91.28
+    },
+    {
+      "season": "2012-13",
+      "team_name": "Miami Heat",
+      "actual_ortg": 112.3,
+      "pred_ortg": 112.35,
+      "actual_drtg": 103.7,
+      "pred_drtg": 106.29,
+      "actual_pace": 90.7,
+      "pred_pace": 92.28
+    },
+    {
+      "season": "2016-17",
+      "team_name": "Golden State Warriors",
+      "actual_ortg": 115.6,
+      "pred_ortg": 115.56,
+      "actual_drtg": 104.0,
+      "pred_drtg": 108.9,
+      "actual_pace": 99.8,
+      "pred_pace": 96.9
+    }
+  ],
+  "custom_team_profile": {
+    "team_name": "Curry/Jordan/LeBron/Duncan/Shaq Demo",
+    "target_environment": "2016-17 neutral NBA environment",
+    "rotation": [
+      {
+        "slot": "PG",
+        "player_name": "Stephen Curry",
+        "season": "2015-16",
+        "historical_team": "GSW",
+        "historical_mpg": 34.2,
+        "projected_minutes": 34.2
+      },
+      {
+        "slot": "SG",
+        "player_name": "Michael Jordan",
+        "season": "1990-91",
+        "historical_team": "CHI",
+        "historical_mpg": 37.0,
+        "projected_minutes": 37.0
+      },
+      {
+        "slot": "SF",
+        "player_name": "LeBron James",
+        "season": "2012-13",
+        "historical_team": "MIA",
+        "historical_mpg": 37.9,
+        "projected_minutes": 37.9
+      },
+      {
+        "slot": "PF",
+        "player_name": "Tim Duncan",
+        "season": "2002-03",
+        "historical_team": "SAS",
+        "historical_mpg": 39.3,
+        "projected_minutes": 39.3
+      },
+      {
+        "slot": "C",
+        "player_name": "Shaquille O'Neal",
+        "season": "1999-00",
+        "historical_team": "LAL",
+        "historical_mpg": 40.0,
+        "projected_minutes": 40.0
+      }
+    ],
+    "profile_features": {
+      "w_points_per_75": 28.7417,
+      "w_relative_ts": 0.0793,
+      "w_usage_pct": 30.9197,
+      "weighted_usage_top3": 18.5383,
+      "usage_pressure": 0.5383,
+      "team_3par_from_players": 0.1601,
+      "team_ftr_from_players": 0.3905,
+      "spacing_proxy": 0.0127,
+      "rebounding_proxy": 10.6046,
+      "defense_box_proxy": 6.0036
+    },
+    "projections": {
+      "projected_ortg": 120.22,
+      "projected_drtg": 109.53,
+      "projected_pace": 96.4
+    },
+    "transparent_formula_projections": {
+      "projected_ortg": 120.22,
+      "projected_drtg": 109.53,
+      "projected_pace": 96.4
+    },
+    "selected_model_raw_projections": {
+      "projected_ortg": 168.54,
+      "projected_drtg": 109.53,
+      "projected_pace": 96.4
+    },
+    "unassigned_bench_minutes": 51.7,
+    "caveats": [
+      "Actual high-usage stars cannot all retain original usage; usage pressure is included as a penalty/proxy, not chemistry.",
+      "Individual defense is weakly observed in current historical PlayerSeason data.",
+      "Only five players were supplied; remaining bench minutes are explicit instead of silently invented.",
+      "Learned reconstruction models can extrapolate badly on all-star custom rosters, so the transparent formula projection is shown as the safer prototype output.",
+      "Projection is a team-strength profile, not a simulated win total."
+    ]
+  },
+  "verdict": "NEEDS MORE DATA / MODELING"
+}
