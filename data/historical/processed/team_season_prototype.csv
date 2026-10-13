@@ -1,6 +1,6 @@
-team_name,season,season_end_year,wins,losses,pace,off_rtg,def_rtg,net_rtg,team_ts_pct,team_3par,team_tov_pct,team_orb_pct,team_points_per_game,team_assists_per_game,team_rebounds_per_game,source_status,source
-Boston Celtics,1985-86,1986,67.0,15.0,101.2,111.8,102.6,9.2,0.564,0.054,14.1,31.3,114.1,29.1,46.4,loaded,Basketball-Reference league team per-game and misc tables
-Chicago Bulls,1995-96,1996,72.0,10.0,91.1,115.2,101.8,13.4,0.555,0.196,13.1,36.9,105.2,24.8,44.6,loaded,Basketball-Reference league team per-game and misc tables
-Los Angeles Lakers,2000-01,2001,56.0,26.0,91.7,108.4,104.8,3.6,0.535,0.191,13.3,31.1,100.6,23.0,44.7,loaded,Basketball-Reference league team per-game and misc tables
-Miami Heat,2012-13,2013,66.0,16.0,90.7,112.3,103.7,8.6,0.588,0.285,13.7,22.2,102.9,23.0,38.6,loaded,Basketball-Reference league team per-game and misc tables
-Golden State Warriors,2016-17,2017,67.0,15.0,99.8,115.6,104.0,11.6,0.597,0.359,13.2,22.8,115.9,30.4,44.4,loaded,Basketball-Reference league team per-game and misc tables
+team_id,franchise_id,team_name,season,season_end_year,wins,losses,pace,off_rtg,def_rtg,net_rtg,team_ts_pct,team_3par,team_tov_pct,team_orb_pct,team_points_per_game,team_assists_per_game,team_rebounds_per_game,source_status,source
+team:boston-celtics,franchise:boston-celtics,Boston Celtics,1985-86,1986,67.0,15.0,101.2,111.8,102.6,9.2,0.564,0.054,14.1,31.3,114.1,29.1,46.4,loaded,Basketball-Reference league team per-game and misc tables
+team:chicago-bulls,franchise:chicago-bulls,Chicago Bulls,1995-96,1996,72.0,10.0,91.1,115.2,101.8,13.4,0.555,0.196,13.1,36.9,105.2,24.8,44.6,loaded,Basketball-Reference league team per-game and misc tables
+team:los-angeles-lakers,franchise:lakers,Los Angeles Lakers,2000-01,2001,56.0,26.0,91.7,108.4,104.8,3.6,0.535,0.191,13.3,31.1,100.6,23.0,44.7,loaded,Basketball-Reference league team per-game and misc tables
+team:miami-heat,franchise:miami-heat,Miami Heat,2012-13,2013,66.0,16.0,90.7,112.3,103.7,8.6,0.588,0.285,13.7,22.2,102.9,23.0,38.6,loaded,Basketball-Reference league team per-game and misc tables
+team:golden-state-warriors,franchise:warriors,Golden State Warriors,2016-17,2017,67.0,15.0,99.8,115.6,104.0,11.6,0.597,0.359,13.2,22.8,115.9,30.4,44.4,loaded,Basketball-Reference league team per-game and misc tables

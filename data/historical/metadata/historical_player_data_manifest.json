@@ -1,4 +1,6 @@
 {
+  "schema_version": "historical_player_season_prototype_v2",
+  "created_at_utc": "2026-10-13T07:45:51.921618+00:00",
   "source": "Basketball-Reference",
   "source_base_url": "https://www.basketball-reference.com/leagues",
   "raw_cache_dir": "data\\historical\\raw\\basketball-reference",
@@ -16,6 +18,404 @@
     2023
   ],
   "refresh": false,
+  "request_timeout_seconds": 45,
+  "request_delay_seconds": 3,
+  "download_attempts": 3,
+  "source_fetches": [
+    {
+      "year": 1977,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1977_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1977_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1977_totals.html"
+    },
+    {
+      "year": 1977,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1977_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1977_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1977_advanced.html"
+    },
+    {
+      "year": 1977,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1977.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1977_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1977.html"
+    },
+    {
+      "year": 1986,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1986_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1986_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1986_totals.html"
+    },
+    {
+      "year": 1986,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1986_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1986_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1986_advanced.html"
+    },
+    {
+      "year": 1986,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1986.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1986_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1986.html"
+    },
+    {
+      "year": 1991,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1991_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1991_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1991_totals.html"
+    },
+    {
+      "year": 1991,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1991_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1991_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1991_advanced.html"
+    },
+    {
+      "year": 1991,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1991.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1991_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1991.html"
+    },
+    {
+      "year": 1996,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1996_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1996_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1996_totals.html"
+    },
+    {
+      "year": 1996,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1996_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1996_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1996_advanced.html"
+    },
+    {
+      "year": 1996,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1996.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1996_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1996.html"
+    },
+    {
+      "year": 2000,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2000_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2000_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2000_totals.html"
+    },
+    {
+      "year": 2000,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2000_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2000_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2000_advanced.html"
+    },
+    {
+      "year": 2000,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2000.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2000_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2000.html"
+    },
+    {
+      "year": 2001,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2001_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2001_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2001_totals.html"
+    },
+    {
+      "year": 2001,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2001_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2001_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2001_advanced.html"
+    },
+    {
+      "year": 2001,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2001.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2001_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2001.html"
+    },
+    {
+      "year": 2013,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2013_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2013_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2013_totals.html"
+    },
+    {
+      "year": 2013,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2013_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2013_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2013_advanced.html"
+    },
+    {
+      "year": 2013,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2013.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2013_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2013.html"
+    },
+    {
+      "year": 2016,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2016_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2016_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2016_totals.html"
+    },
+    {
+      "year": 2016,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2016_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2016_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2016_advanced.html"
+    },
+    {
+      "year": 2016,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2016.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2016_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2016.html"
+    },
+    {
+      "year": 2017,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2017_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2017_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2017_totals.html"
+    },
+    {
+      "year": 2017,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2017_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2017_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2017_advanced.html"
+    },
+    {
+      "year": 2017,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2017.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2017_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2017.html"
+    },
+    {
+      "year": 2023,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2023_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2023_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2023_totals.html"
+    },
+    {
+      "year": 2023,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2023_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2023_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2023_advanced.html"
+    },
+    {
+      "year": 2023,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2023.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2023_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2023.html"
+    }
+  ],
+  "field_provenance": {
+    "player_efficiency_rating": "source_derived_basketball_reference",
+    "win_shares": "source_derived_basketball_reference",
+    "box_plus_minus": "source_derived_basketball_reference",
+    "usage_pct": "source_derived_basketball_reference_or_unavailable",
+    "assist_pct": "source_derived_basketball_reference",
+    "turnover_pct": "source_derived_basketball_reference_or_unavailable",
+    "total_rebound_pct": "source_derived_basketball_reference",
+    "true_shooting_pct": "directly_sourced_from_basketball_reference_advanced_or_reconstructed_fallback",
+    "team_pace": "directly_sourced_from_basketball_reference_team_misc",
+    "league_pace": "reconstructed_from_team_games_and_team_pace",
+    "league_ts_pct": "reconstructed_from_basketball_reference_team_totals",
+    "estimated_possessions_minutes_team_pace": "estimated_minutes_team_pace",
+    "points_per_75": "derived_from_points_and_estimated_possessions",
+    "assists_per_75": "derived_from_assists_and_estimated_possessions",
+    "rebounds_per_75": "derived_from_rebounds_and_estimated_possessions",
+    "turnovers_per_75": "derived_or_unavailable",
+    "three_point_attempt_rate": "derived_or_not_tracked_in_pre_3pt_era",
+    "free_throw_rate": "derived_from_fta_and_fga"
+  },
+  "team_identity_source": "explicit_audited_prototype_mapping",
+  "league_context": {
+    "1977": {
+      "league_points": 200804.0,
+      "league_fga": 173574.0,
+      "league_fta": 52318.0,
+      "league_ts_pct": 0.5107075539263879,
+      "league_pace": 106.49565217391304,
+      "league_estimated_team_possessions": 200850.8,
+      "league_points_per_75": 74.98252434145147,
+      "league_context_provenance": "team_totals_and_team_misc_no_player_rows"
+    },
+    "1986": {
+      "league_points": 216913.0,
+      "league_fga": 174434.0,
+      "league_fta": 59561.0,
+      "league_ts_pct": 0.5405504681898262,
+      "league_pace": 102.12916666666668,
+      "league_estimated_team_possessions": 200990.2,
+      "league_points_per_75": 80.94163297514007,
+      "league_context_provenance": "team_totals_and_team_misc_no_player_rows"
+    },
+    "1991": {
+      "league_points": 244087.0,
+      "league_fga": 200209.0,
+      "league_fta": 64023.0,
+      "league_ts_pct": 0.5343899214604207,
+      "league_pace": 97.82857142857142,
+      "league_estimated_team_possessions": 224614.4,
+      "league_points_per_75": 81.50200966634374,
+      "league_context_provenance": "team_totals_and_team_misc_no_player_rows"
+    },
+    "1996": {
+      "league_points": 244778.0,
+      "league_fga": 197250.0,
+      "league_fta": 64929.0,
+      "league_ts_pct": 0.541978886076604,
+      "league_pace": 91.80999999999999,
+      "league_estimated_team_possessions": 225852.59999999998,
+      "league_points_per_75": 81.28465202525895,
+      "league_context_provenance": "team_totals_and_team_misc_no_player_rows"
+    },
+    "2000": {
+      "league_points": 239782.0,
+      "league_fga": 201952.0,
+      "league_fta": 62184.0,
+      "league_ts_pct": 0.5228269697447541,
+      "league_pace": 93.08999999999999,
+      "league_estimated_team_possessions": 229001.39999999997,
+      "league_points_per_75": 78.53074260681377,
+      "league_context_provenance": "team_totals_and_team_misc_no_player_rows"
+    },
+    "2001": {
+      "league_points": 233233.0,
+      "league_fga": 198273.0,
+      "league_fta": 61176.0,
+      "league_ts_pct": 0.5178572411866152,
+      "league_pace": 91.25333333333334,
+      "league_estimated_team_possessions": 224483.2,
+      "league_points_per_75": 77.9233145286596,
+      "league_context_provenance": "team_totals_and_team_misc_no_player_rows"
+    },
+    "2013": {
+      "league_points": 249264.0,
+      "league_fga": 208329.0,
+      "league_fta": 56351.0,
+      "league_ts_pct": 0.5346180547095565,
+      "league_pace": 92.00082677165354,
+      "league_estimated_team_possessions": 233682.09999999998,
+      "league_points_per_75": 80.00099280175932,
+      "league_context_provenance": "team_totals_and_team_misc_no_player_rows"
+    },
+    "2016": {
+      "league_points": 260991.0,
+      "league_fga": 214984.0,
+      "league_fta": 59385.0,
+      "league_ts_pct": 0.5412204381838587,
+      "league_pace": 95.77419354838709,
+      "league_estimated_team_possessions": 243457.99999999997,
+      "league_points_per_75": 80.40123963886995,
+      "league_context_provenance": "team_totals_and_team_misc_no_player_rows"
+    },
+    "2017": {
+      "league_points": 268411.0,
+      "league_fga": 217119.0,
+      "league_fta": 58750.0,
+      "league_ts_pct": 0.5523564734595772,
+      "league_pace": 96.4,
+      "league_estimated_team_possessions": 245048.80000000002,
+      "league_points_per_75": 82.15026966057373,
+      "league_context_provenance": "team_totals_and_team_misc_no_player_rows"
+    },
+    "2023": {
+      "league_points": 291531.0,
+      "league_fga": 224460.0,
+      "league_fta": 59810.0,
+      "league_ts_pct": 0.5812568487305824,
+      "league_pace": 99.1483870967742,
+      "league_estimated_team_possessions": 252035.2,
+      "league_points_per_75": 86.75306068358705,
+      "league_context_provenance": "team_totals_and_team_misc_no_player_rows"
+    }
+  },
   "validation_issues": [],
   "outputs": [
     "data/historical/processed/player_season_prototype.csv",

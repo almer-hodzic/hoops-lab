@@ -1,0 +1,197 @@
+{
+  "ATL": {
+    "team_id": "team:atlanta-hawks",
+    "franchise_id": "franchise:atlanta-hawks",
+    "display_name": "Atlanta Hawks"
+  },
+  "BKN": {
+    "team_id": "team:brooklyn-nets",
+    "franchise_id": "franchise:nets",
+    "display_name": "Brooklyn Nets"
+  },
+  "BOS": {
+    "team_id": "team:boston-celtics",
+    "franchise_id": "franchise:boston-celtics",
+    "display_name": "Boston Celtics"
+  },
+  "BRK": {
+    "team_id": "team:brooklyn-nets",
+    "franchise_id": "franchise:nets",
+    "display_name": "Brooklyn Nets"
+  },
+  "CHA": {
+    "team_id": "team:charlotte-hornets-current",
+    "franchise_id": "franchise:charlotte-hornets-current",
+    "display_name": "Charlotte Hornets"
+  },
+  "CHH": {
+    "team_id": "team:charlotte-hornets-original",
+    "franchise_id": "franchise:new-orleans-pelicans",
+    "display_name": "Charlotte Hornets"
+  },
+  "CHI": {
+    "team_id": "team:chicago-bulls",
+    "franchise_id": "franchise:chicago-bulls",
+    "display_name": "Chicago Bulls"
+  },
+  "CHO": {
+    "team_id": "team:charlotte-hornets-current",
+    "franchise_id": "franchise:charlotte-hornets-current",
+    "display_name": "Charlotte Hornets"
+  },
+  "CLE": {
+    "team_id": "team:cleveland-cavaliers",
+    "franchise_id": "franchise:cleveland-cavaliers",
+    "display_name": "Cleveland Cavaliers"
+  },
+  "DAL": {
+    "team_id": "team:dallas-mavericks",
+    "franchise_id": "franchise:dallas-mavericks",
+    "display_name": "Dallas Mavericks"
+  },
+  "DEN": {
+    "team_id": "team:denver-nuggets",
+    "franchise_id": "franchise:denver-nuggets",
+    "display_name": "Denver Nuggets"
+  },
+  "DET": {
+    "team_id": "team:detroit-pistons",
+    "franchise_id": "franchise:detroit-pistons",
+    "display_name": "Detroit Pistons"
+  },
+  "GSW": {
+    "team_id": "team:golden-state-warriors",
+    "franchise_id": "franchise:warriors",
+    "display_name": "Golden State Warriors"
+  },
+  "HOU": {
+    "team_id": "team:houston-rockets",
+    "franchise_id": "franchise:rockets",
+    "display_name": "Houston Rockets"
+  },
+  "IND": {
+    "team_id": "team:indiana-pacers",
+    "franchise_id": "franchise:indiana-pacers",
+    "display_name": "Indiana Pacers"
+  },
+  "LAC": {
+    "team_id": "team:los-angeles-clippers",
+    "franchise_id": "franchise:clippers",
+    "display_name": "Los Angeles Clippers"
+  },
+  "LAL": {
+    "team_id": "team:los-angeles-lakers",
+    "franchise_id": "franchise:lakers",
+    "display_name": "Los Angeles Lakers"
+  },
+  "MEM": {
+    "team_id": "team:memphis-grizzlies",
+    "franchise_id": "franchise:grizzlies",
+    "display_name": "Memphis Grizzlies"
+  },
+  "MIA": {
+    "team_id": "team:miami-heat",
+    "franchise_id": "franchise:miami-heat",
+    "display_name": "Miami Heat"
+  },
+  "MIL": {
+    "team_id": "team:milwaukee-bucks",
+    "franchise_id": "franchise:milwaukee-bucks",
+    "display_name": "Milwaukee Bucks"
+  },
+  "MIN": {
+    "team_id": "team:minnesota-timberwolves",
+    "franchise_id": "franchise:minnesota-timberwolves",
+    "display_name": "Minnesota Timberwolves"
+  },
+  "NJN": {
+    "team_id": "team:new-jersey-nets",
+    "franchise_id": "franchise:nets",
+    "display_name": "New Jersey Nets"
+  },
+  "NOH": {
+    "team_id": "team:new-orleans-hornets",
+    "franchise_id": "franchise:new-orleans-pelicans",
+    "display_name": "New Orleans Hornets"
+  },
+  "NOK": {
+    "team_id": "team:new-orleans-oklahoma-city-hornets",
+    "franchise_id": "franchise:new-orleans-pelicans",
+    "display_name": "New Orleans/Oklahoma City Hornets"
+  },
+  "NOP": {
+    "team_id": "team:new-orleans-pelicans",
+    "franchise_id": "franchise:new-orleans-pelicans",
+    "display_name": "New Orleans Pelicans"
+  },
+  "NYK": {
+    "team_id": "team:new-york-knicks",
+    "franchise_id": "franchise:new-york-knicks",
+    "display_name": "New York Knicks"
+  },
+  "OKC": {
+    "team_id": "team:oklahoma-city-thunder",
+    "franchise_id": "franchise:thunder",
+    "display_name": "Oklahoma City Thunder"
+  },
+  "ORL": {
+    "team_id": "team:orlando-magic",
+    "franchise_id": "franchise:orlando-magic",
+    "display_name": "Orlando Magic"
+  },
+  "PHI": {
+    "team_id": "team:philadelphia-76ers",
+    "franchise_id": "franchise:76ers",
+    "display_name": "Philadelphia 76ers"
+  },
+  "PHO": {
+    "team_id": "team:phoenix-suns",
+    "franchise_id": "franchise:phoenix-suns",
+    "display_name": "Phoenix Suns"
+  },
+  "POR": {
+    "team_id": "team:portland-trail-blazers",
+    "franchise_id": "franchise:portland-trail-blazers",
+    "display_name": "Portland Trail Blazers"
+  },
+  "SAC": {
+    "team_id": "team:sacramento-kings",
+    "franchise_id": "franchise:kings",
+    "display_name": "Sacramento Kings"
+  },
+  "SAS": {
+    "team_id": "team:san-antonio-spurs",
+    "franchise_id": "franchise:san-antonio-spurs",
+    "display_name": "San Antonio Spurs"
+  },
+  "SEA": {
+    "team_id": "team:seattle-supersonics",
+    "franchise_id": "franchise:thunder",
+    "display_name": "Seattle SuperSonics"
+  },
+  "TOR": {
+    "team_id": "team:toronto-raptors",
+    "franchise_id": "franchise:toronto-raptors",
+    "display_name": "Toronto Raptors"
+  },
+  "UTA": {
+    "team_id": "team:utah-jazz",
+    "franchise_id": "franchise:jazz",
+    "display_name": "Utah Jazz"
+  },
+  "VAN": {
+    "team_id": "team:vancouver-grizzlies",
+    "franchise_id": "franchise:grizzlies",
+    "display_name": "Vancouver Grizzlies"
+  },
+  "WAS": {
+    "team_id": "team:washington-wizards",
+    "franchise_id": "franchise:wizards",
+    "display_name": "Washington Wizards"
+  },
+  "WSB": {
+    "team_id": "team:washington-bullets",
+    "franchise_id": "franchise:wizards",
+    "display_name": "Washington Bullets"
+  }
+}
