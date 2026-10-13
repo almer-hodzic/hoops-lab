@@ -1,0 +1,629 @@
+{
+  "count_sanity": {
+    "inferred_mean_team_game": 87.0598423161432,
+    "inferred_median_team_game": 87.0,
+    "inferred_p05_team_game": 77.0,
+    "inferred_p95_team_game": 98.0,
+    "estimated_mean_team_game": 98.57484813235102,
+    "estimated_median_team_game": 98.28,
+    "estimated_p05_team_game": 90.36,
+    "estimated_p95_team_game": 107.89399999999993,
+    "mean_absolute_difference": 11.52383094222567
+  },
+  "largest_disagreements": [
+    {
+      "season": "2024-25",
+      "season_type": "regular_season",
+      "game_id": "22400867",
+      "team_id": "1610612757",
+      "fga": 96,
+      "oreb": 19,
+      "tov": 20,
+      "fta": 35,
+      "estimated_possessions": 112.4,
+      "inferred_possessions": 83,
+      "diff": -29.400000000000006
+    },
+    {
+      "season": "2021-22",
+      "season_type": "regular_season",
+      "game_id": "22100078",
+      "team_id": "1610612738",
+      "fga": 107,
+      "oreb": 13,
+      "tov": 12,
+      "fta": 25,
+      "estimated_possessions": 117.0,
+      "inferred_possessions": 89,
+      "diff": -28.0
+    },
+    {
+      "season": "2023-24",
+      "season_type": "regular_season",
+      "game_id": "22301113",
+      "team_id": "1610612744",
+      "fga": 80,
+      "oreb": 13,
+      "tov": 21,
+      "fta": 25,
+      "estimated_possessions": 99.0,
+      "inferred_possessions": 71,
+      "diff": -28.0
+    },
+    {
+      "season": "2022-23",
+      "season_type": "regular_season",
+      "game_id": "22200398",
+      "team_id": "1610612761",
+      "fga": 75,
+      "oreb": 11,
+      "tov": 9,
+      "fta": 38,
+      "estimated_possessions": 89.72,
+      "inferred_possessions": 62,
+      "diff": -27.72
+    },
+    {
+      "season": "2022-23",
+      "season_type": "regular_season",
+      "game_id": "22200570",
+      "team_id": "1610612751",
+      "fga": 91,
+      "oreb": 6,
+      "tov": 11,
+      "fta": 21,
+      "estimated_possessions": 105.24,
+      "inferred_possessions": 78,
+      "diff": -27.239999999999995
+    },
+    {
+      "season": "2025-26",
+      "season_type": "regular_season",
+      "game_id": "22501074",
+      "team_id": "1610612742",
+      "fga": 81,
+      "oreb": 8,
+      "tov": 17,
+      "fta": 30,
+      "estimated_possessions": 103.2,
+      "inferred_possessions": 76,
+      "diff": -27.200000000000003
+    },
+    {
+      "season": "2024-25",
+      "season_type": "regular_season",
+      "game_id": "22400254",
+      "team_id": "1610612754",
+      "fga": 83,
+      "oreb": 4,
+      "tov": 23,
+      "fta": 25,
+      "estimated_possessions": 113.0,
+      "inferred_possessions": 86,
+      "diff": -27.0
+    },
+    {
+      "season": "2020-21",
+      "season_type": "regular_season",
+      "game_id": "22000616",
+      "team_id": "1610612761",
+      "fga": 86,
+      "oreb": 12,
+      "tov": 9,
+      "fta": 34,
+      "estimated_possessions": 97.96000000000001,
+      "inferred_possessions": 71,
+      "diff": -26.960000000000008
+    },
+    {
+      "season": "2025-26",
+      "season_type": "regular_season",
+      "game_id": "22500260",
+      "team_id": "1610612743",
+      "fga": 83,
+      "oreb": 9,
+      "tov": 20,
+      "fta": 27,
+      "estimated_possessions": 105.88,
+      "inferred_possessions": 79,
+      "diff": -26.879999999999995
+    },
+    {
+      "season": "2021-22",
+      "season_type": "regular_season",
+      "game_id": "22100436",
+      "team_id": "1610612747",
+      "fga": 78,
+      "oreb": 3,
+      "tov": 18,
+      "fta": 29,
+      "estimated_possessions": 105.76,
+      "inferred_possessions": 79,
+      "diff": -26.760000000000005
+    },
+    {
+      "season": "2025-26",
+      "season_type": "regular_season",
+      "game_id": "22500135",
+      "team_id": "1610612762",
+      "fga": 84,
+      "oreb": 20,
+      "tov": 22,
+      "fta": 49,
+      "estimated_possessions": 107.56,
+      "inferred_possessions": 81,
+      "diff": -26.560000000000002
+    },
+    {
+      "season": "2020-21",
+      "season_type": "regular_season",
+      "game_id": "22000707",
+      "team_id": "1610612754",
+      "fga": 93,
+      "oreb": 9,
+      "tov": 14,
+      "fta": 33,
+      "estimated_possessions": 112.52,
+      "inferred_possessions": 86,
+      "diff": -26.519999999999996
+    },
+    {
+      "season": "2024-25",
+      "season_type": "regular_season",
+      "game_id": "22400479",
+      "team_id": "1610612750",
+      "fga": 80,
+      "oreb": 9,
+      "tov": 17,
+      "fta": 26,
+      "estimated_possessions": 99.44,
+      "inferred_possessions": 73,
+      "diff": -26.439999999999998
+    },
+    {
+      "season": "2024-25",
+      "season_type": "playoffs",
+      "game_id": "42400406",
+      "team_id": "1610612760",
+      "fga": 74,
+      "oreb": 7,
+      "tov": 21,
+      "fta": 26,
+      "estimated_possessions": 99.44,
+      "inferred_possessions": 73,
+      "diff": -26.439999999999998
+    },
+    {
+      "season": "2025-26",
+      "season_type": "regular_season",
+      "game_id": "22500649",
+      "team_id": "1610612762",
+      "fga": 92,
+      "oreb": 9,
+      "tov": 14,
+      "fta": 28,
+      "estimated_possessions": 109.32,
+      "inferred_possessions": 83,
+      "diff": -26.319999999999993
+    }
+  ],
+  "anomalies": {
+    "negative_duration_rows": 7698,
+    "ordering_error_rows": 2015,
+    "gt8_point_rows": 168,
+    "negative_duration_categories": {
+      "period_transition_close_with_new_period_row": 1998,
+      "clock_increases_with_action_order_preserved": 5700
+    },
+    "ordering_error_categories": {
+      "period_transition_or_action_reset": 2015
+    },
+    "gt8_point_categories": {
+      "multiple_field_goal_attempts": 3,
+      "many_free_throw_attempts": 4,
+      "ended_at_period_boundary": 19,
+      "had_offensive_rebound": 38
+    },
+    "gt8_samples": [
+      {
+        "season": "2021-22",
+        "season_type": "regular_season",
+        "game_id": "22101075",
+        "possession_id": "22101075_103",
+        "period": 3,
+        "offense_team_id": "1610612751",
+        "points_scored": 55,
+        "field_goal_attempts": 1,
+        "free_throw_attempts": 0,
+        "turnovers": 0,
+        "possession_duration_seconds": 13,
+        "ended_in_period_end": false
+      },
+      {
+        "season": "2022-23",
+        "season_type": "regular_season",
+        "game_id": "22200107",
+        "possession_id": "22200107_102",
+        "period": 3,
+        "offense_team_id": "1610612739",
+        "points_scored": 52,
+        "field_goal_attempts": 3,
+        "free_throw_attempts": 2,
+        "turnovers": 0,
+        "possession_duration_seconds": 30,
+        "ended_in_period_end": false
+      },
+      {
+        "season": "2023-24",
+        "season_type": "regular_season",
+        "game_id": "22300135",
+        "possession_id": "22300135_122",
+        "period": 3,
+        "offense_team_id": "1610612737",
+        "points_scored": 24,
+        "field_goal_attempts": 4,
+        "free_throw_attempts": 2,
+        "turnovers": 0,
+        "possession_duration_seconds": 40,
+        "ended_in_period_end": false
+      },
+      {
+        "season": "2020-21",
+        "season_type": "regular_season",
+        "game_id": "22000673",
+        "possession_id": "22000673_154",
+        "period": 4,
+        "offense_team_id": "1610612750",
+        "points_scored": 22,
+        "field_goal_attempts": 1,
+        "free_throw_attempts": 0,
+        "turnovers": 0,
+        "possession_duration_seconds": 0,
+        "ended_in_period_end": false
+      },
+      {
+        "season": "2025-26",
+        "season_type": "regular_season",
+        "game_id": "22501144",
+        "possession_id": "22501144_049",
+        "period": 1,
+        "offense_team_id": "1610612765",
+        "points_scored": 21,
+        "field_goal_attempts": 0,
+        "free_throw_attempts": 0,
+        "turnovers": 0,
+        "possession_duration_seconds": -291,
+        "ended_in_period_end": true
+      },
+      {
+        "season": "2023-24",
+        "season_type": "regular_season",
+        "game_id": "22300575",
+        "possession_id": "22300575_079",
+        "period": 2,
+        "offense_team_id": "1610612766",
+        "points_scored": 20,
+        "field_goal_attempts": 3,
+        "free_throw_attempts": 1,
+        "turnovers": 0,
+        "possession_duration_seconds": 33,
+        "ended_in_period_end": true
+      },
+      {
+        "season": "2025-26",
+        "season_type": "regular_season",
+        "game_id": "22501130",
+        "possession_id": "22501130_120",
+        "period": 3,
+        "offense_team_id": "1610612759",
+        "points_scored": 20,
+        "field_goal_attempts": 2,
+        "free_throw_attempts": 2,
+        "turnovers": 0,
+        "possession_duration_seconds": 51,
+        "ended_in_period_end": false
+      },
+      {
+        "season": "2020-21",
+        "season_type": "regular_season",
+        "game_id": "22001006",
+        "possession_id": "22001006_049",
+        "period": 1,
+        "offense_team_id": "1610612745",
+        "points_scored": 19,
+        "field_goal_attempts": 1,
+        "free_throw_attempts": 0,
+        "turnovers": 0,
+        "possession_duration_seconds": 0,
+        "ended_in_period_end": false
+      },
+      {
+        "season": "2025-26",
+        "season_type": "regular_season",
+        "game_id": "22500931",
+        "possession_id": "22500931_110",
+        "period": 3,
+        "offense_team_id": "1610612739",
+        "points_scored": 19,
+        "field_goal_attempts": 1,
+        "free_throw_attempts": 0,
+        "turnovers": 0,
+        "possession_duration_seconds": 0,
+        "ended_in_period_end": false
+      },
+      {
+        "season": "2025-26",
+        "season_type": "regular_season",
+        "game_id": "22501224",
+        "possession_id": "22501224_083",
+        "period": 2,
+        "offense_team_id": "1610612762",
+        "points_scored": 19,
+        "field_goal_attempts": 1,
+        "free_throw_attempts": 1,
+        "turnovers": 0,
+        "possession_duration_seconds": 11,
+        "ended_in_period_end": false
+      },
+      {
+        "season": "2020-21",
+        "season_type": "regular_season",
+        "game_id": "22000350",
+        "possession_id": "22000350_067",
+        "period": 2,
+        "offense_team_id": "1610612746",
+        "points_scored": 18,
+        "field_goal_attempts": 1,
+        "free_throw_attempts": 0,
+        "turnovers": 0,
+        "possession_duration_seconds": 14,
+        "ended_in_period_end": false
+      },
+      {
+        "season": "2025-26",
+        "season_type": "regular_season",
+        "game_id": "22500593",
+        "possession_id": "22500593_132",
+        "period": 3,
+        "offense_team_id": "1610612762",
+        "points_scored": 18,
+        "field_goal_attempts": 1,
+        "free_throw_attempts": 3,
+        "turnovers": 0,
+        "possession_duration_seconds": -544,
+        "ended_in_period_end": true
+      }
+    ]
+  },
+  "event_audit": {
+    "free_throw_subtypes": {
+      "Free Throw 1 of 2": 141185,
+      "Free Throw 2 of 2": 141098,
+      "Free Throw 1 of 1": 38183,
+      "Free Throw Technical": 7948,
+      "Free Throw 1 of 3": 4978,
+      "Free Throw 2 of 3": 4977,
+      "Free Throw 3 of 3": 4975,
+      "Free Throw Flagrant 1 of 3": 192,
+      "Free Throw Flagrant 2 of 3": 192,
+      "Free Throw Flagrant 3 of 3": 192,
+      "Free Throw Flagrant 1 of 2": 846,
+      "Free Throw Flagrant 2 of 2": 846,
+      "Free Throw Flagrant 1 of 1": 132,
+      "Free Throw Clear Path 1 of 2": 219,
+      "Free Throw Clear Path 2 of 2": 219,
+      "Free Throw Technical 1 of 2": 12,
+      "Free Throw Technical 2 of 2": 11
+    },
+    "rebound_pairs": {
+      "miss_dreb_other_team": 515014,
+      "miss_oreb_same_team": 212053
+    }
+  },
+  "continuation_signal": {
+    "global_mae": 1.1608447505813826,
+    "hgb_mae": 1.1520882717991232,
+    "hgb_absolute_mae_improvement": 0.00875647878225938,
+    "hgb_relative_mae_improvement": 0.007543195399620749,
+    "global_rmse": 1.2574573419435633,
+    "hgb_rmse": 1.2531446788915153,
+    "hgb_absolute_rmse_improvement": 0.004312663052048027,
+    "ridge_mae": 1.1520377153730856,
+    "ridge_rmse": 1.2536676017301318,
+    "ridge_minus_hgb_mae": -5.055642603757349e-05,
+    "hgb_bias": -0.011904248227817656,
+    "ridge_bias": 0.016709721643711782
+  },
+  "defer_diagnosis": {
+    "by_decision": [
+      {
+        "decision": "DEFER",
+        "rows": 120376,
+        "mean_shot_xpps": 0.9374407989913925,
+        "mean_continuation_xpps": 1.3265694416892255,
+        "mean_margin": -0.38912864269783315,
+        "observed_pps": 0.924087858044793
+      },
+      {
+        "decision": "REVIEW",
+        "rows": 77666,
+        "mean_shot_xpps": 1.1797247039928378,
+        "mean_continuation_xpps": 1.2481545009633452,
+        "mean_margin": -0.0684297969705077,
+        "observed_pps": 1.1894136430355626
+      },
+      {
+        "decision": "TAKE",
+        "rows": 21116,
+        "mean_shot_xpps": 1.6754809988996544,
+        "mean_continuation_xpps": 1.2454264583443762,
+        "mean_margin": 0.4300545405552781,
+        "observed_pps": 1.6838416366736124
+      }
+    ],
+    "by_shot_value": [
+      {
+        "decision": "DEFER",
+        "shot_value": 2,
+        "rows": 78251
+      },
+      {
+        "decision": "DEFER",
+        "shot_value": 3,
+        "rows": 42125
+      },
+      {
+        "decision": "REVIEW",
+        "shot_value": 2,
+        "rows": 29308
+      },
+      {
+        "decision": "REVIEW",
+        "shot_value": 3,
+        "rows": 48358
+      },
+      {
+        "decision": "TAKE",
+        "shot_value": 2,
+        "rows": 20630
+      },
+      {
+        "decision": "TAKE",
+        "shot_value": 3,
+        "rows": 486
+      }
+    ],
+    "top_defer_zones": [
+      {
+        "decision": "DEFER",
+        "shot_zone_basic": "In The Paint (Non-RA)",
+        "rows": 39434,
+        "mean_margin": -0.4434240667771982
+      },
+      {
+        "decision": "DEFER",
+        "shot_zone_basic": "Above the Break 3",
+        "rows": 35140,
+        "mean_margin": -0.31248996021564734
+      },
+      {
+        "decision": "DEFER",
+        "shot_zone_basic": "Mid-Range",
+        "rows": 21179,
+        "mean_margin": -0.4531504745322198
+      },
+      {
+        "decision": "DEFER",
+        "shot_zone_basic": "Restricted Area",
+        "rows": 17629,
+        "mean_margin": -0.37935707620088877
+      },
+      {
+        "decision": "DEFER",
+        "shot_zone_basic": "Left Corner 3",
+        "rows": 3589,
+        "mean_margin": -0.2955497798130666
+      },
+      {
+        "decision": "DEFER",
+        "shot_zone_basic": "Right Corner 3",
+        "rows": 3376,
+        "mean_margin": -0.298123407405781
+      },
+      {
+        "decision": "DEFER",
+        "shot_zone_basic": "Backcourt",
+        "rows": 29,
+        "mean_margin": -0.7832780175900624
+      }
+    ],
+    "by_time": [
+      {
+        "decision": "DEFER",
+        "time_context_bucket": "0-60",
+        "rows": 12502,
+        "mean_margin": -0.4229327012611949
+      },
+      {
+        "decision": "DEFER",
+        "time_context_bucket": "181-360",
+        "rows": 29872,
+        "mean_margin": -0.38512801134746133
+      },
+      {
+        "decision": "DEFER",
+        "time_context_bucket": "361-720",
+        "rows": 55728,
+        "mean_margin": -0.3774410629463603
+      },
+      {
+        "decision": "DEFER",
+        "time_context_bucket": "61-180",
+        "rows": 22274,
+        "mean_margin": -0.40476184571162643
+      },
+      {
+        "decision": "REVIEW",
+        "time_context_bucket": "0-60",
+        "rows": 6216,
+        "mean_margin": -0.04652813338511603
+      },
+      {
+        "decision": "REVIEW",
+        "time_context_bucket": "181-360",
+        "rows": 19545,
+        "mean_margin": -0.06852039863967141
+      },
+      {
+        "decision": "REVIEW",
+        "time_context_bucket": "361-720",
+        "rows": 41064,
+        "mean_margin": -0.07161652108321273
+      },
+      {
+        "decision": "REVIEW",
+        "time_context_bucket": "61-180",
+        "rows": 10841,
+        "mean_margin": -0.06875359479901709
+      },
+      {
+        "decision": "TAKE",
+        "time_context_bucket": "0-60",
+        "rows": 1970,
+        "mean_margin": 0.4393237959128472
+      },
+      {
+        "decision": "TAKE",
+        "time_context_bucket": "181-360",
+        "rows": 5155,
+        "mean_margin": 0.4200552003908395
+      },
+      {
+        "decision": "TAKE",
+        "time_context_bucket": "361-720",
+        "rows": 11008,
+        "mean_margin": 0.43516542478096626
+      },
+      {
+        "decision": "TAKE",
+        "time_context_bucket": "61-180",
+        "rows": 2983,
+        "mean_margin": 0.422352747708109
+      }
+    ],
+    "margin_distribution": {
+      "count": 219158.0,
+      "mean": -0.1965494594153102,
+      "std": 0.2855902676586945,
+      "min": -1.4288894910616894,
+      "5%": -0.5949737201493195,
+      "10%": -0.5098531728971293,
+      "25%": -0.37992788725322174,
+      "50%": -0.22600396916695975,
+      "75%": -0.0763582758011756,
+      "90%": 0.1873408844741441,
+      "95%": 0.40109274845362275,
+      "max": 1.376789183082322
+    }
+  }
+}

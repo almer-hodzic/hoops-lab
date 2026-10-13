@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#090a0d" />
+    <title>NBA Clutch Agent</title>
+    <link rel="stylesheet" href="/app.css" />
+</head>
+<body>
+    <a class="skip-link" href="#app">Skip to content</a>
+    <header class="topbar">
+        <a class="brand" href="#overview" aria-label="NBA Clutch Agent overview">
+            <span class="brand-mark"></span>
+            <span>NBA Clutch Agent</span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
+        <nav class="nav" id="mainNav" aria-label="Primary navigation">
+            <a href="#overview">Overview</a>
+            <a href="#lab">Decision Lab</a>
+            <a href="#players">Players</a>
+            <a href="#history">History</a>
+            <a href="#model">Model</a>
+            <a href="#research">Research</a>
+        </nav>
+        <div class="status-dot" id="apiStatus" aria-live="polite">Checking API</div>
+    </header>
+
+    <main id="app" class="shell" tabindex="-1"></main>
+
+    <template id="courtTemplate">
+        <svg class="court-svg" viewBox="-250 -52.5 500 470" role="img" aria-label="Interactive NBA half court">
+            <rect x="-250" y="-52.5" width="500" height="470" rx="0" class="court-bg"></rect>
+            <line x1="-250" y1="-52.5" x2="250" y2="-52.5" class="court-line"></line>
+            <line x1="-250" y1="-52.5" x2="-250" y2="417.5" class="court-line"></line>
+            <line x1="250" y1="-52.5" x2="250" y2="417.5" class="court-line"></line>
+            <line x1="-250" y1="417.5" x2="250" y2="417.5" class="court-line soft"></line>
+            <line x1="-30" y1="-12.5" x2="30" y2="-12.5" class="court-line"></line>
+            <rect x="-80" y="-52.5" width="160" height="190" class="court-line no-fill"></rect>
+            <rect x="-60" y="-52.5" width="120" height="190" class="court-line no-fill soft"></rect>
+            <circle cx="0" cy="0" r="7.5" class="rim"></circle>
+            <path d="M -40 0 A 40 40 0 0 0 40 0" class="court-line no-fill"></path>
+            <path d="M -80 137.5 A 60 60 0 0 0 80 137.5" class="court-line no-fill"></path>
+            <path d="M -80 137.5 A 60 60 0 0 1 80 137.5" class="court-line no-fill soft"></path>
+            <line x1="-220" y1="-52.5" x2="-220" y2="89.3" class="court-line"></line>
+            <line x1="220" y1="-52.5" x2="220" y2="89.3" class="court-line"></line>
+            <path d="M -220 89.3 A 237.5 237.5 0 0 0 220 89.3" class="court-line no-fill"></path>
+            <circle cx="0" cy="417.5" r="60" class="court-line no-fill soft"></circle>
+            <g class="shot-marker" data-shot-marker>
+                <circle r="8"></circle>
+                <circle r="18"></circle>
+            </g>
+        </svg>
+    </template>
+
+    <script defer src="/app.js?v=30"></script>
+</body>
+</html>

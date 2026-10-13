@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE / OS
+.idea/
+.vscode/
+.vs/
+*.suo
+*.user
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.p12
+
+# .NET build outputs
+bin/
+obj/
+TestResults/
+**/State/
+
+# Raw NBA archives and generated heavy artifacts
+data/raw/
+data/interim/
+data/processed/
+data/analysis/
+artifacts/
+nba-clutch-agent/**/Dataset/
+
+# Generated large processed/analysis outputs
+*.parquet
+*.joblib
+*.zip
+*.tar
+*.tar.xz
+*.gz
+*.7z
+*.rar
+
+# Logs / temp
+*.log
+tmp/
+temp/
+
+# Generated submission/render QA output
+submission/docs/_render_check/

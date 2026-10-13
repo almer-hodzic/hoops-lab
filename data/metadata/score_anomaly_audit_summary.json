@@ -1,0 +1,29 @@
+{
+  "generated_at": "2026-10-08T15:59:37Z",
+  "score_decrease_events": 1910,
+  "made_fg_reconciliation_exceptions": 2265,
+  "score_decrease_categories": {
+    "made_fg_with_score_correction": 512,
+    "free_throw_score_correction": 628,
+    "replay_or_review_context": 725,
+    "non_scoring_event_with_score_correction": 45
+  },
+  "made_fg_exception_categories": {
+    "made_fg_score_snapshot_mismatch": 1753,
+    "made_fg_with_score_correction": 512
+  },
+  "classifications": {
+    "A_source_pbp_correction_behavior": 1910,
+    "B_harmless_transient_scoreboard_inconsistency": 1753,
+    "C_ambiguous": 0,
+    "D_pipeline_error": 0
+  },
+  "clutch_impact": {
+    "affected_canonical_shots": 2265,
+    "affected_clutch_shots": 72,
+    "uncertain_clutch_classifications": 21,
+    "score_diff_may_differ_under_immediate_pbp_snapshot": 2097
+  },
+  "pipeline_changes_required": false,
+  "dataset_freeze_decision": "YES, WITH DOCUMENTED LIMITATIONS"
+}

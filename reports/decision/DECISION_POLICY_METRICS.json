@@ -1,0 +1,309 @@
+{
+  "generated_at": "2026-10-10T22:01:06Z",
+  "shot_value_engine": "shooter_skill_v11_hist_gradient_boosting__historical_shooter_profile.joblib",
+  "shot_value_engine_retrained": false,
+  "probability_calibration": "sigmoid fit on 2024-25 late validation split from existing model probabilities",
+  "selected_replacement": "global",
+  "threshold": 0.15,
+  "replacement_approaches": {
+    "global": {
+      "validation_mae": 1.1570120510408877,
+      "validation_rmse": 1.2032174498957173,
+      "threshold": 0.15,
+      "objective": 0.6838920107919895,
+      "validation_summary": {
+        "rows": 219527,
+        "decisions": [
+          {
+            "decision": "TAKE",
+            "rows": 44288,
+            "share": 0.20174283801081416,
+            "mean_shot_xpps": 1.5101294327755075,
+            "mean_replacement_xpps": 1.080888122879678,
+            "observed_pps": 1.4927519869942196,
+            "mean_margin": 0.42924130989582926
+          },
+          {
+            "decision": "REVIEW",
+            "rows": 117868,
+            "share": 0.5369180100853198,
+            "mean_shot_xpps": 1.0794345202976483,
+            "mean_replacement_xpps": 1.080888122879678,
+            "observed_pps": 1.0761529846947433,
+            "mean_margin": -0.0014536025820299518
+          },
+          {
+            "decision": "DEFER",
+            "rows": 57371,
+            "share": 0.26133915190386603,
+            "mean_shot_xpps": 0.792945688513953,
+            "mean_replacement_xpps": 1.080888122879678,
+            "observed_pps": 0.7927524358996706,
+            "mean_margin": -0.28794243436572536
+          }
+        ]
+      }
+    },
+    "game_context": {
+      "validation_mae": 1.155712742946146,
+      "validation_rmse": 1.2026315863025938,
+      "threshold": 0.15,
+      "objective": 0.6779889588101724,
+      "validation_summary": {
+        "rows": 219527,
+        "decisions": [
+          {
+            "decision": "TAKE",
+            "rows": 44129,
+            "share": 0.2010185535264455,
+            "mean_shot_xpps": 1.5073948364484109,
+            "mean_replacement_xpps": 1.0781380416032766,
+            "observed_pps": 1.4904031362596026,
+            "mean_margin": 0.4292567948451341
+          },
+          {
+            "decision": "REVIEW",
+            "rows": 118636,
+            "share": 0.5404164408022704,
+            "mean_shot_xpps": 1.0784800230678337,
+            "mean_replacement_xpps": 1.0820985009316997,
+            "observed_pps": 1.074479921777538,
+            "mean_margin": -0.0036184778638659264
+          },
+          {
+            "decision": "DEFER",
+            "rows": 56762,
+            "share": 0.25856500567128415,
+            "mean_shot_xpps": 0.7951993357991519,
+            "mean_replacement_xpps": 1.0813765717454535,
+            "observed_pps": 0.7962016842253621,
+            "mean_margin": -0.28617723594630173
+          }
+        ]
+      }
+    },
+    "team_context": {
+      "validation_mae": 1.1555961368646308,
+      "validation_rmse": 1.2036773121582511,
+      "threshold": 0.15,
+      "objective": 0.6411615057072628,
+      "validation_summary": {
+        "rows": 219527,
+        "decisions": [
+          {
+            "decision": "TAKE",
+            "rows": 46214,
+            "share": 0.21051624629316668,
+            "mean_shot_xpps": 1.486155341711496,
+            "mean_replacement_xpps": 1.0641843744100414,
+            "observed_pps": 1.4661141645388842,
+            "mean_margin": 0.4219709673014548
+          },
+          {
+            "decision": "REVIEW",
+            "rows": 114863,
+            "share": 0.523229488855585,
+            "mean_shot_xpps": 1.0773325819483646,
+            "mean_replacement_xpps": 1.0828636968177061,
+            "observed_pps": 1.074149203834133,
+            "mean_margin": -0.005531114869341456
+          },
+          {
+            "decision": "DEFER",
+            "rows": 58450,
+            "share": 0.26625426485124837,
+            "mean_shot_xpps": 0.8071283512531874,
+            "mean_replacement_xpps": 1.0979028371971244,
+            "observed_pps": 0.8092557741659538,
+            "mean_margin": -0.29077448594393707
+          }
+        ]
+      }
+    },
+    "context_model": {
+      "validation_mae": 1.1540049845580738,
+      "validation_rmse": 1.2014631391702355,
+      "threshold": 0.15,
+      "objective": 0.6768395657541448,
+      "validation_summary": {
+        "rows": 219527,
+        "decisions": [
+          {
+            "decision": "TAKE",
+            "rows": 42974,
+            "share": 0.1957572417060316,
+            "mean_shot_xpps": 1.5153567566558186,
+            "mean_replacement_xpps": 1.0839823960438952,
+            "observed_pps": 1.4965095173826035,
+            "mean_margin": 0.43137436061192336
+          },
+          {
+            "decision": "REVIEW",
+            "rows": 119691,
+            "share": 0.5452222277897479,
+            "mean_shot_xpps": 1.0776193013161375,
+            "mean_replacement_xpps": 1.0837060231675295,
+            "observed_pps": 1.0731550408969763,
+            "mean_margin": -0.006086721851392032
+          },
+          {
+            "decision": "DEFER",
+            "rows": 56862,
+            "share": 0.2590205305042204,
+            "mean_shot_xpps": 0.8002042558928973,
+            "mean_replacement_xpps": 1.080539648106013,
+            "observed_pps": 0.8033132847947663,
+            "mean_margin": -0.2803353922131156
+          }
+        ]
+      }
+    }
+  },
+  "evaluation": {
+    "2025_26_regular": {
+      "rows": 219158,
+      "decisions": [
+        {
+          "decision": "TAKE",
+          "rows": 44043,
+          "share": 0.20096460088155577,
+          "mean_shot_xpps": 1.5139863838970833,
+          "mean_replacement_xpps": 1.080888122879678,
+          "observed_pps": 1.5032581795063915,
+          "mean_margin": 0.4330982610174054
+        },
+        {
+          "decision": "REVIEW",
+          "rows": 118680,
+          "share": 0.5415271174221338,
+          "mean_shot_xpps": 1.0772446125229527,
+          "mean_replacement_xpps": 1.0808881228796778,
+          "observed_pps": 1.073036737445231,
+          "mean_margin": -0.0036435103567255653
+        },
+        {
+          "decision": "DEFER",
+          "rows": 56435,
+          "share": 0.2575082816963104,
+          "mean_shot_xpps": 0.8030732051432165,
+          "mean_replacement_xpps": 1.0808881228796778,
+          "observed_pps": 0.8082750066448127,
+          "mean_margin": -0.2778149177364619
+        }
+      ]
+    },
+    "2025_26_regular_clutch": {
+      "rows": 7099,
+      "decisions": [
+        {
+          "decision": "TAKE",
+          "rows": 1109,
+          "share": 0.156219185800817,
+          "mean_shot_xpps": 1.5179868239439769,
+          "mean_replacement_xpps": 1.080888122879678,
+          "observed_pps": 1.5076645626690712,
+          "mean_margin": 0.4370987010642986
+        },
+        {
+          "decision": "REVIEW",
+          "rows": 3468,
+          "share": 0.4885195097901113,
+          "mean_shot_xpps": 1.048661289785533,
+          "mean_replacement_xpps": 1.080888122879678,
+          "observed_pps": 1.0227797001153403,
+          "mean_margin": -0.032226833094145216
+        },
+        {
+          "decision": "DEFER",
+          "rows": 2522,
+          "share": 0.3552613044090717,
+          "mean_shot_xpps": 0.7860162873644487,
+          "mean_replacement_xpps": 1.080888122879678,
+          "observed_pps": 0.7541633624107851,
+          "mean_margin": -0.29487183551522955
+        }
+      ]
+    },
+    "2025_26_playoffs": {
+      "rows": 14473,
+      "decisions": [
+        {
+          "decision": "TAKE",
+          "rows": 3286,
+          "share": 0.2270434602363021,
+          "mean_shot_xpps": 1.504063735398782,
+          "mean_replacement_xpps": 1.080888122879678,
+          "observed_pps": 1.415702982349361,
+          "mean_margin": 0.42317561251910396
+        },
+        {
+          "decision": "REVIEW",
+          "rows": 7889,
+          "share": 0.5450839494230636,
+          "mean_shot_xpps": 1.0829445179776842,
+          "mean_replacement_xpps": 1.0808881228796783,
+          "observed_pps": 1.0162251235898085,
+          "mean_margin": 0.0020563950980057623
+        },
+        {
+          "decision": "DEFER",
+          "rows": 3298,
+          "share": 0.22787259034063428,
+          "mean_shot_xpps": 0.8197104299541597,
+          "mean_replacement_xpps": 1.0808881228796778,
+          "observed_pps": 0.7392359005457854,
+          "mean_margin": -0.2611776929255185
+        }
+      ]
+    },
+    "2025_26_playoff_clutch": {
+      "rows": 476,
+      "decisions": [
+        {
+          "decision": "TAKE",
+          "rows": 109,
+          "share": 0.22899159663865545,
+          "mean_shot_xpps": 1.5534635042511005,
+          "mean_replacement_xpps": 1.0808881228796783,
+          "observed_pps": 1.3211009174311927,
+          "mean_margin": 0.47257538137142213
+        },
+        {
+          "decision": "REVIEW",
+          "rows": 209,
+          "share": 0.43907563025210083,
+          "mean_shot_xpps": 1.0478559887119105,
+          "mean_replacement_xpps": 1.080888122879678,
+          "observed_pps": 0.937799043062201,
+          "mean_margin": -0.033032134167767783
+        },
+        {
+          "decision": "DEFER",
+          "rows": 158,
+          "share": 0.3319327731092437,
+          "mean_shot_xpps": 0.8016460797170114,
+          "mean_replacement_xpps": 1.0808881228796783,
+          "observed_pps": 0.5759493670886076,
+          "mean_margin": -0.27924204316266704
+        }
+      ]
+    }
+  },
+  "player_summary_rows": 427,
+  "representative_example_rows": 36,
+  "legacy_comparison": {
+    "legacy_agent": "Existing .NET ClutchDecisionAgent + BanditPolicy/QTable",
+    "legacy_behavior": "Online epsilon-greedy Q-table over binned clutch observations; cold start randomizes Shoot/DontShoot until minimum visits; DontShoot reward uses fixed baseline PPP.",
+    "decision_policy_v1": "Offline calibrated shot xPPS minus replacement xPPS margin; all rows can be scored deterministically; REVIEW is a true uncertainty band rather than an executed action.",
+    "main_difference": "Decision Policy v1 estimates expected value directly from pre-shot probability and contextual replacement, while the legacy bandit learns action values from historical reward observations and exploration."
+  },
+  "possession_continuation": {
+    "can_current_pbp_support_future_model": true,
+    "assessment": "PBP has ordered events, scores, teams, players, shot/free-throw/rebound/turnover/foul/substitution/timeout events, so a future possession-continuation model is feasible.",
+    "limitations": [
+      "Possession boundaries require explicit derivation from rebounds, turnovers, made shots, free throws, period boundaries, and team changes.",
+      "The current canonical shot table is event-level; it does not yet include possession IDs or next-shot continuation outcomes.",
+      "Some PBP score correction behavior is documented and should remain quality-flagged in any possession model."
+    ]
+  }
+}

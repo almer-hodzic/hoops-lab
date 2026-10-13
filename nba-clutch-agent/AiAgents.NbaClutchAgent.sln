@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiAgents.NbaClutchAgent.Domain", "AiAgents.NbaClutchAgent.Domain\AiAgents.NbaClutchAgent.Domain.csproj", "{D3AB594A-6B3A-4D07-A08E-8EAB96297434}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiAgents.NbaClutchAgent.Application", "AiAgents.NbaClutchAgent.Application\AiAgents.NbaClutchAgent.Application.csproj", "{AA699776-66D1-45AF-B109-874B7580D86B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiAgents.NbaClutchAgent.Infrastructure", "AiAgents.NbaClutchAgent.Infrastructure\AiAgents.NbaClutchAgent.Infrastructure.csproj", "{B92145A8-0F3E-49A4-8D0E-DC1A196B2F94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiAgents.NbaClutchAgent.Console", "AiAgents.NbaClutchAgent.Console\AiAgents.NbaClutchAgent.Console.csproj", "{28818AA5-D6AD-46A6-85C9-2A796647F09D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiAgents.NbaClutchAgent.Web", "AiAgents.NbaClutchAgent.Web\AiAgents.NbaClutchAgent.Web.csproj", "{59F98D92-A14F-4C7B-906F-77D854A60A04}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3AB594A-6B3A-4D07-A08E-8EAB96297434}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3AB594A-6B3A-4D07-A08E-8EAB96297434}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3AB594A-6B3A-4D07-A08E-8EAB96297434}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3AB594A-6B3A-4D07-A08E-8EAB96297434}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA699776-66D1-45AF-B109-874B7580D86B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA699776-66D1-45AF-B109-874B7580D86B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA699776-66D1-45AF-B109-874B7580D86B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA699776-66D1-45AF-B109-874B7580D86B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B92145A8-0F3E-49A4-8D0E-DC1A196B2F94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B92145A8-0F3E-49A4-8D0E-DC1A196B2F94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B92145A8-0F3E-49A4-8D0E-DC1A196B2F94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B92145A8-0F3E-49A4-8D0E-DC1A196B2F94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28818AA5-D6AD-46A6-85C9-2A796647F09D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28818AA5-D6AD-46A6-85C9-2A796647F09D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28818AA5-D6AD-46A6-85C9-2A796647F09D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28818AA5-D6AD-46A6-85C9-2A796647F09D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59F98D92-A14F-4C7B-906F-77D854A60A04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59F98D92-A14F-4C7B-906F-77D854A60A04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59F98D92-A14F-4C7B-906F-77D854A60A04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59F98D92-A14F-4C7B-906F-77D854A60A04}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

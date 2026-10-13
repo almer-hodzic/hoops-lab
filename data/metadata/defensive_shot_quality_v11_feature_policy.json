@@ -1,0 +1,45 @@
+{
+  "version": "defensive_shot_quality_v11_experimental",
+  "not_production": true,
+  "selected_candidate_key": "V11_A_hgb_regularized_sigmoid",
+  "selected_variant": "V11_A",
+  "selected_features": [
+    "shot_distance",
+    "shot_value",
+    "period",
+    "seconds_remaining_period",
+    "is_home",
+    "closest_defender_distance",
+    "shot_clock",
+    "dribbles",
+    "touch_time",
+    "shot_clock_missing",
+    "touch_time_missing",
+    "touch_time_invalid",
+    "distance_bucket",
+    "shooter_prior_fg_pct_shrunk",
+    "shooter_prior_2p_pct_shrunk",
+    "shooter_prior_3p_pct_shrunk",
+    "shooter_distance_prior_fg_pct_shrunk"
+  ],
+  "categorical_features": [
+    "distance_bucket"
+  ],
+  "excluded_attempt_counts": true,
+  "included_defender_profile": false,
+  "modern_adapter_policy": {
+    "use_shooter_rate_priors": true,
+    "use_shooter_attempt_counts": false,
+    "use_tracking_context": true,
+    "use_defender_pt_profile": false,
+    "fallback": "training medians for unsupported optional defender fields; support diagnostics for out-of-domain inputs"
+  },
+  "support_diagnostic": {
+    "statuses": [
+      "IN_DISTRIBUTION",
+      "LIMITED_SUPPORT",
+      "OUT_OF_DISTRIBUTION"
+    ],
+    "no_numeric_confidence_score": true
+  }
+}

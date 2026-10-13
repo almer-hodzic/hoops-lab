@@ -1,0 +1,147 @@
+{
+  "total_possessions": 1347164,
+  "total_games": 7737,
+  "overall_ppp": 1.0943545106609143,
+  "overall_possessions_per_team_game": 87.0598423161432,
+  "by_season": [
+    {
+      "season": "2020-21",
+      "season_type": "playoffs",
+      "possessions": 14317,
+      "games": 85,
+      "ppp": 1.0997415659705245,
+      "turnover_rate": 0.1424181043514703,
+      "offensive_rebound_rate": 0.13438569532723335,
+      "avg_duration": 8.40504295592652,
+      "possessions_per_team_game": 84.21764705882353
+    },
+    {
+      "season": "2020-21",
+      "season_type": "regular_season",
+      "possessions": 189773,
+      "games": 1080,
+      "ppp": 1.0786149768407518,
+      "turnover_rate": 0.156012709921854,
+      "offensive_rebound_rate": 0.13007119031685224,
+      "avg_duration": 7.866313964578733,
+      "possessions_per_team_game": 87.85787037037036
+    },
+    {
+      "season": "2021-22",
+      "season_type": "playoffs",
+      "possessions": 14408,
+      "games": 87,
+      "ppp": 1.0641310383120488,
+      "turnover_rate": 0.16358967240421987,
+      "offensive_rebound_rate": 0.13353692393114935,
+      "avg_duration": 8.680108273181565,
+      "possessions_per_team_game": 82.80459770114942
+    },
+    {
+      "season": "2021-22",
+      "season_type": "regular_season",
+      "possessions": 213581,
+      "games": 1230,
+      "ppp": 1.0768701335792978,
+      "turnover_rate": 0.15660569058109103,
+      "offensive_rebound_rate": 0.13531166161784053,
+      "avg_duration": 8.1934629016626,
+      "possessions_per_team_game": 86.82154471544716
+    },
+    {
+      "season": "2022-23",
+      "season_type": "playoffs",
+      "possessions": 14142,
+      "games": 84,
+      "ppp": 1.0908640927732993,
+      "turnover_rate": 0.15004949794937067,
+      "offensive_rebound_rate": 0.1368264743317777,
+      "avg_duration": 8.401640503464856,
+      "possessions_per_team_game": 84.17857142857143
+    },
+    {
+      "season": "2022-23",
+      "season_type": "regular_season",
+      "possessions": 214937,
+      "games": 1230,
+      "ppp": 1.1016018647324566,
+      "turnover_rate": 0.15960956001060775,
+      "offensive_rebound_rate": 0.1357839739086337,
+      "avg_duration": 7.850574819598301,
+      "possessions_per_team_game": 87.37276422764228
+    },
+    {
+      "season": "2023-24",
+      "season_type": "playoffs",
+      "possessions": 13348,
+      "games": 82,
+      "ppp": 1.0834581959844172,
+      "turnover_rate": 0.14736290080911,
+      "offensive_rebound_rate": 0.13664968534611927,
+      "avg_duration": 8.601813005693737,
+      "possessions_per_team_game": 81.39024390243902
+    },
+    {
+      "season": "2023-24",
+      "season_type": "regular_season",
+      "possessions": 214537,
+      "games": 1230,
+      "ppp": 1.1044528449638058,
+      "turnover_rate": 0.15431370812493883,
+      "offensive_rebound_rate": 0.13644732610225743,
+      "avg_duration": 7.642243529088223,
+      "possessions_per_team_game": 87.21016260162601
+    },
+    {
+      "season": "2024-25",
+      "season_type": "playoffs",
+      "possessions": 13931,
+      "games": 84,
+      "ppp": 1.095757662766492,
+      "turnover_rate": 0.16689397746034024,
+      "offensive_rebound_rate": 0.1433493647261503,
+      "avg_duration": 9.1235374344986,
+      "possessions_per_team_game": 82.92261904761905
+    },
+    {
+      "season": "2024-25",
+      "season_type": "regular_season",
+      "possessions": 215348,
+      "games": 1230,
+      "ppp": 1.097600163456359,
+      "turnover_rate": 0.16156175121199176,
+      "offensive_rebound_rate": 0.13964373943570407,
+      "avg_duration": 7.724854653862585,
+      "possessions_per_team_game": 87.53983739837399
+    },
+    {
+      "season": "2025-26",
+      "season_type": "playoffs",
+      "possessions": 14035,
+      "games": 85,
+      "ppp": 1.0798004987531171,
+      "turnover_rate": 0.17292483078019238,
+      "offensive_rebound_rate": 0.14855717848236552,
+      "avg_duration": 8.57263982899893,
+      "possessions_per_team_game": 82.55882352941177
+    },
+    {
+      "season": "2025-26",
+      "season_type": "regular_season",
+      "possessions": 214807,
+      "games": 1230,
+      "ppp": 1.1084880846527347,
+      "turnover_rate": 0.1646966812068508,
+      "offensive_rebound_rate": 0.14185291913205808,
+      "avg_duration": 7.865511831551113,
+      "possessions_per_team_game": 87.31991869918699
+    }
+  ],
+  "issues": {
+    "negative_duration": 7698,
+    "missing_offense_team": 0,
+    "implausible_points_gt_8": 168,
+    "ordering_errors": 2015
+  },
+  "shot_possession_match_rate": 1.0
+}

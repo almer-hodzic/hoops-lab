@@ -1,0 +1,1267 @@
+{
+  "data_audit": {
+    "source_rows": 128069,
+    "experiment_rows": 128069,
+    "unique_games": 904,
+    "unique_dates": 120,
+    "unique_shooters": 281,
+    "unique_defenders": 474,
+    "made_distribution": {
+      "0": 70164,
+      "1": 57905
+    },
+    "shot_value_distribution": {
+      "2": 94173,
+      "3": 33896
+    },
+    "negative_touch_time_rows": 312,
+    "missing_shot_clock_rows": 5567,
+    "closest_defender_distance": {
+      "min": 0.0,
+      "median": 3.7,
+      "p95": 8.9,
+      "max": 53.2
+    },
+    "shot_distance": {
+      "min": 0.0,
+      "median": 13.7,
+      "p95": 25.5,
+      "max": 47.2
+    },
+    "shot_clock": {
+      "min": 0.0,
+      "median": 12.3,
+      "p95": 22.5,
+      "max": 24.0
+    },
+    "dribbles": {
+      "min": 0.0,
+      "median": 1.0,
+      "p95": 9.0,
+      "max": 32.0
+    },
+    "touch_time": {
+      "min": 0.0,
+      "median": 1.6,
+      "p95": 8.8,
+      "max": 24.9
+    }
+  },
+  "split": {
+    "test": {
+      "rows": 17928,
+      "games": 136,
+      "date_min": "2015-02-09",
+      "date_max": "2015-03-04",
+      "actual_fg_pct": 0.4428826416778224
+    },
+    "train": {
+      "rows": 90922,
+      "games": 632,
+      "date_min": "2014-10-28",
+      "date_max": "2015-01-21",
+      "actual_fg_pct": 0.4545984470205231
+    },
+    "validation": {
+      "rows": 19219,
+      "games": 136,
+      "date_min": "2015-01-21",
+      "date_max": "2015-02-08",
+      "actual_fg_pct": 0.44913887299027005
+    },
+    "no_game_crosses_splits": true
+  },
+  "prior_audit": {
+    "population_fg_pct": 0.4545984470205231,
+    "population_2p_pct": 0.4907473841554559,
+    "population_3p_pct": 0.3539255682291233,
+    "strengths": {
+      "overall": 100.0,
+      "value": 75.0,
+      "bucket": 40.0,
+      "defender": 100.0
+    },
+    "formula": "(prior_makes + strength * population_rate) / (prior_attempts + strength), prior stats are aggregated by completed previous games only",
+    "shooter_cold_start_rows": 2345,
+    "defender_cold_start_rows": 2656
+  },
+  "pt_asof": {
+    "success": true,
+    "status": [
+      {
+        "snapshot_month": "2014-11",
+        "date_to": "10/31/2014",
+        "category": "Overall",
+        "success": true,
+        "rows": 335,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2014-11\\overall.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.640966+00:00"
+      },
+      {
+        "snapshot_month": "2014-11",
+        "date_to": "10/31/2014",
+        "category": "2 Pointers",
+        "success": true,
+        "rows": 330,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2014-11\\2_pointers.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.650119+00:00"
+      },
+      {
+        "snapshot_month": "2014-11",
+        "date_to": "10/31/2014",
+        "category": "3 Pointers",
+        "success": true,
+        "rows": 265,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2014-11\\3_pointers.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.655994+00:00"
+      },
+      {
+        "snapshot_month": "2014-11",
+        "date_to": "10/31/2014",
+        "category": "Less Than 6Ft",
+        "success": true,
+        "rows": 295,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2014-11\\less_than_6ft.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.678592+00:00"
+      },
+      {
+        "snapshot_month": "2014-11",
+        "date_to": "10/31/2014",
+        "category": "Less Than 10Ft",
+        "success": true,
+        "rows": 309,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2014-11\\less_than_10ft.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.681799+00:00"
+      },
+      {
+        "snapshot_month": "2014-11",
+        "date_to": "10/31/2014",
+        "category": "Greater Than 15Ft",
+        "success": true,
+        "rows": 309,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2014-11\\greater_than_15ft.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.685076+00:00"
+      },
+      {
+        "snapshot_month": "2014-12",
+        "date_to": "11/30/2014",
+        "category": "Overall",
+        "success": true,
+        "rows": 424,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2014-12\\overall.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.687835+00:00"
+      },
+      {
+        "snapshot_month": "2014-12",
+        "date_to": "11/30/2014",
+        "category": "2 Pointers",
+        "success": true,
+        "rows": 423,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2014-12\\2_pointers.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.690272+00:00"
+      },
+      {
+        "snapshot_month": "2014-12",
+        "date_to": "11/30/2014",
+        "category": "3 Pointers",
+        "success": true,
+        "rows": 410,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2014-12\\3_pointers.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.693212+00:00"
+      },
+      {
+        "snapshot_month": "2014-12",
+        "date_to": "11/30/2014",
+        "category": "Less Than 6Ft",
+        "success": true,
+        "rows": 411,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2014-12\\less_than_6ft.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.696598+00:00"
+      },
+      {
+        "snapshot_month": "2014-12",
+        "date_to": "11/30/2014",
+        "category": "Less Than 10Ft",
+        "success": true,
+        "rows": 415,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2014-12\\less_than_10ft.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.700239+00:00"
+      },
+      {
+        "snapshot_month": "2014-12",
+        "date_to": "11/30/2014",
+        "category": "Greater Than 15Ft",
+        "success": true,
+        "rows": 418,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2014-12\\greater_than_15ft.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.700239+00:00"
+      },
+      {
+        "snapshot_month": "2015-01",
+        "date_to": "12/31/2014",
+        "category": "Overall",
+        "success": true,
+        "rows": 445,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2015-01\\overall.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.706846+00:00"
+      },
+      {
+        "snapshot_month": "2015-01",
+        "date_to": "12/31/2014",
+        "category": "2 Pointers",
+        "success": true,
+        "rows": 443,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2015-01\\2_pointers.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.706846+00:00"
+      },
+      {
+        "snapshot_month": "2015-01",
+        "date_to": "12/31/2014",
+        "category": "3 Pointers",
+        "success": true,
+        "rows": 438,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2015-01\\3_pointers.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.706846+00:00"
+      },
+      {
+        "snapshot_month": "2015-01",
+        "date_to": "12/31/2014",
+        "category": "Less Than 6Ft",
+        "success": true,
+        "rows": 439,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2015-01\\less_than_6ft.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.714415+00:00"
+      },
+      {
+        "snapshot_month": "2015-01",
+        "date_to": "12/31/2014",
+        "category": "Less Than 10Ft",
+        "success": true,
+        "rows": 441,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2015-01\\less_than_10ft.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.714415+00:00"
+      },
+      {
+        "snapshot_month": "2015-01",
+        "date_to": "12/31/2014",
+        "category": "Greater Than 15Ft",
+        "success": true,
+        "rows": 443,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2015-01\\greater_than_15ft.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.723234+00:00"
+      },
+      {
+        "snapshot_month": "2015-02",
+        "date_to": "01/31/2015",
+        "category": "Overall",
+        "success": true,
+        "rows": 463,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2015-02\\overall.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.728135+00:00"
+      },
+      {
+        "snapshot_month": "2015-02",
+        "date_to": "01/31/2015",
+        "category": "2 Pointers",
+        "success": true,
+        "rows": 462,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2015-02\\2_pointers.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.731304+00:00"
+      },
+      {
+        "snapshot_month": "2015-02",
+        "date_to": "01/31/2015",
+        "category": "3 Pointers",
+        "success": true,
+        "rows": 457,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2015-02\\3_pointers.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.733257+00:00"
+      },
+      {
+        "snapshot_month": "2015-02",
+        "date_to": "01/31/2015",
+        "category": "Less Than 6Ft",
+        "success": true,
+        "rows": 457,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2015-02\\less_than_6ft.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.738166+00:00"
+      },
+      {
+        "snapshot_month": "2015-02",
+        "date_to": "01/31/2015",
+        "category": "Less Than 10Ft",
+        "success": true,
+        "rows": 459,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2015-02\\less_than_10ft.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.738166+00:00"
+      },
+      {
+        "snapshot_month": "2015-02",
+        "date_to": "01/31/2015",
+        "category": "Greater Than 15Ft",
+        "success": true,
+        "rows": 459,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2015-02\\greater_than_15ft.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.743176+00:00"
+      },
+      {
+        "snapshot_month": "2015-03",
+        "date_to": "02/28/2015",
+        "category": "Overall",
+        "success": true,
+        "rows": 476,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2015-03\\overall.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.745800+00:00"
+      },
+      {
+        "snapshot_month": "2015-03",
+        "date_to": "02/28/2015",
+        "category": "2 Pointers",
+        "success": true,
+        "rows": 475,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2015-03\\2_pointers.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.745800+00:00"
+      },
+      {
+        "snapshot_month": "2015-03",
+        "date_to": "02/28/2015",
+        "category": "3 Pointers",
+        "success": true,
+        "rows": 470,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2015-03\\3_pointers.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.754681+00:00"
+      },
+      {
+        "snapshot_month": "2015-03",
+        "date_to": "02/28/2015",
+        "category": "Less Than 6Ft",
+        "success": true,
+        "rows": 472,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2015-03\\less_than_6ft.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.760719+00:00"
+      },
+      {
+        "snapshot_month": "2015-03",
+        "date_to": "02/28/2015",
+        "category": "Less Than 10Ft",
+        "success": true,
+        "rows": 473,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2015-03\\less_than_10ft.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.763232+00:00"
+      },
+      {
+        "snapshot_month": "2015-03",
+        "date_to": "02/28/2015",
+        "category": "Greater Than 15Ft",
+        "success": true,
+        "rows": 471,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2015-03\\greater_than_15ft.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.765808+00:00"
+      },
+      {
+        "snapshot_month": "2015-04",
+        "date_to": "03/31/2015",
+        "category": "Overall",
+        "success": true,
+        "rows": 483,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2015-04\\overall.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.768930+00:00"
+      },
+      {
+        "snapshot_month": "2015-04",
+        "date_to": "03/31/2015",
+        "category": "2 Pointers",
+        "success": true,
+        "rows": 481,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2015-04\\2_pointers.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.773145+00:00"
+      },
+      {
+        "snapshot_month": "2015-04",
+        "date_to": "03/31/2015",
+        "category": "3 Pointers",
+        "success": true,
+        "rows": 480,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2015-04\\3_pointers.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.776207+00:00"
+      },
+      {
+        "snapshot_month": "2015-04",
+        "date_to": "03/31/2015",
+        "category": "Less Than 6Ft",
+        "success": true,
+        "rows": 478,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2015-04\\less_than_6ft.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.779255+00:00"
+      },
+      {
+        "snapshot_month": "2015-04",
+        "date_to": "03/31/2015",
+        "category": "Less Than 10Ft",
+        "success": true,
+        "rows": 479,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2015-04\\less_than_10ft.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.782994+00:00"
+      },
+      {
+        "snapshot_month": "2015-04",
+        "date_to": "03/31/2015",
+        "category": "Greater Than 15Ft",
+        "success": true,
+        "rows": 481,
+        "path": "data\\raw\\defense\\nba_pt_defend\\as_of_snapshots\\2015-04\\greater_than_15ft.csv",
+        "error": null,
+        "timestamp": "2026-10-11T13:31:33.785620+00:00"
+      }
+    ],
+    "rows": 2623,
+    "snapshots": [
+      "2014-11",
+      "2014-12",
+      "2015-01",
+      "2015-02",
+      "2015-03",
+      "2015-04"
+    ],
+    "categories": [
+      "2_pointers",
+      "3_pointers",
+      "greater_than_15ft",
+      "less_than_10ft",
+      "less_than_6ft",
+      "overall"
+    ]
+  },
+  "selected": {
+    "selected_model_key": "F_hgb",
+    "baseline_model_key": "A_logistic"
+  },
+  "metrics": [
+    {
+      "model_key": "A_logistic",
+      "family_key": "A",
+      "label": "Base shot quality",
+      "estimator": "logistic",
+      "feature_families": "shot, shooter_history",
+      "calibration": "isotonic",
+      "validation_rows": 19219,
+      "validation_actual_fg_pct": 0.44913887299027005,
+      "validation_predicted_fg_pct": 0.44913887340652486,
+      "validation_log_loss": 0.66181327295803,
+      "validation_brier": 0.2347786380286986,
+      "validation_roc_auc": 0.6200029426510016,
+      "validation_ece": 1.2487642925595278e-09,
+      "test_rows": 17928,
+      "test_actual_fg_pct": 0.4428826416778224,
+      "test_predicted_fg_pct": 0.44998973535828973,
+      "test_log_loss": 0.666153534878255,
+      "test_brier": 0.2351972200510249,
+      "test_roc_auc": 0.6186967497016571,
+      "test_ece": 0.009899880450054613,
+      "delta_test_log_loss_vs_A": 0.0,
+      "delta_test_brier_vs_A": 0.0
+    },
+    {
+      "model_key": "A_hgb",
+      "family_key": "A",
+      "label": "Base shot quality",
+      "estimator": "hgb",
+      "feature_families": "shot, shooter_history",
+      "calibration": "isotonic",
+      "validation_rows": 19219,
+      "validation_actual_fg_pct": 0.44913887299027005,
+      "validation_predicted_fg_pct": 0.4491388751235756,
+      "validation_log_loss": 0.6619774340210403,
+      "validation_brier": 0.23492509161647232,
+      "validation_roc_auc": 0.6190755622266733,
+      "validation_ece": 2.1333056143496e-09,
+      "test_rows": 17928,
+      "test_actual_fg_pct": 0.4428826416778224,
+      "test_predicted_fg_pct": 0.4513249249802358,
+      "test_log_loss": 0.6642572934240338,
+      "test_brier": 0.23478096228450684,
+      "test_roc_auc": 0.6201418087094942,
+      "test_ece": 0.009244235209353161,
+      "delta_test_log_loss_vs_A": -0.0018962414542211814,
+      "delta_test_brier_vs_A": -0.0004162577665180467
+    },
+    {
+      "model_key": "B_logistic",
+      "family_key": "B",
+      "label": "Defensive pressure",
+      "estimator": "logistic",
+      "feature_families": "A, closest_defender_distance",
+      "calibration": "isotonic",
+      "validation_rows": 19219,
+      "validation_actual_fg_pct": 0.44913887299027005,
+      "validation_predicted_fg_pct": 0.44913887106509187,
+      "validation_log_loss": 0.6539269813412749,
+      "validation_brier": 0.2314470377379966,
+      "validation_roc_auc": 0.6323639644350229,
+      "validation_ece": 4.110515663739151e-09,
+      "test_rows": 17928,
+      "test_actual_fg_pct": 0.4428826416778224,
+      "test_predicted_fg_pct": 0.451609578754958,
+      "test_log_loss": 0.6554676818715738,
+      "test_brier": 0.23092261282771492,
+      "test_roc_auc": 0.6359184043522251,
+      "test_ece": 0.009705811729092484,
+      "delta_test_log_loss_vs_A": -0.010685853006681234,
+      "delta_test_brier_vs_A": -0.0042746072233099675
+    },
+    {
+      "model_key": "B_hgb",
+      "family_key": "B",
+      "label": "Defensive pressure",
+      "estimator": "hgb",
+      "feature_families": "A, closest_defender_distance",
+      "calibration": "isotonic",
+      "validation_rows": 19219,
+      "validation_actual_fg_pct": 0.44913887299027005,
+      "validation_predicted_fg_pct": 0.44913887064883706,
+      "validation_log_loss": 0.6489415947564533,
+      "validation_brier": 0.22939744028464298,
+      "validation_roc_auc": 0.6366498975390195,
+      "validation_ece": 6.295853062227057e-09,
+      "test_rows": 17928,
+      "test_actual_fg_pct": 0.4428826416778224,
+      "test_predicted_fg_pct": 0.4509438085968209,
+      "test_log_loss": 0.6521222924953174,
+      "test_brier": 0.22926899661698952,
+      "test_roc_auc": 0.63893152261303,
+      "test_ece": 0.010051340435086015,
+      "delta_test_log_loss_vs_A": -0.014031242382937625,
+      "delta_test_brier_vs_A": -0.0059282234340353734
+    },
+    {
+      "model_key": "C_logistic",
+      "family_key": "C",
+      "label": "Offensive creation context",
+      "estimator": "logistic",
+      "feature_families": "A, shot_clock_dribbles_touch",
+      "calibration": "isotonic",
+      "validation_rows": 19219,
+      "validation_actual_fg_pct": 0.44913887299027005,
+      "validation_predicted_fg_pct": 0.4491388737707477,
+      "validation_log_loss": 0.6603125515878665,
+      "validation_brier": 0.23401011721784387,
+      "validation_roc_auc": 0.6246940155066284,
+      "validation_ece": 7.804776842554066e-10,
+      "test_rows": 17928,
+      "test_actual_fg_pct": 0.4428826416778224,
+      "test_predicted_fg_pct": 0.45077233714508236,
+      "test_log_loss": 0.6615184339998357,
+      "test_brier": 0.23386587834689843,
+      "test_roc_auc": 0.6243364833770298,
+      "test_ece": 0.010433441680878296,
+      "delta_test_log_loss_vs_A": -0.00463510087841934,
+      "delta_test_brier_vs_A": -0.0013313417041264652
+    },
+    {
+      "model_key": "C_hgb",
+      "family_key": "C",
+      "label": "Offensive creation context",
+      "estimator": "hgb",
+      "feature_families": "A, shot_clock_dribbles_touch",
+      "calibration": "isotonic",
+      "validation_rows": 19219,
+      "validation_actual_fg_pct": 0.44913887299027005,
+      "validation_predicted_fg_pct": 0.4491388742390343,
+      "validation_log_loss": 0.6531612685314045,
+      "validation_brier": 0.23096719415735958,
+      "validation_roc_auc": 0.6325168910268446,
+      "validation_ece": 2.7056559393184016e-09,
+      "test_rows": 17928,
+      "test_actual_fg_pct": 0.4428826416778224,
+      "test_predicted_fg_pct": 0.45152018007840544,
+      "test_log_loss": 0.6552607631505082,
+      "test_brier": 0.23060450341044147,
+      "test_roc_auc": 0.6347276933831932,
+      "test_ece": 0.009680459260758032,
+      "delta_test_log_loss_vs_A": -0.01089277172774683,
+      "delta_test_brier_vs_A": -0.004592716640583416
+    },
+    {
+      "model_key": "D_logistic",
+      "family_key": "D",
+      "label": "Pressure + creation",
+      "estimator": "logistic",
+      "feature_families": "A, closest_defender_distance, shot_clock_dribbles_touch",
+      "calibration": "isotonic",
+      "validation_rows": 19219,
+      "validation_actual_fg_pct": 0.44913887299027005,
+      "validation_predicted_fg_pct": 0.4491388710130599,
+      "validation_log_loss": 0.6536458314719805,
+      "validation_brier": 0.23128206588787797,
+      "validation_roc_auc": 0.633810921038821,
+      "validation_ece": 3.8503564231542205e-09,
+      "test_rows": 17928,
+      "test_actual_fg_pct": 0.4428826416778224,
+      "test_predicted_fg_pct": 0.4523354026930509,
+      "test_log_loss": 0.6528155131529383,
+      "test_brier": 0.23027461298851137,
+      "test_roc_auc": 0.6386349450574946,
+      "test_ece": 0.010500450417142574,
+      "delta_test_log_loss_vs_A": -0.013338021725316729,
+      "delta_test_brier_vs_A": -0.004922607062513518
+    },
+    {
+      "model_key": "D_hgb",
+      "family_key": "D",
+      "label": "Pressure + creation",
+      "estimator": "hgb",
+      "feature_families": "A, closest_defender_distance, shot_clock_dribbles_touch",
+      "calibration": "isotonic",
+      "validation_rows": 19219,
+      "validation_actual_fg_pct": 0.44913887299027005,
+      "validation_predicted_fg_pct": 0.4491388705447733,
+      "validation_log_loss": 0.6440035759743122,
+      "validation_brier": 0.22746464869742478,
+      "validation_roc_auc": 0.6433828530767577,
+      "validation_ece": 6.399916742228231e-09,
+      "test_rows": 17928,
+      "test_actual_fg_pct": 0.4428826416778224,
+      "test_predicted_fg_pct": 0.4516615533224393,
+      "test_log_loss": 0.6462540230317457,
+      "test_brier": 0.2267049696297724,
+      "test_roc_auc": 0.6479967081404487,
+      "test_ece": 0.012514403893787765,
+      "delta_test_log_loss_vs_A": -0.019899511846509288,
+      "delta_test_brier_vs_A": -0.008492250421252484
+    },
+    {
+      "model_key": "E_logistic",
+      "family_key": "E",
+      "label": "Defender shot-log history",
+      "estimator": "logistic",
+      "feature_families": "D, defender_history",
+      "calibration": "isotonic",
+      "validation_rows": 19219,
+      "validation_actual_fg_pct": 0.44913887299027005,
+      "validation_predicted_fg_pct": 0.44913887122118745,
+      "validation_log_loss": 0.6530159476455143,
+      "validation_brier": 0.2309820354882061,
+      "validation_roc_auc": 0.6339176047214776,
+      "validation_ece": 4.1625474828684355e-09,
+      "test_rows": 17928,
+      "test_actual_fg_pct": 0.4428826416778224,
+      "test_predicted_fg_pct": 0.45160569706323184,
+      "test_log_loss": 0.6533479134796254,
+      "test_brier": 0.23017832054417384,
+      "test_roc_auc": 0.6388989205182241,
+      "test_ece": 0.01233356708750398,
+      "delta_test_log_loss_vs_A": -0.012805621398629619,
+      "delta_test_brier_vs_A": -0.0050188995068510545
+    },
+    {
+      "model_key": "E_hgb",
+      "family_key": "E",
+      "label": "Defender shot-log history",
+      "estimator": "hgb",
+      "feature_families": "D, defender_history",
+      "calibration": "isotonic",
+      "validation_rows": 19219,
+      "validation_actual_fg_pct": 0.44913887299027005,
+      "validation_predicted_fg_pct": 0.44913886903584993,
+      "validation_log_loss": 0.6439330354503849,
+      "validation_brier": 0.22744061928366285,
+      "validation_roc_auc": 0.6427235031632077,
+      "validation_ece": 8.429158650427431e-09,
+      "test_rows": 17928,
+      "test_actual_fg_pct": 0.4428826416778224,
+      "test_predicted_fg_pct": 0.45167296291011305,
+      "test_log_loss": 0.6460290754399219,
+      "test_brier": 0.2264186003568287,
+      "test_roc_auc": 0.6486593610065076,
+      "test_ece": 0.011724273711589076,
+      "delta_test_log_loss_vs_A": -0.020124459438333075,
+      "delta_test_brier_vs_A": -0.008778619694196188
+    },
+    {
+      "model_key": "RAW_ID_logistic",
+      "family_key": "RAW_ID",
+      "label": "Raw defender ID ablation",
+      "estimator": "logistic",
+      "feature_families": "D, raw_defender_id",
+      "calibration": "isotonic",
+      "validation_rows": 19219,
+      "validation_actual_fg_pct": 0.44913887299027005,
+      "validation_predicted_fg_pct": 0.44913887174150585,
+      "validation_log_loss": 0.6522368858261512,
+      "validation_brier": 0.23059718192985246,
+      "validation_roc_auc": 0.6342939985851813,
+      "validation_ece": 3.121910613260774e-09,
+      "test_rows": 17928,
+      "test_actual_fg_pct": 0.4428826416778224,
+      "test_predicted_fg_pct": 0.4544679232269396,
+      "test_log_loss": 0.6545066196038148,
+      "test_brier": 0.23067812737604898,
+      "test_roc_auc": 0.6354271410327155,
+      "test_ece": 0.016385791883129892,
+      "delta_test_log_loss_vs_A": -0.011646915274440173,
+      "delta_test_brier_vs_A": -0.004519092674975911
+    },
+    {
+      "model_key": "RAW_ID_hgb",
+      "family_key": "RAW_ID",
+      "label": "Raw defender ID ablation",
+      "estimator": "hgb",
+      "feature_families": "D, raw_defender_id",
+      "calibration": "isotonic",
+      "validation_rows": 19219,
+      "validation_actual_fg_pct": 0.44913887299027005,
+      "validation_predicted_fg_pct": 0.44913886773505385,
+      "validation_log_loss": 0.6436836460406522,
+      "validation_brier": 0.22738900824919414,
+      "validation_roc_auc": 0.6438854191752297,
+      "validation_ece": 9.313699992248259e-09,
+      "test_rows": 17928,
+      "test_actual_fg_pct": 0.4428826416778224,
+      "test_predicted_fg_pct": 0.45155515220892645,
+      "test_log_loss": 0.6475587364756756,
+      "test_brier": 0.2268723129088531,
+      "test_roc_auc": 0.6479405071980583,
+      "test_ece": 0.01168552697693708,
+      "delta_test_log_loss_vs_A": -0.018594798402579382,
+      "delta_test_brier_vs_A": -0.008324907142171795
+    },
+    {
+      "model_key": "F_logistic",
+      "family_key": "F",
+      "label": "PT Defend as-of profile",
+      "estimator": "logistic",
+      "feature_families": "D, pt_defend_asof",
+      "calibration": "isotonic",
+      "validation_rows": 19219,
+      "validation_actual_fg_pct": 0.44913887299027005,
+      "validation_predicted_fg_pct": 0.44913887064883706,
+      "validation_log_loss": 0.6530167696192535,
+      "validation_brier": 0.23096461979474892,
+      "validation_roc_auc": 0.6345169187331973,
+      "validation_ece": 4.110515702038288e-09,
+      "test_rows": 17928,
+      "test_actual_fg_pct": 0.4428826416778224,
+      "test_predicted_fg_pct": 0.44969307307042894,
+      "test_log_loss": 0.6533895621257655,
+      "test_brier": 0.23025081392612018,
+      "test_roc_auc": 0.6387691867520621,
+      "test_ece": 0.008453657855089234,
+      "delta_test_log_loss_vs_A": -0.012763972752489527,
+      "delta_test_brier_vs_A": -0.004946406124904712
+    },
+    {
+      "model_key": "F_hgb",
+      "family_key": "F",
+      "label": "PT Defend as-of profile",
+      "estimator": "hgb",
+      "feature_families": "D, pt_defend_asof",
+      "calibration": "isotonic",
+      "validation_rows": 19219,
+      "validation_actual_fg_pct": 0.44913887299027005,
+      "validation_predicted_fg_pct": 0.44913886913991363,
+      "validation_log_loss": 0.6431108650034079,
+      "validation_brier": 0.2270888960892776,
+      "validation_roc_auc": 0.6441974931572312,
+      "validation_ece": 7.804776542447e-09,
+      "test_rows": 17928,
+      "test_actual_fg_pct": 0.4428826416778224,
+      "test_predicted_fg_pct": 0.4514105372005718,
+      "test_log_loss": 0.646378401318959,
+      "test_brier": 0.22658637994001327,
+      "test_roc_auc": 0.6478732098165154,
+      "test_ece": 0.010329556074622815,
+      "delta_test_log_loss_vs_A": -0.019775133559296054,
+      "delta_test_brier_vs_A": -0.008610840111011625
+    },
+    {
+      "model_key": "G_logistic",
+      "family_key": "G",
+      "label": "Full generalizable",
+      "estimator": "logistic",
+      "feature_families": "D, defender_history, pt_defend_asof",
+      "calibration": "isotonic",
+      "validation_rows": 19219,
+      "validation_actual_fg_pct": 0.44913887299027005,
+      "validation_predicted_fg_pct": 0.44913887111712364,
+      "validation_log_loss": 0.6527683547099703,
+      "validation_brier": 0.23086128313132243,
+      "validation_roc_auc": 0.6342674083652875,
+      "validation_ece": 4.1625475096478015e-09,
+      "test_rows": 17928,
+      "test_actual_fg_pct": 0.4428826416778224,
+      "test_predicted_fg_pct": 0.45051610641864615,
+      "test_log_loss": 0.6528966396861687,
+      "test_brier": 0.2299622635117665,
+      "test_roc_auc": 0.6394986578352462,
+      "test_ece": 0.011689387938342104,
+      "delta_test_log_loss_vs_A": -0.013256895192086282,
+      "delta_test_brier_vs_A": -0.005234956539258401
+    },
+    {
+      "model_key": "G_hgb",
+      "family_key": "G",
+      "label": "Full generalizable",
+      "estimator": "hgb",
+      "feature_families": "D, defender_history, pt_defend_asof",
+      "calibration": "isotonic",
+      "validation_rows": 19219,
+      "validation_actual_fg_pct": 0.44913887299027005,
+      "validation_predicted_fg_pct": 0.4491388697122639,
+      "validation_log_loss": 0.6435608135815811,
+      "validation_brier": 0.22721290168307953,
+      "validation_roc_auc": 0.6439963211828941,
+      "validation_ece": 7.3364899509817825e-09,
+      "test_rows": 17928,
+      "test_actual_fg_pct": 0.4428826416778224,
+      "test_predicted_fg_pct": 0.45073640618001176,
+      "test_log_loss": 0.6457253352229851,
+      "test_brier": 0.22627675143282058,
+      "test_roc_auc": 0.6494356199731871,
+      "test_ece": 0.011332664026943457,
+      "delta_test_log_loss_vs_A": -0.020428199655269874,
+      "delta_test_brier_vs_A": -0.008920468618204308
+    }
+  ],
+  "bootstrap": {
+    "A_vs_B": {
+      "model_a": "A_logistic",
+      "model_b": "B_hgb",
+      "log_loss_delta_ci95": [
+        -0.01790408119167197,
+        -0.009680409819892695
+      ],
+      "brier_delta_ci95": [
+        -0.006966128644949791,
+        -0.004775207530423996
+      ],
+      "bootstrap_resamples": 200
+    },
+    "A_vs_D": {
+      "model_a": "A_logistic",
+      "model_b": "D_hgb",
+      "log_loss_delta_ci95": [
+        -0.02377945297176698,
+        -0.015825095889799516
+      ],
+      "brier_delta_ci95": [
+        -0.009452930969696346,
+        -0.007271637633042481
+      ],
+      "bootstrap_resamples": 200
+    },
+    "D_vs_defender_profile": {
+      "model_a": "D_hgb",
+      "model_b": "E_hgb",
+      "log_loss_delta_ci95": [
+        -0.0014834342187444894,
+        0.001259927420240778
+      ],
+      "brier_delta_ci95": [
+        -0.000665798984230026,
+        0.0001248886084403268
+      ],
+      "bootstrap_resamples": 200
+    },
+    "A_vs_final_G": {
+      "model_a": "A_logistic",
+      "model_b": "F_hgb",
+      "log_loss_delta_ci95": [
+        -0.0232644511674376,
+        -0.014792404126155859
+      ],
+      "brier_delta_ci95": [
+        -0.009911881040257725,
+        -0.007561103556605092
+      ],
+      "bootstrap_resamples": 200
+    }
+  },
+  "analyses": {
+    "pressure_buckets": [
+      {
+        "pressure_bucket": "0-2 ft",
+        "attempts": 3581,
+        "actual_fg_pct": 0.4392627757609606,
+        "predicted_fg_pct": 0.4557582766953265,
+        "two_pt_fg_pct": 0.4491623339110341,
+        "three_pt_fg_pct": 0.15126050420168066
+      },
+      {
+        "pressure_bucket": "2-4 ft",
+        "attempts": 6453,
+        "actual_fg_pct": 0.4593212459321246,
+        "predicted_fg_pct": 0.46674309171096695,
+        "two_pt_fg_pct": 0.48722102231821457,
+        "three_pt_fg_pct": 0.28651059085841696
+      },
+      {
+        "pressure_bucket": "4-6 ft",
+        "attempts": 4763,
+        "actual_fg_pct": 0.4152844845685492,
+        "predicted_fg_pct": 0.43042320219352287,
+        "two_pt_fg_pct": 0.4820476359758265,
+        "three_pt_fg_pct": 0.318974358974359
+      },
+      {
+        "pressure_bucket": "6+ ft",
+        "attempts": 3131,
+        "actual_fg_pct": 0.45512615777706805,
+        "predicted_fg_pct": 0.4467642412096034,
+        "two_pt_fg_pct": 0.5451155853840418,
+        "three_pt_fg_pct": 0.3877094972067039
+      }
+    ],
+    "shot_clock_buckets": [
+      {
+        "shot_clock_bucket": "early",
+        "attempts": 5828,
+        "actual_fg_pct": 0.5032601235415237,
+        "predicted_fg_pct": 0.5100284738622507
+      },
+      {
+        "shot_clock_bucket": "late",
+        "attempts": 3313,
+        "actual_fg_pct": 0.36915182613945063,
+        "predicted_fg_pct": 0.39669409545274675
+      },
+      {
+        "shot_clock_bucket": "middle",
+        "attempts": 8081,
+        "actual_fg_pct": 0.4367033782947655,
+        "predicted_fg_pct": 0.43971074998665105
+      },
+      {
+        "shot_clock_bucket": NaN,
+        "attempts": 706,
+        "actual_fg_pct": 0.3611898016997167,
+        "predicted_fg_pct": 0.3582040458719217
+      }
+    ],
+    "dribble_buckets": [
+      {
+        "dribble_bucket": "0",
+        "attempts": 8871,
+        "actual_fg_pct": 0.45552925262089955,
+        "predicted_fg_pct": 0.471372952175887
+      },
+      {
+        "dribble_bucket": "1-2",
+        "attempts": 4569,
+        "actual_fg_pct": 0.4425476034143139,
+        "predicted_fg_pct": 0.44261647767309564
+      },
+      {
+        "dribble_bucket": "3-6",
+        "attempts": 2737,
+        "actual_fg_pct": 0.4183412495432956,
+        "predicted_fg_pct": 0.4259945503006385
+      },
+      {
+        "dribble_bucket": "7+",
+        "attempts": 1751,
+        "actual_fg_pct": 0.4180468303826385,
+        "predicted_fg_pct": 0.4129508175433099
+      }
+    ],
+    "touch_time_buckets": [
+      {
+        "touch_time_bucket": "long",
+        "attempts": 2047,
+        "actual_fg_pct": 0.4176844162188569,
+        "predicted_fg_pct": 0.4109637247670401
+      },
+      {
+        "touch_time_bucket": "moderate",
+        "attempts": 5606,
+        "actual_fg_pct": 0.41669639671780234,
+        "predicted_fg_pct": 0.4285767240721577
+      },
+      {
+        "touch_time_bucket": "quick",
+        "attempts": 10242,
+        "actual_fg_pct": 0.4628978715094708,
+        "predicted_fg_pct": 0.47205298631662373
+      },
+      {
+        "touch_time_bucket": NaN,
+        "attempts": 33,
+        "actual_fg_pct": 0.24242424242424243,
+        "predicted_fg_pct": 0.4326534948589292
+      }
+    ],
+    "controlled_pressure_grid": [
+      {
+        "context": "near_rim_2pt",
+        "closest_defender_distance": 0.5,
+        "p_make": 0.6363636363636366
+      },
+      {
+        "context": "near_rim_2pt",
+        "closest_defender_distance": 1,
+        "p_make": 0.6363636363636366
+      },
+      {
+        "context": "near_rim_2pt",
+        "closest_defender_distance": 2,
+        "p_make": 0.6552598225602028
+      },
+      {
+        "context": "near_rim_2pt",
+        "closest_defender_distance": 3,
+        "p_make": 0.697508896797153
+      },
+      {
+        "context": "near_rim_2pt",
+        "closest_defender_distance": 4,
+        "p_make": 0.7627118644067795
+      },
+      {
+        "context": "near_rim_2pt",
+        "closest_defender_distance": 5,
+        "p_make": 0.8347826086956521
+      },
+      {
+        "context": "near_rim_2pt",
+        "closest_defender_distance": 6,
+        "p_make": 0.9294605809128631
+      },
+      {
+        "context": "near_rim_2pt",
+        "closest_defender_distance": 8,
+        "p_make": 0.999999
+      },
+      {
+        "context": "near_rim_2pt",
+        "closest_defender_distance": 10,
+        "p_make": 0.999999
+      },
+      {
+        "context": "midrange_2pt",
+        "closest_defender_distance": 0.5,
+        "p_make": 0.40074441687344914
+      },
+      {
+        "context": "midrange_2pt",
+        "closest_defender_distance": 1,
+        "p_make": 0.40074441687344914
+      },
+      {
+        "context": "midrange_2pt",
+        "closest_defender_distance": 2,
+        "p_make": 0.4141278875125544
+      },
+      {
+        "context": "midrange_2pt",
+        "closest_defender_distance": 3,
+        "p_make": 0.44618215271389144
+      },
+      {
+        "context": "midrange_2pt",
+        "closest_defender_distance": 4,
+        "p_make": 0.44618215271389144
+      },
+      {
+        "context": "midrange_2pt",
+        "closest_defender_distance": 5,
+        "p_make": 0.44618215271389144
+      },
+      {
+        "context": "midrange_2pt",
+        "closest_defender_distance": 6,
+        "p_make": 0.46324786324786327
+      },
+      {
+        "context": "midrange_2pt",
+        "closest_defender_distance": 8,
+        "p_make": 0.4943181818181818
+      },
+      {
+        "context": "midrange_2pt",
+        "closest_defender_distance": 10,
+        "p_make": 0.501945525291829
+      },
+      {
+        "context": "three_pt",
+        "closest_defender_distance": 0.5,
+        "p_make": 0.3329519450800915
+      },
+      {
+        "context": "three_pt",
+        "closest_defender_distance": 1,
+        "p_make": 0.3329519450800915
+      },
+      {
+        "context": "three_pt",
+        "closest_defender_distance": 2,
+        "p_make": 0.3329519450800915
+      },
+      {
+        "context": "three_pt",
+        "closest_defender_distance": 3,
+        "p_make": 0.3472222222222223
+      },
+      {
+        "context": "three_pt",
+        "closest_defender_distance": 4,
+        "p_make": 0.3674228337671997
+      },
+      {
+        "context": "three_pt",
+        "closest_defender_distance": 5,
+        "p_make": 0.40074441687344914
+      },
+      {
+        "context": "three_pt",
+        "closest_defender_distance": 6,
+        "p_make": 0.40074441687344914
+      },
+      {
+        "context": "three_pt",
+        "closest_defender_distance": 8,
+        "p_make": 0.44618215271389144
+      },
+      {
+        "context": "three_pt",
+        "closest_defender_distance": 10,
+        "p_make": 0.44618215271389144
+      }
+    ]
+  },
+  "domain_shift": {
+    "available": true,
+    "tracking_2014_15": {
+      "rows": 128069,
+      "mean_shot_distance": 13.571504423396762,
+      "three_point_rate": 0.26466982642169457,
+      "fg_pct": 0.4521390812764994,
+      "unique_shooters": 281
+    },
+    "modern_2020_26": {
+      "rows": 1368990,
+      "mean_shot_distance": 13.732027260973418,
+      "three_point_rate": 0.40185465196970027,
+      "fg_pct": 0.4685498067918685,
+      "unique_shooters": 1086
+    }
+  },
+  "modern_profile_coverage": {
+    "available": true,
+    "modern_rows": 4692,
+    "required_profile_columns": [
+      "defender_pt_overall_d_fg_pct",
+      "defender_pt_overall_d_fga",
+      "defender_pt_overall_normal_fg_pct",
+      "defender_pt_overall_pct_plusminus"
+    ],
+    "mapped_profile_columns": [
+      "overall_d_fg_pct",
+      "overall_d_fga",
+      "overall_normal_fg_pct",
+      "overall_pct_plusminus"
+    ],
+    "complete_required_profile_rate": 1.0,
+    "examples": [
+      {
+        "defender_id": 203914,
+        "defender_name": "Gary Harris",
+        "season": "2025-26",
+        "season_type": "regular_season"
+      },
+      {
+        "defender_id": 1643016,
+        "defender_name": "Bez Mbeng",
+        "season": "2025-26",
+        "season_type": "regular_season"
+      },
+      {
+        "defender_id": 1626172,
+        "defender_name": "Kevon Looney",
+        "season": "2025-26",
+        "season_type": "regular_season"
+      },
+      {
+        "defender_id": 1642419,
+        "defender_name": "Jamison Battle",
+        "season": "2025-26",
+        "season_type": "regular_season"
+      },
+      {
+        "defender_id": 1630175,
+        "defender_name": "Cole Anthony",
+        "season": "2025-26",
+        "season_type": "regular_season"
+      },
+      {
+        "defender_id": 1642859,
+        "defender_name": "Jase Richardson",
+        "season": "2025-26",
+        "season_type": "regular_season"
+      },
+      {
+        "defender_id": 203992,
+        "defender_name": "Bogdan Bogdanovi\u0107",
+        "season": "2025-26",
+        "season_type": "regular_season"
+      },
+      {
+        "defender_id": 1630545,
+        "defender_name": "Terrence Shannon Jr",
+        "season": "2025-26",
+        "season_type": "regular_season"
+      },
+      {
+        "defender_id": 1641771,
+        "defender_name": "Jalen Slawson",
+        "season": "2025-26",
+        "season_type": "regular_season"
+      },
+      {
+        "defender_id": 203482,
+        "defender_name": "Kelly Olynyk",
+        "season": "2025-26",
+        "season_type": "regular_season"
+      }
+    ]
+  },
+  "recommendation": {
+    "classification": "A. DEFENSIVE CONTEXT CLEARLY IMPROVES SHOT QUALITY",
+    "text": "Closest-defender distance and creation context should be considered experimental inputs only until modern shot-level tracking validation is available."
+  },
+  "artifact_path": "artifacts\\models\\experimental_defensive_shot_quality_v1.joblib",
+  "created_at": "2026-10-11T13:34:21.433040+00:00"
+}

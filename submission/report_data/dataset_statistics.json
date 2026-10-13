@@ -1,0 +1,49 @@
+{
+  "primary_dataset": "data/processed/shots_enriched.parquet",
+  "rows": 1368990,
+  "games": 7737,
+  "seasons": [
+    "2020-21",
+    "2021-22",
+    "2022-23",
+    "2023-24",
+    "2024-25",
+    "2025-26"
+  ],
+  "season_types": [
+    "playoffs",
+    "regular_season"
+  ],
+  "regular_season_rows": 1282307,
+  "playoff_rows": 86683,
+  "clutch_rows": 46813,
+  "unique_shooters": 1086,
+  "date_min": "2020-12-22",
+  "date_max": "2026-06-13",
+  "target": {
+    "made": 641440,
+    "missed": 727550,
+    "made_rate": 0.4685498067918685,
+    "miss_rate": 0.5314501932081316
+  },
+  "shot_value_distribution": {
+    "2": 818855,
+    "3": 550135
+  },
+  "shot_value_success": {
+    "2": 0.5411617441427359,
+    "3": 0.3604697028911085
+  },
+  "rows_by_season_type": {
+    "playoffs": 86683,
+    "regular_season": 1282307
+  },
+  "rows_by_season": {
+    "2020-21": 205754,
+    "2021-22": 231293,
+    "2022-23": 231868,
+    "2023-24": 232540,
+    "2024-25": 233904,
+    "2025-26": 233631
+  }
+}

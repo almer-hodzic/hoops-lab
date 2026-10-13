@@ -1,0 +1,58 @@
+{
+  "schema_version": "canonical_shots_v1",
+  "identifier_columns": [
+    "season",
+    "season_type",
+    "game_id",
+    "event_id",
+    "game_date",
+    "player_id",
+    "team_id"
+  ],
+  "safe_pre_shot_candidate_features": [
+    "season",
+    "season_type",
+    "period",
+    "seconds_remaining_period",
+    "is_overtime",
+    "player_id",
+    "team_id",
+    "opponent_team_id",
+    "is_home",
+    "shot_value",
+    "shot_type",
+    "action_type",
+    "shot_distance",
+    "loc_x",
+    "loc_y",
+    "shot_zone_basic",
+    "shot_zone_area",
+    "shot_zone_range",
+    "home_score_before",
+    "away_score_before",
+    "shooter_score_before",
+    "opponent_score_before",
+    "score_diff_before",
+    "game_state_before",
+    "abs_score_diff_before",
+    "is_clutch",
+    "clutch_time_bucket"
+  ],
+  "target_columns": [
+    "shot_made",
+    "points_scored"
+  ],
+  "forbidden_leakage_columns": [
+    "shot_made",
+    "points_scored",
+    "post-shot score fields",
+    "pbp description",
+    "shotResult",
+    "EVENT_TYPE",
+    "scoreHome",
+    "scoreAway",
+    "home_score_after",
+    "away_score_after"
+  ],
+  "notes": "Future modeling code must explicitly separate pre-shot features from labels/outcomes."
+}
