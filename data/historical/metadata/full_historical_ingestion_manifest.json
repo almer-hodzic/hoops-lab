@@ -1,0 +1,1358 @@
+{
+  "schema_version": "historical_full_player_team_league_v1",
+  "prototype_schema_version": "historical_player_season_prototype_v2",
+  "created_at_utc": "2026-10-13T13:55:50.755037+00:00",
+  "season_range": {
+    "start": "1979-80",
+    "end": "2025-26",
+    "start_end_year": 1980,
+    "end_end_year": 2026
+  },
+  "source": "Basketball-Reference",
+  "source_base_url": "https://www.basketball-reference.com/leagues",
+  "raw_cache_dir": "data\\historical\\raw\\basketball-reference",
+  "refresh": false,
+  "row_counts": {
+    "player_seasons": 20526,
+    "player_team_splits": 4803,
+    "team_seasons": 1314,
+    "league_seasons": 47,
+    "unique_players": 3818
+  },
+  "field_provenance": {
+    "player_efficiency_rating": "source_derived_basketball_reference",
+    "win_shares": "source_derived_basketball_reference",
+    "box_plus_minus": "source_derived_basketball_reference",
+    "usage_pct": "source_derived_basketball_reference_or_unavailable",
+    "assist_pct": "source_derived_basketball_reference",
+    "turnover_pct": "source_derived_basketball_reference_or_unavailable",
+    "total_rebound_pct": "source_derived_basketball_reference",
+    "true_shooting_pct": "directly_sourced_from_basketball_reference_advanced_or_reconstructed_fallback",
+    "team_pace": "directly_sourced_from_basketball_reference_team_misc",
+    "league_pace": "reconstructed_from_team_games_and_team_pace",
+    "league_ts_pct": "reconstructed_from_basketball_reference_team_totals",
+    "estimated_possessions_minutes_team_pace": "estimated_minutes_team_pace",
+    "points_per_75": "derived_from_points_and_estimated_possessions",
+    "assists_per_75": "derived_from_assists_and_estimated_possessions",
+    "rebounds_per_75": "derived_from_rebounds_and_estimated_possessions",
+    "turnovers_per_75": "derived_or_unavailable",
+    "three_point_attempt_rate": "derived_or_not_tracked_in_pre_3pt_era",
+    "free_throw_rate": "derived_from_fta_and_fga"
+  },
+  "era_metric_rules": {
+    "minimum_minutes": 500,
+    "minimum_population": 50,
+    "metrics": [
+      "points_per_75",
+      "assists_per_75",
+      "rebounds_per_75",
+      "relative_ts",
+      "usage_pct",
+      "assist_pct",
+      "total_rebound_pct",
+      "steals_per_75",
+      "blocks_per_75",
+      "turnovers_per_75"
+    ]
+  },
+  "source_fetches": [
+    {
+      "year": 1980,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1980_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1980_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1980_totals.html"
+    },
+    {
+      "year": 1980,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1980_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1980_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1980_advanced.html"
+    },
+    {
+      "year": 1980,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1980.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1980_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1980.html"
+    },
+    {
+      "year": 1981,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1981_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1981_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1981_totals.html"
+    },
+    {
+      "year": 1981,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1981_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1981_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1981_advanced.html"
+    },
+    {
+      "year": 1981,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1981.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1981_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1981.html"
+    },
+    {
+      "year": 1982,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1982_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1982_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1982_totals.html"
+    },
+    {
+      "year": 1982,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1982_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1982_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1982_advanced.html"
+    },
+    {
+      "year": 1982,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1982.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1982_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1982.html"
+    },
+    {
+      "year": 1983,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1983_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1983_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1983_totals.html"
+    },
+    {
+      "year": 1983,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1983_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1983_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1983_advanced.html"
+    },
+    {
+      "year": 1983,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1983.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1983_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1983.html"
+    },
+    {
+      "year": 1984,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1984_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1984_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1984_totals.html"
+    },
+    {
+      "year": 1984,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1984_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1984_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1984_advanced.html"
+    },
+    {
+      "year": 1984,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1984.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1984_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1984.html"
+    },
+    {
+      "year": 1985,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1985_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1985_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1985_totals.html"
+    },
+    {
+      "year": 1985,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1985_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1985_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1985_advanced.html"
+    },
+    {
+      "year": 1985,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1985.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1985_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1985.html"
+    },
+    {
+      "year": 1986,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1986_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1986_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1986_totals.html"
+    },
+    {
+      "year": 1986,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1986_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1986_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1986_advanced.html"
+    },
+    {
+      "year": 1986,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1986.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1986_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1986.html"
+    },
+    {
+      "year": 1987,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1987_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1987_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1987_totals.html"
+    },
+    {
+      "year": 1987,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1987_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1987_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1987_advanced.html"
+    },
+    {
+      "year": 1987,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1987.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1987_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1987.html"
+    },
+    {
+      "year": 1988,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1988_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1988_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1988_totals.html"
+    },
+    {
+      "year": 1988,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1988_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1988_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1988_advanced.html"
+    },
+    {
+      "year": 1988,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1988.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1988_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1988.html"
+    },
+    {
+      "year": 1989,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1989_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1989_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1989_totals.html"
+    },
+    {
+      "year": 1989,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1989_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1989_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1989_advanced.html"
+    },
+    {
+      "year": 1989,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1989.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1989_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1989.html"
+    },
+    {
+      "year": 1990,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1990_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1990_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1990_totals.html"
+    },
+    {
+      "year": 1990,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1990_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1990_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1990_advanced.html"
+    },
+    {
+      "year": 1990,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1990.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1990_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1990.html"
+    },
+    {
+      "year": 1991,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1991_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1991_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1991_totals.html"
+    },
+    {
+      "year": 1991,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1991_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1991_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1991_advanced.html"
+    },
+    {
+      "year": 1991,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1991.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1991_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1991.html"
+    },
+    {
+      "year": 1992,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1992_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1992_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1992_totals.html"
+    },
+    {
+      "year": 1992,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1992_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1992_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1992_advanced.html"
+    },
+    {
+      "year": 1992,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1992.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1992_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1992.html"
+    },
+    {
+      "year": 1993,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1993_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1993_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1993_totals.html"
+    },
+    {
+      "year": 1993,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1993_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1993_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1993_advanced.html"
+    },
+    {
+      "year": 1993,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1993.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1993_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1993.html"
+    },
+    {
+      "year": 1994,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1994_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1994_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1994_totals.html"
+    },
+    {
+      "year": 1994,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1994_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1994_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1994_advanced.html"
+    },
+    {
+      "year": 1994,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1994.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1994_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1994.html"
+    },
+    {
+      "year": 1995,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1995_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1995_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1995_totals.html"
+    },
+    {
+      "year": 1995,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1995_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1995_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1995_advanced.html"
+    },
+    {
+      "year": 1995,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1995.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1995_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1995.html"
+    },
+    {
+      "year": 1996,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1996_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1996_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1996_totals.html"
+    },
+    {
+      "year": 1996,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1996_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1996_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1996_advanced.html"
+    },
+    {
+      "year": 1996,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1996.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1996_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1996.html"
+    },
+    {
+      "year": 1997,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1997_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1997_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1997_totals.html"
+    },
+    {
+      "year": 1997,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1997_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1997_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1997_advanced.html"
+    },
+    {
+      "year": 1997,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1997.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1997_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1997.html"
+    },
+    {
+      "year": 1998,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1998_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1998_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1998_totals.html"
+    },
+    {
+      "year": 1998,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1998_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1998_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1998_advanced.html"
+    },
+    {
+      "year": 1998,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1998.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1998_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1998.html"
+    },
+    {
+      "year": 1999,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1999_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1999_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1999_totals.html"
+    },
+    {
+      "year": 1999,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1999_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1999_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1999_advanced.html"
+    },
+    {
+      "year": 1999,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_1999.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_1999_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_1999.html"
+    },
+    {
+      "year": 2000,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2000_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2000_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2000_totals.html"
+    },
+    {
+      "year": 2000,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2000_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2000_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2000_advanced.html"
+    },
+    {
+      "year": 2000,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2000.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2000_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2000.html"
+    },
+    {
+      "year": 2001,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2001_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2001_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2001_totals.html"
+    },
+    {
+      "year": 2001,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2001_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2001_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2001_advanced.html"
+    },
+    {
+      "year": 2001,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2001.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2001_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2001.html"
+    },
+    {
+      "year": 2002,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2002_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2002_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2002_totals.html"
+    },
+    {
+      "year": 2002,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2002_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2002_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2002_advanced.html"
+    },
+    {
+      "year": 2002,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2002.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2002_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2002.html"
+    },
+    {
+      "year": 2003,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2003_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2003_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2003_totals.html"
+    },
+    {
+      "year": 2003,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2003_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2003_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2003_advanced.html"
+    },
+    {
+      "year": 2003,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2003.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2003_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2003.html"
+    },
+    {
+      "year": 2004,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2004_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2004_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2004_totals.html"
+    },
+    {
+      "year": 2004,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2004_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2004_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2004_advanced.html"
+    },
+    {
+      "year": 2004,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2004.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2004_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2004.html"
+    },
+    {
+      "year": 2005,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2005_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2005_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2005_totals.html"
+    },
+    {
+      "year": 2005,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2005_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2005_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2005_advanced.html"
+    },
+    {
+      "year": 2005,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2005.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2005_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2005.html"
+    },
+    {
+      "year": 2006,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2006_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2006_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2006_totals.html"
+    },
+    {
+      "year": 2006,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2006_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2006_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2006_advanced.html"
+    },
+    {
+      "year": 2006,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2006.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2006_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2006.html"
+    },
+    {
+      "year": 2007,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2007_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2007_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2007_totals.html"
+    },
+    {
+      "year": 2007,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2007_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2007_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2007_advanced.html"
+    },
+    {
+      "year": 2007,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2007.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2007_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2007.html"
+    },
+    {
+      "year": 2008,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2008_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2008_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2008_totals.html"
+    },
+    {
+      "year": 2008,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2008_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2008_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2008_advanced.html"
+    },
+    {
+      "year": 2008,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2008.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2008_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2008.html"
+    },
+    {
+      "year": 2009,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2009_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2009_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2009_totals.html"
+    },
+    {
+      "year": 2009,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2009_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2009_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2009_advanced.html"
+    },
+    {
+      "year": 2009,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2009.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2009_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2009.html"
+    },
+    {
+      "year": 2010,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2010_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2010_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2010_totals.html"
+    },
+    {
+      "year": 2010,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2010_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2010_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2010_advanced.html"
+    },
+    {
+      "year": 2010,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2010.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2010_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2010.html"
+    },
+    {
+      "year": 2011,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2011_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2011_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2011_totals.html"
+    },
+    {
+      "year": 2011,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2011_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2011_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2011_advanced.html"
+    },
+    {
+      "year": 2011,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2011.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2011_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2011.html"
+    },
+    {
+      "year": 2012,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2012_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2012_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2012_totals.html"
+    },
+    {
+      "year": 2012,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2012_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2012_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2012_advanced.html"
+    },
+    {
+      "year": 2012,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2012.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2012_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2012.html"
+    },
+    {
+      "year": 2013,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2013_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2013_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2013_totals.html"
+    },
+    {
+      "year": 2013,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2013_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2013_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2013_advanced.html"
+    },
+    {
+      "year": 2013,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2013.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2013_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2013.html"
+    },
+    {
+      "year": 2014,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2014_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2014_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2014_totals.html"
+    },
+    {
+      "year": 2014,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2014_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2014_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2014_advanced.html"
+    },
+    {
+      "year": 2014,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2014.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2014_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2014.html"
+    },
+    {
+      "year": 2015,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2015_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2015_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2015_totals.html"
+    },
+    {
+      "year": 2015,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2015_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2015_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2015_advanced.html"
+    },
+    {
+      "year": 2015,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2015.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2015_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2015.html"
+    },
+    {
+      "year": 2016,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2016_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2016_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2016_totals.html"
+    },
+    {
+      "year": 2016,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2016_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2016_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2016_advanced.html"
+    },
+    {
+      "year": 2016,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2016.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2016_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2016.html"
+    },
+    {
+      "year": 2017,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2017_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2017_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2017_totals.html"
+    },
+    {
+      "year": 2017,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2017_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2017_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2017_advanced.html"
+    },
+    {
+      "year": 2017,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2017.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2017_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2017.html"
+    },
+    {
+      "year": 2018,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2018_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2018_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2018_totals.html"
+    },
+    {
+      "year": 2018,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2018_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2018_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2018_advanced.html"
+    },
+    {
+      "year": 2018,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2018.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2018_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2018.html"
+    },
+    {
+      "year": 2019,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2019_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2019_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2019_totals.html"
+    },
+    {
+      "year": 2019,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2019_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2019_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2019_advanced.html"
+    },
+    {
+      "year": 2019,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2019.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2019_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2019.html"
+    },
+    {
+      "year": 2020,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2020_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2020_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2020_totals.html"
+    },
+    {
+      "year": 2020,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2020_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2020_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2020_advanced.html"
+    },
+    {
+      "year": 2020,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2020.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2020_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2020.html"
+    },
+    {
+      "year": 2021,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2021_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2021_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2021_totals.html"
+    },
+    {
+      "year": 2021,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2021_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2021_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2021_advanced.html"
+    },
+    {
+      "year": 2021,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2021.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2021_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2021.html"
+    },
+    {
+      "year": 2022,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2022_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2022_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2022_totals.html"
+    },
+    {
+      "year": 2022,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2022_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2022_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2022_advanced.html"
+    },
+    {
+      "year": 2022,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2022.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2022_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2022.html"
+    },
+    {
+      "year": 2023,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2023_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2023_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2023_totals.html"
+    },
+    {
+      "year": 2023,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2023_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2023_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2023_advanced.html"
+    },
+    {
+      "year": 2023,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2023.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2023_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2023.html"
+    },
+    {
+      "year": 2024,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2024_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2024_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2024_totals.html"
+    },
+    {
+      "year": 2024,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2024_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2024_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2024_advanced.html"
+    },
+    {
+      "year": 2024,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2024.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2024_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2024.html"
+    },
+    {
+      "year": 2025,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2025_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2025_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2025_totals.html"
+    },
+    {
+      "year": 2025,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2025_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2025_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2025_advanced.html"
+    },
+    {
+      "year": 2025,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2025.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2025_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2025.html"
+    },
+    {
+      "year": 2026,
+      "kind": "totals",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2026_totals.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2026_totals.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2026_totals.html"
+    },
+    {
+      "year": 2026,
+      "kind": "advanced",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2026_advanced.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2026_advanced.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2026_advanced.html"
+    },
+    {
+      "year": 2026,
+      "kind": "league",
+      "url": "https://www.basketball-reference.com/leagues/NBA_2026.html",
+      "cache_path": "data\\historical\\raw\\basketball-reference\\NBA_2026_league.html",
+      "cache_status": "cache_hit",
+      "attempts": 0,
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2026.html"
+    }
+  ],
+  "major_missingness": {
+    "usage_pct_season_percentile": 0.2868556952158238,
+    "points_per_75_season_percentile": 0.2868556952158238,
+    "points_per_75_season_z": 0.2868556952158238,
+    "assists_per_75_season_percentile": 0.2868556952158238,
+    "assists_per_75_season_z": 0.2868556952158238,
+    "blocks_per_75_season_percentile": 0.2868556952158238,
+    "blocks_per_75_season_z": 0.2868556952158238,
+    "turnovers_per_75_season_percentile": 0.2868556952158238,
+    "turnovers_per_75_season_z": 0.2868556952158238,
+    "steals_per_75_season_z": 0.2868556952158238,
+    "steals_per_75_season_percentile": 0.2868556952158238,
+    "total_rebound_pct_season_z": 0.2868556952158238,
+    "total_rebound_pct_season_percentile": 0.2868556952158238,
+    "assist_pct_season_z": 0.2868556952158238,
+    "assist_pct_season_percentile": 0.2868556952158238,
+    "usage_pct_season_z": 0.2868556952158238,
+    "rebounds_per_75_season_percentile": 0.2868556952158238,
+    "relative_ts_season_z": 0.2868556952158238,
+    "relative_ts_season_percentile": 0.2868556952158238,
+    "rebounds_per_75_season_z": 0.2868556952158238
+  },
+  "runtime_seconds": 173.19,
+  "outputs": [
+    "data/historical/processed/player_seasons.csv",
+    "data/historical/processed/player_team_splits.csv",
+    "data/historical/processed/team_seasons.csv",
+    "data/historical/processed/league_seasons.csv"
+  ]
+}

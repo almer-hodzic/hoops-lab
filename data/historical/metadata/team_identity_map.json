@@ -4,22 +4,37 @@
     "franchise_id": "franchise:atlanta-hawks",
     "display_name": "Atlanta Hawks"
   },
-  "BKN": {
-    "team_id": "team:brooklyn-nets",
-    "franchise_id": "franchise:nets",
-    "display_name": "Brooklyn Nets"
-  },
   "BOS": {
     "team_id": "team:boston-celtics",
     "franchise_id": "franchise:boston-celtics",
     "display_name": "Boston Celtics"
+  },
+  "BUF": {
+    "team_id": "team:buffalo-braves",
+    "franchise_id": "franchise:clippers",
+    "display_name": "Buffalo Braves"
   },
   "BRK": {
     "team_id": "team:brooklyn-nets",
     "franchise_id": "franchise:nets",
     "display_name": "Brooklyn Nets"
   },
+  "BKN": {
+    "team_id": "team:brooklyn-nets",
+    "franchise_id": "franchise:nets",
+    "display_name": "Brooklyn Nets"
+  },
+  "NJN": {
+    "team_id": "team:new-jersey-nets",
+    "franchise_id": "franchise:nets",
+    "display_name": "New Jersey Nets"
+  },
   "CHA": {
+    "team_id": "team:charlotte-hornets-current",
+    "franchise_id": "franchise:charlotte-hornets-current",
+    "display_name": "Charlotte Hornets"
+  },
+  "CHO": {
     "team_id": "team:charlotte-hornets-current",
     "franchise_id": "franchise:charlotte-hornets-current",
     "display_name": "Charlotte Hornets"
@@ -29,15 +44,15 @@
     "franchise_id": "franchise:new-orleans-pelicans",
     "display_name": "Charlotte Hornets"
   },
+  "CHA_2005_2014": {
+    "team_id": "team:charlotte-bobcats",
+    "franchise_id": "franchise:charlotte-hornets-current",
+    "display_name": "Charlotte Bobcats"
+  },
   "CHI": {
     "team_id": "team:chicago-bulls",
     "franchise_id": "franchise:chicago-bulls",
     "display_name": "Chicago Bulls"
-  },
-  "CHO": {
-    "team_id": "team:charlotte-hornets-current",
-    "franchise_id": "franchise:charlotte-hornets-current",
-    "display_name": "Charlotte Hornets"
   },
   "CLE": {
     "team_id": "team:cleveland-cavaliers",
@@ -79,6 +94,21 @@
     "franchise_id": "franchise:clippers",
     "display_name": "Los Angeles Clippers"
   },
+  "SDC": {
+    "team_id": "team:san-diego-clippers",
+    "franchise_id": "franchise:clippers",
+    "display_name": "San Diego Clippers"
+  },
+  "KCK": {
+    "team_id": "team:kansas-city-kings",
+    "franchise_id": "franchise:kings",
+    "display_name": "Kansas City Kings"
+  },
+  "KCO": {
+    "team_id": "team:kansas-city-omaha-kings",
+    "franchise_id": "franchise:kings",
+    "display_name": "Kansas City-Omaha Kings"
+  },
   "LAL": {
     "team_id": "team:los-angeles-lakers",
     "franchise_id": "franchise:lakers",
@@ -88,6 +118,11 @@
     "team_id": "team:memphis-grizzlies",
     "franchise_id": "franchise:grizzlies",
     "display_name": "Memphis Grizzlies"
+  },
+  "VAN": {
+    "team_id": "team:vancouver-grizzlies",
+    "franchise_id": "franchise:grizzlies",
+    "display_name": "Vancouver Grizzlies"
   },
   "MIA": {
     "team_id": "team:miami-heat",
@@ -104,15 +139,15 @@
     "franchise_id": "franchise:minnesota-timberwolves",
     "display_name": "Minnesota Timberwolves"
   },
-  "NJN": {
-    "team_id": "team:new-jersey-nets",
-    "franchise_id": "franchise:nets",
-    "display_name": "New Jersey Nets"
-  },
   "NOH": {
     "team_id": "team:new-orleans-hornets",
     "franchise_id": "franchise:new-orleans-pelicans",
     "display_name": "New Orleans Hornets"
+  },
+  "NOJ": {
+    "team_id": "team:new-orleans-jazz",
+    "franchise_id": "franchise:jazz",
+    "display_name": "New Orleans Jazz"
   },
   "NOK": {
     "team_id": "team:new-orleans-oklahoma-city-hornets",
@@ -133,6 +168,11 @@
     "team_id": "team:oklahoma-city-thunder",
     "franchise_id": "franchise:thunder",
     "display_name": "Oklahoma City Thunder"
+  },
+  "SEA": {
+    "team_id": "team:seattle-supersonics",
+    "franchise_id": "franchise:thunder",
+    "display_name": "Seattle SuperSonics"
   },
   "ORL": {
     "team_id": "team:orlando-magic",
@@ -164,11 +204,6 @@
     "franchise_id": "franchise:san-antonio-spurs",
     "display_name": "San Antonio Spurs"
   },
-  "SEA": {
-    "team_id": "team:seattle-supersonics",
-    "franchise_id": "franchise:thunder",
-    "display_name": "Seattle SuperSonics"
-  },
   "TOR": {
     "team_id": "team:toronto-raptors",
     "franchise_id": "franchise:toronto-raptors",
@@ -178,11 +213,6 @@
     "team_id": "team:utah-jazz",
     "franchise_id": "franchise:jazz",
     "display_name": "Utah Jazz"
-  },
-  "VAN": {
-    "team_id": "team:vancouver-grizzlies",
-    "franchise_id": "franchise:grizzlies",
-    "display_name": "Vancouver Grizzlies"
   },
   "WAS": {
     "team_id": "team:washington-wizards",
