@@ -3,6 +3,7 @@ using AiAgents.NbaClutchAgent.Application.Learn;
 using AiAgents.NbaClutchAgent.Application.Run;
 using AiAgents.NbaClutchAgent.Application.Runner;
 using AiAgents.NbaClutchAgent.Infrastructure.Dataset;
+using AiAgents.NbaClutchAgent.Web.Historical;
 using AiAgents.NbaClutchAgent.Web.Services;
 using System.Text;
 using System.Text.Json;
@@ -23,6 +24,7 @@ builder.Services.AddSingleton<IQTableStore>(_ => new JsonQTableStore(QTablePath(
 
 // Application services
 builder.Services.AddSingleton<IRunService, RunService>();
+builder.Services.AddSingleton<IHistoricalPlayerDataService, HistoricalPlayerDataService>();
 
 // Runner (shared state for background loop + endpoints)
 builder.Services.AddSingleton<IClutchDecisionRunner>(sp =>
@@ -82,6 +84,32 @@ app.MapPost("/api/agent/stop", (IClutchDecisionRunner runner) =>
 app.MapGet("/api/agent/status", (IClutchDecisionRunner runner) =>
 {
     return Results.Ok(runner.GetStatus());
+});
+
+// -------------------- Historical player explorer --------------------
+// Read-only canonical historical player data from data/historical/processed.
+// The service parses once and keeps indexed player/season lookups in memory.
+app.MapGet("/api/historical/players", (string? search, int? limit, IHistoricalPlayerDataService historical) =>
+{
+    return Results.Ok(new { items = historical.SearchPlayers(search, limit ?? 12) });
+});
+
+app.MapGet("/api/historical/players/{playerId}", (string playerId, IHistoricalPlayerDataService historical) =>
+{
+    var profile = historical.GetPlayer(playerId);
+    return profile is null ? Results.NotFound(new { error = "Historical player not found." }) : Results.Ok(profile);
+});
+
+app.MapGet("/api/historical/players/{playerId}/seasons/{season}", (string playerId, string season, IHistoricalPlayerDataService historical) =>
+{
+    var profile = historical.GetPlayerSeason(playerId, season);
+    return profile is null ? Results.NotFound(new { error = "Historical player season not found." }) : Results.Ok(profile);
+});
+
+app.MapGet("/api/historical/compare", (string playerA, string seasonA, string playerB, string seasonB, IHistoricalPlayerDataService historical) =>
+{
+    var comparison = historical.Compare(playerA, seasonA, playerB, seasonB);
+    return comparison is null ? Results.NotFound(new { error = "One or both historical player seasons were not found." }) : Results.Ok(comparison);
 });
 
 // -------------------- Production decision intelligence --------------------

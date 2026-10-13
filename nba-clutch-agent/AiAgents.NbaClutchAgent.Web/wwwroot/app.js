@@ -6,6 +6,10 @@ const navToggle = document.querySelector("#navToggle");
 const state = {
     model: null,
     selectedPlayer: null,
+    historicalSelectedPlayer: null,
+    historicalSelectedSeason: null,
+    compareA: { player: null, season: null },
+    compareB: { player: null, season: null },
     selectedPoint: { x: 80, y: 250, distance: 26.2 },
     shotValue: 3,
     actionType: "Jump Shot",
@@ -53,17 +57,42 @@ const modelMetrics = [
 ];
 
 function fmt(n, digits = 2) {
-    if (n === null || n === undefined || Number.isNaN(Number(n))) return "—";
+    if (n === null || n === undefined || Number.isNaN(Number(n))) return "&mdash;";
     return Number(n).toFixed(digits);
 }
 
 function pct(n, digits = 1) {
-    if (n === null || n === undefined || Number.isNaN(Number(n))) return "—";
+    if (n === null || n === undefined || Number.isNaN(Number(n))) return "&mdash;";
     return `${(Number(n) * 100).toFixed(digits)}%`;
 }
 
 function compact(n) {
     return Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 2 }).format(n);
+}
+
+function pctPoint(n, digits = 1) {
+    if (n === null || n === undefined || Number.isNaN(Number(n))) return "&mdash;";
+    return `${Number(n).toFixed(digits)}%`;
+}
+
+function signedPctPoint(n, digits = 1) {
+    if (n === null || n === undefined || Number.isNaN(Number(n))) return "&mdash;";
+    const value = Number(n) * 100;
+    return `${value >= 0 ? "+" : ""}${value.toFixed(digits)}%`;
+}
+
+function text(value) {
+    if (value === null || value === undefined || value === "") return "&mdash;";
+    return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+}
+
+function stat(label, value, note = "") {
+    return `<div class="stat-row"><span>${label}</span><strong>${value}</strong>${note ? `<em>${note}</em>` : ""}</div>`;
 }
 
 function canonicalDistance(point) {
@@ -149,39 +178,40 @@ function renderOverview() {
     app.innerHTML = `
         <section class="hero">
             <div>
-                <div class="eyebrow">Production shot decision intelligence</div>
-                <h1>NBA Clutch Agent</h1>
-                <p class="lede">Decision intelligence for NBA shot selection. The system combines a calibrated shot-quality model with a transparent replacement benchmark to return TAKE, REVIEW, or DEFER.</p>
+                <div class="eyebrow">Historical NBA analysis lab</div>
+                <h1>HoopsLab</h1>
+                <p class="lede">Explore historical player seasons, compare eras, and keep the shot decision lab close at hand.</p>
                 <div class="hero-actions">
-                    <a class="button" href="#lab">Open Decision Lab</a>
-                    <a class="button secondary" href="#model">View methodology</a>
+                    <a class="button" href="#players">Explore players</a>
+                    <a class="button secondary" href="#lab">Open Shot Lab</a>
                 </div>
                 <div class="metrics-grid">
-                    ${metric(compact(facts.shots), "canonical shot attempts")}
-                    ${metric(compact(facts.clutch), "clutch attempts")}
-                    ${metric("6", "NBA seasons")}
-                    ${metric("Decision v1", "production policy")}
+                    ${metric("20.5K", "historical player seasons")}
+                    ${metric("1979-80", "first season")}
+                    ${metric("2025-26", "latest season")}
+                    ${metric("47", "NBA seasons")}
                 </div>
             </div>
             <div class="panel">
-                <div class="eyebrow">System path</div>
+                <div class="eyebrow">Product path</div>
                 <div class="flow" style="margin-top:16px">
-                    ${["Historical NBA data", "Shot Quality Model", "Expected Shot Value", "Decision Policy", "TAKE / REVIEW / DEFER"].map((x, i) => `<div class="flow-step"><span>0${i + 1}</span><strong>${x}</strong></div>`).join("")}
+                    ${["Historical Players", "Season Profiles", "Era Context", "Comparison", "Shot Lab"].map((x, i) => `<div class="flow-step"><span>0${i + 1}</span><strong>${x}</strong></div>`).join("")}
                 </div>
                 <div class="section">
-                    <h3>2025-26 held-out regular season</h3>
-                    ${bars(facts.regularSummary)}
-                    <p class="small" style="margin-top:14px">Observed historical PPS is descriptive only. It is not agent-created value.</p>
+                    <h3>Start with canonical data.</h3>
+                    <p class="muted">The Historical Players module reads processed local HoopsLab datasets. It does not fabricate ratings or call live external sources.</p>
                 </div>
             </div>
         </section>
         <section class="section">
             <div class="section-header">
-                <div><h2>Clutch analysis stays central.</h2><p class="muted">Clutch: final 5:00 of Q4 or overtime with score margin <= 5.</p></div>
-                <a class="button secondary" href="#history">Explore history</a>
+                <div><h2>Shot decision intelligence stays available.</h2><p class="muted">The existing production shot model and decision policy remain unchanged.</p></div>
+                <a class="button secondary" href="#compare">Compare players</a>
             </div>
             <div class="three-col">
-                ${facts.clutchSummary.map(r => panel(decisionBadge(r.decision), `<div class="mini-panel"><div class="label">Share</div><div class="num">${pct(r.share)}</div></div><div class="mini-panel"><div class="label">Observed PPS</div><div class="num">${fmt(r.observed, 3)}</div></div>`)).join("")}
+                ${panel("Players", `<p class="muted">Search player identities and inspect every available season.</p>`)}
+                ${panel("Compare", `<p class="muted">Put two historical player-seasons side by side without declaring an artificial winner.</p>`)}
+                ${panel("Shot Lab", `<p class="muted">Analyze a shot opportunity with the existing Decision Policy v1 workflow.</p>`)}
             </div>
         </section>`;
 }
@@ -452,7 +482,7 @@ function renderLab() {
     app.innerHTML = `
         <section class="section">
             <div class="section-header">
-                <div><div class="eyebrow">Decision Lab</div><h2>Analyze a shot opportunity.</h2><p class="muted">Click the court, choose game context, and call the production model.</p></div>
+                <div><div class="eyebrow">Shot Lab</div><h2>Analyze a shot opportunity.</h2><p class="muted">Click the court, choose game context, and call the production model.</p></div>
             </div>
             <div class="lab-grid">
                 <div class="panel control-stack">
@@ -502,34 +532,307 @@ function renderLab() {
     updateActionOptions();
 }
 
+async function searchHistoricalPlayers(query, targetId, onSelect) {
+    const box = document.querySelector(targetId);
+    if (!box) return;
+    if (!query || query.length < 2) {
+        box.innerHTML = "";
+        return;
+    }
+    try {
+        const data = await api(`/api/historical/players?search=${encodeURIComponent(query)}&limit=8`);
+        box.innerHTML = data.items.length ? data.items.map(p => `
+            <button data-player='${JSON.stringify(p).replaceAll("'", "&apos;")}'>
+                ${text(p.playerName)}
+                <span class="small">${text(p.firstSeason)} - ${text(p.lastSeason)} · ${p.numberOfSeasons} seasons</span>
+            </button>`).join("") : `<div class="small" style="padding:12px">No historical players found.</div>`;
+        box.querySelectorAll("button").forEach(btn => btn.addEventListener("click", () => {
+            const player = JSON.parse(btn.dataset.player);
+            box.innerHTML = "";
+            onSelect(player);
+        }));
+    } catch (err) {
+        box.innerHTML = `<div class="small" style="padding:12px">Historical player search unavailable.</div>`;
+    }
+}
+
+function seasonOptions(profile, selectedSeason) {
+    return profile.seasons.map(s => `<option value="${s.season}" ${s.season === selectedSeason ? "selected" : ""}>${s.season}</option>`).join("");
+}
+
+function metricCards(profile) {
+    return `<div class="metrics-grid">
+        ${metric(fmt(profile.scoring.pointsPer75, 1), "PTS / 75")}
+        ${metric(fmt(profile.playmaking.assistsPer75, 1), "AST / 75")}
+        ${metric(fmt(profile.rebounding.reboundsPer75, 1), "REB / 75")}
+        ${metric(pct(profile.shooting.trueShootingPct, 1), "TS%")}
+        ${metric(signedPctPoint(profile.shooting.relativeTrueShooting, 1), "Relative TS")}
+        ${metric(pctPoint(profile.scoring.usagePct, 1), "USG%")}
+    </div>`;
+}
+
+function eraBars(metrics) {
+    const rows = Object.entries(metrics || {}).filter(([, m]) => m.seasonPercentile !== null && m.seasonPercentile !== undefined);
+    if (!rows.length) return `<div class="small">No valid season-relative percentile data for this row.</div>`;
+    return `<div class="era-bars">${rows.map(([label, m]) => `
+        <div class="era-line">
+            <div><strong>${text(label)}</strong><span>${fmt(m.seasonPercentile, 0)}th percentile</span></div>
+            <div class="track"><div class="fill" style="width:${Math.max(2, Math.min(100, m.seasonPercentile))}%"></div></div>
+        </div>`).join("")}</div>`;
+}
+
+function seasonProfileHtml(profile) {
+    const i = profile.identity;
+    return `
+        <div class="profile-head">
+            <div>
+                <div class="eyebrow">Historical player profile</div>
+                <h2>${text(i.playerName)}</h2>
+                <p class="muted">${text(i.season)} · ${text(i.teamName)} · ${text(i.position)} · Age ${fmt(i.age, 0)}</p>
+            </div>
+            <div class="pill-row">
+                <span class="pill">${text(i.team)}</span>
+                <span class="pill">${fmt(i.games, 0)} games</span>
+                <span class="pill">${fmt(i.minutes, 0)} minutes</span>
+            </div>
+        </div>
+        ${metricCards(profile)}
+        <div class="profile-grid">
+            ${panel("Scoring", [
+                stat("Points", fmt(profile.scoring.points, 0)),
+                stat("PPG", fmt(profile.scoring.pointsPerGame, 1)),
+                stat("PTS / 75", fmt(profile.scoring.pointsPer75, 1)),
+                stat("USG%", pctPoint(profile.scoring.usagePct, 1)),
+                stat("FGA", fmt(profile.scoring.fieldGoalAttempts, 0)),
+                stat("3PAr", pct(profile.scoring.threePointAttemptRate, 1)),
+            ].join(""))}
+            ${panel("Shooting / efficiency", [
+                stat("FG%", pct(profile.shooting.fieldGoalPct, 1)),
+                stat("2P%", pct(profile.shooting.twoPointPct, 1)),
+                stat("3P%", pct(profile.shooting.threePointPct, 1)),
+                stat("FT%", pct(profile.shooting.freeThrowPct, 1)),
+                stat("TS%", pct(profile.shooting.trueShootingPct, 1)),
+                stat("League TS%", pct(profile.shooting.leagueTrueShootingPct, 1)),
+                stat("Relative TS", signedPctPoint(profile.shooting.relativeTrueShooting, 1)),
+                stat("FTr", fmt(profile.shooting.freeThrowRate, 3)),
+            ].join(""))}
+            ${panel("Playmaking", [
+                stat("Assists", fmt(profile.playmaking.assists, 0)),
+                stat("APG", fmt(profile.playmaking.assistsPerGame, 1)),
+                stat("AST / 75", fmt(profile.playmaking.assistsPer75, 1)),
+                stat("AST%", pctPoint(profile.playmaking.assistPct, 1)),
+                stat("Turnovers", fmt(profile.playmaking.turnovers, 0)),
+                stat("TOV / 75", fmt(profile.playmaking.turnoversPer75, 1)),
+                stat("TOV%", pctPoint(profile.playmaking.turnoverPct, 1)),
+            ].join(""))}
+            ${panel("Rebounding", [
+                stat("ORB", fmt(profile.rebounding.offensiveRebounds, 0)),
+                stat("DRB", fmt(profile.rebounding.defensiveRebounds, 0)),
+                stat("TRB", fmt(profile.rebounding.totalRebounds, 0)),
+                stat("RPG", fmt(profile.rebounding.reboundsPerGame, 1)),
+                stat("REB / 75", fmt(profile.rebounding.reboundsPer75, 1)),
+                stat("TRB%", pctPoint(profile.rebounding.totalReboundPct, 1)),
+            ].join(""))}
+            ${panel("Defense", [
+                stat("Steals", fmt(profile.defense.steals, 0)),
+                stat("SPG", fmt(profile.defense.stealsPerGame, 1)),
+                stat("Steals / 75", fmt(profile.defense.stealsPer75, 1)),
+                stat("STL%", profile.defense.stealPct === null ? "Not tracked" : pctPoint(profile.defense.stealPct, 1)),
+                stat("Blocks", fmt(profile.defense.blocks, 0)),
+                stat("BPG", fmt(profile.defense.blocksPerGame, 1)),
+                stat("Blocks / 75", fmt(profile.defense.blocksPer75, 1)),
+                stat("BLK%", profile.defense.blockPct === null ? "Not tracked" : pctPoint(profile.defense.blockPct, 1)),
+            ].join(""))}
+            ${panel("Source-derived advanced", [
+                stat("PER", fmt(profile.advanced.playerEfficiencyRating, 1)),
+                stat("WS", fmt(profile.advanced.winShares, 1)),
+                stat("WS / 48", profile.advanced.winSharesPer48 === null ? "Not tracked" : fmt(profile.advanced.winSharesPer48, 3)),
+                stat("BPM", fmt(profile.advanced.boxPlusMinus, 1)),
+                stat("OBPM", profile.advanced.offensiveBoxPlusMinus === null ? "Not tracked" : fmt(profile.advanced.offensiveBoxPlusMinus, 1)),
+                stat("DBPM", profile.advanced.defensiveBoxPlusMinus === null ? "Not tracked" : fmt(profile.advanced.defensiveBoxPlusMinus, 1)),
+                stat("VORP", profile.advanced.valueOverReplacementPlayer === null ? "Not tracked" : fmt(profile.advanced.valueOverReplacementPlayer, 1)),
+            ].join("") + `<p class="small">${text(profile.advanced.provenance)}</p>`)}
+            ${panel("Era context", [
+                stat("Team pace", fmt(profile.eraContext.teamPace, 1)),
+                stat("League pace", fmt(profile.eraContext.leaguePace, 1)),
+                stat("League points / 75", fmt(profile.eraContext.leaguePointsPer75, 1)),
+                stat("Estimated possessions", fmt(profile.eraContext.estimatedPossessions, 0)),
+                stat("Sample flag", text(profile.eraContext.comparisonSample)),
+            ].join("") + eraBars(profile.eraContext.metrics))}
+        </div>`;
+}
+
+async function loadHistoricalSeason(playerId, season, targetId = "#historicalProfile") {
+    const target = document.querySelector(targetId);
+    target.innerHTML = `<div class="muted">Loading season...</div>`;
+    try {
+        const profile = await api(`/api/historical/players/${encodeURIComponent(playerId)}/seasons/${encodeURIComponent(season)}`);
+        target.innerHTML = seasonProfileHtml(profile);
+    } catch (err) {
+        target.innerHTML = `<div class="error">${err.message}</div>`;
+    }
+}
+
+async function openHistoricalPlayer(player) {
+    state.historicalSelectedPlayer = player;
+    const profileBox = document.querySelector("#historicalProfile");
+    profileBox.innerHTML = `<div class="muted">Loading ${text(player.playerName)}...</div>`;
+    const profile = await api(`/api/historical/players/${encodeURIComponent(player.playerId)}`);
+    state.historicalSelectedSeason = profile.seasons[profile.seasons.length - 1].season;
+    profileBox.innerHTML = `
+        <div class="panel">
+            <div class="profile-toolbar">
+                <div>
+                    <h3>${text(profile.playerName)}</h3>
+                    <p class="muted">${text(profile.firstSeason)} - ${text(profile.lastSeason)} · ${profile.numberOfSeasons} seasons</p>
+                </div>
+                <div class="field season-picker"><label for="historicalSeason">Season</label><select id="historicalSeason">${seasonOptions(profile, state.historicalSelectedSeason)}</select></div>
+            </div>
+            <div id="historicalSeasonProfile"></div>
+        </div>`;
+    document.querySelector("#historicalSeason").addEventListener("change", e => {
+        state.historicalSelectedSeason = e.target.value;
+        loadHistoricalSeason(profile.playerId, state.historicalSelectedSeason, "#historicalSeasonProfile");
+    });
+    await loadHistoricalSeason(profile.playerId, state.historicalSelectedSeason, "#historicalSeasonProfile");
+}
+
 async function renderPlayers() {
     app.innerHTML = `
         <section class="section">
-            <div class="section-header"><div><div class="eyebrow">Players</div><h2>Search shooter profiles.</h2><p class="muted">Profiles are production artifacts derived from historical shooter features.</p></div></div>
-            <div class="two-col">
+            <div class="section-header"><div><div class="eyebrow">Historical Players</div><h2>Explore NBA player seasons.</h2><p class="muted">Search the canonical HoopsLab historical dataset from 1979-80 through 2025-26.</p></div></div>
+            <div class="historical-layout">
                 <div class="panel">
-                    <div class="field autocomplete"><label for="playerSearch">Player search</label><input id="playerSearch" placeholder="Try Curry, Jokic, Booker..." /><div class="suggestions" id="playerSuggestions"></div></div>
-                    <div id="playerDetail" style="margin-top:18px" class="small">Choose a player to inspect profile rows.</div>
+                    <div class="field autocomplete"><label for="historicalPlayerSearch">Search players</label><input id="historicalPlayerSearch" placeholder="Try Jordan, Curry, LeBron, Jokic..." autocomplete="off" /><div class="suggestions" id="historicalPlayerSuggestions"></div></div>
+                    <div class="notice" style="margin-top:16px">Historical profiles use processed local CSV outputs only. No live Basketball-Reference request is made by the app.</div>
                 </div>
-                <div class="panel"><h3>Profile fields</h3><p class="muted">The API resolves prior attempts, shrunk FG%, 2P/3P history, zone profile, distance profile, season history, previous-season profile, and cold-start state.</p><div id="playerBars"></div></div>
+                <div id="historicalProfile" class="historical-profile">
+                    <div class="panel empty-state"><h3>Select a player</h3><p class="muted">Open a profile, choose a season, and inspect raw, per-possession, and era-relative stats.</p></div>
+                </div>
             </div>
         </section>`;
-    document.querySelector("#playerSearch").addEventListener("input", e => searchPlayers(e.target.value, "#playerSuggestions"));
-    document.querySelector("#playerSuggestions").addEventListener("click", async () => {
-        setTimeout(async () => {
-            if (!state.selectedPlayer) return;
-            const detail = document.querySelector("#playerDetail");
-            detail.innerHTML = `<div class="muted">Loading...</div>`;
-            const data = await api(`/api/players/${state.selectedPlayer.player_id}/profile`);
-            const p = data.profiles[0];
-            detail.innerHTML = `<h3>${state.selectedPlayer.player_name}</h3><div class="metrics-grid">${metric(p.player_prior_fga, "prior FGA")}${metric(pct(p.player_prior_fg_pct_shrunk, 1), "shrunk FG%")}${metric(pct(p.player_prior_2p_pct_shrunk, 1), "shrunk 2P%")}${metric(pct(p.player_prior_3p_pct_shrunk, 1), "shrunk 3P%")}</div>`;
-            document.querySelector("#playerBars").innerHTML = bars([
-                { decision: "TAKE", share: p.player_prior_fg_pct_shrunk },
-                { decision: "REVIEW", share: p.player_prior_2p_pct_shrunk },
-                { decision: "DEFER", share: p.player_prior_3p_pct_shrunk },
-            ]).replaceAll("TAKE", "FG").replaceAll("REVIEW", "2P").replaceAll("DEFER", "3P");
-        }, 0);
+    document.querySelector("#historicalPlayerSearch").addEventListener("input", e => searchHistoricalPlayers(e.target.value, "#historicalPlayerSuggestions", player => {
+        document.querySelector("#historicalPlayerSearch").value = player.playerName;
+        openHistoricalPlayer(player);
+    }));
+}
+
+async function setComparePlayer(side, player) {
+    state[side].player = player;
+    state[side].season = null;
+    const label = side === "compareA" ? "A" : "B";
+    document.querySelector(`#${side}Search`).value = player.playerName;
+    const seasonBox = document.querySelector(`#${side}SeasonWrap`);
+    seasonBox.innerHTML = `<div class="muted">Loading seasons...</div>`;
+    const profile = await api(`/api/historical/players/${encodeURIComponent(player.playerId)}`);
+    state[side].season = profile.seasons[profile.seasons.length - 1].season;
+    seasonBox.innerHTML = `<label for="${side}Season">Season ${label}</label><select id="${side}Season">${seasonOptions(profile, state[side].season)}</select>`;
+    document.querySelector(`#${side}Season`).addEventListener("change", e => {
+        state[side].season = e.target.value;
+        loadComparison();
     });
+    await loadComparison();
+}
+
+function compareStat(label, getter, formatter = value => fmt(value, 1)) {
+    const a = getter(state.compareResult?.playerA);
+    const b = getter(state.compareResult?.playerB);
+    return `<tr><td>${label}</td><td>${formatter(a)}</td><td>${formatter(b)}</td></tr>`;
+}
+
+function comparisonTable(title, rows) {
+    return panel(title, `<div class="table-wrap comparison-table"><table><thead><tr><th>Metric</th><th>${text(state.compareResult.playerA.identity.playerName)}<br><span>${text(state.compareResult.playerA.identity.season)}</span></th><th>${text(state.compareResult.playerB.identity.playerName)}<br><span>${text(state.compareResult.playerB.identity.season)}</span></th></tr></thead><tbody>${rows}</tbody></table></div>`);
+}
+
+async function loadComparison() {
+    const target = document.querySelector("#comparisonResult");
+    if (!target) return;
+    const a = state.compareA;
+    const b = state.compareB;
+    if (!a.player || !a.season || !b.player || !b.season) {
+        target.innerHTML = `<div class="panel empty-state"><h3>Choose two player-seasons</h3><p class="muted">The comparison keeps raw, per-75, and era-relative values side by side without declaring a winner.</p></div>`;
+        return;
+    }
+    target.innerHTML = `<div class="muted">Loading comparison...</div>`;
+    try {
+        state.compareResult = await api(`/api/historical/compare?playerA=${encodeURIComponent(a.player.playerId)}&seasonA=${encodeURIComponent(a.season)}&playerB=${encodeURIComponent(b.player.playerId)}&seasonB=${encodeURIComponent(b.season)}`);
+        const result = state.compareResult;
+        target.innerHTML = `
+            <div class="compare-head panel">
+                <div><h2>${text(result.playerA.identity.playerName)}</h2><p class="muted">${text(result.playerA.identity.season)} · ${text(result.playerA.identity.teamName)}</p></div>
+                <div class="versus">vs</div>
+                <div><h2>${text(result.playerB.identity.playerName)}</h2><p class="muted">${text(result.playerB.identity.season)} · ${text(result.playerB.identity.teamName)}</p></div>
+            </div>
+            <div class="profile-grid">
+                ${comparisonTable("Scoring", [
+                    compareStat("Points", p => p?.scoring.points, v => fmt(v, 0)),
+                    compareStat("PPG", p => p?.scoring.pointsPerGame),
+                    compareStat("PTS / 75", p => p?.scoring.pointsPer75),
+                    compareStat("USG%", p => p?.scoring.usagePct, v => pctPoint(v, 1)),
+                    compareStat("FGA", p => p?.scoring.fieldGoalAttempts, v => fmt(v, 0)),
+                ].join(""))}
+                ${comparisonTable("Efficiency", [
+                    compareStat("FG%", p => p?.shooting.fieldGoalPct, pct),
+                    compareStat("2P%", p => p?.shooting.twoPointPct, pct),
+                    compareStat("3P%", p => p?.shooting.threePointPct, pct),
+                    compareStat("FT%", p => p?.shooting.freeThrowPct, pct),
+                    compareStat("TS%", p => p?.shooting.trueShootingPct, pct),
+                    compareStat("Relative TS", p => p?.shooting.relativeTrueShooting, signedPctPoint),
+                    compareStat("3PAr", p => p?.shooting.threePointAttemptRate, pct),
+                    compareStat("FTr", p => p?.shooting.freeThrowRate, v => fmt(v, 3)),
+                ].join(""))}
+                ${comparisonTable("Playmaking", [
+                    compareStat("Assists", p => p?.playmaking.assists, v => fmt(v, 0)),
+                    compareStat("AST / 75", p => p?.playmaking.assistsPer75),
+                    compareStat("AST%", p => p?.playmaking.assistPct, v => pctPoint(v, 1)),
+                    compareStat("Turnovers", p => p?.playmaking.turnovers, v => fmt(v, 0)),
+                    compareStat("TOV / 75", p => p?.playmaking.turnoversPer75),
+                    compareStat("TOV%", p => p?.playmaking.turnoverPct, v => pctPoint(v, 1)),
+                ].join(""))}
+                ${comparisonTable("Rebounding / defense", [
+                    compareStat("REB / 75", p => p?.rebounding.reboundsPer75),
+                    compareStat("TRB%", p => p?.rebounding.totalReboundPct, v => pctPoint(v, 1)),
+                    compareStat("Steals / 75", p => p?.defense.stealsPer75),
+                    compareStat("Blocks / 75", p => p?.defense.blocksPer75),
+                ].join(""))}
+                ${comparisonTable("Advanced", [
+                    compareStat("PER", p => p?.advanced.playerEfficiencyRating),
+                    compareStat("WS", p => p?.advanced.winShares),
+                    compareStat("BPM", p => p?.advanced.boxPlusMinus),
+                ].join(""))}
+                ${comparisonTable("Era context", [
+                    compareStat("PTS / 75 percentile", p => p?.eraContext.metrics["Points / 75"]?.seasonPercentile, v => fmt(v, 0)),
+                    compareStat("Relative TS percentile", p => p?.eraContext.metrics["Relative TS"]?.seasonPercentile, v => fmt(v, 0)),
+                    compareStat("AST% percentile", p => p?.eraContext.metrics["AST%"]?.seasonPercentile, v => fmt(v, 0)),
+                    compareStat("TRB% percentile", p => p?.eraContext.metrics["TRB%"]?.seasonPercentile, v => fmt(v, 0)),
+                    compareStat("Team pace", p => p?.eraContext.teamPace),
+                    compareStat("League pace", p => p?.eraContext.leaguePace),
+                ].join(""))}
+            </div>`;
+    } catch (err) {
+        target.innerHTML = `<div class="error">${err.message}</div>`;
+    }
+}
+
+async function renderCompare() {
+    app.innerHTML = `
+        <section class="section">
+            <div class="section-header"><div><div class="eyebrow">Compare</div><h2>Historical player-season comparison.</h2><p class="muted">Choose two seasons and compare real historical production, efficiency, and era context.</p></div></div>
+            <div class="compare-controls">
+                <div class="panel control-stack">
+                    <div class="field autocomplete"><label for="compareASearch">Player A</label><input id="compareASearch" placeholder="Michael Jordan..." autocomplete="off" /><div class="suggestions" id="compareASuggestions"></div></div>
+                    <div class="field" id="compareASeasonWrap"><label>Season A</label><select disabled><option>Select player first</option></select></div>
+                </div>
+                <div class="panel control-stack">
+                    <div class="field autocomplete"><label for="compareBSearch">Player B</label><input id="compareBSearch" placeholder="Stephen Curry..." autocomplete="off" /><div class="suggestions" id="compareBSuggestions"></div></div>
+                    <div class="field" id="compareBSeasonWrap"><label>Season B</label><select disabled><option>Select player first</option></select></div>
+                </div>
+            </div>
+            <div id="comparisonResult" style="margin-top:16px"></div>
+        </section>`;
+    document.querySelector("#compareASearch").addEventListener("input", e => searchHistoricalPlayers(e.target.value, "#compareASuggestions", player => setComparePlayer("compareA", player)));
+    document.querySelector("#compareBSearch").addEventListener("input", e => searchHistoricalPlayers(e.target.value, "#compareBSuggestions", player => setComparePlayer("compareB", player)));
+    loadComparison();
 }
 
 async function renderHistory() {
@@ -627,6 +930,7 @@ function render() {
     const p = pageName();
     if (p === "lab") renderLab();
     else if (p === "players") renderPlayers();
+    else if (p === "compare") renderCompare();
     else if (p === "history") renderHistory();
     else if (p === "model") renderModel();
     else if (p === "research") renderResearch();
