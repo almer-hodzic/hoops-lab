@@ -10,6 +10,9 @@ const state = {
     historicalSelectedSeason: null,
     compareA: { player: null, season: null },
     compareB: { player: null, season: null },
+    teamBuilder: null,
+    teamProfiles: new Map(),
+    teamEditor: null,
     selectedPoint: { x: 80, y: 250, distance: 26.2 },
     shotValue: 3,
     actionType: "Jump Shot",
@@ -195,7 +198,7 @@ function renderOverview() {
             <div class="panel">
                 <div class="eyebrow">Product path</div>
                 <div class="flow" style="margin-top:16px">
-                    ${["Historical Players", "Season Profiles", "Era Context", "Comparison", "Shot Lab"].map((x, i) => `<div class="flow-step"><span>0${i + 1}</span><strong>${x}</strong></div>`).join("")}
+                    ${["Historical Players", "Season Profiles", "Team Builder", "Comparison", "Shot Lab"].map((x, i) => `<div class="flow-step"><span>0${i + 1}</span><strong>${x}</strong></div>`).join("")}
                 </div>
                 <div class="section">
                     <h3>Start with canonical data.</h3>
@@ -211,7 +214,7 @@ function renderOverview() {
             <div class="three-col">
                 ${panel("Players", `<p class="muted">Search player identities and inspect every available season.</p>`)}
                 ${panel("Compare", `<p class="muted">Put two historical player-seasons side by side without declaring an artificial winner.</p>`)}
-                ${panel("Shot Lab", `<p class="muted">Analyze a shot opportunity with the existing Decision Policy v1 workflow.</p>`)}
+                ${panel("Team Builder", `<p class="muted">Assemble a roster from specific historical player-seasons for future simulation work.</p>`)}
             </div>
         </section>`;
 }
@@ -835,6 +838,280 @@ async function renderCompare() {
     loadComparison();
 }
 
+function team() {
+    if (!state.teamBuilder) state.teamBuilder = TeamBuilder.load();
+    return state.teamBuilder;
+}
+
+function setTeam(next) {
+    state.teamBuilder = next;
+    TeamBuilder.save(next);
+}
+
+function entryKey(entry) {
+    return `${entry.playerId}|${entry.season}`;
+}
+
+async function profileForEntry(entry) {
+    if (!entry) return null;
+    const key = entryKey(entry);
+    if (!state.teamProfiles.has(key)) {
+        state.teamProfiles.set(key, await api(`/api/historical/players/${encodeURIComponent(entry.playerId)}/seasons/${encodeURIComponent(entry.season)}`));
+    }
+    return state.teamProfiles.get(key);
+}
+
+function positionWarning(entry, slot) {
+    if (!entry || slot.startsWith("BENCH")) return "";
+    const position = entry.position || "";
+    if (!position || position.split("-").includes(slot)) return "";
+    return `<div class="small subtle-warning">${text(position)} listed position in ${text(entry.season)}. Placement is allowed.</div>`;
+}
+
+async function rosterCard(entry, slot) {
+    if (!entry) {
+        return `<div class="roster-card empty">
+            <div><strong>${slot}</strong><span>Empty slot</span></div>
+            <button class="button secondary" data-team-add="${slot}">Add Player</button>
+        </div>`;
+    }
+    const profile = await profileForEntry(entry);
+    return `<div class="roster-card">
+        <div class="roster-main">
+            <div class="slot-tag">${slot}</div>
+            <div>
+                <h3>${text(entry.playerName)}</h3>
+                <p class="muted">${text(entry.season)} · ${text(entry.team)} · ${text(entry.position)}</p>
+                ${positionWarning(entry, slot)}
+            </div>
+        </div>
+        <div class="roster-stats">
+            ${metric(fmt(profile?.scoring.pointsPer75, 1), "PTS / 75")}
+            ${metric(fmt(profile?.playmaking.assistsPer75, 1), "AST / 75")}
+            ${metric(fmt(profile?.rebounding.reboundsPer75, 1), "REB / 75")}
+            ${metric(pct(profile?.shooting.trueShootingPct, 1), "TS%")}
+            ${metric(signedPctPoint(profile?.shooting.relativeTrueShooting, 1), "Rel TS")}
+        </div>
+        <div class="roster-actions">
+            <button class="button secondary" data-team-detail="${slot}">Details</button>
+            <button class="button secondary" data-team-replace="${slot}">Replace</button>
+            <button class="button secondary" data-team-season="${slot}">Change season</button>
+            <select data-team-move="${slot}" aria-label="Move ${text(entry.playerName)}">
+                <option value="">Move to...</option>
+                ${TeamBuilder.STARTER_SLOTS.map(s => `<option value="${s}">${s}</option>`).join("")}
+                <option value="BENCH">Bench</option>
+            </select>
+            <button class="button secondary" data-team-remove="${slot}">Remove</button>
+        </div>
+    </div>`;
+}
+
+function decadeLabel(season) {
+    const start = Number(String(season).slice(0, 4));
+    if (!Number.isFinite(start)) return "Unknown";
+    return `${Math.floor(start / 10) * 10}s`;
+}
+
+async function teamSummaryHtml(current) {
+    const entries = TeamBuilder.rosterEntries(current);
+    const profiles = await Promise.all(entries.map(profileForEntry));
+    const ages = profiles.map(p => p?.identity.age).filter(v => v !== null && v !== undefined && !Number.isNaN(Number(v)));
+    const pts = profiles.map(p => p?.scoring.pointsPer75).filter(v => v !== null && v !== undefined && !Number.isNaN(Number(v)));
+    const ast = profiles.map(p => p?.playmaking.assistsPer75).filter(v => v !== null && v !== undefined && !Number.isNaN(Number(v)));
+    const reb = profiles.map(p => p?.rebounding.reboundsPer75).filter(v => v !== null && v !== undefined && !Number.isNaN(Number(v)));
+    const avg = arr => arr.length ? arr.reduce((a, b) => a + Number(b), 0) / arr.length : null;
+    const eraCounts = entries.reduce((acc, entry) => {
+        const label = decadeLabel(entry.season);
+        acc[label] = (acc[label] || 0) + 1;
+        return acc;
+    }, {});
+    const maxEra = Math.max(1, ...Object.values(eraCounts));
+    return `
+        <div class="metrics-grid team-summary">
+            ${metric(`${TeamBuilder.rosterSize(current)} / 12`, "roster size")}
+            ${metric(fmt(avg(ages), 1), "average age")}
+            ${metric(fmt(avg(pts), 1), "avg PTS / 75")}
+            ${metric(fmt(avg(ast), 1), "avg AST / 75")}
+            ${metric(fmt(avg(reb), 1), "avg REB / 75")}
+        </div>
+        <div class="panel">
+            <h3>Era distribution</h3>
+            <div class="era-bars">${Object.entries(eraCounts).sort().map(([label, count]) => `
+                <div class="era-line"><div><strong>${label}</strong><span>${count}</span></div><div class="track"><div class="fill" style="width:${Math.max(8, count / maxEra * 100)}%"></div></div></div>`).join("") || `<div class="small">No players selected yet.</div>`}</div>
+        </div>`;
+}
+
+async function renderRoster() {
+    const current = team();
+    document.querySelector("#teamSummary").innerHTML = await teamSummaryHtml(current);
+    document.querySelector("#startersGrid").innerHTML = (await Promise.all(TeamBuilder.STARTER_SLOTS.map(slot => rosterCard(current.starters[slot], slot)))).join("");
+    const benchCards = [];
+    for (let i = 0; i < TeamBuilder.MAX_BENCH; i++) {
+        benchCards.push(await rosterCard(current.bench[i], current.bench[i]?.slot || "BENCH"));
+    }
+    document.querySelector("#benchGrid").innerHTML = benchCards.join("");
+    bindTeamActions();
+}
+
+function bindTeamActions() {
+    document.querySelectorAll("[data-team-add], [data-team-replace]").forEach(btn => btn.addEventListener("click", () => openTeamEditor(btn.dataset.teamAdd || btn.dataset.teamReplace, "replace")));
+    document.querySelectorAll("[data-team-season]").forEach(btn => btn.addEventListener("click", () => openSeasonChanger(btn.dataset.teamSeason)));
+    document.querySelectorAll("[data-team-detail]").forEach(btn => btn.addEventListener("click", () => showRosterDetails(btn.dataset.teamDetail)));
+    document.querySelectorAll("[data-team-remove]").forEach(btn => btn.addEventListener("click", () => {
+        setTeam(TeamBuilder.remove(team(), btn.dataset.teamRemove));
+        renderRoster();
+    }));
+    document.querySelectorAll("[data-team-move]").forEach(sel => sel.addEventListener("change", e => {
+        if (!e.target.value) return;
+        const result = TeamBuilder.move(team(), e.target.dataset.teamMove, e.target.value);
+        if (result.error) showTeamMessage(result.error, true);
+        else setTeam(result.team);
+        renderRoster();
+    }));
+}
+
+function showTeamMessage(message, error = false) {
+    const box = document.querySelector("#teamBuilderMessage");
+    if (!box) return;
+    box.innerHTML = message ? `<div class="${error ? "error" : "notice"}">${text(message)}</div>` : "";
+}
+
+async function openTeamEditor(slot, mode = "replace") {
+    state.teamEditor = { slot, player: null, profile: null, mode };
+    const editor = document.querySelector("#teamEditor");
+    editor.innerHTML = `
+        <div class="panel control-stack">
+            <div class="section-header"><div><div class="eyebrow">Add Player</div><h2>${slot === "BENCH" ? "Bench" : slot}</h2></div><button class="button secondary" id="closeTeamEditor">Close</button></div>
+            <div class="field autocomplete"><label for="teamPlayerSearch">Historical player</label><input id="teamPlayerSearch" placeholder="Search player..." autocomplete="off" /><div class="suggestions" id="teamPlayerSuggestions"></div></div>
+            <div class="field" id="teamSeasonSelectWrap"><label>Season</label><select disabled><option>Select player first</option></select></div>
+            <button class="button" id="confirmTeamPlayer" disabled>Add to roster</button>
+        </div>`;
+    document.querySelector("#closeTeamEditor").addEventListener("click", () => { editor.innerHTML = ""; });
+    document.querySelector("#teamPlayerSearch").addEventListener("input", e => searchHistoricalPlayers(e.target.value, "#teamPlayerSuggestions", async player => {
+        state.teamEditor.player = player;
+        document.querySelector("#teamPlayerSearch").value = player.playerName;
+        const profile = await api(`/api/historical/players/${encodeURIComponent(player.playerId)}`);
+        state.teamEditor.profile = profile;
+        const selected = profile.seasons[profile.seasons.length - 1].season;
+        document.querySelector("#teamSeasonSelectWrap").innerHTML = `<label for="teamSeasonSelect">Season</label><select id="teamSeasonSelect">${seasonOptions(profile, selected)}</select>`;
+        document.querySelector("#confirmTeamPlayer").disabled = false;
+    }));
+    document.querySelector("#confirmTeamPlayer").addEventListener("click", async () => {
+        const selectedSeason = document.querySelector("#teamSeasonSelect")?.value;
+        const player = state.teamEditor.player;
+        if (!player || !selectedSeason) return;
+        const profile = await api(`/api/historical/players/${encodeURIComponent(player.playerId)}/seasons/${encodeURIComponent(selectedSeason)}`);
+        const entry = TeamBuilder.entryFromSeason(profile, slot);
+        const result = TeamBuilder.addOrReplace(team(), slot, entry);
+        if (result.error) {
+            showTeamMessage(result.error, true);
+            return;
+        }
+        setTeam(result.team);
+        editor.innerHTML = "";
+        showTeamMessage(`${entry.playerName} ${entry.season} added.`);
+        renderRoster();
+    });
+}
+
+async function openSeasonChanger(slot) {
+    const entry = TeamBuilder.rosterEntries(team()).find(e => e.slot === slot);
+    if (!entry) return;
+    const editor = document.querySelector("#teamEditor");
+    const profile = await api(`/api/historical/players/${encodeURIComponent(entry.playerId)}`);
+    editor.innerHTML = `
+        <div class="panel control-stack">
+            <div class="section-header"><div><div class="eyebrow">Change Season</div><h2>${text(entry.playerName)}</h2></div><button class="button secondary" id="closeTeamEditor">Close</button></div>
+            <div class="field"><label for="teamSeasonChange">Season</label><select id="teamSeasonChange">${seasonOptions(profile, entry.season)}</select></div>
+            <button class="button" id="confirmSeasonChange">Update season</button>
+        </div>`;
+    document.querySelector("#closeTeamEditor").addEventListener("click", () => { editor.innerHTML = ""; });
+    document.querySelector("#confirmSeasonChange").addEventListener("click", async () => {
+        const seasonProfile = await api(`/api/historical/players/${encodeURIComponent(entry.playerId)}/seasons/${encodeURIComponent(document.querySelector("#teamSeasonChange").value)}`);
+        const result = TeamBuilder.changeSeason(team(), slot, seasonProfile);
+        if (result.error) showTeamMessage(result.error, true);
+        else {
+            setTeam(result.team);
+            editor.innerHTML = "";
+            renderRoster();
+        }
+    });
+}
+
+async function showRosterDetails(slot) {
+    const entry = TeamBuilder.rosterEntries(team()).find(e => e.slot === slot);
+    if (!entry) return;
+    const profile = await profileForEntry(entry);
+    document.querySelector("#teamDetails").innerHTML = `<div class="panel">${seasonProfileHtml(profile)}</div>`;
+}
+
+async function importTeamJson(raw) {
+    const parsed = TeamBuilder.deserialize(raw);
+    const entries = TeamBuilder.rosterEntries(parsed);
+    for (const entry of entries) {
+        await api(`/api/historical/players/${encodeURIComponent(entry.playerId)}/seasons/${encodeURIComponent(entry.season)}`);
+    }
+    setTeam(parsed);
+    await renderRoster();
+}
+
+async function renderTeamBuilder() {
+    state.teamBuilder = TeamBuilder.load();
+    app.innerHTML = `
+        <section class="section">
+            <div class="section-header">
+                <div><div class="eyebrow">Team Builder</div><h2>Build an all-time roster.</h2><p class="muted">Select specific historical player-seasons. No ratings, chemistry, or simulation outputs are generated here.</p></div>
+                <button class="button secondary" id="clearTeam">Clear team</button>
+            </div>
+            <div class="team-builder-layout">
+                <div class="panel control-stack">
+                    <div class="field"><label for="teamName">Team name</label><input id="teamName" value="${text(team().teamName)}" /></div>
+                    <div class="button-row">
+                        <button class="button secondary" id="exportTeam">Export Team JSON</button>
+                        <button class="button secondary" id="importTeam">Import Team JSON</button>
+                    </div>
+                    <textarea id="teamJsonBox" rows="8" placeholder="Team JSON import/export" aria-label="Team JSON import export"></textarea>
+                    <div id="teamBuilderMessage"></div>
+                </div>
+                <div>
+                    <div id="teamSummary"></div>
+                    <section class="section">
+                        <div class="section-header"><div><h2>Starting five</h2><p class="muted">PG, SG, SF, PF, C slots guide roster shape without rigid position blocking.</p></div></div>
+                        <div class="roster-grid" id="startersGrid"></div>
+                    </section>
+                    <section class="section">
+                        <div class="section-header"><div><h2>Bench</h2><p class="muted">Up to seven additional player-seasons.</p></div><button class="button secondary" data-team-add="BENCH">Add bench player</button></div>
+                        <div class="roster-grid" id="benchGrid"></div>
+                    </section>
+                    <div id="teamEditor"></div>
+                    <div id="teamDetails"></div>
+                </div>
+            </div>
+        </section>`;
+    document.querySelector("#teamName").addEventListener("input", e => {
+        const next = { ...team(), teamName: e.target.value || "My All-Time Team" };
+        setTeam(next);
+    });
+    document.querySelector("#clearTeam").addEventListener("click", () => {
+        setTeam(TeamBuilder.createEmptyTeam());
+        state.teamProfiles.clear();
+        renderTeamBuilder();
+    });
+    document.querySelector("#exportTeam").addEventListener("click", () => {
+        document.querySelector("#teamJsonBox").value = JSON.stringify(TeamBuilder.exportTeam(team()), null, 2);
+    });
+    document.querySelector("#importTeam").addEventListener("click", async () => {
+        try {
+            await importTeamJson(document.querySelector("#teamJsonBox").value);
+            showTeamMessage("Team imported.");
+        } catch (err) {
+            showTeamMessage(`Invalid imported roster: ${err.message}`, true);
+        }
+    });
+    document.querySelector("[data-team-add='BENCH']").addEventListener("click", () => openTeamEditor("BENCH"));
+    await renderRoster();
+}
+
 async function renderHistory() {
     app.innerHTML = `
         <section class="section">
@@ -931,6 +1208,7 @@ function render() {
     if (p === "lab") renderLab();
     else if (p === "players") renderPlayers();
     else if (p === "compare") renderCompare();
+    else if (p === "team-builder") renderTeamBuilder();
     else if (p === "history") renderHistory();
     else if (p === "model") renderModel();
     else if (p === "research") renderResearch();
