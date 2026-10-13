@@ -85,6 +85,48 @@ FEATURES = [
     "defense_box_proxy",
 ]
 
+LEAKAGE_SAFE_OFFENSE_FEATURES = [
+    f for f in FEATURES if f not in {"w_points_per_75", "w_per"}
+]
+
+FEATURE_AUDIT = {
+    "league_ortg_estimate": ("league_seasons.league_points_per_75", "league", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "league_pace": ("league_seasons.league_pace", "league", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "league_ts_pct": ("league_seasons.league_ts_pct", "league", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "w_points_per_75": ("player_seasons.points_per_75/player_team_splits.points_per_75 weighted by minutes", "player", "RECONSTRUCTION-ONLY", True),
+    "w_assists_per_75": ("player_seasons.assists_per_75/player_team_splits.assists_per_75 weighted by minutes", "player", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "w_rebounds_per_75": ("player_seasons.rebounds_per_75/player_team_splits.rebounds_per_75 weighted by minutes", "player", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "w_turnovers_per_75": ("player_seasons.turnovers_per_75/player_team_splits.turnovers_per_75 weighted by minutes", "player", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "w_steals_per_75": ("player_seasons.steals_per_75/player_team_splits.steals_per_75 weighted by minutes", "player", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "w_blocks_per_75": ("player_seasons.blocks_per_75/player_team_splits.blocks_per_75 weighted by minutes", "player", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "w_offensive_rebounds_per_75": ("player offensive_rebounds / estimated_possessions_minutes_team_pace * 75 weighted by minutes", "player", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "w_defensive_rebounds_per_75": ("player defensive_rebounds / estimated_possessions_minutes_team_pace * 75 weighted by minutes", "player", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "w_relative_ts": ("player_seasons.relative_ts/player_team_splits.relative_ts weighted by minutes", "player", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "w_true_shooting_pct": ("player_seasons.true_shooting_pct/player_team_splits.true_shooting_pct weighted by minutes", "player", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "w_usage_pct": ("player_seasons.usage_pct/player_team_splits.usage_pct weighted by minutes", "player", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "w_assist_pct": ("player_seasons.assist_pct/player_team_splits.assist_pct weighted by minutes", "player", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "w_turnover_pct": ("player_seasons.turnover_pct/player_team_splits.turnover_pct weighted by minutes", "player", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "w_total_rebound_pct": ("player_seasons.total_rebound_pct/player_team_splits.total_rebound_pct weighted by minutes", "player", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "w_three_point_attempt_rate": ("player_seasons.three_point_attempt_rate/player_team_splits.three_point_attempt_rate weighted by minutes", "player", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "w_free_throw_rate": ("player_seasons.free_throw_rate/player_team_splits.free_throw_rate weighted by minutes", "player", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "w_age": ("player_seasons.age/player_team_splits.age weighted by minutes", "player", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "w_per": ("player_seasons.player_efficiency_rating/player_team_splits.player_efficiency_rating weighted by minutes", "player", "RECONSTRUCTION-ONLY", True),
+    "team_3par_from_players": ("sum player three_point_attempts / sum player field_goal_attempts", "player", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "team_ftr_from_players": ("sum player free_throw_attempts / sum player field_goal_attempts", "player", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "team_ast_to_tov_from_players": ("sum player assists / sum player turnovers", "player", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "minutes_top1_share": ("roster construction or historical player minutes", "rotation", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "minutes_top3_share": ("roster construction or historical player minutes", "rotation", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "minutes_top5_share": ("roster construction or historical player minutes", "rotation", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "minutes_hhi": ("roster construction or historical player minutes", "rotation", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "rotation_players_500": ("roster construction or historical player minutes", "rotation", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "rotation_players_1000": ("roster construction or historical player minutes", "rotation", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "weighted_usage_top3": ("top-three player usage_pct weighted by projected/historical minutes", "player+rotation", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "usage_pressure": ("max(0, weighted_usage_top3 - 18.0)", "player+rotation", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "spacing_proxy": ("team_3par_from_players * w_relative_ts", "player", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "rebounding_proxy": ("w_rebounds_per_75 + 0.5 * w_offensive_rebounds_per_75", "player", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+    "defense_box_proxy": ("0.8*steals + 0.8*blocks + 0.35*defensive rebounds + 0.03*PER", "player", "SAFE FOR CUSTOM TEAM PROJECTION", False),
+}
+
 
 def safe_div(num: float | int | None, den: float | int | None) -> float | None:
     if num is None or den in (None, 0):
@@ -278,7 +320,20 @@ def formula_predict(df: pd.DataFrame, target: str) -> np.ndarray:
     ).to_numpy()
 
 
-def fit_models(df: pd.DataFrame) -> tuple[dict, dict]:
+def formula_predict_safe_offense(df: pd.DataFrame) -> np.ndarray:
+    return (
+        df["league_ortg_estimate"]
+        + 110 * df["w_relative_ts"].fillna(0)
+        + 0.18 * (df["w_assist_pct"].fillna(df["w_assist_pct"].median()) - 13)
+        - 0.24 * (df["w_turnover_pct"].fillna(df["w_turnover_pct"].median()) - 12)
+        + 7.5 * df["team_3par_from_players"].fillna(0)
+        + 3.0 * df["team_ftr_from_players"].fillna(0)
+        - 4.5 * df["usage_pressure"].fillna(0)
+    ).to_numpy()
+
+
+def fit_models(df: pd.DataFrame, feature_columns: list[str] | None = None) -> tuple[dict, dict]:
+    feature_columns = feature_columns or FEATURES
     splits = temporal_split(df)
     model_specs = {
         "formula": None,
@@ -300,15 +355,43 @@ def fit_models(df: pd.DataFrame) -> tuple[dict, dict]:
                 pred_test = formula_predict(splits["test"], target)
             else:
                 target_model = clone(model)
-                target_model.fit(splits["train"][FEATURES], splits["train"][target])
-                pred_val = target_model.predict(splits["validation"][FEATURES])
-                pred_test = target_model.predict(splits["test"][FEATURES])
+                target_model.fit(splits["train"][feature_columns], splits["train"][target])
+                pred_val = target_model.predict(splits["validation"][feature_columns])
+                pred_test = target_model.predict(splits["test"][feature_columns])
                 fitted[target][name] = target_model
             results[target][name] = {
                 "validation": metrics(splits["validation"][target], pred_val),
                 "test": metrics(splits["test"][target], pred_test),
             }
     return results, fitted
+
+
+def fit_leakage_safe_offense(df: pd.DataFrame) -> dict:
+    splits = temporal_split(df)
+    model_specs = {
+        "transparent_formula_safe": None,
+        "linear_safe": make_pipeline(SimpleImputer(strategy="median"), StandardScaler(), LinearRegression()),
+        "ridge_safe": make_pipeline(SimpleImputer(strategy="median"), StandardScaler(), RidgeCV(alphas=[0.1, 1, 3, 10, 30, 100])),
+        "hist_gradient_boosting_safe": make_pipeline(
+            SimpleImputer(strategy="median"),
+            HistGradientBoostingRegressor(max_iter=160, learning_rate=0.04, l2_regularization=0.1, random_state=7),
+        ),
+    }
+    results: dict[str, dict] = {}
+    for name, model in model_specs.items():
+        if model is None:
+            pred_val = formula_predict_safe_offense(splits["validation"])
+            pred_test = formula_predict_safe_offense(splits["test"])
+        else:
+            target_model = clone(model)
+            target_model.fit(splits["train"][LEAKAGE_SAFE_OFFENSE_FEATURES], splits["train"]["actual_ortg"])
+            pred_val = target_model.predict(splits["validation"][LEAKAGE_SAFE_OFFENSE_FEATURES])
+            pred_test = target_model.predict(splits["test"][LEAKAGE_SAFE_OFFENSE_FEATURES])
+        results[name] = {
+            "validation": metrics(splits["validation"]["actual_ortg"], pred_val),
+            "test": metrics(splits["test"]["actual_ortg"], pred_test),
+        }
+    return results
 
 
 def coefficient_sanity(fitted: dict[str, dict]) -> dict:
@@ -374,21 +457,73 @@ def famous_team_checks(preds: pd.DataFrame) -> list[dict]:
     return rows
 
 
+def audit_features() -> list[dict]:
+    audited = []
+    for feature in FEATURES:
+        source, source_type, category, encodes_ortg = FEATURE_AUDIT[feature]
+        uses_team_outcome = feature in {"actual_ortg", "actual_drtg", "actual_pace", "actual_net_rtg", "wins", "losses"}
+        realized_team_stat = source_type == "team_outcome"
+        audited.append(
+            {
+                "feature": feature,
+                "source_columns": source,
+                "source_type": source_type,
+                "uses_actual_team_season_outcome": uses_team_outcome,
+                "available_for_synthetic_custom_roster": category != "TARGET LEAKAGE / INVALID",
+                "derived_from_target_team_realized_season_statistics": realized_team_stat,
+                "can_mathematically_encode_ortg": encodes_ortg,
+                "category": category,
+            }
+        )
+    return audited
+
+
 def default_custom_minutes(entries: list[dict]) -> list[dict]:
-    # Transparent V1 proposal for custom rosters: historical MPG as evidence, capped.
-    # If the user supplies only a starting five, leave the remaining minutes explicit
-    # instead of pretending five players can carry a full 240-minute game.
-    base = []
+    # Transparent V1 proposal: historical MPG is evidence, but the final roster
+    # must allocate exactly 240 player-minutes without inventing ghost players.
+    starter_slots = {"PG", "SG", "SF", "PF", "C"}
+    base: list[dict] = []
     for entry in entries:
-        cap = 40 if entry["slot"] in {"PG", "SG", "SF", "PF", "C"} else 28
-        floor = 28 if entry["slot"] in {"PG", "SG", "SF", "PF", "C"} else 8
+        starter = entry["slot"] in starter_slots
+        hard_cap = 48.0 if len(entries) <= 5 else (42.0 if starter else 30.0)
+        soft_cap = 40.0 if starter else 24.0
+        floor = 28.0 if starter else 8.0
         mpg = entry.get("minutes_per_game")
-        estimate = min(cap, max(floor, mpg if not pd.isna(mpg) else floor))
-        base.append({**entry, "raw_minutes": estimate})
+        estimate = min(soft_cap, max(floor, float(mpg) if not pd.isna(mpg) else floor))
+        base.append({**entry, "raw_minutes": estimate, "hard_cap": hard_cap, "soft_cap": soft_cap, "floor": floor})
+
     total = sum(x["raw_minutes"] for x in base)
-    if total <= 240:
-        return [{**x, "projected_minutes": x["raw_minutes"]} for x in base]
-    return [{**x, "projected_minutes": x["raw_minutes"] / total * 240} for x in base]
+    if total > 240:
+        for item in base:
+            item["projected_minutes"] = item["raw_minutes"] / total * 240
+        return [{k: v for k, v in item.items() if k not in {"raw_minutes", "hard_cap", "soft_cap", "floor"}} for item in base]
+
+    remaining = 240.0 - total
+    for item in base:
+        item["projected_minutes"] = item["raw_minutes"]
+    while remaining > 1e-8:
+        eligible = [item for item in base if item["projected_minutes"] < item["hard_cap"] - 1e-8]
+        if not eligible:
+            raise ValueError("Rotation cannot reach 240 minutes under configured hard caps.")
+        weight_sum = sum(max(item["raw_minutes"], 1.0) for item in eligible)
+        used = 0.0
+        for item in eligible:
+            room = item["hard_cap"] - item["projected_minutes"]
+            add = min(room, remaining * max(item["raw_minutes"], 1.0) / weight_sum)
+            item["projected_minutes"] += add
+            used += add
+        if used <= 1e-8:
+            break
+        remaining -= used
+
+    rounded = [round(item["projected_minutes"], 1) for item in base]
+    drift = round(240.0 - sum(rounded), 1)
+    if abs(drift) >= 0.1:
+        idx = max(range(len(rounded)), key=lambda i: base[i]["hard_cap"] - rounded[i])
+        rounded[idx] = round(rounded[idx] + drift, 1)
+    for item, minutes in zip(base, rounded):
+        item["projected_minutes"] = minutes
+    return [{k: v for k, v in item.items() if k not in {"raw_minutes", "hard_cap", "soft_cap", "floor"}} for item in base]
 
 
 def custom_team_profile(players: pd.DataFrame, fitted: dict, selected: dict) -> dict:
@@ -399,8 +534,25 @@ def custom_team_profile(players: pd.DataFrame, fitted: dict, selected: dict) -> 
         entries.append(row)
     rotation = default_custom_minutes(entries)
     group = pd.DataFrame(rotation).copy()
+    historical_minutes = pd.to_numeric(group["minutes"], errors="coerce").replace(0, np.nan)
     group = add_derived_player_features(group)
     group["minutes"] = group["projected_minutes"] * 82
+    scale = group["minutes"] / historical_minutes
+    for col in [
+        "field_goal_attempts",
+        "three_point_attempts",
+        "free_throw_attempts",
+        "assists",
+        "turnovers",
+        "offensive_rebounds",
+        "defensive_rebounds",
+        "rebounds",
+        "steals",
+        "blocks",
+        "points",
+    ]:
+        if col in group.columns:
+            group[col] = pd.to_numeric(group[col], errors="coerce") * scale
     group["team_id"] = "custom:all-time-demo"
     group["team_name"] = "Curry/Jordan/LeBron/Duncan/Shaq Demo"
     group["season"] = "custom-neutral"
@@ -437,6 +589,11 @@ def custom_team_profile(players: pd.DataFrame, fitted: dict, selected: dict) -> 
     rows = build_team_rows(group, team_stub, league_stub)
     row = rows.iloc[0]
     formula_preds = {
+        "projected_ortg": float(formula_predict_safe_offense(rows)[0]),
+        "projected_drtg": float(formula_predict(rows, "actual_drtg")[0]),
+        "projected_pace": float(formula_predict(rows, "actual_pace")[0]),
+    }
+    reconstruction_formula_preds = {
         target.replace("actual_", "projected_"): float(formula_predict(rows, target)[0])
         for target in ["actual_ortg", "actual_drtg", "actual_pace"]
     }
@@ -479,12 +636,14 @@ def custom_team_profile(players: pd.DataFrame, fitted: dict, selected: dict) -> 
         },
         "projections": {k: round(v, 2) for k, v in formula_preds.items()},
         "transparent_formula_projections": {k: round(v, 2) for k, v in formula_preds.items()},
+        "reconstruction_formula_projections": {k: round(v, 2) for k, v in reconstruction_formula_preds.items()},
         "selected_model_raw_projections": {k: round(v, 2) for k, v in learned_preds.items()},
+        "total_projected_minutes": round(selected_minutes, 1),
         "unassigned_bench_minutes": round(max(0.0, 240 - selected_minutes), 1),
         "caveats": [
             "Actual high-usage stars cannot all retain original usage; usage pressure is included as a penalty/proxy, not chemistry.",
             "Individual defense is weakly observed in current historical PlayerSeason data.",
-            "Only five players were supplied; remaining bench minutes are explicit instead of silently invented.",
+            "Only five players were supplied; V1 allocates all 240 minutes among them instead of silently inventing replacement players.",
             "Learned reconstruction models can extrapolate badly on all-star custom rosters, so the transparent formula projection is shown as the safer prototype output.",
             "Projection is a team-strength profile, not a simulated win total.",
         ],
@@ -506,6 +665,15 @@ def write_report(summary: dict) -> None:
         for r in summary["famous_team_checks"]
     ]
     custom = summary["custom_team_profile"]
+    safe_metrics_rows = [
+        f"| {model} | {values['validation']['mae']:.2f} | {values['validation']['rmse']:.2f} | {values['validation']['r2']:.3f} | "
+        f"{values['test']['mae']:.2f} | {values['test']['rmse']:.2f} | {values['test']['r2']:.3f} |"
+        for model, values in summary["leakage_safe_offense_metrics"].items()
+    ]
+    audit_rows = [
+        f"| {r['feature']} | {r['source_type']} | {r['category']} | {str(r['available_for_synthetic_custom_roster'])} | {str(r['can_mathematically_encode_ortg'])} |"
+        for r in summary["feature_audit"]
+    ]
     rotation_rows = [
         f"| {r['slot']} | {r['player_name']} | {r['season']} | {r['historical_team']} | {r['historical_mpg']:.1f} | {r['projected_minutes']:.1f} |"
         for r in custom["rotation"]
@@ -563,6 +731,36 @@ Recommended selected approaches:
 
 Ridge is acceptable for historical ORtg reconstruction because it is stable on validation/test and remains interpretable. DRtg and Pace use formula baselines for the prototype recommendation because the learned models either underperform the temporal test split or extrapolate poorly for custom all-time rosters.
 
+## Leakage And Deployability Audit
+
+No production application code is changed by this spike. The audit found no target team outcome columns in the model feature matrix: `actual_ortg`, `actual_drtg`, `actual_pace`, `actual_net_rtg`, wins, and losses are stored only as labels/context outputs, not predictors.
+
+The suspicious ORtg Ridge result is still not deployable evidence. The strongest issue is `w_points_per_75`: it is computed from realized historical player scoring and actual historical minutes, so it can almost directly reconstruct team points per possession. `w_per` is also treated as reconstruction-only because it is a broad realized box-score composite. Both are available for selected PlayerSeason records, but they should not drive the production custom-team projection model without role/usage recalibration.
+
+Team-level leakage check: the Ridge feature matrix does not use actual team TS%, actual team TOV%, actual team ORB%, actual team FTr, actual offensive possessions, actual team points, actual team ORtg, net rating, or wins/losses. The `team_3par_from_players`, `team_ftr_from_players`, and `team_ast_to_tov_from_players` columns are rebuilt from player rows; for custom rosters the script scales player counting inputs to projected minutes before recomputing those ratios.
+
+| Feature | Source Type | Category | Synthetic Available | Can Encode ORtg |
+| --- | --- | --- | ---: | ---: |
+{chr(10).join(audit_rows)}
+
+Leakage-safe ORtg retrain excludes `w_points_per_75` and `w_per` from learned features, and the safe formula excludes direct scoring volume.
+
+| Safe ORtg Model | Val MAE | Val RMSE | Val R2 | Test MAE | Test RMSE | Test R2 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+{chr(10).join(safe_metrics_rows)}
+
+This is materially worse than the original `0.11` test MAE and should be reported as the more honest deployability check. The remaining strong Ridge result still benefits from historical player-season role context, so it is useful for reconstruction but not sufficient proof for arbitrary synthetic rosters.
+
+Custom-roster availability proof: the proposed production path uses only canonical PlayerSeason fields, explicit roster slots, explicit target-era league context, and the rotation algorithm below. Any feature that cannot be computed from those inputs is excluded from the production projection path.
+
+## Defense Audit
+
+DRtg inputs do not include actual team DRtg, opponent scoring, net rating, wins/losses, or other realized defensive outcome columns. The genuinely derivable defensive evidence is limited to player defensive rebounds, steals, blocks, total rebound rate, age, minutes/role, and the current `defense_box_proxy`. That is not enough for confident individual defensive projection, so the formula baseline remains the safest V1 approach and should carry wide uncertainty.
+
+## Pace Audit
+
+Projected pace does not copy the custom roster's actual team pace because no such team exists. The custom profile uses target-era `league_pace`, roster concentration, and player stat proxies. Historical validation still uses actual historical player minutes, so learned pace reconstruction remains descriptive; the deployable V1 path should keep pace anchored to target era plus transparent role/style adjustments.
+
 ## Coefficient / Feature Sanity
 
 ```json
@@ -590,10 +788,12 @@ Historical validation uses actual minutes.
 For custom V1 rosters, use a transparent default:
 
 1. Start from each selected PlayerSeason's historical MPG.
-2. Starters have a floor near starter minutes and a cap around 40.
-3. Bench players have lower floors and caps.
-4. Normalize projected player minutes to total exactly 240.
-5. Show the projected minutes and allow later user overrides before production simulation.
+2. Assign role-aware floors and soft caps: starters start near 28-40 minutes, bench players near 8-24.
+3. Assign hard caps: five-player-only rosters may reach 48 per player; rosters with bench depth cap starters near 42 and bench near 30.
+4. If initial minutes exceed 240, scale down proportionally.
+5. If initial minutes are below 240, distribute remaining minutes by historical MPG weight until hard caps are reached.
+6. Round to one decimal and apply any rounding drift to the player with remaining headroom.
+7. The final rotation must equal exactly 240.0 minutes; otherwise the roster is invalid.
 
 This avoids equal-player weighting while keeping assumptions visible.
 
@@ -620,6 +820,8 @@ Projected profile:
 ```json
 {json.dumps(custom['projections'], indent=2)}
 ```
+
+Total projected minutes: {custom['total_projected_minutes']}
 
 Raw selected-model extrapolation, shown for audit only:
 
@@ -687,7 +889,7 @@ Biggest uncertainty sources:
 
 **{summary['verdict']}**
 
-Build the next iteration as a transparent prototype only after adding game-log data for variance/home-court and improving the defensive model story. Offense and pace are viable as V1 ingredients; defense and win probability need stronger support.
+The model foundation still needs work before game-log calibration is the only blocker. The immediate fixes are to keep reconstruction-only scoring/composite features out of the production projection path, formalize usage normalization, and improve the defensive feature story. After that, add game-log data for variance/home-court and win-probability calibration.
 """
     (REPORT_DIR / "SIMULATION_ENGINE_DESIGN.md").write_text(report, encoding="utf-8")
 
@@ -699,6 +901,7 @@ def main() -> int:
     team_rows = build_team_rows(roster, teams, leagues)
     team_rows = team_rows.dropna(subset=["actual_ortg", "actual_drtg", "actual_pace"]).copy()
     results, fitted = fit_models(team_rows)
+    leakage_safe_offense_metrics = fit_leakage_safe_offense(team_rows)
     selected = select_recommended(results)
     sanity = coefficient_sanity(fitted)
     preds = predictions_table(team_rows, fitted, selected)
@@ -715,12 +918,15 @@ def main() -> int:
             "test_rows": int(len(temporal_split(team_rows)["test"])),
         },
         "feature_columns": FEATURES,
+        "leakage_safe_offense_feature_columns": LEAKAGE_SAFE_OFFENSE_FEATURES,
+        "feature_audit": audit_features(),
         "model_metrics": results,
+        "leakage_safe_offense_metrics": leakage_safe_offense_metrics,
         "selected_models": selected,
         "coefficient_sanity": sanity,
         "famous_team_checks": famous,
         "custom_team_profile": custom,
-        "verdict": "NEEDS MORE DATA / MODELING",
+        "verdict": "MODEL FOUNDATION STILL NEEDS WORK",
     }
     team_rows.to_csv(OUT_DIR / "team_reconstruction_features.csv", index=False)
     preds.to_csv(OUT_DIR / "team_reconstruction_predictions.csv", index=False)

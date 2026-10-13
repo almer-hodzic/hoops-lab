@@ -2,7 +2,7 @@
 
 ## Verdict
 
-**NEEDS MORE DATA / MODELING**
+**MODEL FOUNDATION STILL NEEDS WORK**
 
 The current historical data is strong enough to build a transparent V1 team-strength profile for offense and pace. It is not strong enough to present defense or game-level win probability as definitive without additional game-level and stronger defensive data. The recommended next build should expose uncertainty clearly and keep the simulator labeled as an experimental historical translation.
 
@@ -61,6 +61,73 @@ Recommended selected approaches:
 - Pace prototype baseline: `formula`
 
 Ridge is acceptable for historical ORtg reconstruction because it is stable on validation/test and remains interpretable. DRtg and Pace use formula baselines for the prototype recommendation because the learned models either underperform the temporal test split or extrapolate poorly for custom all-time rosters.
+
+## Leakage And Deployability Audit
+
+No production application code is changed by this spike. The audit found no target team outcome columns in the model feature matrix: `actual_ortg`, `actual_drtg`, `actual_pace`, `actual_net_rtg`, wins, and losses are stored only as labels/context outputs, not predictors.
+
+The suspicious ORtg Ridge result is still not deployable evidence. The strongest issue is `w_points_per_75`: it is computed from realized historical player scoring and actual historical minutes, so it can almost directly reconstruct team points per possession. `w_per` is also treated as reconstruction-only because it is a broad realized box-score composite. Both are available for selected PlayerSeason records, but they should not drive the production custom-team projection model without role/usage recalibration.
+
+Team-level leakage check: the Ridge feature matrix does not use actual team TS%, actual team TOV%, actual team ORB%, actual team FTr, actual offensive possessions, actual team points, actual team ORtg, net rating, or wins/losses. The `team_3par_from_players`, `team_ftr_from_players`, and `team_ast_to_tov_from_players` columns are rebuilt from player rows; for custom rosters the script scales player counting inputs to projected minutes before recomputing those ratios.
+
+| Feature | Source Type | Category | Synthetic Available | Can Encode ORtg |
+| --- | --- | --- | ---: | ---: |
+| league_ortg_estimate | league | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| league_pace | league | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| league_ts_pct | league | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| w_points_per_75 | player | RECONSTRUCTION-ONLY | True | True |
+| w_assists_per_75 | player | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| w_rebounds_per_75 | player | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| w_turnovers_per_75 | player | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| w_steals_per_75 | player | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| w_blocks_per_75 | player | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| w_offensive_rebounds_per_75 | player | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| w_defensive_rebounds_per_75 | player | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| w_relative_ts | player | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| w_true_shooting_pct | player | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| w_usage_pct | player | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| w_assist_pct | player | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| w_turnover_pct | player | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| w_total_rebound_pct | player | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| w_three_point_attempt_rate | player | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| w_free_throw_rate | player | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| w_age | player | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| w_per | player | RECONSTRUCTION-ONLY | True | True |
+| team_3par_from_players | player | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| team_ftr_from_players | player | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| team_ast_to_tov_from_players | player | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| minutes_top1_share | rotation | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| minutes_top3_share | rotation | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| minutes_top5_share | rotation | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| minutes_hhi | rotation | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| rotation_players_500 | rotation | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| rotation_players_1000 | rotation | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| weighted_usage_top3 | player+rotation | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| usage_pressure | player+rotation | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| spacing_proxy | player | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| rebounding_proxy | player | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+| defense_box_proxy | player | SAFE FOR CUSTOM TEAM PROJECTION | True | False |
+
+Leakage-safe ORtg retrain excludes `w_points_per_75` and `w_per` from learned features, and the safe formula excludes direct scoring volume.
+
+| Safe ORtg Model | Val MAE | Val RMSE | Val R2 | Test MAE | Test RMSE | Test R2 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| transparent_formula_safe | 4.00 | 4.40 | -0.418 | 4.91 | 5.29 | -0.930 |
+| linear_safe | 0.38 | 0.49 | 0.982 | 0.48 | 0.61 | 0.975 |
+| ridge_safe | 0.37 | 0.49 | 0.982 | 0.47 | 0.60 | 0.975 |
+| hist_gradient_boosting_safe | 1.00 | 1.34 | 0.868 | 3.08 | 3.93 | -0.065 |
+
+This is materially worse than the original `0.11` test MAE and should be reported as the more honest deployability check. The remaining strong Ridge result still benefits from historical player-season role context, so it is useful for reconstruction but not sufficient proof for arbitrary synthetic rosters.
+
+Custom-roster availability proof: the proposed production path uses only canonical PlayerSeason fields, explicit roster slots, explicit target-era league context, and the rotation algorithm below. Any feature that cannot be computed from those inputs is excluded from the production projection path.
+
+## Defense Audit
+
+DRtg inputs do not include actual team DRtg, opponent scoring, net rating, wins/losses, or other realized defensive outcome columns. The genuinely derivable defensive evidence is limited to player defensive rebounds, steals, blocks, total rebound rate, age, minutes/role, and the current `defense_box_proxy`. That is not enough for confident individual defensive projection, so the formula baseline remains the safest V1 approach and should carry wide uncertainty.
+
+## Pace Audit
+
+Projected pace does not copy the custom roster's actual team pace because no such team exists. The custom profile uses target-era `league_pace`, roster concentration, and player stat proxies. Historical validation still uses actual historical player minutes, so learned pace reconstruction remains descriptive; the deployable V1 path should keep pace anchored to target era plus transparent role/style adjustments.
 
 ## Coefficient / Feature Sanity
 
@@ -255,10 +322,12 @@ Historical validation uses actual minutes.
 For custom V1 rosters, use a transparent default:
 
 1. Start from each selected PlayerSeason's historical MPG.
-2. Starters have a floor near starter minutes and a cap around 40.
-3. Bench players have lower floors and caps.
-4. Normalize projected player minutes to total exactly 240.
-5. Show the projected minutes and allow later user overrides before production simulation.
+2. Assign role-aware floors and soft caps: starters start near 28-40 minutes, bench players near 8-24.
+3. Assign hard caps: five-player-only rosters may reach 48 per player; rosters with bench depth cap starters near 42 and bench near 30.
+4. If initial minutes exceed 240, scale down proportionally.
+5. If initial minutes are below 240, distribute remaining minutes by historical MPG weight until hard caps are reached.
+6. Round to one decimal and apply any rounding drift to the player with remaining headroom.
+7. The final rotation must equal exactly 240.0 minutes; otherwise the roster is invalid.
 
 This avoids equal-player weighting while keeping assumptions visible.
 
@@ -272,26 +341,26 @@ Target environment: 2016-17 neutral NBA environment
 
 | Slot | Player | Season | Historical Team | Historical MPG | Projected Minutes |
 | --- | --- | --- | --- | ---: | ---: |
-| PG | Stephen Curry | 2015-16 | GSW | 34.2 | 34.2 |
-| SG | Michael Jordan | 1990-91 | CHI | 37.0 | 37.0 |
-| SF | LeBron James | 2012-13 | MIA | 37.9 | 37.9 |
-| PF | Tim Duncan | 2002-03 | SAS | 39.3 | 39.3 |
-| C | Shaquille O'Neal | 1999-00 | LAL | 40.0 | 40.0 |
+| PG | Stephen Curry | 2015-16 | GSW | 34.2 | 48.0 |
+| SG | Michael Jordan | 1990-91 | CHI | 37.0 | 48.0 |
+| SF | LeBron James | 2012-13 | MIA | 37.9 | 48.0 |
+| PF | Tim Duncan | 2002-03 | SAS | 39.3 | 48.0 |
+| C | Shaquille O'Neal | 1999-00 | LAL | 40.0 | 48.0 |
 
 Intermediate profile:
 
 ```json
 {
-  "w_points_per_75": 28.7417,
-  "w_relative_ts": 0.0793,
-  "w_usage_pct": 30.9197,
-  "weighted_usage_top3": 18.5383,
-  "usage_pressure": 0.5383,
-  "team_3par_from_players": 0.1601,
-  "team_ftr_from_players": 0.3905,
-  "spacing_proxy": 0.0127,
-  "rebounding_proxy": 10.6046,
-  "defense_box_proxy": 6.0036
+  "w_points_per_75": 28.8571,
+  "w_relative_ts": 0.0807,
+  "w_usage_pct": 30.98,
+  "weighted_usage_top3": 19.14,
+  "usage_pressure": 1.14,
+  "team_3par_from_players": 0.1726,
+  "team_ftr_from_players": 0.3857,
+  "spacing_proxy": 0.0139,
+  "rebounding_proxy": 10.4195,
+  "defense_box_proxy": 5.9574
 }
 ```
 
@@ -299,29 +368,31 @@ Projected profile:
 
 ```json
 {
-  "projected_ortg": 120.22,
+  "projected_ortg": 118.38,
   "projected_drtg": 109.53,
   "projected_pace": 96.4
 }
 ```
+
+Total projected minutes: 240.0
 
 Raw selected-model extrapolation, shown for audit only:
 
 ```json
 {
-  "projected_ortg": 168.54,
+  "projected_ortg": 169.16,
   "projected_drtg": 109.53,
   "projected_pace": 96.4
 }
 ```
 
-Unassigned bench minutes: 51.7
+Unassigned bench minutes: 0.0
 
 Caveats:
 
 - Actual high-usage stars cannot all retain original usage; usage pressure is included as a penalty/proxy, not chemistry.
 - Individual defense is weakly observed in current historical PlayerSeason data.
-- Only five players were supplied; remaining bench minutes are explicit instead of silently invented.
+- Only five players were supplied; V1 allocates all 240 minutes among them instead of silently inventing replacement players.
 - Learned reconstruction models can extrapolate badly on all-star custom rosters, so the transparent formula projection is shown as the safer prototype output.
 - Projection is a team-strength profile, not a simulated win total.
 
@@ -377,6 +448,6 @@ Biggest uncertainty sources:
 
 ## Recommendation
 
-**NEEDS MORE DATA / MODELING**
+**MODEL FOUNDATION STILL NEEDS WORK**
 
-Build the next iteration as a transparent prototype only after adding game-log data for variance/home-court and improving the defensive model story. Offense and pace are viable as V1 ingredients; defense and win probability need stronger support.
+The model foundation still needs work before game-log calibration is the only blocker. The immediate fixes are to keep reconstruction-only scoring/composite features out of the production projection path, formalize usage normalization, and improve the defensive feature story. After that, add game-log data for variance/home-court and win-probability calibration.

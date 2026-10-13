@@ -44,6 +44,393 @@
     "rebounding_proxy",
     "defense_box_proxy"
   ],
+  "leakage_safe_offense_feature_columns": [
+    "league_ortg_estimate",
+    "league_pace",
+    "league_ts_pct",
+    "w_assists_per_75",
+    "w_rebounds_per_75",
+    "w_turnovers_per_75",
+    "w_steals_per_75",
+    "w_blocks_per_75",
+    "w_offensive_rebounds_per_75",
+    "w_defensive_rebounds_per_75",
+    "w_relative_ts",
+    "w_true_shooting_pct",
+    "w_usage_pct",
+    "w_assist_pct",
+    "w_turnover_pct",
+    "w_total_rebound_pct",
+    "w_three_point_attempt_rate",
+    "w_free_throw_rate",
+    "w_age",
+    "team_3par_from_players",
+    "team_ftr_from_players",
+    "team_ast_to_tov_from_players",
+    "minutes_top1_share",
+    "minutes_top3_share",
+    "minutes_top5_share",
+    "minutes_hhi",
+    "rotation_players_500",
+    "rotation_players_1000",
+    "weighted_usage_top3",
+    "usage_pressure",
+    "spacing_proxy",
+    "rebounding_proxy",
+    "defense_box_proxy"
+  ],
+  "feature_audit": [
+    {
+      "feature": "league_ortg_estimate",
+      "source_columns": "league_seasons.league_points_per_75",
+      "source_type": "league",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "league_pace",
+      "source_columns": "league_seasons.league_pace",
+      "source_type": "league",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "league_ts_pct",
+      "source_columns": "league_seasons.league_ts_pct",
+      "source_type": "league",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "w_points_per_75",
+      "source_columns": "player_seasons.points_per_75/player_team_splits.points_per_75 weighted by minutes",
+      "source_type": "player",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": true,
+      "category": "RECONSTRUCTION-ONLY"
+    },
+    {
+      "feature": "w_assists_per_75",
+      "source_columns": "player_seasons.assists_per_75/player_team_splits.assists_per_75 weighted by minutes",
+      "source_type": "player",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "w_rebounds_per_75",
+      "source_columns": "player_seasons.rebounds_per_75/player_team_splits.rebounds_per_75 weighted by minutes",
+      "source_type": "player",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "w_turnovers_per_75",
+      "source_columns": "player_seasons.turnovers_per_75/player_team_splits.turnovers_per_75 weighted by minutes",
+      "source_type": "player",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "w_steals_per_75",
+      "source_columns": "player_seasons.steals_per_75/player_team_splits.steals_per_75 weighted by minutes",
+      "source_type": "player",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "w_blocks_per_75",
+      "source_columns": "player_seasons.blocks_per_75/player_team_splits.blocks_per_75 weighted by minutes",
+      "source_type": "player",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "w_offensive_rebounds_per_75",
+      "source_columns": "player offensive_rebounds / estimated_possessions_minutes_team_pace * 75 weighted by minutes",
+      "source_type": "player",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "w_defensive_rebounds_per_75",
+      "source_columns": "player defensive_rebounds / estimated_possessions_minutes_team_pace * 75 weighted by minutes",
+      "source_type": "player",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "w_relative_ts",
+      "source_columns": "player_seasons.relative_ts/player_team_splits.relative_ts weighted by minutes",
+      "source_type": "player",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "w_true_shooting_pct",
+      "source_columns": "player_seasons.true_shooting_pct/player_team_splits.true_shooting_pct weighted by minutes",
+      "source_type": "player",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "w_usage_pct",
+      "source_columns": "player_seasons.usage_pct/player_team_splits.usage_pct weighted by minutes",
+      "source_type": "player",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "w_assist_pct",
+      "source_columns": "player_seasons.assist_pct/player_team_splits.assist_pct weighted by minutes",
+      "source_type": "player",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "w_turnover_pct",
+      "source_columns": "player_seasons.turnover_pct/player_team_splits.turnover_pct weighted by minutes",
+      "source_type": "player",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "w_total_rebound_pct",
+      "source_columns": "player_seasons.total_rebound_pct/player_team_splits.total_rebound_pct weighted by minutes",
+      "source_type": "player",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "w_three_point_attempt_rate",
+      "source_columns": "player_seasons.three_point_attempt_rate/player_team_splits.three_point_attempt_rate weighted by minutes",
+      "source_type": "player",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "w_free_throw_rate",
+      "source_columns": "player_seasons.free_throw_rate/player_team_splits.free_throw_rate weighted by minutes",
+      "source_type": "player",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "w_age",
+      "source_columns": "player_seasons.age/player_team_splits.age weighted by minutes",
+      "source_type": "player",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "w_per",
+      "source_columns": "player_seasons.player_efficiency_rating/player_team_splits.player_efficiency_rating weighted by minutes",
+      "source_type": "player",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": true,
+      "category": "RECONSTRUCTION-ONLY"
+    },
+    {
+      "feature": "team_3par_from_players",
+      "source_columns": "sum player three_point_attempts / sum player field_goal_attempts",
+      "source_type": "player",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "team_ftr_from_players",
+      "source_columns": "sum player free_throw_attempts / sum player field_goal_attempts",
+      "source_type": "player",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "team_ast_to_tov_from_players",
+      "source_columns": "sum player assists / sum player turnovers",
+      "source_type": "player",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "minutes_top1_share",
+      "source_columns": "roster construction or historical player minutes",
+      "source_type": "rotation",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "minutes_top3_share",
+      "source_columns": "roster construction or historical player minutes",
+      "source_type": "rotation",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "minutes_top5_share",
+      "source_columns": "roster construction or historical player minutes",
+      "source_type": "rotation",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "minutes_hhi",
+      "source_columns": "roster construction or historical player minutes",
+      "source_type": "rotation",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "rotation_players_500",
+      "source_columns": "roster construction or historical player minutes",
+      "source_type": "rotation",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "rotation_players_1000",
+      "source_columns": "roster construction or historical player minutes",
+      "source_type": "rotation",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "weighted_usage_top3",
+      "source_columns": "top-three player usage_pct weighted by projected/historical minutes",
+      "source_type": "player+rotation",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "usage_pressure",
+      "source_columns": "max(0, weighted_usage_top3 - 18.0)",
+      "source_type": "player+rotation",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "spacing_proxy",
+      "source_columns": "team_3par_from_players * w_relative_ts",
+      "source_type": "player",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "rebounding_proxy",
+      "source_columns": "w_rebounds_per_75 + 0.5 * w_offensive_rebounds_per_75",
+      "source_type": "player",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    },
+    {
+      "feature": "defense_box_proxy",
+      "source_columns": "0.8*steals + 0.8*blocks + 0.35*defensive rebounds + 0.03*PER",
+      "source_type": "player",
+      "uses_actual_team_season_outcome": false,
+      "available_for_synthetic_custom_roster": true,
+      "derived_from_target_team_realized_season_statistics": false,
+      "can_mathematically_encode_ortg": false,
+      "category": "SAFE FOR CUSTOM TEAM PROJECTION"
+    }
+  ],
   "model_metrics": {
     "actual_ortg": {
       "formula": {
@@ -193,6 +580,56 @@
           "rmse": 2.8130181021450507,
           "r2": -0.9964297893701926
         }
+      }
+    }
+  },
+  "leakage_safe_offense_metrics": {
+    "transparent_formula_safe": {
+      "validation": {
+        "mae": 4.002830013216537,
+        "rmse": 4.395748202884903,
+        "r2": -0.41793125085178295
+      },
+      "test": {
+        "mae": 4.909302437647109,
+        "rmse": 5.289615360143046,
+        "r2": -0.9297294422711477
+      }
+    },
+    "linear_safe": {
+      "validation": {
+        "mae": 0.3819072145663054,
+        "rmse": 0.48947473760792765,
+        "r2": 0.9824187348231167
+      },
+      "test": {
+        "mae": 0.47564983685772716,
+        "rmse": 0.605015758893671,
+        "r2": 0.9747546375199093
+      }
+    },
+    "ridge_safe": {
+      "validation": {
+        "mae": 0.3728915594847038,
+        "rmse": 0.49494418994047934,
+        "r2": 0.9820236290668058
+      },
+      "test": {
+        "mae": 0.47143671734678855,
+        "rmse": 0.6019334185678685,
+        "r2": 0.9750112145703249
+      }
+    },
+    "hist_gradient_boosting_safe": {
+      "validation": {
+        "mae": 1.0016940656559346,
+        "rmse": 1.3437323931383243,
+        "r2": 0.8675002272451197
+      },
+      "test": {
+        "mae": 3.0843609946150825,
+        "rmse": 3.9301476673069167,
+        "r2": -0.06528539723731908
       }
     }
   },
@@ -426,7 +863,7 @@
         "season": "2015-16",
         "historical_team": "GSW",
         "historical_mpg": 34.2,
-        "projected_minutes": 34.2
+        "projected_minutes": 48.0
       },
       {
         "slot": "SG",
@@ -434,7 +871,7 @@
         "season": "1990-91",
         "historical_team": "CHI",
         "historical_mpg": 37.0,
-        "projected_minutes": 37.0
+        "projected_minutes": 48.0
       },
       {
         "slot": "SF",
@@ -442,7 +879,7 @@
         "season": "2012-13",
         "historical_team": "MIA",
         "historical_mpg": 37.9,
-        "projected_minutes": 37.9
+        "projected_minutes": 48.0
       },
       {
         "slot": "PF",
@@ -450,7 +887,7 @@
         "season": "2002-03",
         "historical_team": "SAS",
         "historical_mpg": 39.3,
-        "projected_minutes": 39.3
+        "projected_minutes": 48.0
       },
       {
         "slot": "C",
@@ -458,44 +895,50 @@
         "season": "1999-00",
         "historical_team": "LAL",
         "historical_mpg": 40.0,
-        "projected_minutes": 40.0
+        "projected_minutes": 48.0
       }
     ],
     "profile_features": {
-      "w_points_per_75": 28.7417,
-      "w_relative_ts": 0.0793,
-      "w_usage_pct": 30.9197,
-      "weighted_usage_top3": 18.5383,
-      "usage_pressure": 0.5383,
-      "team_3par_from_players": 0.1601,
-      "team_ftr_from_players": 0.3905,
-      "spacing_proxy": 0.0127,
-      "rebounding_proxy": 10.6046,
-      "defense_box_proxy": 6.0036
+      "w_points_per_75": 28.8571,
+      "w_relative_ts": 0.0807,
+      "w_usage_pct": 30.98,
+      "weighted_usage_top3": 19.14,
+      "usage_pressure": 1.14,
+      "team_3par_from_players": 0.1726,
+      "team_ftr_from_players": 0.3857,
+      "spacing_proxy": 0.0139,
+      "rebounding_proxy": 10.4195,
+      "defense_box_proxy": 5.9574
     },
     "projections": {
-      "projected_ortg": 120.22,
+      "projected_ortg": 118.38,
       "projected_drtg": 109.53,
       "projected_pace": 96.4
     },
     "transparent_formula_projections": {
-      "projected_ortg": 120.22,
+      "projected_ortg": 118.38,
+      "projected_drtg": 109.53,
+      "projected_pace": 96.4
+    },
+    "reconstruction_formula_projections": {
+      "projected_ortg": 118.04,
       "projected_drtg": 109.53,
       "projected_pace": 96.4
     },
     "selected_model_raw_projections": {
-      "projected_ortg": 168.54,
+      "projected_ortg": 169.16,
       "projected_drtg": 109.53,
       "projected_pace": 96.4
     },
-    "unassigned_bench_minutes": 51.7,
+    "total_projected_minutes": 240.0,
+    "unassigned_bench_minutes": 0.0,
     "caveats": [
       "Actual high-usage stars cannot all retain original usage; usage pressure is included as a penalty/proxy, not chemistry.",
       "Individual defense is weakly observed in current historical PlayerSeason data.",
-      "Only five players were supplied; remaining bench minutes are explicit instead of silently invented.",
+      "Only five players were supplied; V1 allocates all 240 minutes among them instead of silently inventing replacement players.",
       "Learned reconstruction models can extrapolate badly on all-star custom rosters, so the transparent formula projection is shown as the safer prototype output.",
       "Projection is a team-strength profile, not a simulated win total."
     ]
   },
-  "verdict": "NEEDS MORE DATA / MODELING"
+  "verdict": "MODEL FOUNDATION STILL NEEDS WORK"
 }
