@@ -40,6 +40,7 @@ data/raw/
 data/interim/
 data/processed/
 data/analysis/
+data/historical/raw/
 artifacts/
 nba-clutch-agent/**/Dataset/
 

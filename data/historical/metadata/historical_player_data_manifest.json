@@ -1,0 +1,25 @@
+{
+  "source": "Basketball-Reference",
+  "source_base_url": "https://www.basketball-reference.com/leagues",
+  "raw_cache_dir": "data\\historical\\raw\\basketball-reference",
+  "processed_dir": "data\\historical\\processed",
+  "seasons_fetched": [
+    1977,
+    1986,
+    1991,
+    1996,
+    2000,
+    2001,
+    2013,
+    2016,
+    2017,
+    2023
+  ],
+  "refresh": false,
+  "validation_issues": [],
+  "outputs": [
+    "data/historical/processed/player_season_prototype.csv",
+    "data/historical/processed/player_season_comparison.csv",
+    "data/historical/processed/team_season_prototype.csv"
+  ]
+}
