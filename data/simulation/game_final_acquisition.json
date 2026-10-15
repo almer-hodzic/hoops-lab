@@ -1,0 +1,28 @@
+{
+  "status": "blind_index_and_rosters_verified",
+  "source": "https://www.kaggle.com/datasets/eoinamoore/historical-nba-data-and-player-box-scores/versions/515",
+  "version": 515,
+  "holdout_games": 1230,
+  "teams": 30,
+  "games_per_team": 82,
+  "required_box_keys": 2460,
+  "dates": [
+    "2025-10-21 19:30:00",
+    "2026-04-12 20:30:00"
+  ],
+  "raw_hashes": {
+    "data/simulation/raw/game_logs/Games.csv": "8b21e7e0ebfe25f1de48c18ec701e08a47974d32be006be044b85b2661dfff29",
+    "data/simulation/raw/game_logs/TeamStatistics.csv": "37df1d8096252a9a38a1162872fdf85a2e413ea978c8b1d70edd3bd7f4399be9",
+    "data/simulation/raw/game_logs/TeamStatisticsExtended.csv": "dcec2a05c11214ea77617e6c38f4fb4cce6162375175f2022690e463f02c47db",
+    "data/simulation/raw/game_final/PlayerStatistics.csv": "8e5a33676661c3612bf87f185abb745254b09ab66cfee5aeccb5ae13d538c652"
+  },
+  "roster_sha256": "ef5b7ddbfd810eb0a2c7f0e2e9eb80aecba9d12a3c88839fca583a16fd782849",
+  "roster_team_seasons": 330,
+  "roster_rows": 4233,
+  "official_roster_attempt": "NBA public live boxscore endpoints returned403; not retried/bypassed",
+  "outcome_columns_accessed_during_acquisition": false,
+  "roster_method": "All identity rows listed in each team's first regular-season game, including DNP rows when source lists them; no minutes, starts, outcomes or target-season performance selected",
+  "roster_limitation": "First-game box roster is a reproducible opening-roster approximation, not a certified preseason transaction roster; appearance/availability selection remains possible",
+  "holdout_scope": "2025-26 regular-season game outcomes untouched by this calibration layer; earlier team research saw aggregate season evaluation",
+  "old_test_policy": "2020-2025 excluded from all calibration fitting/model selection; only prior-date league/input context may use already completed games"
+}

@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "evaluation_count": 1,
+  "protocol_sha256": "20c0976f5a05070cf147f1f60dcf67172ac34f6ad3df9b2a021f6e2a97f1f57f",
+  "summary_sha256": "32196d423d097113399a0bdc2e872159d634468d07c9535cf37d6eedf96c811c",
+  "holdout_year": 2026,
+  "old_game_test_evaluations": 0,
+  "old_team_test_evaluations": 0,
+  "tracks": [
+    "rolling",
+    "roster_engine"
+  ]
+}
