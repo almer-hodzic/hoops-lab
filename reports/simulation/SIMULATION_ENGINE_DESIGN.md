@@ -1253,3 +1253,228 @@ Verdict fixed before final evaluation: **B. NEEDS ONE MORE TARGETED MODEL FIX**.
 Readiness checks: `{"defensive_tolerances_pass": false, "rotation_not_worse": true, "usage_not_worse": true, "offense_within_10pct_prior_validation": true, "pace_within_10pct_prior_validation": true}`. In addition to defensive tolerances, require rotation/usage not to regress and offense/pace validation MAE within10% of the prior validation baseline. These practical allowances are fixed before final testing.
 
 Remaining limitations: roster-conditional season aggregates, unknown entrant skill/availability, defensive context and extreme cross-era extrapolation. A permits game-log noise calibration only with these constraints; it does not validate ironman predictions. If defensive acceptance fails, the next step is targeted calibration of extreme defensive buckets and prior context, using validation only and a new genuinely unseen holdout before further model testing. No historical game logs acquired; no UI/application changes.
+
+## Defensive Continuity Model
+
+Reproduce with `python scripts/simulation/defensive_continuity.py`. This task uses only TRAIN 1980-81 through 2013-14 and VALIDATION 2014-15 through 2018-19. No final-test model evaluation is exposed by this script. Existing final artifacts are hashed as bytes only and remain unchanged. The official frozen benchmark remains ORtg MAE2.362/RMSE2.964/R2 .394; DRtg2.316/2.779/.322; pace1.668/2.052/-.062. It describes the previous model, NOT an evaluation of this new defense.
+
+Artifacts: `data/simulation/defensive_continuity_v1_summary.json`, development features and predictions CSVs; new fitted defensive artifact under ignored `artifacts/simulation/`. Offense/pace/usage/rotation artifacts are not changed or refitted.
+
+C=sum(projected minutes of players on the same franchise last season)/240. Franchise IDs preserve continuity through relocation/name changes. Also audit returning top-five minute share and the number of returning rotation players (projected minutes>=8). Source membership is known retrospectively, but target minutes/starts/performance never determine predictors. Selected projected rotations are reproduced exactly from frozen rules; current minutes define roster membership only.
+
+Retained context=C*(previous same-franchise DRtg - previous league scoring anchor). Transferred players carry ZERO direct previous-team context. A returning player's multi-team total is not used to import unrelated team contexts. Individual evidence, age/position mix and proposed rotation remain separate. This is a fitted context adjustment, not copying previous-team DRtg. DWS stays excluded.
+
+Candidates: A frozen current additive model; B continuity OLS; C continuity Ridge(alpha30); D one bounded hinge correction to C. The hinge is fitted on forward predictions entirely within TRAIN (1995-99/2000-04/2005-09/2010-14, each trained on earlier years); knot=training prediction75th percentile, Ridge30 correction clipped to[-2,2] DRtg. D is eligible only if all gates pass and validation MAE improves>=.03 or poor bias improves>=.25 with MAE regression<=.02. B is preferred within.05 MAE of another passing candidate. A is a diagnostic baseline, not eligible because it does not enforce synthetic-context semantics. All coefficients/imputation fit TRAIN only.
+
+Selected: **B_continuity_additive**. Exact raw equation, intercept and imputation medians are in `selected_equation` in the summary JSON. If all candidates fail, the simpler additive equation is also preferred within.05 MAE; this is a research diagnostic, NOT an accepted replacement for the existing engine. Acceptance status is stored in the new artifact.
+
+Tail correction parameters (training-only): `{"knot": 0.42257059351502946, "intercept": 0.23768399457272268, "coefficients": [-0.02422405171386368, -0.20832006826960361], "forward_training_rows": 588, "correction_bounds": [-2.0, 2.0]}`
+
+## Poor-Defense Bias Analysis
+
+Individual evidence representation: **per75**. Compare percentage rates with prior per75 rates using the same continuity Ridge30 equation and select lower validation MAE. Per75 substitutes steals, blocks and defensive rebounds per75 for STL%/BLK%/DRB%; DBPM, age, position and rotation are preserved. No target rates are used. Per75 depends on estimated prior team pace and is not context-free talent.
+
+| representation | mae | rmse | r2 | poor_bias |
+| --- | --- | --- | --- | --- |
+| percentages | 2.198 | 2.665 | 0.295 | -3.304 |
+| per75 | 2.125 | 2.592 | 0.332 | -3.092 |
+
+The observed baseline failure is compressed conditional tail predictions: residual SD 1.799 versus actual 2.963. Poor defenses average 4.356 DRtg above the prior league anchor, but predictions average only 1.114. This creates the -3.242 signed bias. Continuity masking removes an invalid synthetic-context assumption but is not, by itself, a demonstrated cure for this bias. OLS comparison distinguishes this compression from Ridge shrinkage alone. Ablations, missingness and position/rate substitutions below show which explanations have empirical support; they do not isolate unobserved coaching or scheme effects.
+
+Residual spread and conditional means diagnose compression; ablations identify model dependence, not causal player/coaching effects. Tail buckets condition on outcomes, so some mean regression is expected.
+
+Training-fitted feature ablations (diagnostics only, not extra selection candidates):
+
+| ablation | overall_mae | poor_bias | poor_mae |
+| --- | --- | --- | --- |
+| without_DBPM | 2.189 | -3.352 | 3.352 |
+| without_context | 2.198 | -3.258 | 3.258 |
+| without_rotation | 2.263 | -3.571 | 3.571 |
+| without_box_rates | 2.111 | -3.119 | 3.119 |
+| with_position | 2.195 | -3.241 | 3.241 |
+| per75_instead_of_percentages | 2.128 | -3.053 | 3.053 |
+
+Centered contributions of the frozen current equation by original bucket:
+
+| bucket | n | w_defensive_box_plus_minus | w_steal_pct | w_block_pct | w_defensive_rebound_pct | prior_defensive_environment | w_age | rotation_hhi |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| elite | 20 | -0.876 | 0.000 | -0.251 | -0.102 | -0.544 | -0.103 | 0.231 |
+| above_average | 34 | -0.247 | -0.012 | -0.168 | -0.093 | -0.166 | 0.066 | 0.207 |
+| average | 39 | 0.009 | -0.009 | -0.144 | -0.084 | -0.037 | 0.064 | 0.240 |
+| below_average | 38 | 0.278 | -0.012 | -0.126 | -0.059 | 0.149 | 0.143 | 0.330 |
+| poor | 19 | 0.886 | -0.014 | -0.014 | -0.073 | 0.614 | 0.104 | 0.367 |
+
+Missingness, continuity and old inherited context:
+
+| bucket | defensive_missing_share | returning_minutes_share | prior_defensive_environment |
+| --- | --- | --- | --- |
+| elite | 0.030 | 0.651 | -2.280 |
+| above_average | 0.032 | 0.666 | -1.162 |
+| average | 0.039 | 0.607 | -0.781 |
+| below_average | 0.044 | 0.576 | -0.230 |
+| poor | 0.041 | 0.603 | 1.143 |
+
+Baseline error by continuity:
+
+| continuity | n | mae | bias |
+| --- | --- | --- | --- |
+| low | 3 | 2.830 | 1.983 |
+| moderate | 88 | 2.284 | -0.759 |
+| high | 59 | 2.021 | -0.516 |
+
+Box-score measures do not observe schemes, matchup assignments, rim deterrence, defensive communication or coaching. Strong rate persistence does not make these complete defense. The earlier qualified-transfer correlations were DBPM .600, STL% .740, BLK% .874, DRB% .876, DWS .459 and defensive environment .049. Missing source values are documented separately from imputed model values; no new defensive statistics are fabricated.
+
+## Defensive Tail Validation
+
+Retain the exact original thresholds (including unrounded overall bound), and preserve the original era-relative difference buckets for acceptance comparability. ALSO report season-relative DRtg quintile rankings as requested. A requires all gates in BOTH views: the previous19-team poor bucket cannot be hidden by redefining it. Positive error underrates defense; negative error overrates it.
+
+Unchanged criteria: `{"overall_mae_max": 2.2896266864236936, "anchor_validation_mae": 2.410133354130204, "elite_poor_mae_max": 5.0, "worst_bucket_abs_bias_max": 3.0, "abs_error_p90_max": 5.5, "subera_mae_over_anchor_max": 0.15, "box_heavy_abs_bias_max": 2.0, "rationale": "Require >=5% validation MAE improvement on league anchor, <=5 extreme-bucket MAE, <=3 bucket bias, <=5.5 p90 error, <=0.15 subera regression, <=2 box-heavy bias. Practical bounds declared before candidate evaluation; no final-test values used."}`
+
+| candidate | view | mae | rmse | r2 | p90 | actual_sd | predicted_sd | accepted |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| A_current | legacy | 2.191 | 2.653 | 0.301 | 4.302 | 2.963 | 1.799 | False |
+| A_current | ranking | 2.191 | 2.653 | 0.301 | 4.302 | 2.963 | 1.799 | True |
+| B_continuity_additive | legacy | 2.125 | 2.595 | 0.331 | 4.142 | 2.963 | 1.836 | False |
+| B_continuity_additive | ranking | 2.125 | 2.595 | 0.331 | 4.142 | 2.963 | 1.836 | True |
+| C_continuity_ridge | legacy | 2.125 | 2.592 | 0.332 | 4.137 | 2.963 | 1.808 | False |
+| C_continuity_ridge | ranking | 2.125 | 2.592 | 0.332 | 4.137 | 2.963 | 1.808 | True |
+| D_bounded_tail | legacy | 2.088 | 2.554 | 0.352 | 4.062 | 2.963 | 1.685 | False |
+| D_bounded_tail | ranking | 2.088 | 2.554 | 0.352 | 4.062 | 2.963 | 1.685 | True |
+
+Bucket details:
+
+| candidate | view | bucket | n | mae | bias | median_bias | p90_abs_error | actual_residual | predicted_residual |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| A_current | legacy | elite | 20 | 2.538 | 1.804 | 1.732 | 4.397 | -4.205 | -2.401 |
+| A_current | legacy | above_average | 34 | 1.618 | 0.994 | 1.126 | 3.036 | -2.163 | -1.168 |
+| A_current | legacy | average | 39 | 2.087 | -0.705 | -1.103 | 3.846 | -0.012 | -0.717 |
+| A_current | legacy | below_average | 38 | 2.104 | -1.898 | -1.697 | 3.927 | 1.845 | -0.053 |
+| A_current | legacy | poor | 19 | 3.242 | -3.242 | -3.355 | 4.985 | 4.356 | 1.114 |
+| A_current | ranking | elite | 30 | 2.255 | 1.550 | 1.697 | 4.017 | -3.693 | -2.143 |
+| A_current | ranking | above_average | 29 | 1.762 | 0.677 | 0.974 | 3.332 | -1.711 | -1.034 |
+| A_current | ranking | average | 30 | 1.892 | -0.634 | -0.878 | 3.824 | -0.017 | -0.650 |
+| A_current | ranking | below_average | 30 | 2.206 | -1.716 | -1.507 | 4.130 | 1.610 | -0.106 |
+| A_current | ranking | poor | 31 | 2.808 | -2.805 | -2.878 | 4.972 | 3.465 | 0.660 |
+| B_continuity_additive | legacy | elite | 20 | 2.573 | 1.935 | 1.889 | 4.387 | -4.205 | -2.270 |
+| B_continuity_additive | legacy | above_average | 34 | 1.683 | 1.065 | 1.193 | 3.109 | -2.163 | -1.098 |
+| B_continuity_additive | legacy | average | 39 | 1.993 | -0.523 | -0.841 | 3.513 | -0.012 | -0.535 |
+| B_continuity_additive | legacy | below_average | 38 | 1.957 | -1.726 | -1.426 | 4.033 | 1.845 | 0.119 |
+| B_continuity_additive | legacy | poor | 19 | 3.056 | -3.056 | -2.995 | 4.807 | 4.356 | 1.300 |
+| B_continuity_additive | ranking | elite | 30 | 2.315 | 1.665 | 1.875 | 4.143 | -3.693 | -2.028 |
+| B_continuity_additive | ranking | above_average | 29 | 1.822 | 0.752 | 1.163 | 3.486 | -1.711 | -0.959 |
+| B_continuity_additive | ranking | average | 30 | 1.792 | -0.471 | -0.757 | 3.402 | -0.017 | -0.488 |
+| B_continuity_additive | ranking | below_average | 30 | 2.060 | -1.527 | -1.227 | 3.938 | 1.610 | 0.083 |
+| B_continuity_additive | ranking | poor | 31 | 2.612 | -2.612 | -2.829 | 4.776 | 3.465 | 0.852 |
+| C_continuity_ridge | legacy | elite | 20 | 2.573 | 1.959 | 1.935 | 4.415 | -4.205 | -2.246 |
+| C_continuity_ridge | legacy | above_average | 34 | 1.676 | 1.071 | 1.180 | 3.128 | -2.163 | -1.091 |
+| C_continuity_ridge | legacy | average | 39 | 1.982 | -0.530 | -0.863 | 3.481 | -0.012 | -0.542 |
+| C_continuity_ridge | legacy | below_average | 38 | 1.953 | -1.732 | -1.423 | 4.041 | 1.845 | 0.113 |
+| C_continuity_ridge | legacy | poor | 19 | 3.092 | -3.092 | -3.019 | 4.830 | 4.356 | 1.264 |
+| C_continuity_ridge | ranking | elite | 30 | 2.313 | 1.684 | 1.882 | 4.141 | -3.693 | -2.009 |
+| C_continuity_ridge | ranking | above_average | 29 | 1.813 | 0.756 | 1.111 | 3.461 | -1.711 | -0.955 |
+| C_continuity_ridge | ranking | average | 30 | 1.780 | -0.476 | -0.785 | 3.415 | -0.017 | -0.493 |
+| C_continuity_ridge | ranking | below_average | 30 | 2.053 | -1.536 | -1.247 | 3.954 | 1.610 | 0.074 |
+| C_continuity_ridge | ranking | poor | 31 | 2.637 | -2.637 | -2.827 | 4.800 | 3.465 | 0.828 |
+| D_bounded_tail | legacy | elite | 20 | 2.673 | 2.227 | 2.234 | 4.723 | -4.205 | -1.978 |
+| D_bounded_tail | legacy | above_average | 34 | 1.749 | 1.315 | 1.384 | 3.388 | -2.163 | -0.848 |
+| D_bounded_tail | legacy | average | 39 | 1.867 | -0.332 | -0.594 | 3.315 | -0.012 | -0.344 |
+| D_bounded_tail | legacy | below_average | 38 | 1.818 | -1.568 | -1.238 | 3.754 | 1.845 | 0.277 |
+| D_bounded_tail | legacy | poor | 19 | 3.075 | -3.075 | -3.145 | 4.597 | 4.356 | 1.281 |
+| D_bounded_tail | ranking | elite | 30 | 2.410 | 1.954 | 2.143 | 4.396 | -3.693 | -1.738 |
+| D_bounded_tail | ranking | above_average | 29 | 1.836 | 0.980 | 1.348 | 3.399 | -1.711 | -0.731 |
+| D_bounded_tail | ranking | average | 30 | 1.672 | -0.280 | -0.568 | 3.133 | -0.017 | -0.297 |
+| D_bounded_tail | ranking | below_average | 30 | 1.933 | -1.370 | -1.171 | 3.672 | 1.610 | 0.240 |
+| D_bounded_tail | ranking | poor | 31 | 2.566 | -2.558 | -2.752 | 4.559 | 3.465 | 0.907 |
+
+Acceptance checks:
+
+| candidate | view | overall | extremes | bucket_bias | p90 | suberas | box_heavy |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| A_current | legacy | True | True | False | True | True | True |
+| A_current | ranking | True | True | True | True | True | True |
+| B_continuity_additive | legacy | True | True | False | True | True | True |
+| B_continuity_additive | ranking | True | True | True | True | True | True |
+| C_continuity_ridge | legacy | True | True | False | True | True | True |
+| C_continuity_ridge | ranking | True | True | True | True | True | True |
+| D_bounded_tail | legacy | True | True | False | True | True | True |
+| D_bounded_tail | ranking | True | True | True | True | True | True |
+
+Sub-era and box-heavy diagnostics:
+
+| candidate | view | suberas | box_heavy |
+| --- | --- | --- | --- |
+| A_current | legacy | {"2015-2016": {"mae": 2.2264664048761538, "anchor_mae": 2.5557914462745823}, "2017-2019": {"mae": 2.1680748732208794, "anchor_mae": 2.313027959367288}} | {"n": 12, "bias": -0.6284721639249634} |
+| A_current | ranking | {"2015-2016": {"mae": 2.2264664048761538, "anchor_mae": 2.5557914462745823}, "2017-2019": {"mae": 2.1680748732208794, "anchor_mae": 2.313027959367288}} | {"n": 12, "bias": -0.6284721639249634} |
+| B_continuity_additive | legacy | {"2015-2016": {"mae": 2.2063403945926656, "anchor_mae": 2.5557914462745823}, "2017-2019": {"mae": 2.0715089388295818, "anchor_mae": 2.313027959367288}} | {"n": 12, "bias": -0.6477360433606769} |
+| B_continuity_additive | ranking | {"2015-2016": {"mae": 2.2063403945926656, "anchor_mae": 2.5557914462745823}, "2017-2019": {"mae": 2.0715089388295818, "anchor_mae": 2.313027959367288}} | {"n": 12, "bias": -0.6477360433606769} |
+| C_continuity_ridge | legacy | {"2015-2016": {"mae": 2.2028067498258244, "anchor_mae": 2.5557914462745823}, "2017-2019": {"mae": 2.072517263521187, "anchor_mae": 2.313027959367288}} | {"n": 12, "bias": -0.5883835071507436} |
+| C_continuity_ridge | ranking | {"2015-2016": {"mae": 2.2028067498258244, "anchor_mae": 2.5557914462745823}, "2017-2019": {"mae": 2.072517263521187, "anchor_mae": 2.313027959367288}} | {"n": 12, "bias": -0.5883835071507436} |
+| D_bounded_tail | legacy | {"2015-2016": {"mae": 2.223427384270464, "anchor_mae": 2.5557914462745823}, "2017-2019": {"mae": 1.9982847101405243, "anchor_mae": 2.313027959367288}} | {"n": 12, "bias": -0.24362045765141715} |
+| D_bounded_tail | ranking | {"2015-2016": {"mae": 2.223427384270464, "anchor_mae": 2.5557914462745823}, "2017-2019": {"mae": 1.9982847101405243, "anchor_mae": 2.313027959367288}} | {"n": 12, "bias": -0.24362045765141715} |
+
+High/low continuity and named development sanity checks (major star arrivals do not necessarily mean low overall continuity):
+
+| season | team_name | returning_minutes_share | returning_top5_share | returning_rotation_players | transfer_or_unknown_minutes_share | retained_defensive_context | actual_drtg | predicted_drtg |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2007-08 | Boston Celtics | 0.402 | 0.347 | 5 | 0.598 | -0.209 | 98.900 | 105.664 |
+| 2010-11 | Miami Heat | 0.375 | 0.386 | 5 | 0.625 | -1.578 | 103.500 | 106.024 |
+| 2016-17 | Golden State Warriors | 0.549 | 0.620 | 5 | 0.451 | -1.869 | 104.000 | 103.341 |
+| 2018-19 | Boston Celtics | 0.954 | 1.000 | 11 | 0.046 | -5.109 | 107.800 | 105.445 |
+| 2014-15 | San Antonio Spurs | 0.954 | 1.000 | 12 | 0.046 | -4.880 | 102.000 | 102.625 |
+| 2015-16 | Chicago Bulls | 0.948 | 1.000 | 10 | 0.052 | -2.094 | 106.500 | 103.567 |
+| 2015-16 | Oklahoma City Thunder | 0.918 | 1.000 | 11 | 0.082 | -0.925 | 105.600 | 105.702 |
+| 2018-19 | Miami Heat | 0.909 | 1.000 | 11 | 0.091 | -2.686 | 107.600 | 106.790 |
+| 2017-18 | Boston Celtics | 0.314 | 0.373 | 4 | 0.686 | -0.356 | 103.900 | 109.859 |
+| 2014-15 | Dallas Mavericks | 0.322 | 0.432 | 3 | 0.678 | 0.381 | 106.400 | 108.477 |
+| 2017-18 | Los Angeles Clippers | 0.323 | 0.409 | 3 | 0.677 | -0.430 | 110.200 | 109.325 |
+| 2016-17 | Brooklyn Nets | 0.353 | 0.469 | 5 | 0.647 | 1.307 | 110.700 | 108.778 |
+| 2017-18 | Indiana Pacers | 0.355 | 0.414 | 5 | 0.645 | -0.261 | 108.100 | 110.219 |
+
+2019-20 Lakers are in the frozen test period: no new inference or individual-error analysis was performed. Previously recorded context remains in the earlier experiment only.
+
+## Synthetic-Roster Defensive Semantics
+
+A completely synthetic roster has continuity=0 and retained context=0, even if selected players come from historically excellent defenses or several share a franchise name. Predictions use individual transferable evidence, proposed minutes, age/position mix and target-era league anchor. No previous NBA team's defensive environment is inherited. Historical context dispersion may raise uncertainty but does not increase predicted defensive quality.
+
+Five-player ironman only, 48 minutes each, 240 total; DRtg is a diagnostic estimate, not precise truth or a game simulation
+
+| player | season | minutes | defensive_fields_available |
+| --- | --- | --- | --- |
+| Stephen Curry | 2015-16 | 48.000 | 4 |
+| Michael Jordan | 1990-91 | 48.000 | 4 |
+| LeBron James | 2012-13 | 48.000 | 4 |
+| Tim Duncan | 2002-03 | 48.000 | 4 |
+| Shaquille O'Neal | 1999-00 | 48.000 | 4 |
+
+Custom DRtg diagnostic: `99.37391626755516`; continuity0, retained context0. Do not interpret this number as precise truth. Individual evidence: `{"w_defensive_box_plus_minus": 2.3400000000000003, "w_steals_per_75": 1.589494678276071, "w_blocks_per_75": 1.6103301901598672, "w_defensive_rebounds_per_75": 7.098033251001157, "w_age": 27.0, "center_minutes_share": 0.2, "rotation_hhi": 0.20000000000000004}`
+
+Unchanged custom offense/pace: `{"ortg": 122.62733440950142, "pace": 92.99036643740251}`
+
+## Defensive Uncertainty
+
+This is a coverage/uncertainty indicator, not quality or a calibrated interval. HIGH if continuity<.35, missing weighted defensive fields>.20, context SD>training p90 AND source diversity>training p75, or feature extrapolation is high (maximum beyond training range>1 IQR or >15% fields outside). Otherwise MODERATE if continuity<.65, missing>.05, context SD>training p75 or any feature outside training range; otherwise LOW. Source diversity=1-sum(source-season/franchise minute shares^2). Low continuity therefore always raises uncertainty; weak/missing evidence, distinct contexts and extrapolation are explicitly visible. Marginal feature ranges cannot establish joint causal support.
+
+Training-derived context thresholds: `{"context_sd_p75": 2.4378158346707726, "context_sd_p90": 3.0488183241995404, "diversity_p75": 0.6450120906488895, "high_continuity_below": 0.35, "moderate_continuity_below": 0.65, "high_missing_above": 0.2, "moderate_missing_above": 0.05}`
+
+Custom uncertainty: `{"category": "HIGH", "high_flags": {"low_continuity": true, "weak_availability": false, "diverse_contexts": false, "extrapolation": true}, "continuity": 0.0, "missing_share": 0.0, "source_context_sd": 1.2931461134334779, "source_diversity": 0.7999999999999999, "interpretation": "Uncalibrated uncertainty/coverage indicator, not defensive quality or a probability interval"}`
+
+| feature | value | status | exceed_iqr_units | min | max | p01 | p99 | scale |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| w_defensive_box_plus_minus | 2.340 | outside | 1.389 | -1.233 | 1.440 | -1.055 | 1.085 | 0.648 |
+| w_steals_per_75 | 1.589 | inside | 0.000 | 0.905 | 1.959 | 0.980 | 1.663 | 0.188 |
+| w_blocks_per_75 | 1.610 | outside | 0.976 | 0.336 | 1.414 | 0.413 | 1.212 | 0.201 |
+| w_defensive_rebounds_per_75 | 7.098 | outside | 1.842 | 3.466 | 6.004 | 3.705 | 5.565 | 0.594 |
+| w_age | 27.000 | inside | 0.000 | 23.721 | 32.520 | 24.876 | 31.385 | 2.020 |
+| center_minutes_share | 0.200 | inside | 0.000 | 0.000 | 0.494 | 0.023 | 0.334 | 0.087 |
+| rotation_hhi | 0.200 | outside | 7.172 | 0.057 | 0.115 | 0.070 | 0.110 | 0.012 |
+| retained_defensive_context | 0.000 | inside | 0.000 | -7.698 | 6.259 | -5.775 | 3.822 | 2.832 |
+| returning_minutes_share | 0.000 | near_edge | 0.000 | 0.000 | 0.985 | 0.234 | 0.933 | 0.204 |
+| defensive_missing_share | 0.000 | inside | 0.000 | 0.000 | 0.306 | 0.000 | 0.189 | 0.047 |
+| source_context_sd | 1.293 | inside | 0.000 | 0.030 | 5.369 | 0.240 | 4.389 | 1.189 |
+| source_diversity | 0.800 | inside | 0.000 | 0.029 | 0.940 | 0.142 | 0.858 | 0.246 |
+
+Regression checks: `{"max_validation_minutes_difference": 3.552713678800501e-15, "rotation_configuration": "balanced_prior", "usage_configuration": {"name": "role_shrink10", "alpha": 1.0, "shrink": 0.1}, "ortg": {"unchanged": true, "validation": {"mae": 2.1712773887652514, "rmse": 2.79517361544265, "r2": 0.4266667403949188}}, "pace": {"unchanged": true, "validation": {"mae": 1.5026906354267182, "rmse": 1.9902300027393711, "r2": 0.510654843167533}}}`. Protected baseline artifacts and official test records unchanged: `True`. New final-test evaluations:0. Previous experiments remain above.
+
+**B. DEFENSIVE MODEL STILL OUTSIDE ACCEPTANCE TOLERANCE**.
+
+If accepted, next task is team game-log acquisition and noise/home-court calibration with frozen team-strength methodology; current official test does not validate this new defense. Otherwise retain the failed tolerances explicitly and do not start game-log calibration. No game logs, Simulator UI, frontend or .NET application changes were made.
