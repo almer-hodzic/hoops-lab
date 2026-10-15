@@ -1,0 +1,722 @@
+{
+  "modelVersion": "hoopslab-single-game-v1.0.0",
+  "schemaVersion": 1,
+  "textHashNormalization": "CRLF_to_LF",
+  "researchCommit": "a7491448f1f298bc39a8b475ce08db9fe85e6c85",
+  "defaults": {
+    "simulationCount": 10000,
+    "minSimulations": 1000,
+    "maxSimulations": 100000,
+    "minPlayers": 8,
+    "maxPlayers": 12,
+    "minutes": 240
+  },
+  "rotation": "balanced_prior",
+  "rookie_priors": {
+    "roles": {
+      "deep_bench": {
+        "n": 1873,
+        "equivalent_mpg": 3.7740286994721277,
+        "appearance_mpg": 9.397720151606396
+      },
+      "primary_bench": {
+        "n": 372,
+        "equivalent_mpg": 16.77555177002215,
+        "appearance_mpg": 19.620338380114525
+      },
+      "starter": {
+        "n": 321,
+        "equivalent_mpg": 27.624919664703363,
+        "appearance_mpg": 29.392787851301645
+      }
+    },
+    "unknown_role_mixture_mpg": 8.642579978538315,
+    "n": 2566
+  },
+  "rotation_constants": {
+    "starter_floor": 20,
+    "starter_cap": 38,
+    "bench_floor": 4,
+    "bench_cap": 28,
+    "prior_weight": 0.6,
+    "history_weight": 0.4,
+    "availability_floor": 0.6,
+    "availability_weight": 0.4
+  },
+  "usage": {
+    "name": "role_shrink10",
+    "alpha": 1.0,
+    "shrink": 0.1
+  },
+  "role_usage_means": {
+    "deep_bench": 18.14165177431708,
+    "primary_bench": 18.12667382742571,
+    "starter": 20.80564983888292
+  },
+  "models": {
+    "ortg": {
+      "columns": [
+        "usage_weighted_relative_ts",
+        "usage_weighted_3par",
+        "usage_weighted_ftr",
+        "w_assist_pct",
+        "w_turnover_pct",
+        "w_offensive_rebounds_per_75",
+        "usage_compression"
+      ],
+      "pipeline": {
+        "impute": [
+          -0.001540278584145629,
+          0.14601403047985437,
+          0.32266930462989113,
+          14.983457476140636,
+          14.030456471507303,
+          1.9899381012878485,
+          0.1805963173265663
+        ],
+        "center": [
+          -0.0009427628278790068,
+          0.13684845043201885,
+          0.3229297465056001,
+          14.991789352566592,
+          14.097168602317367,
+          1.998266261045865,
+          0.39819361397056663
+        ],
+        "scale": [
+          0.015418828898962551,
+          0.0770953123734957,
+          0.03659853779519119,
+          1.6915067688024212,
+          1.2172686869016585,
+          0.26581587886206837,
+          0.5136096602866881
+        ],
+        "coefficients": [
+          2.096232278972706,
+          -0.07427408638971086,
+          -0.24543890819587036,
+          0.6081840668356471,
+          -0.5482694470853836,
+          0.6887833142387555,
+          -0.030565189432409483
+        ],
+        "intercept": -0.730676063590952
+      }
+    },
+    "pace": {
+      "columns": [
+        "prior_pace_delta",
+        "w_three_point_attempt_rate",
+        "w_assist_pct",
+        "rotation_hhi"
+      ],
+      "pipeline": {
+        "impute": [
+          -0.022849655154449575,
+          0.14487373686524763,
+          14.983457476140636,
+          0.09134597148342506
+        ],
+        "center": [
+          0.04055351489016481,
+          0.13667117466747714,
+          14.991789352566592,
+          0.09104394477088651
+        ],
+        "scale": [
+          1.6965262727919324,
+          0.07849496462168043,
+          1.6915067688024212,
+          0.00870845373066717
+        ],
+        "coefficients": [
+          1.5985866101558979,
+          0.2832148581074306,
+          -0.054394516168725746,
+          -0.16487336582503523
+        ],
+        "intercept": -0.24484745489782922
+      }
+    }
+  },
+  "defense": {
+    "columns": [
+      "w_defensive_box_plus_minus",
+      "w_steals_per_75",
+      "w_blocks_per_75",
+      "w_defensive_rebounds_per_75",
+      "w_age",
+      "center_minutes_share",
+      "rotation_hhi",
+      "retained_defensive_context",
+      "returning_minutes_share"
+    ],
+    "pipeline": {
+      "impute": [
+        -0.0559764987796161,
+        1.2693211498765162,
+        0.7752952534187051,
+        4.650266519991039,
+        27.60657534547465,
+        0.1701803137414121,
+        0.091345971483425,
+        -0.395474782837048,
+        0.691097841045349
+      ],
+      "center": [
+        -0.030460085352793532,
+        1.2734458555352601,
+        0.7870802308943871,
+        4.656505992068239,
+        27.81374315323803,
+        0.17350419681297685,
+        0.09104394477088648,
+        -0.5828200919926004,
+        0.6702865531757114
+      ],
+      "scale": [
+        0.48361233951834043,
+        0.14474844563676578,
+        0.16140467831779767,
+        0.4204736858094762,
+        1.4900620969321419,
+        0.06441997791970039,
+        0.008708453730667172,
+        2.099406931036419,
+        0.14988241237956976
+      ],
+      "coefficients": [
+        -0.9798136998479753,
+        0.06381528149020066,
+        -0.2809887312311387,
+        -0.07395995364702146,
+        -0.2798429647821056,
+        0.1183343160619763,
+        -0.11517364925039171,
+        0.724037375453715,
+        -0.1101545216269062
+      ],
+      "intercept": -0.7559177392085644
+    }
+  },
+  "domain": {
+    "w_relative_ts": {
+      "min": -0.04656343626716594,
+      "max": 0.04486625096195591,
+      "p01": -0.03687610607328033,
+      "p99": 0.033205256532280895,
+      "scale": 0.020547476701750365
+    },
+    "w_assist_pct": {
+      "min": 8.578422374996048,
+      "max": 20.799592780731842,
+      "p01": 10.894570085726981,
+      "p99": 19.21023269209273,
+      "scale": 2.2463560844334207
+    },
+    "w_turnover_pct": {
+      "min": 10.646741484423023,
+      "max": 18.51813160584758,
+      "p01": 11.423536811853959,
+      "p99": 17.33949282047488,
+      "scale": 1.519001122628131
+    },
+    "w_usage_pct": {
+      "min": 16.726269586459118,
+      "max": 23.135300664290778,
+      "p01": 17.91292270986307,
+      "p99": 22.197750321380383,
+      "scale": 1.0233441636591358
+    },
+    "w_three_point_attempt_rate": {
+      "min": 0.009947239394831527,
+      "max": 0.3927110418645605,
+      "p01": 0.013783132588217112,
+      "p99": 0.30059544433281377,
+      "scale": 0.13576827388590282
+    },
+    "w_free_throw_rate": {
+      "min": 0.2065559090552986,
+      "max": 0.5489183257887491,
+      "p01": 0.2396106403726369,
+      "p99": 0.41535926787624555,
+      "scale": 0.0500421687435908
+    },
+    "w_offensive_rebounds_per_75": {
+      "min": 1.1823021732135293,
+      "max": 2.821024864336091,
+      "p01": 1.424300518587467,
+      "p99": 2.6289706892530593,
+      "scale": 0.351985534179466
+    },
+    "w_defensive_rebounds_per_75": {
+      "min": 3.4656440880722736,
+      "max": 6.00425436563547,
+      "p01": 3.7046289253469293,
+      "p99": 5.564907890268214,
+      "scale": 0.5936445410537852
+    },
+    "w_steals_per_75": {
+      "min": 0.9046779604265549,
+      "max": 1.9594315968031455,
+      "p01": 0.9796842931501457,
+      "p99": 1.6627458908974788,
+      "scale": 0.18760923277181263
+    },
+    "w_blocks_per_75": {
+      "min": 0.335969874784325,
+      "max": 1.41412634205397,
+      "p01": 0.412775951925196,
+      "p99": 1.211829814346151,
+      "scale": 0.20107718520162587
+    },
+    "w_defensive_box_plus_minus": {
+      "min": -1.2332222052316886,
+      "max": 1.44005793111239,
+      "p01": -1.05510781021616,
+      "p99": 1.084550464598829,
+      "scale": 0.647751319918233
+    },
+    "w_steal_pct": {
+      "min": 1.2044417505095748,
+      "max": 2.6226806374322913,
+      "p01": 1.301042321550659,
+      "p99": 2.214526858672162,
+      "scale": 0.2547694115933241
+    },
+    "w_block_pct": {
+      "min": 0.5535985911266137,
+      "max": 2.4304761857892156,
+      "p01": 0.767502147452242,
+      "p99": 2.171950636303064,
+      "scale": 0.41060075492934
+    },
+    "w_defensive_rebound_pct": {
+      "min": 10.80864783478482,
+      "max": 17.646702900796555,
+      "p01": 11.606463729654028,
+      "p99": 16.381750648022916,
+      "scale": 1.2544198133736302
+    },
+    "usage_weighted_relative_ts": {
+      "min": -0.04569459530832381,
+      "max": 0.0494402002443262,
+      "p01": -0.03568463310377064,
+      "p99": 0.0348170503639952,
+      "scale": 0.021403289304955178
+    },
+    "usage_weighted_3par": {
+      "min": 0.009698861175371491,
+      "max": 0.36941528456560785,
+      "p01": 0.014073423242816503,
+      "p99": 0.2886042433034003,
+      "scale": 0.13633642881718624
+    },
+    "usage_weighted_ftr": {
+      "min": 0.20679934449349757,
+      "max": 0.4458350058200489,
+      "p01": 0.23899953143755823,
+      "p99": 0.4092537216136203,
+      "scale": 0.04962316322174837
+    },
+    "usage_compression": {
+      "min": 0.0,
+      "max": 3.1353006642907806,
+      "p01": 0.0,
+      "p99": 2.197750321380378,
+      "scale": 0.5864016823556365
+    },
+    "usage_concentration": {
+      "min": 0.0614506161672686,
+      "max": 0.14615531170327822,
+      "p01": 0.07570213008598344,
+      "p99": 0.1310010849389223,
+      "scale": 0.01602915433413389
+    },
+    "rotation_hhi": {
+      "min": 0.05672740219437897,
+      "max": 0.11472789260972135,
+      "p01": 0.07020214196832238,
+      "p99": 0.11017444812998582,
+      "scale": 0.011889443690129065
+    },
+    "prior_pace_delta": {
+      "min": -7.6661563161781405,
+      "max": 8.05076031337455,
+      "p01": -3.6470410351442415,
+      "p99": 4.801888338840611,
+      "scale": 2.0541343300838233
+    },
+    "known_prior_minutes_share": {
+      "min": 0.6937354526815747,
+      "max": 1.0000000000000002,
+      "p01": 0.8111603603142318,
+      "p99": 1.0,
+      "scale": 0.046881454648563525
+    },
+    "returner_minutes_share": {
+      "min": 0.0,
+      "max": 0.2049703298696486,
+      "p01": 0.0,
+      "p99": 0.13013868503866716,
+      "scale": 0.024342984535610027
+    },
+    "prior_age_years": {
+      "min": 0.7282893056321635,
+      "max": 1.2561416577678517,
+      "p01": 0.8227721944862871,
+      "p99": 1.1491023093679293,
+      "scale": 0.04973677911122276
+    },
+    "w_age": {
+      "min": 23.720811448181948,
+      "max": 32.51990553949584,
+      "p01": 24.87629859968812,
+      "p99": 31.38542019595565,
+      "scale": 2.02036850856544
+    },
+    "center_minutes_share": {
+      "min": 0.0,
+      "max": 0.4937682868701394,
+      "p01": 0.023139584034934272,
+      "p99": 0.33406277891866454,
+      "scale": 0.08715977386722085
+    },
+    "prior_defensive_environment": {
+      "min": -7.080664575398844,
+      "max": 5.253343167876489,
+      "p01": -5.788547289492109,
+      "p99": 3.696639780892198,
+      "scale": 2.759014728503538
+    }
+  },
+  "defensive_domain": {
+    "w_defensive_box_plus_minus": {
+      "min": -1.2332222052316886,
+      "max": 1.44005793111239,
+      "p01": -1.05510781021616,
+      "p99": 1.084550464598829,
+      "scale": 0.647751319918233
+    },
+    "w_steals_per_75": {
+      "min": 0.9046779604265548,
+      "max": 1.9594315968031453,
+      "p01": 0.9796842931501458,
+      "p99": 1.6627458908974788,
+      "scale": 0.18760923277181285
+    },
+    "w_blocks_per_75": {
+      "min": 0.335969874784325,
+      "max": 1.41412634205397,
+      "p01": 0.412775951925196,
+      "p99": 1.211829814346151,
+      "scale": 0.20107718520162587
+    },
+    "w_defensive_rebounds_per_75": {
+      "min": 3.4656440880722736,
+      "max": 6.00425436563547,
+      "p01": 3.7046289253469293,
+      "p99": 5.564907890268214,
+      "scale": 0.5936445410537852
+    },
+    "w_age": {
+      "min": 23.720811448181948,
+      "max": 32.51990553949584,
+      "p01": 24.87629859968812,
+      "p99": 31.385420195955653,
+      "scale": 2.02036850856544
+    },
+    "center_minutes_share": {
+      "min": 0.0,
+      "max": 0.4937682868701394,
+      "p01": 0.02313958403493424,
+      "p99": 0.33406277891866454,
+      "scale": 0.08715977386722085
+    },
+    "rotation_hhi": {
+      "min": 0.0567274021943789,
+      "max": 0.1147278926097213,
+      "p01": 0.07020214196832235,
+      "p99": 0.11017444812998578,
+      "scale": 0.01188944369012905
+    },
+    "retained_defensive_context": {
+      "min": -7.698405857361826,
+      "max": 6.258635952464652,
+      "p01": -5.774970086962996,
+      "p99": 3.822396125100745,
+      "scale": 2.8319957131836584
+    },
+    "returning_minutes_share": {
+      "min": 0.0,
+      "max": 0.9851474117884347,
+      "p01": 0.23389610172788974,
+      "p99": 0.9330851017955102,
+      "scale": 0.2042365061058603
+    },
+    "defensive_missing_share": {
+      "min": 0.0,
+      "max": 0.3062645473184251,
+      "p01": 0.0,
+      "p99": 0.18883963968576814,
+      "scale": 0.04688145464856368
+    },
+    "source_context_sd": {
+      "min": 0.030195935777832916,
+      "max": 5.369359484800911,
+      "p01": 0.24022694405205197,
+      "p99": 4.389397975592513,
+      "scale": 1.188524139599855
+    },
+    "source_diversity": {
+      "min": 0.029263977669965913,
+      "max": 0.9401178721074527,
+      "p01": 0.1418121956270078,
+      "p99": 0.8575875318111651,
+      "scale": 0.24586238089399925
+    }
+  },
+  "uncertainty_thresholds": {
+    "context_sd_p75": 2.4378158346707726,
+    "context_sd_p90": 3.0488183241995404,
+    "diversity_p75": 0.6450120906488895,
+    "high_continuity_below": 0.35,
+    "moderate_continuity_below": 0.65,
+    "high_missing_above": 0.2,
+    "moderate_missing_above": 0.05
+  },
+  "profile_defaults": {
+    "relative_ts": -0.011978886076604,
+    "assist_pct": 10.8,
+    "turnover_pct": 14.1,
+    "usage_pct": 18.7,
+    "three_point_attempt_rate": 0.0492753623188405,
+    "free_throw_rate": 0.2984441301272984,
+    "offensive_rebounds_per_75": 1.920646198721065,
+    "defensive_rebounds_per_75": 4.324002204057833,
+    "steals_per_75": 1.1818181818181817,
+    "blocks_per_75": 0.5276510467743999,
+    "defensive_box_plus_minus": -0.1,
+    "steal_pct": 1.6,
+    "block_pct": 0.9,
+    "defensive_rebound_pct": 12.8,
+    "team_pace": 93.1,
+    "league_pace": 92.38709677419354
+  },
+  "role_defaults": {
+    "C": {
+      "relative_ts": -0.0072185627257422506,
+      "assist_pct": 6.0,
+      "turnover_pct": 15.3,
+      "usage_pct": 16.7,
+      "three_point_attempt_rate": 0.0026827644529210997,
+      "free_throw_rate": 0.36837250340899974,
+      "offensive_rebounds_per_75": 3.2155893697039404,
+      "defensive_rebounds_per_75": 6.419417832022267,
+      "steals_per_75": 0.8399196197762537,
+      "blocks_per_75": 1.580568294323256,
+      "defensive_box_plus_minus": 0.2,
+      "steal_pct": 1.1,
+      "block_pct": 2.8,
+      "defensive_rebound_pct": 19.4,
+      "team_pace": 93.1,
+      "league_pace": 92.23387096774192
+    },
+    "F": {
+      "relative_ts": 0.0814219047191465,
+      "assist_pct": 6.7,
+      "turnover_pct": 12.2,
+      "usage_pct": 13.2,
+      "three_point_attempt_rate": 0.0,
+      "free_throw_rate": 0.4716981132075472,
+      "offensive_rebounds_per_75": 3.52917207945128,
+      "defensive_rebounds_per_75": 5.106455690379227,
+      "steals_per_75": 1.025234347103165,
+      "blocks_per_75": 0.473185083278384,
+      "defensive_box_plus_minus": -0.6,
+      "steal_pct": 1.4,
+      "block_pct": 0.9,
+      "defensive_rebound_pct": 14.8,
+      "team_pace": 89.2,
+      "league_pace": 90.28666666666666
+    },
+    "PF": {
+      "relative_ts": -0.0068541567421765,
+      "assist_pct": 7.4,
+      "turnover_pct": 13.9,
+      "usage_pct": 18.2,
+      "three_point_attempt_rate": 0.01,
+      "free_throw_rate": 0.3419740777666999,
+      "offensive_rebounds_per_75": 2.9905070570854573,
+      "defensive_rebounds_per_75": 5.98718926074363,
+      "steals_per_75": 1.0259667293646335,
+      "blocks_per_75": 0.8585573006219925,
+      "defensive_box_plus_minus": -0.2,
+      "steal_pct": 1.4,
+      "block_pct": 1.5,
+      "defensive_rebound_pct": 18.0,
+      "team_pace": 93.2,
+      "league_pace": 92.38709677419354
+    },
+    "PG": {
+      "relative_ts": -0.0213129472527273,
+      "assist_pct": 26.4,
+      "turnover_pct": 16.7,
+      "usage_pct": 18.8,
+      "three_point_attempt_rate": 0.20495701000175465,
+      "free_throw_rate": 0.2568524251805985,
+      "offensive_rebounds_per_75": 0.7337391819704092,
+      "defensive_rebounds_per_75": 2.749519654676911,
+      "steals_per_75": 1.5631411595200286,
+      "blocks_per_75": 0.1709751821383444,
+      "defensive_box_plus_minus": -0.2,
+      "steal_pct": 2.1,
+      "block_pct": 0.3,
+      "defensive_rebound_pct": 8.2,
+      "team_pace": 92.9,
+      "league_pace": 92.08064516129032
+    },
+    "SF": {
+      "relative_ts": -0.0113972156613326,
+      "assist_pct": 10.2,
+      "turnover_pct": 12.6,
+      "usage_pct": 19.4,
+      "three_point_attempt_rate": 0.1111111111111111,
+      "free_throw_rate": 0.2761341222879684,
+      "offensive_rebounds_per_75": 1.8512647889437144,
+      "defensive_rebounds_per_75": 4.147088730419295,
+      "steals_per_75": 1.2127871299444395,
+      "blocks_per_75": 0.5251853298231202,
+      "defensive_box_plus_minus": -0.3,
+      "steal_pct": 1.6,
+      "block_pct": 0.9,
+      "defensive_rebound_pct": 12.4,
+      "team_pace": 93.2,
+      "league_pace": 92.38709677419354
+    },
+    "SG": {
+      "relative_ts": -0.013897367345352449,
+      "assist_pct": 14.3,
+      "turnover_pct": 12.6,
+      "usage_pct": 20.2,
+      "three_point_attempt_rate": 0.20146845083400572,
+      "free_throw_rate": 0.2598156712349369,
+      "offensive_rebounds_per_75": 1.0922133326326482,
+      "defensive_rebounds_per_75": 3.06279104439779,
+      "steals_per_75": 1.3497637786829946,
+      "blocks_per_75": 0.3105433015374419,
+      "defensive_box_plus_minus": -0.3,
+      "steal_pct": 1.8,
+      "block_pct": 0.6,
+      "defensive_rebound_pct": 9.1,
+      "team_pace": 93.2,
+      "league_pace": 92.38709677419354
+    }
+  },
+  "home": {
+    "kind": "trailing5",
+    "common_offset": 0.2937025939580691,
+    "home_margin_per100": 2.694038660326973,
+    "fitting_max_year": 2019,
+    "target_year": 2026,
+    "n": 41663
+  },
+  "sampler": {
+    "kind": "D_bootstrap8",
+    "covariance": [
+      [
+        0.0021846618095196424,
+        -0.00027013170125286996,
+        -0.00046655645688774126
+      ],
+      [
+        -0.00027013170125286996,
+        0.00990478438676768,
+        0.002422432837486475
+      ],
+      [
+        -0.00046655645688774126,
+        0.002422432837486475,
+        0.010429804479173289
+      ]
+    ],
+    "cholesky": [
+      [
+        0.046740365954062044,
+        0.0,
+        0.0
+      ],
+      [
+        -0.00577940920527589,
+        0.0993548328769449,
+        0.0
+      ],
+      [
+        -0.009981874282847683,
+        0.02380099118378179,
+        0.0988113327692945
+      ]
+    ],
+    "fitting_max_year": 2019,
+    "n": 6149,
+    "effective_n": 6148.999999999999,
+    "normalization": "pace residual / prior-date league pace; efficiency residuals / prior-date league ORtg"
+  },
+  "overtime": {
+    "kind": "exponential5",
+    "extra": 0.16227381103843122,
+    "thinning": 0.0,
+    "observed_rate": 0.05633772114792701,
+    "natural_tie_rate": 0.02901,
+    "n": 6149,
+    "one_ot_games": 300,
+    "fitting_max_year": 2019
+  },
+  "overtime_max_periods": 20,
+  "intervals": [
+    0.5,
+    0.8,
+    0.9,
+    0.95
+  ],
+  "sources": {
+    "artifacts/simulation/targeted_projection_frozen.joblib": "3de460e15b0b02432712f6d2b4a6d2f8bd44072ac5b8c75f49bea1896edb6650",
+    "artifacts/simulation/defensive_continuity_v1.joblib": "9eb68968b2e653ce75406ecf2504d2feb670a3ba48aafa5b64440ec675dfe6eb",
+    "artifacts/simulation/game_final_v1.joblib": "36451c61155110295d963c8e98787fcdb3fa45aefcd1b330bcfe681871a0c509",
+    "data/simulation/game_final_protocol.json": "48cc7aeb524ec469a9c902aaaf2bb8ee0c5b1a3717a994b5af5c70c4f4e835b3",
+    "data/analysis/simulation_defensive_source_fields.csv": "6bc42f5a1a3df3df2890b3a51112541dfcc9dca0401d5947facc198c06726bde"
+  },
+  "kernel_hashes": {
+    "improve_projection.projected_rotation": "37611cdcef489befb60fd6661fd2b0c2aeef9798efc40840e0f3139a50104418",
+    "improve_projection.bounded_minutes": "5a93f8c0090ed1463dee4bde8c84f544880342cfbe9ffd39faeaf712af9602ab",
+    "improve_projection.role_inputs": "c8068e426a4173c71c34dd7a30da08a12f9d29b88bf7909ac98437432637bb65",
+    "improve_projection.usage": "6ca0bc9bea85410976284bbb3931765eb760e114292ba498accc12a609cb675e",
+    "improve_projection.aggregate_case": "f2c6a5fbd2e588ee2d9c46cbe7ff88fadb75d07fbe58e75a97f47c1111045089",
+    "improve_projection.extrapolation": "306c760f0dc9ce35a5d4ec2c5dac21231cb74f0871c9c3ef90cb08df12596eb6",
+    "validate_deployability.aggregate": "1746f1c0b41c258e7032a58384c1585eb892900562a4bb6cc7d04650b21a8b5d",
+    "simulation_engine_spike.roster_rows": "28ebf74ee9c693b8fe0c064cad6b693bd4526da1e9552777c539a67f661b7881",
+    "simulation_engine_spike.add_derived_player_features": "7d30c309d139bce036392b1e3240bdc3c60b1d63b7c1f0626653a57644dd3d30",
+    "validate_deployability.normalize_usage": "64bf2c6c545793e9d3f1f135050f13f045cbc1093f1250c9dec26a4aff43f11e",
+    "validate_deployability.predict": "7737e18086fe77335d85841356c7da342e78928eec125a2a169e32fe4a60a9b3",
+    "defensive_continuity.continuity": "ddc0ebe20fbf316f1ca65209e704f3711056ba00973f1835ae6c2304df06db17",
+    "defensive_continuity.predict": "8a9dda199b63f81f2d64762650f47eb8e975f78dd275e4195a60d601e53011e9",
+    "defensive_continuity.uncertainty": "4c7eca6ffef7ee440cb1910ff958b1520e8d2c3d46349649e35d0056c35df5d2",
+    "finalize_game_calibration.means": "a66f6bb1d0313002ef5d146ebd01830de826eb09c49a89e5cf78c3e448d9f206",
+    "finalize_game_calibration.base_means": "a40f115ab65b2516f39139f4bbc476f285c06b024c7f5cf044541e311e26e505",
+    "finalize_game_calibration.regulation": "38a459f49c586e3b6c4c4e283c2f911bfaeb25f74d947edcafc5ce50faacaee1",
+    "finalize_game_calibration.draw_residuals": "5f7272dec7873161b9b02c1dcbcc14f40af7719e491e9a5d0d5171c6cd84bc7d",
+    "finalize_game_calibration.simulate": "f29c93cd9a85169a51120d6a3d83bce6aef34d0d098fe74e5431e158ecaffe09"
+  },
+  "canonical_hashes": {
+    "player_seasons.csv": "27bc1f9eec715a51e9316eacc3e1cdf34b83d357625f9f59bb5f20a4193160e8",
+    "player_team_splits.csv": "057bb5fa9be7c48e8a0785d16013eb726850dc3cd8747485e1882f7b9a02344c",
+    "team_seasons.csv": "3e5130c6555c0f29bc0f736b852c9bd090a66e925c02a288a854a2288af5a9f1",
+    "league_seasons.csv": "9c1297f7521bef509d72f56681748451112034c2048283b2397e9bb3326354fa"
+  },
+  "files": {
+    "defensive_profiles.csv": "6bc42f5a1a3df3df2890b3a51112541dfcc9dca0401d5947facc198c06726bde",
+    "joint_residuals.csv": "d448fd6bfc630db134c1dc7855ba76f39f474e9f109a3172a3c310d0ec3cebb7",
+    "overtime_residuals.csv": "af53f97d98cccc54f19a63e14236aa6fc53974b3a6dfed23b48aa03389743baf"
+  }
+}

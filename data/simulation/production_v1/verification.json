@@ -1,0 +1,38 @@
+{
+  "status": "pass",
+  "referenceCases": [
+    "A_historical_full_rosters",
+    "B_mixed_era",
+    "C_neutral",
+    "D_home",
+    "E_seeded",
+    "F_ironman_high"
+  ],
+  "invalidRequestsRejected": [
+    "duplicate player",
+    "unknown player",
+    "unavailable season",
+    "invalid target era",
+    "five without ironman",
+    "seven players",
+    "thirteen players",
+    "malformed slots",
+    "stats override",
+    "count 999",
+    "count 100001",
+    "count True"
+  ],
+  "draws": 10000,
+  "repetitions": 30,
+  "medianRequestMs": 253.5370000405237,
+  "p95RequestMs": 645.5570500227616,
+  "maxDrawRequestMs": 730.2912999875844,
+  "pythonColdStartupSeconds": 11.353513899957761,
+  "memoryUnit": "MiB working set",
+  "pythonMemoryBefore": 320.91,
+  "pythonMemoryAfter30": 321.223,
+  "pythonMemoryAfterMax": 325.355,
+  "pythonMemoryMin": 320.848,
+  "pythonMemoryMax": 325.355,
+  "dataLoadBehavior": "Once at service startup; no raw cache or joblib access; per-request parse guarded by unit test"
+}

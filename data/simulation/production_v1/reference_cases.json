@@ -1,0 +1,1570 @@
+{
+  "provenance": "Original fitted research objects and research profile/rotation/aggregation/prediction/simulate functions; no training or holdout evaluation",
+  "researchCommit": "a749144",
+  "tolerance": 1e-09,
+  "configSha256": "4cf620e2cce4ccddd83d128b94857fae0407561f3051bb954fc429a476873557",
+  "cases": [
+    {
+      "case": "A_historical_full_rosters",
+      "request": {
+        "teamA": {
+          "name": "2015-16 Warriors",
+          "starters": [
+            {
+              "playerId": "br:curryst01",
+              "season": "2015-16",
+              "slot": "PG"
+            },
+            {
+              "playerId": "br:thompkl01",
+              "season": "2015-16",
+              "slot": "SG"
+            },
+            {
+              "playerId": "br:barneha02",
+              "season": "2015-16",
+              "slot": "SF"
+            },
+            {
+              "playerId": "br:greendr01",
+              "season": "2015-16",
+              "slot": "PF"
+            },
+            {
+              "playerId": "br:bogutan01",
+              "season": "2015-16",
+              "slot": "C"
+            }
+          ],
+          "bench": [
+            {
+              "playerId": "br:iguodan01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:livinsh01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:speigma01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:barbole01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:ezelife01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:clarkia01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:rushbr01",
+              "season": "2015-16"
+            }
+          ]
+        },
+        "teamB": {
+          "name": "2015-16 Cavaliers",
+          "starters": [
+            {
+              "playerId": "br:irvinky01",
+              "season": "2015-16",
+              "slot": "PG"
+            },
+            {
+              "playerId": "br:smithjr01",
+              "season": "2015-16",
+              "slot": "SG"
+            },
+            {
+              "playerId": "br:jamesle01",
+              "season": "2015-16",
+              "slot": "SF"
+            },
+            {
+              "playerId": "br:loveke01",
+              "season": "2015-16",
+              "slot": "PF"
+            },
+            {
+              "playerId": "br:thomptr01",
+              "season": "2015-16",
+              "slot": "C"
+            }
+          ],
+          "bench": [
+            {
+              "playerId": "br:dellama01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:shumpim01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:mozgoti01",
+              "season": "2015-16"
+            }
+          ]
+        },
+        "targetSeason": "2016-17",
+        "venue": "teamA_home",
+        "simulationCount": 10000,
+        "seed": 12345,
+        "ironmanMode": false
+      },
+      "teamA": {
+        "strengths": {
+          "ortg": 115.83999337740005,
+          "pace": 99.8822734958542,
+          "drtg": 107.61559980381251
+        },
+        "minutes": [
+          32.495801865442,
+          31.81378461406908,
+          26.961073423899826,
+          32.27369974801961,
+          20.0,
+          23.619726524913432,
+          18.254914826556156,
+          10.368958555585671,
+          13.67278359409962,
+          12.023210743769866,
+          6.6175033624272785,
+          11.898542741217451
+        ],
+        "features": {
+          "season_end_year": 2017,
+          "w_relative_ts": 0.045621704805111615,
+          "w_assist_pct": 17.228674532394525,
+          "w_turnover_pct": 13.921957557014084,
+          "w_usage_pct": 19.81892403282505,
+          "w_three_point_attempt_rate": 0.32568334151470235,
+          "w_free_throw_rate": 0.24795520605449672,
+          "w_offensive_rebounds_per_75": 1.4796459160126623,
+          "w_defensive_rebounds_per_75": 5.415844395340335,
+          "w_steals_per_75": 1.2522035922109251,
+          "w_blocks_per_75": 0.9199650408688389,
+          "w_defensive_box_plus_minus": 0.6778153546177835,
+          "w_steal_pct": 1.658497866338972,
+          "w_block_pct": 1.8851957423697598,
+          "w_defensive_rebound_pct": 15.188254559167802,
+          "usage_weighted_relative_ts": 0.052024209512160795,
+          "usage_weighted_3par": 0.35567106482430827,
+          "usage_weighted_ftr": 0.24902982257531575,
+          "usage_compression": 0.19901339793411363,
+          "usage_concentration": 0.12140193687518674,
+          "rotation_hhi": 0.09986290246220747,
+          "prior_pace_delta": 3.5258064516129224,
+          "known_prior_minutes_share": 1.0000000000000002,
+          "returner_minutes_share": 0.0,
+          "prior_age_years": 1.0000000000000002,
+          "anchor_ortg": 109.53369288076497,
+          "anchor_drtg": 109.53369288076497,
+          "anchor_pace": 96.4,
+          "w_age": 27.471123675821843,
+          "prior_defensive_environment": -3.401652851826611,
+          "center_minutes_share": 0.17663403874731476,
+          "returning_minutes_share": 0.0,
+          "returning_top5_share": 0.0,
+          "returning_rotation_players": 0,
+          "transfer_or_unknown_minutes_share": 1.0,
+          "retained_defensive_context": 0.0,
+          "defensive_missing_share": 0.0,
+          "source_context_sd": 4.440892098500626e-16,
+          "source_diversity": 0.0
+        },
+        "uncertainty": "HIGH"
+      },
+      "teamB": {
+        "strengths": {
+          "ortg": 112.4586471701265,
+          "pace": 93.67361438526255,
+          "drtg": 108.18972912969905
+        },
+        "minutes": [
+          30.97186303806918,
+          33.23519651270496,
+          38.0,
+          34.53834423982481,
+          31.09410965907455,
+          26.324451190612404,
+          24.50307106962526,
+          21.332964290088814
+        ],
+        "features": {
+          "season_end_year": 2017,
+          "w_relative_ts": 0.014374896300760174,
+          "w_assist_pct": 16.804684349752137,
+          "w_turnover_pct": 12.192940455350216,
+          "w_usage_pct": 20.677341134145934,
+          "w_three_point_attempt_rate": 0.31965571132377263,
+          "w_free_throw_rate": 0.2701732207796334,
+          "w_offensive_rebounds_per_75": 1.8659249685920243,
+          "w_defensive_rebounds_per_75": 5.586198864494226,
+          "w_steals_per_75": 1.1199294255941834,
+          "w_blocks_per_75": 0.6427708749318615,
+          "w_defensive_box_plus_minus": 0.37403459202823763,
+          "w_steal_pct": 1.500632046685714,
+          "w_block_pct": 1.3627551432931284,
+          "w_defensive_rebound_pct": 16.26536872035521,
+          "usage_weighted_relative_ts": 0.016144688256138236,
+          "usage_weighted_3par": 0.3201319212769875,
+          "usage_weighted_ftr": 0.26867864628961263,
+          "usage_compression": 0.7559336110643906,
+          "usage_concentration": 0.15085847790472368,
+          "rotation_hhi": 0.12875083425934847,
+          "prior_pace_delta": -2.474193548387077,
+          "known_prior_minutes_share": 0.9999999999999998,
+          "returner_minutes_share": 0.0,
+          "prior_age_years": 0.9999999999999998,
+          "anchor_ortg": 109.53369288076497,
+          "anchor_drtg": 109.53369288076497,
+          "anchor_pace": 96.4,
+          "w_age": 26.898111218617984,
+          "prior_defensive_environment": -2.701652851826608,
+          "center_minutes_share": 0.08888735120870339,
+          "returning_minutes_share": 0.0,
+          "returning_top5_share": 0.0,
+          "returning_rotation_players": 0,
+          "transfer_or_unknown_minutes_share": 1.0,
+          "retained_defensive_context": 0.0,
+          "defensive_missing_share": 0.0,
+          "source_context_sd": 4.4408920985006257e-16,
+          "source_diversity": 2.220446049250313e-16
+        },
+        "uncertainty": "HIGH"
+      },
+      "expected": {
+        "pace": 96.77794394055837,
+        "home_eff": 116.1367515504557,
+        "away_eff": 109.48723735696862,
+        "home": 112.39476030988557,
+        "away": 105.95949719139318
+      },
+      "simulation": {
+        "expected_home": 112.8739,
+        "expected_away": 106.5515,
+        "probability": 0.6892,
+        "simulated_ot": 0.053,
+        "expected_possessions": 96.68568002690179,
+        "final_ties": 0,
+        "uncertainty_label": "STANDARD",
+        "uncertainty_warning": "",
+        "lo50": -3.0,
+        "hi50": 15.0,
+        "reg_lo50": -2.0,
+        "reg_hi50": 15.0,
+        "lo80": -10.0,
+        "hi80": 23.0,
+        "reg_lo80": -10.0,
+        "reg_hi80": 23.0,
+        "lo90": -15.050000000000125,
+        "hi90": 28.0,
+        "reg_lo90": -15.050000000000125,
+        "reg_hi90": 28.0,
+        "lo95": -20.0,
+        "hi95": 34.0,
+        "reg_lo95": -20.0,
+        "reg_hi95": 34.0
+      }
+    },
+    {
+      "case": "B_mixed_era",
+      "request": {
+        "teamA": {
+          "name": "Mixed-era named rotation",
+          "starters": [
+            {
+              "playerId": "br:curryst01",
+              "season": "2015-16",
+              "slot": "PG"
+            },
+            {
+              "playerId": "br:jordami01",
+              "season": "1990-91",
+              "slot": "SG"
+            },
+            {
+              "playerId": "br:jamesle01",
+              "season": "2012-13",
+              "slot": "SF"
+            },
+            {
+              "playerId": "br:duncati01",
+              "season": "2002-03",
+              "slot": "PF"
+            },
+            {
+              "playerId": "br:onealsh01",
+              "season": "1999-00",
+              "slot": "C"
+            }
+          ],
+          "bench": [
+            {
+              "playerId": "br:ginobma01",
+              "season": "2006-07"
+            },
+            {
+              "playerId": "br:pippesc01",
+              "season": "1995-96"
+            },
+            {
+              "playerId": "br:olajuha01",
+              "season": "1993-94"
+            }
+          ]
+        },
+        "teamB": {
+          "name": "2015-16 Warriors",
+          "starters": [
+            {
+              "playerId": "br:curryst01",
+              "season": "2015-16",
+              "slot": "PG"
+            },
+            {
+              "playerId": "br:thompkl01",
+              "season": "2015-16",
+              "slot": "SG"
+            },
+            {
+              "playerId": "br:barneha02",
+              "season": "2015-16",
+              "slot": "SF"
+            },
+            {
+              "playerId": "br:greendr01",
+              "season": "2015-16",
+              "slot": "PF"
+            },
+            {
+              "playerId": "br:bogutan01",
+              "season": "2015-16",
+              "slot": "C"
+            }
+          ],
+          "bench": [
+            {
+              "playerId": "br:iguodan01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:livinsh01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:speigma01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:barbole01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:ezelife01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:clarkia01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:rushbr01",
+              "season": "2015-16"
+            }
+          ]
+        },
+        "targetSeason": "1990-91",
+        "venue": "teamB_home",
+        "simulationCount": 10000,
+        "seed": 12345,
+        "ironmanMode": false
+      },
+      "teamA": {
+        "strengths": {
+          "ortg": 121.26234462161804,
+          "pace": 96.26033304448404,
+          "drtg": 101.55368818187425
+        },
+        "minutes": [
+          28.911731517314255,
+          32.684369681889436,
+          32.03572200574423,
+          34.47392842904486,
+          33.923621502250825,
+          21.970626863756372,
+          28.0,
+          28.0
+        ],
+        "features": {
+          "season_end_year": 1991,
+          "w_relative_ts": 0.06486158580671894,
+          "w_assist_pct": 24.801564231695433,
+          "w_turnover_pct": 11.848009313576323,
+          "w_usage_pct": 29.675033289430676,
+          "w_three_point_attempt_rate": 0.175486669117895,
+          "w_free_throw_rate": 0.3763057314152065,
+          "w_offensive_rebounds_per_75": 2.1973708881644787,
+          "w_defensive_rebounds_per_75": 6.876240415471578,
+          "w_steals_per_75": 1.6331941196459554,
+          "w_blocks_per_75": 1.6699359362951398,
+          "w_defensive_box_plus_minus": 2.4028879894168327,
+          "w_steal_pct": 2.181048162061369,
+          "w_block_pct": 2.960942673057378,
+          "w_defensive_rebound_pct": 19.546373240906,
+          "usage_weighted_relative_ts": 0.06684511410233175,
+          "usage_weighted_3par": 0.1726849685524607,
+          "usage_weighted_ftr": 0.37687403408927506,
+          "usage_compression": 9.675033289430678,
+          "usage_concentration": 0.12906410333583285,
+          "rotation_hhi": 0.12709055568066485,
+          "prior_pace_delta": -0.45349543264347086,
+          "known_prior_minutes_share": 1.0,
+          "returner_minutes_share": 0.0,
+          "prior_age_years": 1.0,
+          "anchor_ortg": 108.66934622179166,
+          "anchor_drtg": 108.66934622179166,
+          "anchor_pace": 97.82857142857142,
+          "w_age": 27.989596030434218,
+          "prior_defensive_environment": -4.965814029155586,
+          "center_minutes_share": 0.2580150895927118,
+          "returning_minutes_share": 0.0,
+          "returning_top5_share": 0.0,
+          "returning_rotation_players": 0,
+          "transfer_or_unknown_minutes_share": 1.0,
+          "retained_defensive_context": 0.0,
+          "defensive_missing_share": 0.0,
+          "source_context_sd": 1.5460384470428046,
+          "source_diversity": 0.8729094443193351
+        },
+        "uncertainty": "HIGH"
+      },
+      "teamB": {
+        "strengths": {
+          "ortg": 114.97564671842673,
+          "pace": 101.31084492442561,
+          "drtg": 106.7512531448392
+        },
+        "minutes": [
+          32.495801865442,
+          31.81378461406908,
+          26.961073423899826,
+          32.27369974801961,
+          20.0,
+          23.619726524913432,
+          18.254914826556156,
+          10.368958555585671,
+          13.67278359409962,
+          12.023210743769866,
+          6.6175033624272785,
+          11.898542741217451
+        ],
+        "features": {
+          "season_end_year": 1991,
+          "w_relative_ts": 0.045621704805111615,
+          "w_assist_pct": 17.228674532394525,
+          "w_turnover_pct": 13.921957557014084,
+          "w_usage_pct": 19.81892403282505,
+          "w_three_point_attempt_rate": 0.32568334151470235,
+          "w_free_throw_rate": 0.24795520605449672,
+          "w_offensive_rebounds_per_75": 1.4796459160126623,
+          "w_defensive_rebounds_per_75": 5.415844395340335,
+          "w_steals_per_75": 1.2522035922109251,
+          "w_blocks_per_75": 0.9199650408688389,
+          "w_defensive_box_plus_minus": 0.6778153546177835,
+          "w_steal_pct": 1.658497866338972,
+          "w_block_pct": 1.8851957423697598,
+          "w_defensive_rebound_pct": 15.188254559167802,
+          "usage_weighted_relative_ts": 0.052024209512160795,
+          "usage_weighted_3par": 0.35567106482430827,
+          "usage_weighted_ftr": 0.24902982257531575,
+          "usage_compression": 0.19901339793411363,
+          "usage_concentration": 0.12140193687518674,
+          "rotation_hhi": 0.09986290246220747,
+          "prior_pace_delta": 3.5258064516129224,
+          "known_prior_minutes_share": 1.0000000000000002,
+          "returner_minutes_share": 0.0,
+          "prior_age_years": 1.0000000000000002,
+          "anchor_ortg": 108.66934622179166,
+          "anchor_drtg": 108.66934622179166,
+          "anchor_pace": 97.82857142857142,
+          "w_age": 27.471123675821843,
+          "prior_defensive_environment": -3.401652851826611,
+          "center_minutes_share": 0.17663403874731476,
+          "returning_minutes_share": 0.0,
+          "returning_top5_share": 0.0,
+          "returning_rotation_players": 0,
+          "transfer_or_unknown_minutes_share": 1.0,
+          "retained_defensive_context": 0.0,
+          "defensive_missing_share": 0.0,
+          "source_context_sd": 4.440892098500626e-16,
+          "source_diversity": 0.0
+        },
+        "uncertainty": "HIGH"
+      },
+      "expected": {
+        "pace": 98.78558898445482,
+        "home_eff": 109.50071060263087,
+        "away_eff": 118.29093480846015,
+        "home": 108.17092191097228,
+        "away": 116.85439666575485
+      },
+      "simulation": {
+        "expected_home": 108.5825,
+        "expected_away": 117.4449,
+        "probability": 0.2434,
+        "simulated_ot": 0.0475,
+        "expected_possessions": 98.69195779288395,
+        "final_ties": 0,
+        "uncertainty_label": "STANDARD",
+        "uncertainty_warning": "",
+        "lo50": -17.0,
+        "hi50": -1.0,
+        "reg_lo50": -17.0,
+        "reg_hi50": 0.0,
+        "lo80": -25.0,
+        "hi80": 8.0,
+        "reg_lo80": -25.0,
+        "reg_hi80": 8.0,
+        "lo90": -31.0,
+        "hi90": 13.0,
+        "reg_lo90": -31.0,
+        "reg_hi90": 13.0,
+        "lo95": -36.0,
+        "hi95": 19.0,
+        "reg_lo95": -36.0,
+        "reg_hi95": 19.0
+      }
+    },
+    {
+      "case": "C_neutral",
+      "request": {
+        "teamA": {
+          "name": "2015-16 Cavaliers",
+          "starters": [
+            {
+              "playerId": "br:irvinky01",
+              "season": "2015-16",
+              "slot": "PG"
+            },
+            {
+              "playerId": "br:smithjr01",
+              "season": "2015-16",
+              "slot": "SG"
+            },
+            {
+              "playerId": "br:jamesle01",
+              "season": "2015-16",
+              "slot": "SF"
+            },
+            {
+              "playerId": "br:loveke01",
+              "season": "2015-16",
+              "slot": "PF"
+            },
+            {
+              "playerId": "br:thomptr01",
+              "season": "2015-16",
+              "slot": "C"
+            }
+          ],
+          "bench": [
+            {
+              "playerId": "br:dellama01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:shumpim01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:mozgoti01",
+              "season": "2015-16"
+            }
+          ]
+        },
+        "teamB": {
+          "name": "2015-16 Warriors",
+          "starters": [
+            {
+              "playerId": "br:curryst01",
+              "season": "2015-16",
+              "slot": "PG"
+            },
+            {
+              "playerId": "br:thompkl01",
+              "season": "2015-16",
+              "slot": "SG"
+            },
+            {
+              "playerId": "br:barneha02",
+              "season": "2015-16",
+              "slot": "SF"
+            },
+            {
+              "playerId": "br:greendr01",
+              "season": "2015-16",
+              "slot": "PF"
+            },
+            {
+              "playerId": "br:bogutan01",
+              "season": "2015-16",
+              "slot": "C"
+            }
+          ],
+          "bench": [
+            {
+              "playerId": "br:iguodan01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:livinsh01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:speigma01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:barbole01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:ezelife01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:clarkia01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:rushbr01",
+              "season": "2015-16"
+            }
+          ]
+        },
+        "targetSeason": "2016-17",
+        "venue": "neutral",
+        "simulationCount": 10000,
+        "seed": 12345,
+        "ironmanMode": false
+      },
+      "teamA": {
+        "strengths": {
+          "ortg": 112.4586471701265,
+          "pace": 93.67361438526255,
+          "drtg": 108.18972912969905
+        },
+        "minutes": [
+          30.97186303806918,
+          33.23519651270496,
+          38.0,
+          34.53834423982481,
+          31.09410965907455,
+          26.324451190612404,
+          24.50307106962526,
+          21.332964290088814
+        ],
+        "features": {
+          "season_end_year": 2017,
+          "w_relative_ts": 0.014374896300760174,
+          "w_assist_pct": 16.804684349752137,
+          "w_turnover_pct": 12.192940455350216,
+          "w_usage_pct": 20.677341134145934,
+          "w_three_point_attempt_rate": 0.31965571132377263,
+          "w_free_throw_rate": 0.2701732207796334,
+          "w_offensive_rebounds_per_75": 1.8659249685920243,
+          "w_defensive_rebounds_per_75": 5.586198864494226,
+          "w_steals_per_75": 1.1199294255941834,
+          "w_blocks_per_75": 0.6427708749318615,
+          "w_defensive_box_plus_minus": 0.37403459202823763,
+          "w_steal_pct": 1.500632046685714,
+          "w_block_pct": 1.3627551432931284,
+          "w_defensive_rebound_pct": 16.26536872035521,
+          "usage_weighted_relative_ts": 0.016144688256138236,
+          "usage_weighted_3par": 0.3201319212769875,
+          "usage_weighted_ftr": 0.26867864628961263,
+          "usage_compression": 0.7559336110643906,
+          "usage_concentration": 0.15085847790472368,
+          "rotation_hhi": 0.12875083425934847,
+          "prior_pace_delta": -2.474193548387077,
+          "known_prior_minutes_share": 0.9999999999999998,
+          "returner_minutes_share": 0.0,
+          "prior_age_years": 0.9999999999999998,
+          "anchor_ortg": 109.53369288076497,
+          "anchor_drtg": 109.53369288076497,
+          "anchor_pace": 96.4,
+          "w_age": 26.898111218617984,
+          "prior_defensive_environment": -2.701652851826608,
+          "center_minutes_share": 0.08888735120870339,
+          "returning_minutes_share": 0.0,
+          "returning_top5_share": 0.0,
+          "returning_rotation_players": 0,
+          "transfer_or_unknown_minutes_share": 1.0,
+          "retained_defensive_context": 0.0,
+          "defensive_missing_share": 0.0,
+          "source_context_sd": 4.4408920985006257e-16,
+          "source_diversity": 2.220446049250313e-16
+        },
+        "uncertainty": "HIGH"
+      },
+      "teamB": {
+        "strengths": {
+          "ortg": 115.83999337740005,
+          "pace": 99.8822734958542,
+          "drtg": 107.61559980381251
+        },
+        "minutes": [
+          32.495801865442,
+          31.81378461406908,
+          26.961073423899826,
+          32.27369974801961,
+          20.0,
+          23.619726524913432,
+          18.254914826556156,
+          10.368958555585671,
+          13.67278359409962,
+          12.023210743769866,
+          6.6175033624272785,
+          11.898542741217451
+        ],
+        "features": {
+          "season_end_year": 2017,
+          "w_relative_ts": 0.045621704805111615,
+          "w_assist_pct": 17.228674532394525,
+          "w_turnover_pct": 13.921957557014084,
+          "w_usage_pct": 19.81892403282505,
+          "w_three_point_attempt_rate": 0.32568334151470235,
+          "w_free_throw_rate": 0.24795520605449672,
+          "w_offensive_rebounds_per_75": 1.4796459160126623,
+          "w_defensive_rebounds_per_75": 5.415844395340335,
+          "w_steals_per_75": 1.2522035922109251,
+          "w_blocks_per_75": 0.9199650408688389,
+          "w_defensive_box_plus_minus": 0.6778153546177835,
+          "w_steal_pct": 1.658497866338972,
+          "w_block_pct": 1.8851957423697598,
+          "w_defensive_rebound_pct": 15.188254559167802,
+          "usage_weighted_relative_ts": 0.052024209512160795,
+          "usage_weighted_3par": 0.35567106482430827,
+          "usage_weighted_ftr": 0.24902982257531575,
+          "usage_compression": 0.19901339793411363,
+          "usage_concentration": 0.12140193687518674,
+          "rotation_hhi": 0.09986290246220747,
+          "prior_pace_delta": 3.5258064516129224,
+          "known_prior_minutes_share": 1.0000000000000002,
+          "returner_minutes_share": 0.0,
+          "prior_age_years": 1.0000000000000002,
+          "anchor_ortg": 109.53369288076497,
+          "anchor_drtg": 109.53369288076497,
+          "anchor_pace": 96.4,
+          "w_age": 27.471123675821843,
+          "prior_defensive_environment": -3.401652851826611,
+          "center_minutes_share": 0.17663403874731476,
+          "returning_minutes_share": 0.0,
+          "returning_top5_share": 0.0,
+          "returning_rotation_players": 0,
+          "transfer_or_unknown_minutes_share": 1.0,
+          "retained_defensive_context": 0.0,
+          "defensive_missing_share": 0.0,
+          "source_context_sd": 4.440892098500626e-16,
+          "source_diversity": 0.0
+        },
+        "uncertainty": "HIGH"
+      },
+      "expected": {
+        "pace": 96.77794394055837,
+        "home_eff": 110.54055409317404,
+        "away_eff": 114.49602962633413,
+        "home": 106.97887547187457,
+        "away": 110.80690336593877
+      },
+      "simulation": {
+        "expected_home": 107.5247,
+        "expected_away": 111.5083,
+        "probability": 0.3745,
+        "simulated_ot": 0.0581,
+        "expected_possessions": 96.68568002690179,
+        "final_ties": 0,
+        "uncertainty_label": "STANDARD",
+        "uncertainty_warning": "",
+        "lo50": -13.0,
+        "hi50": 5.0,
+        "reg_lo50": -13.0,
+        "reg_hi50": 4.0,
+        "lo80": -21.0,
+        "hi80": 13.0,
+        "reg_lo80": -21.0,
+        "reg_hi80": 13.0,
+        "lo90": -26.0,
+        "hi90": 18.0,
+        "reg_lo90": -26.0,
+        "reg_hi90": 18.0,
+        "lo95": -30.0,
+        "hi95": 23.0,
+        "reg_lo95": -30.0,
+        "reg_hi95": 23.0
+      }
+    },
+    {
+      "case": "D_home",
+      "request": {
+        "teamA": {
+          "name": "2015-16 Cavaliers",
+          "starters": [
+            {
+              "playerId": "br:irvinky01",
+              "season": "2015-16",
+              "slot": "PG"
+            },
+            {
+              "playerId": "br:smithjr01",
+              "season": "2015-16",
+              "slot": "SG"
+            },
+            {
+              "playerId": "br:jamesle01",
+              "season": "2015-16",
+              "slot": "SF"
+            },
+            {
+              "playerId": "br:loveke01",
+              "season": "2015-16",
+              "slot": "PF"
+            },
+            {
+              "playerId": "br:thomptr01",
+              "season": "2015-16",
+              "slot": "C"
+            }
+          ],
+          "bench": [
+            {
+              "playerId": "br:dellama01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:shumpim01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:mozgoti01",
+              "season": "2015-16"
+            }
+          ]
+        },
+        "teamB": {
+          "name": "2015-16 Warriors",
+          "starters": [
+            {
+              "playerId": "br:curryst01",
+              "season": "2015-16",
+              "slot": "PG"
+            },
+            {
+              "playerId": "br:thompkl01",
+              "season": "2015-16",
+              "slot": "SG"
+            },
+            {
+              "playerId": "br:barneha02",
+              "season": "2015-16",
+              "slot": "SF"
+            },
+            {
+              "playerId": "br:greendr01",
+              "season": "2015-16",
+              "slot": "PF"
+            },
+            {
+              "playerId": "br:bogutan01",
+              "season": "2015-16",
+              "slot": "C"
+            }
+          ],
+          "bench": [
+            {
+              "playerId": "br:iguodan01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:livinsh01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:speigma01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:barbole01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:ezelife01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:clarkia01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:rushbr01",
+              "season": "2015-16"
+            }
+          ]
+        },
+        "targetSeason": "2016-17",
+        "venue": "teamA_home",
+        "simulationCount": 10000,
+        "seed": 12345,
+        "ironmanMode": false
+      },
+      "teamA": {
+        "strengths": {
+          "ortg": 112.4586471701265,
+          "pace": 93.67361438526255,
+          "drtg": 108.18972912969905
+        },
+        "minutes": [
+          30.97186303806918,
+          33.23519651270496,
+          38.0,
+          34.53834423982481,
+          31.09410965907455,
+          26.324451190612404,
+          24.50307106962526,
+          21.332964290088814
+        ],
+        "features": {
+          "season_end_year": 2017,
+          "w_relative_ts": 0.014374896300760174,
+          "w_assist_pct": 16.804684349752137,
+          "w_turnover_pct": 12.192940455350216,
+          "w_usage_pct": 20.677341134145934,
+          "w_three_point_attempt_rate": 0.31965571132377263,
+          "w_free_throw_rate": 0.2701732207796334,
+          "w_offensive_rebounds_per_75": 1.8659249685920243,
+          "w_defensive_rebounds_per_75": 5.586198864494226,
+          "w_steals_per_75": 1.1199294255941834,
+          "w_blocks_per_75": 0.6427708749318615,
+          "w_defensive_box_plus_minus": 0.37403459202823763,
+          "w_steal_pct": 1.500632046685714,
+          "w_block_pct": 1.3627551432931284,
+          "w_defensive_rebound_pct": 16.26536872035521,
+          "usage_weighted_relative_ts": 0.016144688256138236,
+          "usage_weighted_3par": 0.3201319212769875,
+          "usage_weighted_ftr": 0.26867864628961263,
+          "usage_compression": 0.7559336110643906,
+          "usage_concentration": 0.15085847790472368,
+          "rotation_hhi": 0.12875083425934847,
+          "prior_pace_delta": -2.474193548387077,
+          "known_prior_minutes_share": 0.9999999999999998,
+          "returner_minutes_share": 0.0,
+          "prior_age_years": 0.9999999999999998,
+          "anchor_ortg": 109.53369288076497,
+          "anchor_drtg": 109.53369288076497,
+          "anchor_pace": 96.4,
+          "w_age": 26.898111218617984,
+          "prior_defensive_environment": -2.701652851826608,
+          "center_minutes_share": 0.08888735120870339,
+          "returning_minutes_share": 0.0,
+          "returning_top5_share": 0.0,
+          "returning_rotation_players": 0,
+          "transfer_or_unknown_minutes_share": 1.0,
+          "retained_defensive_context": 0.0,
+          "defensive_missing_share": 0.0,
+          "source_context_sd": 4.4408920985006257e-16,
+          "source_diversity": 2.220446049250313e-16
+        },
+        "uncertainty": "HIGH"
+      },
+      "teamB": {
+        "strengths": {
+          "ortg": 115.83999337740005,
+          "pace": 99.8822734958542,
+          "drtg": 107.61559980381251
+        },
+        "minutes": [
+          32.495801865442,
+          31.81378461406908,
+          26.961073423899826,
+          32.27369974801961,
+          20.0,
+          23.619726524913432,
+          18.254914826556156,
+          10.368958555585671,
+          13.67278359409962,
+          12.023210743769866,
+          6.6175033624272785,
+          11.898542741217451
+        ],
+        "features": {
+          "season_end_year": 2017,
+          "w_relative_ts": 0.045621704805111615,
+          "w_assist_pct": 17.228674532394525,
+          "w_turnover_pct": 13.921957557014084,
+          "w_usage_pct": 19.81892403282505,
+          "w_three_point_attempt_rate": 0.32568334151470235,
+          "w_free_throw_rate": 0.24795520605449672,
+          "w_offensive_rebounds_per_75": 1.4796459160126623,
+          "w_defensive_rebounds_per_75": 5.415844395340335,
+          "w_steals_per_75": 1.2522035922109251,
+          "w_blocks_per_75": 0.9199650408688389,
+          "w_defensive_box_plus_minus": 0.6778153546177835,
+          "w_steal_pct": 1.658497866338972,
+          "w_block_pct": 1.8851957423697598,
+          "w_defensive_rebound_pct": 15.188254559167802,
+          "usage_weighted_relative_ts": 0.052024209512160795,
+          "usage_weighted_3par": 0.35567106482430827,
+          "usage_weighted_ftr": 0.24902982257531575,
+          "usage_compression": 0.19901339793411363,
+          "usage_concentration": 0.12140193687518674,
+          "rotation_hhi": 0.09986290246220747,
+          "prior_pace_delta": 3.5258064516129224,
+          "known_prior_minutes_share": 1.0000000000000002,
+          "returner_minutes_share": 0.0,
+          "prior_age_years": 1.0000000000000002,
+          "anchor_ortg": 109.53369288076497,
+          "anchor_drtg": 109.53369288076497,
+          "anchor_pace": 96.4,
+          "w_age": 27.471123675821843,
+          "prior_defensive_environment": -3.401652851826611,
+          "center_minutes_share": 0.17663403874731476,
+          "returning_minutes_share": 0.0,
+          "returning_top5_share": 0.0,
+          "returning_rotation_players": 0,
+          "transfer_or_unknown_minutes_share": 1.0,
+          "retained_defensive_context": 0.0,
+          "defensive_missing_share": 0.0,
+          "source_context_sd": 4.440892098500626e-16,
+          "source_diversity": 0.0
+        },
+        "uncertainty": "HIGH"
+      },
+      "expected": {
+        "pace": 96.77794394055837,
+        "home_eff": 112.1812760172956,
+        "away_eff": 113.44271289012872,
+        "home": 108.56673241582139,
+        "away": 109.78752508545736
+      },
+      "simulation": {
+        "expected_home": 109.1652,
+        "expected_away": 110.5253,
+        "probability": 0.4557,
+        "simulated_ot": 0.0631,
+        "expected_possessions": 96.68568002690179,
+        "final_ties": 0,
+        "uncertainty_label": "STANDARD",
+        "uncertainty_warning": "",
+        "lo50": -10.0,
+        "hi50": 7.0,
+        "reg_lo50": -10.0,
+        "reg_hi50": 7.0,
+        "lo80": -18.0,
+        "hi80": 16.0,
+        "reg_lo80": -18.0,
+        "reg_hi80": 16.0,
+        "lo90": -23.0,
+        "hi90": 21.0,
+        "reg_lo90": -23.0,
+        "reg_hi90": 21.0,
+        "lo95": -28.0,
+        "hi95": 26.0,
+        "reg_lo95": -28.0,
+        "reg_hi95": 26.0
+      }
+    },
+    {
+      "case": "E_seeded",
+      "request": {
+        "teamA": {
+          "name": "2015-16 Warriors",
+          "starters": [
+            {
+              "playerId": "br:curryst01",
+              "season": "2015-16",
+              "slot": "PG"
+            },
+            {
+              "playerId": "br:thompkl01",
+              "season": "2015-16",
+              "slot": "SG"
+            },
+            {
+              "playerId": "br:barneha02",
+              "season": "2015-16",
+              "slot": "SF"
+            },
+            {
+              "playerId": "br:greendr01",
+              "season": "2015-16",
+              "slot": "PF"
+            },
+            {
+              "playerId": "br:bogutan01",
+              "season": "2015-16",
+              "slot": "C"
+            }
+          ],
+          "bench": [
+            {
+              "playerId": "br:iguodan01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:livinsh01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:speigma01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:barbole01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:ezelife01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:clarkia01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:rushbr01",
+              "season": "2015-16"
+            }
+          ]
+        },
+        "teamB": {
+          "name": "2015-16 Cavaliers",
+          "starters": [
+            {
+              "playerId": "br:irvinky01",
+              "season": "2015-16",
+              "slot": "PG"
+            },
+            {
+              "playerId": "br:smithjr01",
+              "season": "2015-16",
+              "slot": "SG"
+            },
+            {
+              "playerId": "br:jamesle01",
+              "season": "2015-16",
+              "slot": "SF"
+            },
+            {
+              "playerId": "br:loveke01",
+              "season": "2015-16",
+              "slot": "PF"
+            },
+            {
+              "playerId": "br:thomptr01",
+              "season": "2015-16",
+              "slot": "C"
+            }
+          ],
+          "bench": [
+            {
+              "playerId": "br:dellama01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:shumpim01",
+              "season": "2015-16"
+            },
+            {
+              "playerId": "br:mozgoti01",
+              "season": "2015-16"
+            }
+          ]
+        },
+        "targetSeason": "1979-80",
+        "venue": "neutral",
+        "simulationCount": 10000,
+        "seed": 12345,
+        "ironmanMode": false
+      },
+      "teamA": {
+        "strengths": {
+          "ortg": 112.37973563517085,
+          "pace": 106.55618653933247,
+          "drtg": 104.15534206158331
+        },
+        "minutes": [
+          32.495801865442,
+          31.81378461406908,
+          26.961073423899826,
+          32.27369974801961,
+          20.0,
+          23.619726524913432,
+          18.254914826556156,
+          10.368958555585671,
+          13.67278359409962,
+          12.023210743769866,
+          6.6175033624272785,
+          11.898542741217451
+        ],
+        "features": {
+          "season_end_year": 1980,
+          "w_relative_ts": 0.045621704805111615,
+          "w_assist_pct": 17.228674532394525,
+          "w_turnover_pct": 13.921957557014084,
+          "w_usage_pct": 19.81892403282505,
+          "w_three_point_attempt_rate": 0.32568334151470235,
+          "w_free_throw_rate": 0.24795520605449672,
+          "w_offensive_rebounds_per_75": 1.4796459160126623,
+          "w_defensive_rebounds_per_75": 5.415844395340335,
+          "w_steals_per_75": 1.2522035922109251,
+          "w_blocks_per_75": 0.9199650408688389,
+          "w_defensive_box_plus_minus": 0.6778153546177835,
+          "w_steal_pct": 1.658497866338972,
+          "w_block_pct": 1.8851957423697598,
+          "w_defensive_rebound_pct": 15.188254559167802,
+          "usage_weighted_relative_ts": 0.052024209512160795,
+          "usage_weighted_3par": 0.35567106482430827,
+          "usage_weighted_ftr": 0.24902982257531575,
+          "usage_compression": 0.19901339793411363,
+          "usage_concentration": 0.12140193687518674,
+          "rotation_hhi": 0.09986290246220747,
+          "prior_pace_delta": 3.5258064516129224,
+          "known_prior_minutes_share": 1.0000000000000002,
+          "returner_minutes_share": 0.0,
+          "prior_age_years": 1.0000000000000002,
+          "anchor_ortg": 106.07343513853577,
+          "anchor_drtg": 106.07343513853577,
+          "anchor_pace": 103.07391304347829,
+          "w_age": 27.471123675821843,
+          "prior_defensive_environment": -3.401652851826611,
+          "center_minutes_share": 0.17663403874731476,
+          "returning_minutes_share": 0.0,
+          "returning_top5_share": 0.0,
+          "returning_rotation_players": 0,
+          "transfer_or_unknown_minutes_share": 1.0,
+          "retained_defensive_context": 0.0,
+          "defensive_missing_share": 0.0,
+          "source_context_sd": 4.440892098500626e-16,
+          "source_diversity": 0.0
+        },
+        "uncertainty": "HIGH"
+      },
+      "teamB": {
+        "strengths": {
+          "ortg": 108.9983894278973,
+          "pace": 100.34752742874083,
+          "drtg": 104.72947138746984
+        },
+        "minutes": [
+          30.97186303806918,
+          33.23519651270496,
+          38.0,
+          34.53834423982481,
+          31.09410965907455,
+          26.324451190612404,
+          24.50307106962526,
+          21.332964290088814
+        ],
+        "features": {
+          "season_end_year": 1980,
+          "w_relative_ts": 0.014374896300760174,
+          "w_assist_pct": 16.804684349752137,
+          "w_turnover_pct": 12.192940455350216,
+          "w_usage_pct": 20.677341134145934,
+          "w_three_point_attempt_rate": 0.31965571132377263,
+          "w_free_throw_rate": 0.2701732207796334,
+          "w_offensive_rebounds_per_75": 1.8659249685920243,
+          "w_defensive_rebounds_per_75": 5.586198864494226,
+          "w_steals_per_75": 1.1199294255941834,
+          "w_blocks_per_75": 0.6427708749318615,
+          "w_defensive_box_plus_minus": 0.37403459202823763,
+          "w_steal_pct": 1.500632046685714,
+          "w_block_pct": 1.3627551432931284,
+          "w_defensive_rebound_pct": 16.26536872035521,
+          "usage_weighted_relative_ts": 0.016144688256138236,
+          "usage_weighted_3par": 0.3201319212769875,
+          "usage_weighted_ftr": 0.26867864628961263,
+          "usage_compression": 0.7559336110643906,
+          "usage_concentration": 0.15085847790472368,
+          "rotation_hhi": 0.12875083425934847,
+          "prior_pace_delta": -2.474193548387077,
+          "known_prior_minutes_share": 0.9999999999999998,
+          "returner_minutes_share": 0.0,
+          "prior_age_years": 0.9999999999999998,
+          "anchor_ortg": 106.07343513853577,
+          "anchor_drtg": 106.07343513853577,
+          "anchor_pace": 103.07391304347829,
+          "w_age": 26.898111218617984,
+          "prior_defensive_environment": -2.701652851826608,
+          "center_minutes_share": 0.08888735120870339,
+          "returning_minutes_share": 0.0,
+          "returning_top5_share": 0.0,
+          "returning_rotation_players": 0,
+          "transfer_or_unknown_minutes_share": 1.0,
+          "retained_defensive_context": 0.0,
+          "defensive_missing_share": 0.0,
+          "source_context_sd": 4.4408920985006257e-16,
+          "source_diversity": 2.220446049250313e-16
+        },
+        "uncertainty": "HIGH"
+      },
+      "expected": {
+        "pace": 103.45185698403665,
+        "home_eff": 111.03577188410493,
+        "away_eff": 107.08029635094483,
+        "home": 114.8685679306654,
+        "away": 110.77655503906207
+      },
+      "simulation": {
+        "expected_home": 115.3575,
+        "expected_away": 111.3928,
+        "probability": 0.6189,
+        "simulated_ot": 0.0529,
+        "expected_possessions": 103.35320550464569,
+        "final_ties": 0,
+        "uncertainty_label": "STANDARD",
+        "uncertainty_warning": "",
+        "lo50": -5.0,
+        "hi50": 13.0,
+        "reg_lo50": -5.0,
+        "reg_hi50": 13.0,
+        "lo80": -13.0,
+        "hi80": 21.0,
+        "reg_lo80": -13.0,
+        "reg_hi80": 21.0,
+        "lo90": -19.0,
+        "hi90": 27.0,
+        "reg_lo90": -19.0,
+        "reg_hi90": 27.0,
+        "lo95": -23.0,
+        "hi95": 32.0,
+        "reg_lo95": -23.0,
+        "reg_hi95": 32.0
+      }
+    },
+    {
+      "case": "F_ironman_high",
+      "request": {
+        "teamA": {
+          "name": "All-time ironman",
+          "starters": [
+            {
+              "playerId": "br:curryst01",
+              "season": "2015-16",
+              "slot": "PG"
+            },
+            {
+              "playerId": "br:jordami01",
+              "season": "1990-91",
+              "slot": "SG"
+            },
+            {
+              "playerId": "br:jamesle01",
+              "season": "2012-13",
+              "slot": "SF"
+            },
+            {
+              "playerId": "br:duncati01",
+              "season": "2002-03",
+              "slot": "PF"
+            },
+            {
+              "playerId": "br:onealsh01",
+              "season": "1999-00",
+              "slot": "C"
+            }
+          ],
+          "bench": []
+        },
+        "teamB": {
+          "name": "All-time ironman",
+          "starters": [
+            {
+              "playerId": "br:curryst01",
+              "season": "2015-16",
+              "slot": "PG"
+            },
+            {
+              "playerId": "br:jordami01",
+              "season": "1990-91",
+              "slot": "SG"
+            },
+            {
+              "playerId": "br:jamesle01",
+              "season": "2012-13",
+              "slot": "SF"
+            },
+            {
+              "playerId": "br:duncati01",
+              "season": "2002-03",
+              "slot": "PF"
+            },
+            {
+              "playerId": "br:onealsh01",
+              "season": "1999-00",
+              "slot": "C"
+            }
+          ],
+          "bench": []
+        },
+        "targetSeason": "2016-17",
+        "venue": "neutral",
+        "simulationCount": 10000,
+        "seed": 12345,
+        "ironmanMode": true
+      },
+      "teamA": {
+        "strengths": {
+          "ortg": 124.95937443843978,
+          "pace": 93.61617288901544,
+          "drtg": 101.70595629649353
+        },
+        "minutes": [
+          48.0,
+          48.0,
+          48.0,
+          48.0,
+          48.0
+        ],
+        "features": {
+          "season_end_year": 2017,
+          "w_relative_ts": 0.08071694658270726,
+          "w_assist_pct": 26.82,
+          "w_turnover_pct": 11.360000000000001,
+          "w_usage_pct": 30.980000000000004,
+          "w_three_point_attempt_rate": 0.16181331837191504,
+          "w_free_throw_rate": 0.39221251422318043,
+          "w_offensive_rebounds_per_75": 2.214305410813706,
+          "w_defensive_rebounds_per_75": 7.098033251001157,
+          "w_steals_per_75": 1.589494678276071,
+          "w_blocks_per_75": 1.6103301901598672,
+          "w_defensive_box_plus_minus": 2.3400000000000003,
+          "w_steal_pct": 2.1200000000000006,
+          "w_block_pct": 2.9000000000000004,
+          "w_defensive_rebound_pct": 20.160000000000004,
+          "usage_weighted_relative_ts": 0.08155491327535827,
+          "usage_weighted_3par": 0.1666320040652599,
+          "usage_weighted_ftr": 0.3895105410821089,
+          "usage_compression": 10.98,
+          "usage_concentration": 0.20057195451785512,
+          "rotation_hhi": 0.20000000000000004,
+          "prior_pace_delta": -0.1573850163890767,
+          "known_prior_minutes_share": 1.0,
+          "returner_minutes_share": 0.0,
+          "prior_age_years": 1.0,
+          "anchor_ortg": 109.53369288076497,
+          "anchor_drtg": 109.53369288076497,
+          "anchor_pace": 96.4,
+          "w_age": 27.0,
+          "prior_defensive_environment": -4.2277601257056325,
+          "center_minutes_share": 0.2,
+          "returning_minutes_share": 0.0,
+          "returning_top5_share": 0.0,
+          "returning_rotation_players": 0,
+          "transfer_or_unknown_minutes_share": 1.0,
+          "retained_defensive_context": 0.0,
+          "defensive_missing_share": 0.0,
+          "source_context_sd": 1.2931461134334779,
+          "source_diversity": 0.7999999999999999
+        },
+        "uncertainty": "HIGH"
+      },
+      "teamB": {
+        "strengths": {
+          "ortg": 124.95937443843978,
+          "pace": 93.61617288901544,
+          "drtg": 101.70595629649353
+        },
+        "minutes": [
+          48.0,
+          48.0,
+          48.0,
+          48.0,
+          48.0
+        ],
+        "features": {
+          "season_end_year": 2017,
+          "w_relative_ts": 0.08071694658270726,
+          "w_assist_pct": 26.82,
+          "w_turnover_pct": 11.360000000000001,
+          "w_usage_pct": 30.980000000000004,
+          "w_three_point_attempt_rate": 0.16181331837191504,
+          "w_free_throw_rate": 0.39221251422318043,
+          "w_offensive_rebounds_per_75": 2.214305410813706,
+          "w_defensive_rebounds_per_75": 7.098033251001157,
+          "w_steals_per_75": 1.589494678276071,
+          "w_blocks_per_75": 1.6103301901598672,
+          "w_defensive_box_plus_minus": 2.3400000000000003,
+          "w_steal_pct": 2.1200000000000006,
+          "w_block_pct": 2.9000000000000004,
+          "w_defensive_rebound_pct": 20.160000000000004,
+          "usage_weighted_relative_ts": 0.08155491327535827,
+          "usage_weighted_3par": 0.1666320040652599,
+          "usage_weighted_ftr": 0.3895105410821089,
+          "usage_compression": 10.98,
+          "usage_concentration": 0.20057195451785512,
+          "rotation_hhi": 0.20000000000000004,
+          "prior_pace_delta": -0.1573850163890767,
+          "known_prior_minutes_share": 1.0,
+          "returner_minutes_share": 0.0,
+          "prior_age_years": 1.0,
+          "anchor_ortg": 109.53369288076497,
+          "anchor_drtg": 109.53369288076497,
+          "anchor_pace": 96.4,
+          "w_age": 27.0,
+          "prior_defensive_environment": -4.2277601257056325,
+          "center_minutes_share": 0.2,
+          "returning_minutes_share": 0.0,
+          "returning_top5_share": 0.0,
+          "returning_rotation_players": 0,
+          "transfer_or_unknown_minutes_share": 1.0,
+          "retained_defensive_context": 0.0,
+          "defensive_missing_share": 0.0,
+          "source_context_sd": 1.2931461134334779,
+          "source_diversity": 0.7999999999999999
+        },
+        "uncertainty": "HIGH"
+      },
+      "expected": {
+        "pace": 93.61617288901544,
+        "home_eff": 117.13163785416835,
+        "away_eff": 117.13163785416835,
+        "home": 109.6541566012937,
+        "away": 109.6541566012937
+      },
+      "simulation": {
+        "expected_home": 110.2849,
+        "expected_away": 110.4093,
+        "probability": 0.4955,
+        "simulated_ot": 0.0663,
+        "expected_possessions": 93.52390897535886,
+        "final_ties": 0,
+        "uncertainty_label": "STANDARD",
+        "uncertainty_warning": "",
+        "lo50": -9.0,
+        "hi50": 8.0,
+        "reg_lo50": -8.0,
+        "reg_hi50": 8.0,
+        "lo80": -16.0,
+        "hi80": 16.0,
+        "reg_lo80": -16.0,
+        "reg_hi80": 16.0,
+        "lo90": -21.0,
+        "hi90": 21.0,
+        "reg_lo90": -21.0,
+        "reg_hi90": 21.0,
+        "lo95": -26.0,
+        "hi95": 26.0,
+        "reg_lo95": -26.0,
+        "reg_hi95": 26.0
+      }
+    }
+  ]
+}

@@ -5,6 +5,7 @@ using AiAgents.NbaClutchAgent.Application.Runner;
 using AiAgents.NbaClutchAgent.Infrastructure.Dataset;
 using AiAgents.NbaClutchAgent.Web.Historical;
 using AiAgents.NbaClutchAgent.Web.Services;
+using AiAgents.NbaClutchAgent.Web.Simulation;
 using System.Text;
 using System.Text.Json;
 
@@ -43,7 +44,10 @@ builder.Services.AddHttpClient("ProductionInference", client =>
     client.Timeout = TimeSpan.FromSeconds(10);
 });
 
+builder.Services.AddSimulationApi(builder.Configuration);
+
 var app = builder.Build();
+app.MapSimulationApi();
 
 // -------------------- Static UI --------------------
 app.UseDefaultFiles();
