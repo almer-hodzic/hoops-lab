@@ -1478,3 +1478,219 @@ Regression checks: `{"max_validation_minutes_difference": 3.552713678800501e-15,
 **B. DEFENSIVE MODEL STILL OUTSIDE ACCEPTANCE TOLERANCE**.
 
 If accepted, next task is team game-log acquisition and noise/home-court calibration with frozen team-strength methodology; current official test does not validate this new defense. Otherwise retain the failed tolerances explicitly and do not start game-log calibration. No game logs, Simulator UI, frontend or .NET application changes were made.
+
+## Rolling-Origin Defensive Diagnostics
+
+Commands: `python scripts/simulation/calibrate_defensive_tails.py --prepare`, tests, then `--validate` exactly once. `--report` only renders stored results. No frozen 2019-20 through 2025-26 evaluation is exposed. Official test artifacts and all original model artifacts are protected by hashes.
+
+Frozen base formulation: continuity-aware additive OLS with DBPM, steals/blocks/defensive rebounds per75, age, position mix, rotation concentration and retained context. No new feature families. Train starts1980-81. Warmup through1984-85 is excluded from calibration; expanding five-season evaluation blocks cover1985-86 through2013-14 (last block four seasons). Every base prediction uses coefficients and imputation trained strictly before its target season. The base Ridge30 and no-continuity variants are diagnostics only, not a new validation search.
+
+| fold | variant | train_start | train_end | evaluate_start | evaluate_end | train_n | n | mae | rmse | r2 | actual_residual_sd | predicted_residual_sd | actual_on_predicted_slope | actual_on_predicted_intercept | residual_spearman | elite_bias | poor_bias | p90_abs_error |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | frozen_formulation_OLS | 1981 | 1985 | 1986 | 1990 | 115 | 120 | 2.014 | 2.453 | 0.088 | 2.620 | 1.888 | 0.652 | -0.566 | 0.469 | 2.885 | -2.478 | 4.033 |
+| 1 | same_features_Ridge30 | 1981 | 1985 | 1986 | 1990 | 115 | 120 | 1.901 | 2.303 | 0.197 | 2.620 | 1.514 | 0.879 | -0.483 | 0.503 | 3.132 | -2.588 | 3.712 |
+| 1 | without_continuity | 1981 | 1985 | 1986 | 1990 | 115 | 120 | 1.939 | 2.355 | 0.160 | 2.620 | 1.863 | 0.721 | -0.542 | 0.492 | 2.969 | -2.320 | 3.938 |
+| 2 | frozen_formulation_OLS | 1981 | 1990 | 1991 | 1995 | 235 | 135 | 1.916 | 2.457 | 0.294 | 3.124 | 1.976 | 0.976 | -0.196 | 0.655 | 2.526 | -1.989 | 4.080 |
+| 2 | same_features_Ridge30 | 1981 | 1990 | 1991 | 1995 | 235 | 135 | 1.921 | 2.455 | 0.295 | 3.124 | 1.839 | 1.048 | -0.093 | 0.652 | 2.609 | -2.183 | 4.139 |
+| 2 | without_continuity | 1981 | 1990 | 1991 | 1995 | 235 | 135 | 1.958 | 2.484 | 0.278 | 3.124 | 2.025 | 0.939 | -0.262 | 0.643 | 2.586 | -1.885 | 4.123 |
+| 3 | frozen_formulation_OLS | 1981 | 1995 | 1996 | 2000 | 370 | 145 | 2.711 | 3.373 | 0.258 | 3.769 | 2.075 | 0.955 | -1.107 | 0.534 | 3.875 | -2.699 | 5.853 |
+| 3 | same_features_Ridge30 | 1981 | 1995 | 1996 | 2000 | 370 | 145 | 2.708 | 3.360 | 0.264 | 3.769 | 1.996 | 0.990 | -1.039 | 0.534 | 3.893 | -2.802 | 5.767 |
+| 3 | without_continuity | 1981 | 1995 | 1996 | 2000 | 370 | 145 | 2.684 | 3.370 | 0.260 | 3.769 | 2.116 | 0.953 | -1.157 | 0.549 | 3.886 | -2.530 | 5.847 |
+| 4 | frozen_formulation_OLS | 1981 | 2000 | 2001 | 2005 | 515 | 146 | 2.442 | 3.059 | 0.151 | 3.530 | 1.886 | 1.019 | 0.826 | 0.524 | 1.973 | -3.525 | 5.043 |
+| 4 | same_features_Ridge30 | 1981 | 2000 | 2001 | 2005 | 515 | 146 | 2.443 | 3.061 | 0.150 | 3.530 | 1.836 | 1.047 | 0.862 | 0.525 | 2.024 | -3.566 | 5.061 |
+| 4 | without_continuity | 1981 | 2000 | 2001 | 2005 | 515 | 146 | 2.441 | 3.072 | 0.143 | 3.530 | 1.941 | 0.977 | 0.768 | 0.521 | 2.003 | -3.423 | 5.071 |
+| 5 | frozen_formulation_OLS | 1981 | 2005 | 2006 | 2010 | 661 | 150 | 1.977 | 2.542 | 0.406 | 3.275 | 1.993 | 1.032 | -0.080 | 0.632 | 2.707 | -2.997 | 4.348 |
+| 5 | same_features_Ridge30 | 1981 | 2005 | 2006 | 2010 | 661 | 150 | 1.977 | 2.541 | 0.407 | 3.275 | 1.950 | 1.056 | -0.047 | 0.635 | 2.735 | -3.051 | 4.326 |
+| 5 | without_continuity | 1981 | 2005 | 2006 | 2010 | 661 | 150 | 2.036 | 2.558 | 0.399 | 3.275 | 1.972 | 1.032 | -0.054 | 0.621 | 2.719 | -3.093 | 4.222 |
+| 6 | frozen_formulation_OLS | 1981 | 2010 | 2011 | 2014 | 811 | 120 | 2.339 | 2.927 | 0.218 | 3.519 | 1.954 | 1.036 | -0.571 | 0.554 | 4.152 | -2.139 | 4.757 |
+| 6 | same_features_Ridge30 | 1981 | 2010 | 2011 | 2014 | 811 | 120 | 2.337 | 2.922 | 0.221 | 3.519 | 1.919 | 1.058 | -0.554 | 0.559 | 4.176 | -2.166 | 4.746 |
+| 6 | without_continuity | 1981 | 2010 | 2011 | 2014 | 811 | 120 | 2.344 | 2.943 | 0.209 | 3.519 | 2.011 | 0.991 | -0.572 | 0.546 | 4.114 | -2.106 | 4.900 |
+
+Feature availability by fold:
+
+| fold | variant | availability | n | mae | rmse | r2 | actual_residual_sd | predicted_residual_sd | actual_on_predicted_slope | actual_on_predicted_intercept | residual_spearman | elite_bias | poor_bias | p90_abs_error |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | frozen_formulation_OLS | <=5% missing | 64 | 1.829 | 2.226 | 0.188 | 2.530 | 1.830 | 0.751 | -0.640 | 0.561 | 2.643 | -2.207 | 3.115 |
+| 1 | frozen_formulation_OLS | >5% missing | 56 | 2.226 | 2.690 | -0.028 | 2.714 | 1.937 | 0.534 | -0.426 | 0.328 | 3.556 | -2.816 | 4.336 |
+| 1 | same_features_Ridge30 | <=5% missing | 64 | 1.729 | 2.103 | 0.275 | 2.530 | 1.431 | 1.032 | -0.510 | 0.579 | 3.110 | -2.437 | 3.448 |
+| 1 | same_features_Ridge30 | >5% missing | 56 | 2.097 | 2.511 | 0.104 | 2.714 | 1.587 | 0.719 | -0.380 | 0.361 | 3.416 | -3.206 | 4.047 |
+| 1 | without_continuity | <=5% missing | 64 | 1.727 | 2.134 | 0.254 | 2.530 | 1.819 | 0.811 | -0.594 | 0.575 | 2.631 | -2.042 | 3.321 |
+| 1 | without_continuity | >5% missing | 56 | 2.181 | 2.585 | 0.050 | 2.714 | 1.893 | 0.612 | -0.431 | 0.366 | 4.038 | -2.334 | 4.097 |
+| 2 | frozen_formulation_OLS | <=5% missing | 84 | 1.908 | 2.507 | 0.190 | 3.004 | 1.882 | 0.880 | -0.311 | 0.543 | 2.755 | -1.741 | 4.035 |
+| 2 | frozen_formulation_OLS | >5% missing | 51 | 1.931 | 2.372 | 0.298 | 3.120 | 1.765 | 1.147 | -0.250 | 0.647 | 3.069 | -3.386 | 4.086 |
+| 2 | same_features_Ridge30 | <=5% missing | 84 | 1.912 | 2.503 | 0.193 | 3.004 | 1.739 | 0.947 | -0.212 | 0.539 | 2.871 | -1.898 | 3.964 |
+| 2 | same_features_Ridge30 | >5% missing | 51 | 1.935 | 2.375 | 0.296 | 3.120 | 1.657 | 1.226 | -0.139 | 0.646 | 3.052 | -3.583 | 4.367 |
+| 2 | without_continuity | <=5% missing | 84 | 1.947 | 2.527 | 0.177 | 3.004 | 1.956 | 0.842 | -0.395 | 0.545 | 2.780 | -1.626 | 4.127 |
+| 2 | without_continuity | >5% missing | 51 | 1.977 | 2.412 | 0.273 | 3.120 | 1.781 | 1.108 | -0.292 | 0.636 | 3.263 | -3.041 | 3.837 |
+| 3 | frozen_formulation_OLS | <=5% missing | 107 | 2.711 | 3.383 | 0.249 | 3.762 | 2.127 | 0.960 | -1.276 | 0.553 | 3.629 | -2.719 | 5.850 |
+| 3 | frozen_formulation_OLS | >5% missing | 38 | 2.711 | 3.347 | 0.217 | 3.644 | 1.830 | 0.824 | -0.626 | 0.445 | 3.895 | -2.140 | 5.443 |
+| 3 | same_features_Ridge30 | <=5% missing | 107 | 2.706 | 3.372 | 0.254 | 3.762 | 2.046 | 0.994 | -1.207 | 0.553 | 3.659 | -2.799 | 5.743 |
+| 3 | same_features_Ridge30 | >5% missing | 38 | 2.715 | 3.328 | 0.225 | 3.644 | 1.761 | 0.858 | -0.571 | 0.439 | 3.882 | -2.258 | 5.298 |
+| 3 | without_continuity | <=5% missing | 107 | 2.687 | 3.384 | 0.249 | 3.762 | 2.190 | 0.962 | -1.375 | 0.574 | 3.613 | -2.504 | 5.827 |
+| 3 | without_continuity | >5% missing | 38 | 2.676 | 3.331 | 0.224 | 3.644 | 1.857 | 0.814 | -0.547 | 0.419 | 3.869 | -2.112 | 5.531 |
+| 4 | frozen_formulation_OLS | <=5% missing | 106 | 2.493 | 3.154 | 0.100 | 3.576 | 1.887 | 0.953 | 0.621 | 0.489 | 2.081 | -3.602 | 5.282 |
+| 4 | frozen_formulation_OLS | >5% missing | 40 | 2.305 | 2.791 | 0.190 | 3.254 | 1.739 | 1.138 | 1.180 | 0.548 | 1.970 | -3.993 | 4.295 |
+| 4 | same_features_Ridge30 | <=5% missing | 106 | 2.494 | 3.153 | 0.100 | 3.576 | 1.838 | 0.977 | 0.655 | 0.488 | 2.140 | -3.637 | 5.236 |
+| 4 | same_features_Ridge30 | >5% missing | 40 | 2.308 | 2.801 | 0.184 | 3.254 | 1.688 | 1.175 | 1.221 | 0.553 | 1.999 | -4.048 | 4.342 |
+| 4 | without_continuity | <=5% missing | 106 | 2.466 | 3.149 | 0.103 | 3.576 | 1.949 | 0.923 | 0.551 | 0.491 | 2.129 | -3.458 | 5.430 |
+| 4 | without_continuity | >5% missing | 40 | 2.374 | 2.859 | 0.151 | 3.254 | 1.811 | 1.047 | 1.185 | 0.542 | 1.903 | -3.936 | 4.356 |
+| 5 | frozen_formulation_OLS | <=5% missing | 119 | 1.988 | 2.493 | 0.459 | 3.336 | 2.000 | 1.116 | -0.177 | 0.673 | 2.911 | -2.691 | 4.349 |
+| 5 | frozen_formulation_OLS | >5% missing | 31 | 1.937 | 2.723 | -0.352 | 2.436 | 1.632 | 0.234 | 0.964 | 0.165 | 4.136 | -3.901 | 3.773 |
+| 5 | same_features_Ridge30 | <=5% missing | 119 | 1.990 | 2.496 | 0.458 | 3.336 | 1.955 | 1.142 | -0.140 | 0.674 | 2.937 | -2.750 | 4.328 |
+| 5 | same_features_Ridge30 | >5% missing | 31 | 1.928 | 2.708 | -0.337 | 2.436 | 1.601 | 0.248 | 0.966 | 0.183 | 4.081 | -3.936 | 3.705 |
+| 5 | without_continuity | <=5% missing | 119 | 2.076 | 2.538 | 0.439 | 3.336 | 1.996 | 1.089 | -0.181 | 0.654 | 2.930 | -2.886 | 4.223 |
+| 5 | without_continuity | >5% missing | 31 | 1.881 | 2.635 | -0.266 | 2.436 | 1.554 | 0.324 | 0.937 | 0.245 | 4.017 | -3.757 | 3.540 |
+| 6 | frozen_formulation_OLS | <=5% missing | 96 | 2.334 | 2.961 | 0.229 | 3.526 | 2.002 | 1.066 | -0.931 | 0.580 | 4.322 | -1.834 | 4.874 |
+| 6 | frozen_formulation_OLS | >5% missing | 24 | 2.356 | 2.784 | -1.028 | 2.203 | 1.465 | -0.026 | 1.405 | -0.061 | 0.118 | null | 4.106 |
+| 6 | same_features_Ridge30 | <=5% missing | 96 | 2.335 | 2.960 | 0.230 | 3.526 | 1.967 | 1.086 | -0.913 | 0.583 | 4.345 | -1.860 | 4.906 |
+| 6 | same_features_Ridge30 | >5% missing | 24 | 2.345 | 2.768 | -1.004 | 2.203 | 1.430 | -0.021 | 1.403 | -0.036 | 0.159 | null | 4.047 |
+| 6 | without_continuity | <=5% missing | 96 | 2.342 | 2.975 | 0.222 | 3.526 | 2.052 | 1.023 | -0.938 | 0.576 | 4.325 | -1.834 | 5.278 |
+| 6 | without_continuity | >5% missing | 24 | 2.350 | 2.811 | -1.067 | 2.203 | 1.571 | 0.018 | 1.387 | -0.019 | 0.063 | null | 4.060 |
+
+Training diagnostic interpretation: predicted residual SD is below actual SD in all six OLS folds, not only one era. Ridge30 narrows it further, but unregularized OLS also has the gap: regularization is not the sole explanation. Removing continuity does not resolve the gap, and does not consistently improve MAE. Higher missing-feature share is associated with weaker residual ranking in some later folds, but not uniformly higher MAE; these observational strata do not establish a causal missingness effect. The largest OLS MAE and p90 occur in 1995-96 through1999-00. This is persistent unexplained outcome variance with era-dependent offsets, not evidence for a universal tail expansion.
+
+## OOF Tail Calibration
+
+816 genuine training OOF rows; 115 warmup-only rows. Source CSV: `data/simulation/defensive_oof_calibration_v1_training_oof.csv`, including each row's fold and latest base training year. No in-sample fitted predictions calibrate any coefficient.
+
+Let x=base_D Rtg-prior_league_anchor and y=actual_D Rtg-prior_league_anchor. Symmetric gamma=sum(x*y)/sum(x^2), through zero. Asymmetric gamma_better and gamma_worse fit the same equation separately on x<0 and x>=0; actual defensive buckets are never inference inputs. An intercept+slope regression is reported diagnostically, not silently added as another family.
+
+Calibration coefficients:
+
+| candidate | kind | fitting_rows | fitting_max_year | gamma | gamma_better | gamma_worse | n_better | n_worse |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| A_identity | A_identity | 816 | 2014 | 1.000 | null | null | null | null |
+| B_symmetric | B_symmetric | 816 | 2014 | 0.964 | null | null | null | null |
+| C_asymmetric | C_asymmetric | 816 | 2014 | null | 1.059 | 0.689 | 472.000 | 344.000 |
+
+Intercept diagnostic: `{"intercept": -0.30429846682220835, "gamma": 0.9230348972004516, "folds": [{"fold": 1, "intercept": -0.565675318174581, "gamma": 0.6516378428422153}, {"fold": 2, "intercept": -0.19556113026188265, "gamma": 0.9757136279416174}, {"fold": 3, "intercept": -1.1069649470059213, "gamma": 0.9554088994995203}, {"fold": 4, "intercept": 0.8255590413498892, "gamma": 1.0190724617904805}, {"fold": 5, "intercept": -0.07983376580442672, "gamma": 1.0319756923717311}, {"fold": 6, "intercept": -0.5706493813918933, "gamma": 1.0359299950960066}], "production_candidate": false, "reason": "Diagnostic only; no extra intercept family selected on validation"}`
+
+Optional piecewise justification: `{"supported": false, "folds": [{"fold": 1, "center_gamma": 0.5323775830574413, "tail_gamma": 0.7106474827397047, "difference": 0.17826989968226337, "tail_n": 30}, {"fold": 2, "center_gamma": 1.2294800737940774, "tail_gamma": 0.9231110981643608, "difference": -0.30636897562971666, "tail_n": 34}, {"fold": 3, "center_gamma": 1.248951951519106, "tail_gamma": 1.0493100968866618, "difference": -0.19964185463244433, "tail_n": 37}, {"fold": 4, "center_gamma": 0.627401684705194, "tail_gamma": 0.879932393059067, "difference": 0.25253070835387303, "tail_n": 37}, {"fold": 5, "center_gamma": 1.2929616133517594, "tail_gamma": 0.9523317686785533, "difference": -0.3406298446732061, "tail_n": 38}, {"fold": 6, "center_gamma": 1.1560028665823354, "tail_gamma": 1.0801092339941616, "difference": -0.07589363258817383, "tail_n": 30}], "rule": "Evaluate one hinge only if median tail-center gamma gap>=0.20, same direction in>=4/6 folds, >=20 tail rows per fold"}`. If supported, use one continuous signed hinge at training-OOF75th percentile |x|, with both coefficients fit on training OOF rows. No isotonic/quantile mapping or outcome-bucket inference.
+
+## Defensive Residual Spread
+
+Pooled uncalibrated OOF diagnostics: `{"n": 816, "mae": 2.2392400275208844, "rmse": 2.8332741211038592, "r2": 0.36824432148076935, "actual_residual_sd": 3.3617851188208783, "predicted_residual_sd": 1.9845531531850586, "actual_on_predicted_slope": 0.9230348972004506, "actual_on_predicted_intercept": -0.3042984668222081, "residual_spearman": 0.5524329567953647, "elite_bias": 3.029447176003838, "poor_bias": -2.7058553133990597, "p90_abs_error": 4.678393933787078}`
+
+A narrow predicted spread is not sufficient evidence that mean predictions should be expanded: conditional means can have lower variance than realized outcomes. Estimate gamma from OOF cross-products, NOT actual_SD/predicted_SD; do not force gamma>1 or match outcome variance.
+
+The pooled intercept is modest, but block offsets change sign and range from about-1.107 to+0.826 DRtg. A constant intercept is therefore not a supported era-stable remedy. Symmetric scaling is numerically stable but improves poor-defense bias in zero of five honest prequential blocks. The worse-defense asymmetric multiplier is unstable. Training does not support the optional piecewise expansion; no additional nonlinear family is tried.
+
+## Calibration Stability
+
+Per-fold multipliers below are descriptive fits to each held block's genuine OOF pairs. Honest prequential calibration performance instead fits a calibrator only to EARLIER OOF blocks and scores the next block; the first OOF block is meta-calibration warmup. Final production parameters pool all training OOF rows only.
+
+| candidate | kind | fitting_rows | fitting_max_year | gamma | gamma_better | gamma_worse | n_better | n_worse |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| A_identity | A_identity | 120 | 1990 | 1.000 | null | null | null | null |
+| A_identity | A_identity | 135 | 1995 | 1.000 | null | null | null | null |
+| A_identity | A_identity | 145 | 2000 | 1.000 | null | null | null | null |
+| A_identity | A_identity | 146 | 2005 | 1.000 | null | null | null | null |
+| A_identity | A_identity | 150 | 2010 | 1.000 | null | null | null | null |
+| A_identity | A_identity | 120 | 2014 | 1.000 | null | null | null | null |
+| B_symmetric | B_symmetric | 120 | 1990 | 0.667 | null | null | null | null |
+| B_symmetric | B_symmetric | 135 | 1995 | 1.000 | null | null | null | null |
+| B_symmetric | B_symmetric | 145 | 2000 | 1.099 | null | null | null | null |
+| B_symmetric | B_symmetric | 146 | 2005 | 0.823 | null | null | null | null |
+| B_symmetric | B_symmetric | 150 | 2010 | 1.041 | null | null | null | null |
+| B_symmetric | B_symmetric | 120 | 2014 | 1.103 | null | null | null | null |
+| C_asymmetric | C_asymmetric | 120 | 1990 | null | 0.965 | 0.288 | 61.000 | 59.000 |
+| C_asymmetric | C_asymmetric | 135 | 1995 | null | 1.045 | 0.880 | 81.000 | 54.000 |
+| C_asymmetric | C_asymmetric | 145 | 2000 | null | 1.297 | 0.512 | 81.000 | 64.000 |
+| C_asymmetric | C_asymmetric | 146 | 2005 | null | 0.775 | 1.341 | 100.000 | 46.000 |
+| C_asymmetric | C_asymmetric | 150 | 2010 | null | 1.062 | 0.990 | 83.000 | 67.000 |
+| C_asymmetric | C_asymmetric | 120 | 2014 | null | 1.332 | 0.556 | 66.000 | 54.000 |
+
+| candidate | parameter | mean | sd | min | max | coefficient_of_variation |
+| --- | --- | --- | --- | --- | --- | --- |
+| A_identity | gamma | 1.000 | 0.000 | 1.000 | 1.000 | 0.000 |
+| B_symmetric | gamma | 0.956 | 0.175 | 0.667 | 1.103 | 0.183 |
+| C_asymmetric | gamma_better | 1.079 | 0.209 | 0.775 | 1.332 | 0.194 |
+| C_asymmetric | gamma_worse | 0.761 | 0.382 | 0.288 | 1.341 | 0.502 |
+
+Stable eligibility: multipliers in[.25,2.5], fold coefficient of variation<=.35; in at least4/5 prequential blocks MAE must not regress>.15 or elite bias>.5 versus identity, and mean MAE regression must be<=.05. A nonidentity correction must not worsen poor bias>.25 in>=4/5 blocks and must improve it>.05 in>=2 blocks, rejecting a one-era tail fix. No coefficients are clipped to pass stability. All candidates/parameters/eligibility are fingerprinted before validation.
+
+| candidate | fold | n | mae | rmse | r2 | actual_residual_sd | predicted_residual_sd | actual_on_predicted_slope | actual_on_predicted_intercept | residual_spearman | elite_bias | poor_bias | p90_abs_error |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| A_identity | 2 | 135 | 1.916 | 2.457 | 0.294 | 3.124 | 1.976 | 0.976 | -0.196 | 0.655 | 2.526 | -1.989 | 4.080 |
+| A_identity | 3 | 145 | 2.711 | 3.373 | 0.258 | 3.769 | 2.075 | 0.955 | -1.107 | 0.534 | 3.875 | -2.699 | 5.853 |
+| A_identity | 4 | 146 | 2.442 | 3.059 | 0.151 | 3.530 | 1.886 | 1.019 | 0.826 | 0.524 | 1.973 | -3.525 | 5.043 |
+| A_identity | 5 | 150 | 1.977 | 2.542 | 0.406 | 3.275 | 1.993 | 1.032 | -0.080 | 0.632 | 2.707 | -2.997 | 4.348 |
+| A_identity | 6 | 120 | 2.339 | 2.927 | 0.218 | 3.519 | 1.954 | 1.036 | -0.571 | 0.554 | 4.152 | -2.139 | 4.757 |
+| B_symmetric | 2 | 135 | 1.982 | 2.549 | 0.240 | 3.124 | 1.319 | 1.462 | -0.196 | 0.655 | 3.398 | -2.444 | 4.029 |
+| B_symmetric | 3 | 145 | 2.747 | 3.407 | 0.244 | 3.769 | 1.777 | 1.116 | -1.107 | 0.534 | 4.217 | -2.817 | 5.859 |
+| B_symmetric | 4 | 146 | 2.436 | 3.047 | 0.157 | 3.530 | 1.801 | 1.067 | 0.826 | 0.524 | 2.117 | -3.540 | 4.994 |
+| B_symmetric | 5 | 150 | 1.992 | 2.554 | 0.401 | 3.275 | 1.824 | 1.128 | -0.080 | 0.632 | 2.942 | -3.100 | 4.297 |
+| B_symmetric | 6 | 120 | 2.347 | 2.937 | 0.213 | 3.519 | 1.839 | 1.100 | -0.571 | 0.554 | 4.288 | -2.211 | 4.742 |
+| C_asymmetric | 2 | 135 | 1.939 | 2.536 | 0.248 | 3.124 | 1.468 | 1.269 | 0.404 | 0.655 | 2.619 | -3.014 | 4.422 |
+| C_asymmetric | 3 | 145 | 2.676 | 3.328 | 0.278 | 3.769 | 1.791 | 1.081 | -0.747 | 0.534 | 3.798 | -3.254 | 5.535 |
+| C_asymmetric | 4 | 146 | 2.491 | 3.152 | 0.098 | 3.530 | 1.931 | 1.002 | 1.133 | 0.524 | 1.527 | -3.856 | 5.443 |
+| C_asymmetric | 5 | 150 | 1.989 | 2.574 | 0.391 | 3.275 | 1.732 | 1.178 | 0.251 | 0.632 | 2.687 | -3.548 | 4.338 |
+| C_asymmetric | 6 | 120 | 2.317 | 2.886 | 0.240 | 3.519 | 1.768 | 1.163 | -0.296 | 0.554 | 4.102 | -2.517 | 4.756 |
+
+## Final Defensive Modeling Decision
+
+Existing validation evaluated exactly once after parameter/protocol freeze; no retuning. All original hard gates and BOTH original/ranked bucket views are retained. Selection order: passing gates, training stability, simpler family, then validation error. No frozen test run.
+
+| candidate | mae | rmse | r2 | stable | accepted |
+| --- | --- | --- | --- | --- | --- |
+| A_identity | 2.125 | 2.595 | 0.331 | True | False |
+| B_symmetric | 2.117 | 2.584 | 0.336 | False | False |
+| C_asymmetric | 2.178 | 2.635 | 0.310 | False | False |
+
+Selected calibration: `{"kind": "A_identity", "fitting_rows": 816, "fitting_max_year": 2014, "gamma": 1.0}`
+
+Validation buckets:
+
+| candidate | view | bucket | n | mae | bias | median_bias | p90_abs_error | actual_residual | predicted_residual |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| A_identity | legacy | elite | 20 | 2.573 | 1.935 | 1.889 | 4.387 | -4.205 | -2.270 |
+| A_identity | legacy | above_average | 34 | 1.683 | 1.065 | 1.193 | 3.109 | -2.163 | -1.098 |
+| A_identity | legacy | average | 39 | 1.993 | -0.523 | -0.841 | 3.513 | -0.012 | -0.535 |
+| A_identity | legacy | below_average | 38 | 1.957 | -1.726 | -1.426 | 4.033 | 1.845 | 0.119 |
+| A_identity | legacy | poor | 19 | 3.056 | -3.056 | -2.995 | 4.807 | 4.356 | 1.300 |
+| A_identity | ranking | elite | 30 | 2.315 | 1.665 | 1.875 | 4.143 | -3.693 | -2.028 |
+| A_identity | ranking | above_average | 29 | 1.822 | 0.752 | 1.163 | 3.486 | -1.711 | -0.959 |
+| A_identity | ranking | average | 30 | 1.792 | -0.471 | -0.757 | 3.402 | -0.017 | -0.488 |
+| A_identity | ranking | below_average | 30 | 2.060 | -1.527 | -1.227 | 3.938 | 1.610 | 0.083 |
+| A_identity | ranking | poor | 31 | 2.612 | -2.612 | -2.829 | 4.776 | 3.465 | 0.852 |
+| B_symmetric | legacy | elite | 20 | 2.581 | 2.017 | 1.981 | 4.493 | -4.205 | -2.188 |
+| B_symmetric | legacy | above_average | 34 | 1.670 | 1.104 | 1.182 | 3.152 | -2.163 | -1.058 |
+| B_symmetric | legacy | average | 39 | 1.956 | -0.503 | -0.785 | 3.432 | -0.012 | -0.515 |
+| B_symmetric | legacy | below_average | 38 | 1.945 | -1.731 | -1.419 | 3.960 | 1.845 | 0.115 |
+| B_symmetric | legacy | poor | 19 | 3.103 | -3.103 | -3.042 | 4.808 | 4.356 | 1.253 |
+| B_symmetric | ranking | elite | 30 | 2.319 | 1.738 | 1.910 | 4.168 | -3.693 | -1.954 |
+| B_symmetric | ranking | above_average | 29 | 1.795 | 0.787 | 1.117 | 3.411 | -1.711 | -0.924 |
+| B_symmetric | ranking | average | 30 | 1.758 | -0.453 | -0.748 | 3.335 | -0.017 | -0.470 |
+| B_symmetric | ranking | below_average | 30 | 2.041 | -1.530 | -1.267 | 3.872 | 1.610 | 0.080 |
+| B_symmetric | ranking | poor | 31 | 2.643 | -2.643 | -2.823 | 4.772 | 3.465 | 0.821 |
+| C_asymmetric | legacy | elite | 20 | 2.503 | 1.742 | 1.739 | 4.286 | -4.205 | -2.463 |
+| C_asymmetric | legacy | above_average | 34 | 1.640 | 0.931 | 1.074 | 3.049 | -2.163 | -1.231 |
+| C_asymmetric | legacy | average | 39 | 1.966 | -0.712 | -0.944 | 3.641 | -0.012 | -0.724 |
+| C_asymmetric | legacy | below_average | 38 | 2.061 | -1.939 | -1.623 | 4.126 | 1.845 | -0.093 |
+| C_asymmetric | legacy | poor | 19 | 3.464 | -3.464 | -3.557 | 4.849 | 4.356 | 0.892 |
+| C_asymmetric | ranking | elite | 30 | 2.271 | 1.505 | 1.739 | 4.026 | -3.693 | -2.187 |
+| C_asymmetric | ranking | above_average | 29 | 1.759 | 0.581 | 0.968 | 3.159 | -1.711 | -1.130 |
+| C_asymmetric | ranking | average | 30 | 1.755 | -0.653 | -0.928 | 3.511 | -0.017 | -0.670 |
+| C_asymmetric | ranking | below_average | 30 | 2.134 | -1.745 | -1.567 | 4.036 | 1.610 | -0.135 |
+| C_asymmetric | ranking | poor | 31 | 2.930 | -2.930 | -3.011 | 4.784 | 3.465 | 0.535 |
+
+Unchanged limits: `{"overall_mae_max": 2.2896266864236936, "anchor_validation_mae": 2.410133354130204, "elite_poor_mae_max": 5.0, "worst_bucket_abs_bias_max": 3.0, "abs_error_p90_max": 5.5, "subera_mae_over_anchor_max": 0.15, "box_heavy_abs_bias_max": 2.0, "rationale": "Require >=5% validation MAE improvement on league anchor, <=5 extreme-bucket MAE, <=3 bucket bias, <=5.5 p90 error, <=0.15 subera regression, <=2 box-heavy bias. Practical bounds declared before candidate evaluation; no final-test values used."}`
+
+| candidate | view | overall | extremes | bucket_bias | p90 | suberas | box_heavy |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| A_identity | legacy | True | True | False | True | True | True |
+| A_identity | ranking | True | True | True | True | True | True |
+| B_symmetric | legacy | True | True | False | True | True | True |
+| B_symmetric | ranking | True | True | True | True | True | True |
+| C_asymmetric | legacy | True | True | False | True | True | True |
+| C_asymmetric | ranking | True | True | True | True | True | True |
+
+One final product decision, not another optimization loop: **B. DEFENSE REMAINS IMPERFECT BUT ACCEPTABLE FOR UNCERTAINTY-AWARE V1**. Product rule B is an explicit uncertainty-aware V1 exception under the user's stop rule, NOT a changed hard gate: at most.25 DRtg beyond the3.0 original bucket-bias limit, all other hard gates and ranked gates pass, validation residual Spearman>=.40, positive ranking in>=5/6 training folds, stable selected formulation. Every actual hard-gate failure remains labeled FAIL.
+
+Ironman diagnostic: `{"base_drtg": 99.37391626755516, "base_prediction_reproduced": true, "raw_calibration_diagnostic": 99.37391626755516, "calibrated_drtg": 99.37391626755516, "league_anchor": 107.20165285182661, "nominal_multiplier": 1.0, "effective_multiplier": 1.0, "continuity": 0.0, "retained_defensive_context": 0.0, "unsupported": true, "guard_applied": true, "uncertainty": "HIGH", "base_uncertainty": {"category": "HIGH", "high_flags": {"low_continuity": true, "weak_availability": false, "diverse_contexts": false, "extrapolation": true}, "continuity": 0.0, "missing_share": 0.0, "source_context_sd": 1.2931461134334779, "source_diversity": 0.7999999999999999, "coverage": {"risk": "high", "rms_outside_domain_distance": 2.193093485818854, "maximum_exceed_iqr_units": 7.172085558643423, "fraction_outside": 0.3333333333333333, "features": [{"feature": "w_defensive_box_plus_minus", "value": 2.3400000000000003, "status": "outside", "exceed_iqr_units": 1.3893326670507007, "min": -1.2332222052316886, "max": 1.44005793111239, "p01": -1.05510781021616, "p99": 1.084550464598829, "scale": 0.647751319918233}, {"feature": "w_steals_per_75", "value": 1.589494678276071, "status": "inside", "exceed_iqr_units": 0.0, "min": 0.9046779604265548, "max": 1.9594315968031453, "p01": 0.9796842931501458, "p99": 1.6627458908974788, "scale": 0.18760923277181285}, {"feature": "w_blocks_per_75", "value": 1.6103301901598672, "status": "outside", "exceed_iqr_units": 0.9757638486393071, "min": 0.335969874784325, "max": 1.41412634205397, "p01": 0.412775951925196, "p99": 1.211829814346151, "scale": 0.20107718520162587}, {"feature": "w_defensive_rebounds_per_75", "value": 7.098033251001157, "status": "outside", "exceed_iqr_units": 1.8424811646109094, "min": 3.4656440880722736, "max": 6.00425436563547, "p01": 3.7046289253469293, "p99": 5.564907890268214, "scale": 0.5936445410537852}, {"feature": "w_age", "value": 27.0, "status": "inside", "exceed_iqr_units": 0.0, "min": 23.720811448181948, "max": 32.51990553949584, "p01": 24.87629859968812, "p99": 31.385420195955653, "scale": 2.02036850856544}, {"feature": "center_minutes_share", "value": 0.2, "status": "inside", "exceed_iqr_units": 0.0, "min": 0.0, "max": 0.4937682868701394, "p01": 0.02313958403493424, "p99": 0.33406277891866454, "scale": 0.08715977386722085}, {"feature": "rotation_hhi", "value": 0.20000000000000004, "status": "outside", "exceed_iqr_units": 7.172085558643423, "min": 0.0567274021943789, "max": 0.1147278926097213, "p01": 0.07020214196832235, "p99": 0.11017444812998578, "scale": 0.01188944369012905}, {"feature": "retained_defensive_context", "value": 0.0, "status": "inside", "exceed_iqr_units": 0.0, "min": -7.698405857361826, "max": 6.258635952464652, "p01": -5.774970086962996, "p99": 3.822396125100745, "scale": 2.8319957131836584}, {"feature": "returning_minutes_share", "value": 0.0, "status": "near_edge", "exceed_iqr_units": 0.0, "min": 0.0, "max": 0.9851474117884347, "p01": 0.23389610172788974, "p99": 0.9330851017955102, "scale": 0.2042365061058603}, {"feature": "defensive_missing_share", "value": 0.0, "status": "inside", "exceed_iqr_units": 0.0, "min": 0.0, "max": 0.3062645473184251, "p01": 0.0, "p99": 0.18883963968576814, "scale": 0.04688145464856368}, {"feature": "source_context_sd", "value": 1.2931461134334779, "status": "inside", "exceed_iqr_units": 0.0, "min": 0.030195935777832916, "max": 5.369359484800911, "p01": 0.24022694405205197, "p99": 4.389397975592513, "scale": 1.188524139599855}, {"feature": "source_diversity", "value": 0.7999999999999999, "status": "inside", "exceed_iqr_units": 0.0, "min": 0.029263977669965913, "max": 0.9401178721074527, "p01": 0.1418121956270078, "p99": 0.8575875318111651, "scale": 0.24586238089399925}], "interpretation": "Feature coverage/uncertainty only, not quality or probability; correlated features and unobserved lineup interactions limit interpretation."}, "interpretation": "Uncalibrated uncertainty/coverage indicator, not defensive quality or a probability interval"}, "uncertainty_warning": "Unsupported ironman feature vector: base value preserved; spread calibration is not validated here", "offense_pace_unchanged": {"ortg": 122.62733440950142, "pace": 92.99036643740251}, "semantics": "Curry2015-16/Jordan1990-91/LeBron2012-13/Duncan2002-03/Shaq1999-00; 48 minutes each; diagnostic, not precise truth"}`
+
+For unsupported synthetic rosters, preserve the base projection rather than amplify an extrapolated residual. Record raw unguarded calibration only as a diagnostic, set effective multiplier1, add an explicit HIGH uncertainty/coverage warning. Supported rosters use the learned function normally; no universal min/max clamp. Continuity remains0 and no actual team outcome/bucket is needed.
+
+Integrity: `{"protected_hashes_match": true, "offense_pace_usage_rotation_unchanged": true, "official_test_untouched": true, "new_final_test_evaluations": 0, "frozen_offense_pace_values": {"ortg": 122.62733440950142, "pace": 92.99036643740251}}`. Official frozen test remains the previous model's benchmark, not evidence for a newly fitted calibration. All prior results preserved.
+
+Next product step: for A, game-log calibration; for B, an explicitly approved uncertainty-aware V1 scope before game-level calibration; for C, restrict defensive claims rather than continue the same validation search. No game logs, UI or application changes in this task.

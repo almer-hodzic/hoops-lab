@@ -1,0 +1,32 @@
+{
+  "status": "training_OOF_calibration_frozen_before_validation",
+  "protected_hashes": {
+    "artifacts\\simulation\\targeted_projection_frozen.joblib": "3de460e15b0b02432712f6d2b4a6d2f8bd44072ac5b8c75f49bea1896edb6650",
+    "data\\simulation\\targeted_projection_validation.json": "d5bad19ddd43f320f356e7ec366216660cfcc2e315fd0bbb06b62b4a806f9af7",
+    "data\\simulation\\targeted_projection_protocol.json": "688e69ae66be11a252ab4c9732f897a3e6a9e59513cd8baf63634001dbe0b475",
+    "data\\simulation\\targeted_projection_final.json": "a22f9370c67ea1f308921c3872034456515193a8d72825e98422cc539e98d96f",
+    "data\\simulation\\targeted_projection_final_run.json": "f858524b2d4c5c8d244f315ab5bbebfd981ce13d8863c325129f10b49929a33b",
+    "data\\simulation\\targeted_projection_final_predictions.csv": "697f89393d422be60f84b7e09b5e3c80491c3d058fc21cca398ac1ed81a6ed34",
+    "data\\simulation\\targeted_projection_validation_features.csv": "4276265068c3f00a0df909e37ba9f05cea55aa32fc1ddeff1a305a0c476e1cb5",
+    "data\\simulation\\targeted_projection_validation_rotation.csv": "9ef2bcb3d8c303aa9a918b873f7b1b19803ccb3b990e5eb48efaa4a493983ff8",
+    "artifacts\\simulation\\defensive_continuity_v1.joblib": "9eb68968b2e653ce75406ecf2504d2feb670a3ba48aafa5b64440ec675dfe6eb",
+    "data\\simulation\\defensive_continuity_v1_summary.json": "704131f9ad3f19377b1dd8439173eb0c6dd1b9ab553173c25a7442babc4ec023",
+    "data\\simulation\\defensive_continuity_v1_features.csv": "9e17df0086ae41eb492490f50038975501b9a48d180d8a77e61f6c5db7679b73",
+    "data\\simulation\\defensive_continuity_v1_predictions.csv": "599bfaf3085609fba80e191a91786109f0bc6c985eb17b3ab590a3c6bf53fbdb",
+    "scripts\\simulation\\defensive_continuity.py": "0de73534c91be176465730fb20c032e03cde9a740f0f6cdab29e7583e5bb0b74",
+    "scripts\\simulation\\improve_projection.py": "566685d20f96c4b66907fdadd52f6dc5a186cbf5b3dc269c60cb5e50916e21a5"
+  },
+  "training_sha256": "521c52674044df1083568143925b25dceb019a5698731b90f31d1e8127c9656e",
+  "artifact_sha256": "204fdb71451b192b8d1dd82628357d66de2fcc662bfb6548e96519cf39dc2f36",
+  "oof_sha256": "71f63ea697308533ca7908a90a6fde8864cfa8ee0e491c33b5acfe6abe31d8e7",
+  "source_sha256": "c3e5b96c82959fef362b3f69bb2c399507806474007aa77bcf7192a36b86c1dd",
+  "candidate_order": [
+    "A_identity",
+    "B_symmetric",
+    "C_asymmetric"
+  ],
+  "selection": "Passing original gates in both bucket views, OOF stability eligibility, then simpler family before small validation MAE gains",
+  "product_B_rule": "Hard gates still reported as FAIL: at most0.25 DRtg marginal original bucket-bias miss, all other original gates pass, ranking view passes, validation residual Spearman>=0.40, positive ranking in>=5/6 training folds, stable chosen formulation",
+  "unsupported_synthetic_rule": "Preserve base prediction, mark HIGH uncertainty; no automatic spread amplification or universal historical clamp",
+  "final_test_evaluations": 0
+}
