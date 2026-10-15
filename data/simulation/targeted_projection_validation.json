@@ -1,0 +1,3019 @@
+{
+  "population": {
+    "train": 931,
+    "validation": 150,
+    "final_test_keys": 210
+  },
+  "rotation_before_after": {
+    "old": {
+      "equivalent_mpg": {
+        "n": 2872,
+        "mae": 8.769991090142224,
+        "rmse": 11.667486597528546,
+        "bias": 2.9688415143179675e-17
+      },
+      "appearance_mpg": {
+        "n": 2872,
+        "mae": 10.169620346556243,
+        "rmse": 12.466355370241072,
+        "bias": -6.864801946458619
+      },
+      "starter": {
+        "n": 942,
+        "mae": 11.393802305584938,
+        "rmse": 13.888167300946373,
+        "bias": 2.6408558037057466
+      },
+      "bench": {
+        "n": 1930,
+        "mae": 7.489353698977954,
+        "rmse": 10.413024363443673,
+        "bias": -1.2889565632594888
+      },
+      "starter_appearance": {
+        "n": 942,
+        "mae": 9.26063968070331,
+        "rmse": 12.678395425802025,
+        "bias": -4.734272878130564
+      },
+      "bench_appearance": {
+        "n": 1930,
+        "mae": 10.613278267402595,
+        "rmse": 12.361541463981316,
+        "bias": -7.904676755974177
+      },
+      "by_prior_availability": {
+        "absence_return": {
+          "n": 65,
+          "mae": 4.527308268659641,
+          "rmse": 7.2951472752320194,
+          "bias": -1.3127365229789878
+        },
+        "no_prior": {
+          "n": 517,
+          "mae": 6.724683328895136,
+          "rmse": 10.365014517673133,
+          "bias": -6.724683328895136
+        },
+        "returning": {
+          "n": 1358,
+          "mae": 9.465672602055092,
+          "rmse": 11.869328971934882,
+          "bias": 0.7340576006516882
+        },
+        "transferred": {
+          "n": 932,
+          "mae": 9.18679688712016,
+          "rmse": 12.284508307417376,
+          "bias": 2.7522949928620455
+        }
+      },
+      "by_prior_availability_appearance": {
+        "absence_return": {
+          "n": 65,
+          "mae": 10.064954977611718,
+          "rmse": 12.237018348563947,
+          "bias": -8.775959513576055
+        },
+        "no_prior": {
+          "n": 517,
+          "mae": 13.352584953653425,
+          "rmse": 15.528304993603454,
+          "bias": -13.352584953653425
+        },
+        "returning": {
+          "n": 1358,
+          "mae": 8.892391147714655,
+          "rmse": 11.151843836716287,
+          "bias": -4.93326245381092
+        },
+        "transferred": {
+          "n": 932,
+          "mae": 10.272289658937174,
+          "rmse": 12.389211214102298,
+          "bias": -5.947013936193841
+        }
+      },
+      "top5_share_error": 0.17105001014049143,
+      "top8_share_error": 0.13381118480624504,
+      "hhi_error": 0.03318088202046827,
+      "by_prior_games_played": {
+        "50-80%": {
+          "equivalent": {
+            "n": 645,
+            "mae": 9.42331570544056,
+            "rmse": 12.062305982225919,
+            "bias": -0.23549742322096123
+          },
+          "appearance": {
+            "n": 645,
+            "mae": 10.394968193787983,
+            "rmse": 12.526614088807147,
+            "bias": -7.260998160246576
+          }
+        },
+        "<50%": {
+          "equivalent": {
+            "n": 525,
+            "mae": 6.752731164083259,
+            "rmse": 9.95173337077227,
+            "bias": -1.5936529956300298
+          },
+          "appearance": {
+            "n": 525,
+            "mae": 11.199231001861879,
+            "rmse": 13.284814158184384,
+            "bias": -9.039528174563706
+          }
+        },
+        ">=80%": {
+          "equivalent": {
+            "n": 1185,
+            "mae": 10.20044779636861,
+            "rmse": 12.648493595830537,
+            "bias": 3.768122313689511
+          },
+          "appearance": {
+            "n": 1185,
+            "mae": 8.202120213755254,
+            "rmse": 10.38532307459083,
+            "bias": -2.8551296744180132
+          }
+        },
+        "no_prior": {
+          "equivalent": {
+            "n": 517,
+            "mae": 6.724683328895136,
+            "rmse": 10.365014517673133,
+            "bias": -6.724683328895136
+          },
+          "appearance": {
+            "n": 517,
+            "mae": 13.352584953653425,
+            "rmse": 15.528304993603454,
+            "bias": -13.352584953653425
+          }
+        }
+      },
+      "largest_errors": [
+        {
+          "season": "2014-15",
+          "team": "Indiana Pacers",
+          "player": "Paul George",
+          "category": "returning",
+          "starter": false,
+          "starter_observed": true,
+          "prior_games_fraction": 0.975609756097561,
+          "actual_mpg": 15.166666666666666,
+          "actual_equivalent_mpg": 1.0999748174263408,
+          "projected_mpg": 37.38383571060385,
+          "error": 36.283860893177504
+        },
+        {
+          "season": "2016-17",
+          "team": "Cleveland Cavaliers",
+          "player": "Dahntay Jones",
+          "category": "returning",
+          "starter": false,
+          "starter_observed": true,
+          "prior_games_fraction": 0.012195121951219513,
+          "actual_mpg": 12.0,
+          "actual_equivalent_mpg": 0.1448619284744228,
+          "projected_mpg": 36.25742806760996,
+          "error": 36.11256613913554
+        },
+        {
+          "season": "2017-18",
+          "team": "Boston Celtics",
+          "player": "Gordon Hayward",
+          "category": "transferred",
+          "starter": true,
+          "starter_observed": true,
+          "prior_games_fraction": 0.8902439024390244,
+          "actual_mpg": 5.0,
+          "actual_equivalent_mpg": 0.06058770069675856,
+          "projected_mpg": 36.09730377612479,
+          "error": 36.03671607542803
+        },
+        {
+          "season": "2014-15",
+          "team": "Minnesota Timberwolves",
+          "player": "Andrew Wiggins",
+          "category": "no_prior",
+          "starter": true,
+          "starter_observed": true,
+          "prior_games_fraction": 0.5,
+          "actual_mpg": 36.207317073170735,
+          "actual_equivalent_mpg": 35.97697667373524,
+          "projected_mpg": 0.0,
+          "error": 35.97697667373524
+        },
+        {
+          "season": "2018-19",
+          "team": "New York Knicks",
+          "player": "Wesley Matthews",
+          "category": "transferred",
+          "starter": true,
+          "starter_observed": true,
+          "prior_games_fraction": 0.7682926829268293,
+          "actual_mpg": 27.0,
+          "actual_equivalent_mpg": 0.655174157019362,
+          "projected_mpg": 35.29752072222383,
+          "error": 34.64234656520447
+        },
+        {
+          "season": "2015-16",
+          "team": "Philadelphia 76ers",
+          "player": "Tony Wroten",
+          "category": "returning",
+          "starter": false,
+          "starter_observed": true,
+          "prior_games_fraction": 0.36585365853658536,
+          "actual_mpg": 18.0,
+          "actual_equivalent_mpg": 1.7449257800666467,
+          "projected_mpg": 36.33781320677687,
+          "error": 34.59288742671023
+        },
+        {
+          "season": "2017-18",
+          "team": "Phoenix Suns",
+          "player": "Eric Bledsoe",
+          "category": "returning",
+          "starter": true,
+          "starter_observed": true,
+          "prior_games_fraction": 0.8048780487804879,
+          "actual_mpg": 27.666666666666668,
+          "actual_equivalent_mpg": 1.0110135512358525,
+          "projected_mpg": 35.423802416510924,
+          "error": 34.41278886527507
+        },
+        {
+          "season": "2015-16",
+          "team": "Indiana Pacers",
+          "player": "Paul George",
+          "category": "returning",
+          "starter": true,
+          "starter_observed": true,
+          "prior_games_fraction": 0.07317073170731707,
+          "actual_mpg": 34.80246913580247,
+          "actual_equivalent_mpg": 34.03219315895372,
+          "projected_mpg": 0.0,
+          "error": 34.03219315895372
+        },
+        {
+          "season": "2017-18",
+          "team": "San Antonio Spurs",
+          "player": "Kawhi Leonard",
+          "category": "returning",
+          "starter": true,
+          "starter_observed": true,
+          "prior_games_fraction": 0.9024390243902439,
+          "actual_mpg": 23.333333333333332,
+          "actual_equivalent_mpg": 2.5544855549923975,
+          "projected_mpg": 36.2504332755578,
+          "error": 33.69594772056541
+        },
+        {
+          "season": "2016-17",
+          "team": "New Orleans Pelicans",
+          "player": "Jarrett Jack",
+          "category": "transferred",
+          "starter": false,
+          "starter_observed": true,
+          "prior_games_fraction": 0.3902439024390244,
+          "actual_mpg": 16.5,
+          "actual_equivalent_mpg": 0.39786998894805586,
+          "projected_mpg": 34.06600977500278,
+          "error": 33.66813978605473
+        },
+        {
+          "season": "2015-16",
+          "team": "Indiana Pacers",
+          "player": "Ty Lawson",
+          "category": "transferred",
+          "starter": false,
+          "starter_observed": true,
+          "prior_games_fraction": 0.9146341463414634,
+          "actual_mpg": 18.076923076923077,
+          "actual_equivalent_mpg": 2.8370221327967804,
+          "projected_mpg": 36.19663949288254,
+          "error": 33.35961736008576
+        },
+        {
+          "season": "2018-19",
+          "team": "Los Angeles Lakers",
+          "player": "Andre Ingram",
+          "category": "returning",
+          "starter": false,
+          "starter_observed": true,
+          "prior_games_fraction": 0.024390243902439025,
+          "actual_mpg": 3.75,
+          "actual_equivalent_mpg": 0.18199282139426723,
+          "projected_mpg": 33.49291087282214,
+          "error": 33.31091805142787
+        }
+      ]
+    },
+    "balanced_prior": {
+      "equivalent_mpg": {
+        "n": 2872,
+        "mae": 6.212850998569991,
+        "rmse": 8.235732571488823,
+        "bias": -8.16431416437441e-16
+      },
+      "appearance_mpg": {
+        "n": 2872,
+        "mae": 7.812518062932456,
+        "rmse": 9.795580899449831,
+        "bias": -6.864801946458621
+      },
+      "starter": {
+        "n": 942,
+        "mae": 7.407829556738797,
+        "rmse": 9.64255035608682,
+        "bias": -1.875775410046802
+      },
+      "bench": {
+        "n": 1930,
+        "mae": 5.62960239660366,
+        "rmse": 7.453273142588988,
+        "bias": 0.9155339048000442
+      },
+      "starter_appearance": {
+        "n": 942,
+        "mae": 9.448333477715929,
+        "rmse": 11.548185485803415,
+        "bias": -9.250904091883111
+      },
+      "bench_appearance": {
+        "n": 1930,
+        "mae": 7.0141045288775175,
+        "rmse": 8.814510696001042,
+        "bias": -5.700186287914645
+      },
+      "by_prior_availability": {
+        "absence_return": {
+          "n": 65,
+          "mae": 4.827230787772075,
+          "rmse": 6.5458094282512675,
+          "bias": 1.4480515089074923
+        },
+        "no_prior": {
+          "n": 517,
+          "mae": 5.8503184885755415,
+          "rmse": 8.912155971152497,
+          "bias": -4.093699302582555
+        },
+        "returning": {
+          "n": 1358,
+          "mae": 6.092818341863659,
+          "rmse": 7.861029149603813,
+          "bias": -0.790942973549527
+        },
+        "transferred": {
+          "n": 932,
+          "mae": 6.685489377514404,
+          "rmse": 8.480772442471917,
+          "bias": 3.3223387869489804
+        }
+      },
+      "by_prior_availability_appearance": {
+        "absence_return": {
+          "n": 65,
+          "mae": 7.648373597859464,
+          "rmse": 9.94086558063219,
+          "bias": -6.015171481689574
+        },
+        "no_prior": {
+          "n": 517,
+          "mae": 10.899199681586108,
+          "rmse": 13.39733317392062,
+          "bias": -10.721600927340846
+        },
+        "returning": {
+          "n": 1358,
+          "mae": 7.217926153617259,
+          "rmse": 8.68290391758082,
+          "bias": -6.4582630280121345
+        },
+        "transferred": {
+          "n": 932,
+          "mae": 6.978087597520269,
+          "rmse": 8.909162695493679,
+          "bias": -5.376970142106907
+        }
+      },
+      "top5_share_error": 0.05230071963279216,
+      "top8_share_error": 0.056998871546575305,
+      "hhi_error": 0.008869636266011716,
+      "by_prior_games_played": {
+        "50-80%": {
+          "equivalent": {
+            "n": 645,
+            "mae": 6.706178045924708,
+            "rmse": 8.278715252784066,
+            "bias": 0.1890006347882499
+          },
+          "appearance": {
+            "n": 645,
+            "mae": 7.8335342845317735,
+            "rmse": 9.446766496415597,
+            "bias": -6.836500102237366
+          }
+        },
+        "<50%": {
+          "equivalent": {
+            "n": 525,
+            "mae": 5.046609981102397,
+            "rmse": 7.037298401050593,
+            "bias": -1.2574085240852
+          },
+          "appearance": {
+            "n": 525,
+            "mae": 9.255283025190087,
+            "rmse": 11.261354575290055,
+            "bias": -8.703283703018876
+          }
+        },
+        ">=80%": {
+          "equivalent": {
+            "n": 1185,
+            "mae": 6.6191884637968466,
+            "rmse": 8.395807008033916,
+            "bias": 2.240233422060327
+          },
+          "appearance": {
+            "n": 1185,
+            "mae": 5.815200370982449,
+            "rmse": 7.034717948338141,
+            "bias": -4.383018566047197
+          }
+        },
+        "no_prior": {
+          "equivalent": {
+            "n": 517,
+            "mae": 5.8503184885755415,
+            "rmse": 8.912155971152497,
+            "bias": -4.093699302582555
+          },
+          "appearance": {
+            "n": 517,
+            "mae": 10.899199681586108,
+            "rmse": 13.39733317392062,
+            "bias": -10.721600927340846
+          }
+        }
+      },
+      "largest_errors": [
+        {
+          "season": "2014-15",
+          "team": "Minnesota Timberwolves",
+          "player": "Andrew Wiggins",
+          "category": "no_prior",
+          "starter": true,
+          "starter_observed": true,
+          "prior_games_fraction": 0.5,
+          "actual_mpg": 36.207317073170735,
+          "actual_equivalent_mpg": 35.97697667373524,
+          "projected_mpg": 1.8286225065722403,
+          "error": 34.148354167163
+        },
+        {
+          "season": "2017-18",
+          "team": "Philadelphia 76ers",
+          "player": "Ben Simmons",
+          "category": "no_prior",
+          "starter": true,
+          "starter_observed": true,
+          "prior_games_fraction": 0.5,
+          "actual_mpg": 33.72839506172839,
+          "actual_equivalent_mpg": 33.14695920327587,
+          "projected_mpg": 0.5,
+          "error": 32.64695920327587
+        },
+        {
+          "season": "2014-15",
+          "team": "Indiana Pacers",
+          "player": "Paul George",
+          "category": "returning",
+          "starter": false,
+          "starter_observed": true,
+          "prior_games_fraction": 0.975609756097561,
+          "actual_mpg": 15.166666666666666,
+          "actual_equivalent_mpg": 1.0999748174263408,
+          "projected_mpg": 33.43663367448058,
+          "error": 32.33665885705424
+        },
+        {
+          "season": "2018-19",
+          "team": "Cleveland Cavaliers",
+          "player": "Collin Sexton",
+          "category": "no_prior",
+          "starter": true,
+          "starter_observed": true,
+          "prior_games_fraction": 0.5,
+          "actual_mpg": 31.76829268292683,
+          "actual_equivalent_mpg": 31.650888472637067,
+          "projected_mpg": 0.5,
+          "error": 31.150888472637067
+        },
+        {
+          "season": "2017-18",
+          "team": "Boston Celtics",
+          "player": "Gordon Hayward",
+          "category": "transferred",
+          "starter": true,
+          "starter_observed": true,
+          "prior_games_fraction": 0.8902439024390244,
+          "actual_mpg": 5.0,
+          "actual_equivalent_mpg": 0.06058770069675856,
+          "projected_mpg": 29.111816905533196,
+          "error": 29.05122920483644
+        },
+        {
+          "season": "2017-18",
+          "team": "Utah Jazz",
+          "player": "Donovan Mitchell",
+          "category": "no_prior",
+          "starter": true,
+          "starter_observed": true,
+          "prior_games_fraction": 0.5,
+          "actual_mpg": 33.392405063291136,
+          "actual_equivalent_mpg": 32.04535101483018,
+          "projected_mpg": 3.0152265762033057,
+          "error": 29.030124438626878
+        },
+        {
+          "season": "2015-16",
+          "team": "Indiana Pacers",
+          "player": "Ty Lawson",
+          "category": "transferred",
+          "starter": false,
+          "starter_observed": true,
+          "prior_games_fraction": 0.9146341463414634,
+          "actual_mpg": 18.076923076923077,
+          "actual_equivalent_mpg": 2.8370221327967804,
+          "projected_mpg": 31.561820187720688,
+          "error": 28.72479805492391
+        },
+        {
+          "season": "2018-19",
+          "team": "Phoenix Suns",
+          "player": "Mikal Bridges",
+          "category": "no_prior",
+          "starter": true,
+          "starter_observed": true,
+          "prior_games_fraction": 0.5,
+          "actual_mpg": 29.475609756097562,
+          "actual_equivalent_mpg": 29.17467183020671,
+          "projected_mpg": 0.5,
+          "error": 28.67467183020671
+        },
+        {
+          "season": "2017-18",
+          "team": "Los Angeles Lakers",
+          "player": "Kyle Kuzma",
+          "category": "no_prior",
+          "starter": false,
+          "starter_observed": true,
+          "prior_games_fraction": 0.5,
+          "actual_mpg": 31.181818181818183,
+          "actual_equivalent_mpg": 28.948055862554007,
+          "projected_mpg": 0.5,
+          "error": 28.448055862554007
+        },
+        {
+          "season": "2015-16",
+          "team": "Minnesota Timberwolves",
+          "player": "Karl-Anthony Towns",
+          "category": "no_prior",
+          "starter": true,
+          "starter_observed": true,
+          "prior_games_fraction": 0.5,
+          "actual_mpg": 32.03658536585366,
+          "actual_equivalent_mpg": 31.711095463233075,
+          "projected_mpg": 3.975308314128241,
+          "error": 27.735787149104834
+        },
+        {
+          "season": "2018-19",
+          "team": "Dallas Mavericks",
+          "player": "Luka Don\u010di\u0107",
+          "category": "no_prior",
+          "starter": true,
+          "starter_observed": true,
+          "prior_games_fraction": 0.5,
+          "actual_mpg": 32.19444444444444,
+          "actual_equivalent_mpg": 28.123957332794095,
+          "projected_mpg": 0.5,
+          "error": 27.623957332794095
+        },
+        {
+          "season": "2017-18",
+          "team": "San Antonio Spurs",
+          "player": "Kawhi Leonard",
+          "category": "returning",
+          "starter": true,
+          "starter_observed": true,
+          "prior_games_fraction": 0.9024390243902439,
+          "actual_mpg": 23.333333333333332,
+          "actual_equivalent_mpg": 2.5544855549923975,
+          "projected_mpg": 29.706099232495504,
+          "error": 27.151613677503107
+        }
+      ]
+    },
+    "ridge_minutes": {
+      "equivalent_mpg": {
+        "n": 2872,
+        "mae": 6.177767230426036,
+        "rmse": 7.75289981688569,
+        "bias": -8.758082467238004e-16
+      },
+      "appearance_mpg": {
+        "n": 2872,
+        "mae": 7.873243458462724,
+        "rmse": 9.497721218817492,
+        "bias": -6.864801946458621
+      },
+      "starter": {
+        "n": 942,
+        "mae": 7.379079816929419,
+        "rmse": 9.051439479282415,
+        "bias": -3.2761343977311674
+      },
+      "bench": {
+        "n": 1930,
+        "mae": 5.591427097531638,
+        "rmse": 7.032563490091105,
+        "bias": 1.5990251827268172
+      },
+      "starter_appearance": {
+        "n": 942,
+        "mae": 10.734761261529531,
+        "rmse": 11.899917172355154,
+        "bias": -10.651263079567478
+      },
+      "bench_appearance": {
+        "n": 1930,
+        "mae": 6.476585546292292,
+        "rmse": 8.069609827374173,
+        "bias": -5.016695009987873
+      },
+      "by_prior_availability": {
+        "absence_return": {
+          "n": 65,
+          "mae": 4.237233644077267,
+          "rmse": 6.2084716804087385,
+          "bias": 0.29481763606407274
+        },
+        "no_prior": {
+          "n": 517,
+          "mae": 5.913684548571218,
+          "rmse": 7.863199092658312,
+          "bias": -0.5254055608544829
+        },
+        "returning": {
+          "n": 1358,
+          "mae": 6.151562566667433,
+          "rmse": 7.601847742864007,
+          "bias": -1.5283349532886261
+        },
+        "transferred": {
+          "n": 932,
+          "mae": 6.497779422503068,
+          "rmse": 8.002205722555008,
+          "bias": 2.4978008532012392
+        }
+      },
+      "by_prior_availability_appearance": {
+        "absence_return": {
+          "n": 65,
+          "mae": 8.391916438518637,
+          "rmse": 10.628081403900712,
+          "bias": -7.168405354532993
+        },
+        "no_prior": {
+          "n": 517,
+          "mae": 8.446405951634548,
+          "rmse": 10.947299789401342,
+          "bias": -7.153307185612772
+        },
+        "returning": {
+          "n": 1358,
+          "mae": 7.852125410212817,
+          "rmse": 8.997934585186018,
+          "bias": -7.195655007751234
+        },
+        "transferred": {
+          "n": 932,
+          "mae": 7.549895343494812,
+          "rmse": 9.254680783123003,
+          "bias": -6.201508075854648
+        }
+      },
+      "top5_share_error": 0.09163899899019706,
+      "top8_share_error": 0.10428588261685064,
+      "hhi_error": 0.01683581592989565,
+      "by_prior_games_played": {
+        "50-80%": {
+          "equivalent": {
+            "n": 645,
+            "mae": 6.582341351871055,
+            "rmse": 8.00857333518682,
+            "bias": 0.08980074419767807
+          },
+          "appearance": {
+            "n": 645,
+            "mae": 7.989669487714904,
+            "rmse": 9.408172572272218,
+            "bias": -6.935699992827938
+          }
+        },
+        "<50%": {
+          "equivalent": {
+            "n": 525,
+            "mae": 5.293590872832614,
+            "rmse": 7.074515202773236,
+            "bias": 0.11733034888103112
+          },
+          "appearance": {
+            "n": 525,
+            "mae": 8.36044974324498,
+            "rmse": 10.375751436892225,
+            "bias": -7.3285448300526435
+          }
+        },
+        ">=80%": {
+          "equivalent": {
+            "n": 1185,
+            "mae": 6.464495522344559,
+            "rmse": 7.84977239451272,
+            "bias": 0.12836688758795053
+          },
+          "appearance": {
+            "n": 1185,
+            "mae": 7.343958144244858,
+            "rmse": 8.394482044802476,
+            "bias": -6.494885100519574
+          }
+        },
+        "no_prior": {
+          "equivalent": {
+            "n": 517,
+            "mae": 5.913684548571218,
+            "rmse": 7.863199092658312,
+            "bias": -0.5254055608544829
+          },
+          "appearance": {
+            "n": 517,
+            "mae": 8.446405951634548,
+            "rmse": 10.947299789401342,
+            "bias": -7.153307185612772
+          }
+        }
+      },
+      "largest_errors": [
+        {
+          "season": "2014-15",
+          "team": "Minnesota Timberwolves",
+          "player": "Andrew Wiggins",
+          "category": "no_prior",
+          "starter": true,
+          "starter_observed": true,
+          "prior_games_fraction": 0.5,
+          "actual_mpg": 36.207317073170735,
+          "actual_equivalent_mpg": 35.97697667373524,
+          "projected_mpg": 5.5014910000631705,
+          "error": 30.47548567367207
+        },
+        {
+          "season": "2018-19",
+          "team": "Cleveland Cavaliers",
+          "player": "Collin Sexton",
+          "category": "no_prior",
+          "starter": true,
+          "starter_observed": true,
+          "prior_games_fraction": 0.5,
+          "actual_mpg": 31.76829268292683,
+          "actual_equivalent_mpg": 31.650888472637067,
+          "projected_mpg": 1.9496272088987814,
+          "error": 29.701261263738285
+        },
+        {
+          "season": "2014-15",
+          "team": "Indiana Pacers",
+          "player": "Paul George",
+          "category": "returning",
+          "starter": false,
+          "starter_observed": true,
+          "prior_games_fraction": 0.975609756097561,
+          "actual_mpg": 15.166666666666666,
+          "actual_equivalent_mpg": 1.0999748174263408,
+          "projected_mpg": 30.162088371810327,
+          "error": 29.062113554383988
+        },
+        {
+          "season": "2017-18",
+          "team": "Philadelphia 76ers",
+          "player": "Ben Simmons",
+          "category": "no_prior",
+          "starter": true,
+          "starter_observed": true,
+          "prior_games_fraction": 0.5,
+          "actual_mpg": 33.72839506172839,
+          "actual_equivalent_mpg": 33.14695920327587,
+          "projected_mpg": 4.323901257419449,
+          "error": 28.82305794585642
+        },
+        {
+          "season": "2018-19",
+          "team": "Cleveland Cavaliers",
+          "player": "Cedi Osman",
+          "category": "returning",
+          "starter": true,
+          "starter_observed": true,
+          "prior_games_fraction": 0.7439024390243902,
+          "actual_mpg": 32.1578947368421,
+          "actual_equivalent_mpg": 29.694729914443375,
+          "projected_mpg": 2.7213352011966885,
+          "error": 26.973394713246687
+        },
+        {
+          "season": "2018-19",
+          "team": "Phoenix Suns",
+          "player": "Mikal Bridges",
+          "category": "no_prior",
+          "starter": true,
+          "starter_observed": true,
+          "prior_games_fraction": 0.5,
+          "actual_mpg": 29.475609756097562,
+          "actual_equivalent_mpg": 29.17467183020671,
+          "projected_mpg": 3.8767120256019894,
+          "error": 25.29795980460472
+        },
+        {
+          "season": "2017-18",
+          "team": "Los Angeles Lakers",
+          "player": "Kyle Kuzma",
+          "category": "no_prior",
+          "starter": false,
+          "starter_observed": true,
+          "prior_games_fraction": 0.5,
+          "actual_mpg": 31.181818181818183,
+          "actual_equivalent_mpg": 28.948055862554007,
+          "projected_mpg": 3.932110411141009,
+          "error": 25.015945451412996
+        },
+        {
+          "season": "2017-18",
+          "team": "Boston Celtics",
+          "player": "Gordon Hayward",
+          "category": "transferred",
+          "starter": true,
+          "starter_observed": true,
+          "prior_games_fraction": 0.8902439024390244,
+          "actual_mpg": 5.0,
+          "actual_equivalent_mpg": 0.06058770069675856,
+          "projected_mpg": 24.279226061477168,
+          "error": 24.21863836078041
+        },
+        {
+          "season": "2017-18",
+          "team": "Utah Jazz",
+          "player": "Donovan Mitchell",
+          "category": "no_prior",
+          "starter": true,
+          "starter_observed": true,
+          "prior_games_fraction": 0.5,
+          "actual_mpg": 33.392405063291136,
+          "actual_equivalent_mpg": 32.04535101483018,
+          "projected_mpg": 7.921423022162219,
+          "error": 24.123927992667962
+        },
+        {
+          "season": "2017-18",
+          "team": "San Antonio Spurs",
+          "player": "Kawhi Leonard",
+          "category": "returning",
+          "starter": true,
+          "starter_observed": true,
+          "prior_games_fraction": 0.9024390243902439,
+          "actual_mpg": 23.333333333333332,
+          "actual_equivalent_mpg": 2.5544855549923975,
+          "projected_mpg": 26.659629140472553,
+          "error": 24.105143585480157
+        },
+        {
+          "season": "2015-16",
+          "team": "Indiana Pacers",
+          "player": "Ty Lawson",
+          "category": "transferred",
+          "starter": false,
+          "starter_observed": true,
+          "prior_games_fraction": 0.9146341463414634,
+          "actual_mpg": 18.076923076923077,
+          "actual_equivalent_mpg": 2.8370221327967804,
+          "projected_mpg": 26.562550093958755,
+          "error": 23.725527961161976
+        },
+        {
+          "season": "2014-15",
+          "team": "Philadelphia 76ers",
+          "player": "Robert Covington",
+          "category": "transferred",
+          "starter": true,
+          "starter_observed": true,
+          "prior_games_fraction": 0.08536585365853659,
+          "actual_mpg": 27.942857142857143,
+          "actual_equivalent_mpg": 23.706696293303704,
+          "projected_mpg": 0.5,
+          "error": 23.206696293303704
+        }
+      ]
+    }
+  },
+  "selected_rotation": "balanced_prior",
+  "rookie_priors": {
+    "roles": {
+      "deep_bench": {
+        "n": 1873,
+        "equivalent_mpg": 3.7740286994721277,
+        "appearance_mpg": 9.397720151606396
+      },
+      "primary_bench": {
+        "n": 372,
+        "equivalent_mpg": 16.77555177002215,
+        "appearance_mpg": 19.620338380114525
+      },
+      "starter": {
+        "n": 321,
+        "equivalent_mpg": 27.624919664703363,
+        "appearance_mpg": 29.392787851301645
+      }
+    },
+    "unknown_role_mixture_mpg": 8.642579978538315,
+    "n": 2566
+  },
+  "usage_comparison": {
+    "alpha1": {
+      "player_usage": {
+        "n": 2872,
+        "mae": 3.103510581491673,
+        "rmse": 4.595246448049364,
+        "bias": 0.2760343764578647
+      },
+      "conserved_reference_usage": {
+        "n": 2872,
+        "mae": 3.062678631032687,
+        "rmse": 4.50522490615394,
+        "bias": 0.22695192780629642
+      },
+      "top1_error": 3.295500174059162,
+      "top3_share_error": 0.01592753181662899,
+      "concentration_error": 0.0032393029510700403
+    },
+    "alpha075": {
+      "player_usage": {
+        "n": 2872,
+        "mae": 3.1305391327465033,
+        "rmse": 4.476582621990583,
+        "bias": 0.5401037926095046
+      },
+      "conserved_reference_usage": {
+        "n": 2872,
+        "mae": 3.088668088159634,
+        "rmse": 4.3876003280545595,
+        "bias": 0.4910213439579363
+      },
+      "top1_error": 4.619451956421036,
+      "top3_share_error": 0.027128085612642128,
+      "concentration_error": 0.005788623442536472
+    },
+    "role_shrink10": {
+      "player_usage": {
+        "n": 2872,
+        "mae": 3.0527888438466046,
+        "rmse": 4.501024245936986,
+        "bias": 0.31467838943129395
+      },
+      "conserved_reference_usage": {
+        "n": 2872,
+        "mae": 3.013376865809764,
+        "rmse": 4.410684128027224,
+        "bias": 0.26559594077972576
+      },
+      "top1_error": 3.5447295753862536,
+      "top3_share_error": 0.017786594464190973,
+      "concentration_error": 0.0036989423988252803
+    }
+  },
+  "selected_usage": {
+    "name": "role_shrink10",
+    "alpha": 1.0,
+    "shrink": 0.1
+  },
+  "transfer_stability": {
+    "all_transfers": {
+      "usage_pct": {
+        "n": 997,
+        "correlation": 0.5393569225744533,
+        "mean_change": -0.5410230692076229,
+        "mae_change": 3.469207622868606
+      },
+      "true_shooting_pct": {
+        "n": 991,
+        "correlation": 0.21050477096629827,
+        "mean_change": -0.005868819374369325,
+        "mae_change": 0.07804641775983855
+      },
+      "relative_ts": {
+        "n": 991,
+        "correlation": 0.2049169091561857,
+        "mean_change": -0.009745901473087524,
+        "mae_change": 0.07819874536444676
+      },
+      "assist_pct": {
+        "n": 997,
+        "correlation": 0.719522219898097,
+        "mean_change": -0.37572718154463386,
+        "mae_change": 4.6218655967903715
+      },
+      "turnover_pct": {
+        "n": 991,
+        "correlation": 0.42378740885256744,
+        "mean_change": 0.007366296670030155,
+        "mae_change": 4.213420787083754
+      },
+      "three_point_attempt_rate": {
+        "n": 991,
+        "correlation": 0.8014597002556898,
+        "mean_change": 0.031630453794161066,
+        "mae_change": 0.0935308228815115
+      },
+      "minutes_per_game": {
+        "n": 997,
+        "correlation": 0.5948641963957315,
+        "mean_change": -1.8378192112272196,
+        "mae_change": 5.917953702271423
+      },
+      "defensive_box_plus_minus": {
+        "n": 997,
+        "correlation": 0.2166405338751609,
+        "mean_change": -0.09548645937813442,
+        "mae_change": 1.2473420260782346
+      },
+      "defensive_win_shares": {
+        "n": 997,
+        "correlation": 0.5299814430284693,
+        "mean_change": -0.3592778335005016,
+        "mae_change": 0.6694082246740221
+      },
+      "steal_pct": {
+        "n": 997,
+        "correlation": 0.21735442398323773,
+        "mean_change": -0.018054162487462392,
+        "mae_change": 0.6712136409227684
+      },
+      "block_pct": {
+        "n": 997,
+        "correlation": 0.6690489219876175,
+        "mean_change": 0.008726178535606817,
+        "mae_change": 0.7387161484453361
+      },
+      "defensive_rebound_pct": {
+        "n": 997,
+        "correlation": 0.5786132931405927,
+        "mean_change": -0.02186559679037107,
+        "mae_change": 3.822868605817453
+      },
+      "steals_per_75": {
+        "n": 997,
+        "correlation": 0.2188812774521598,
+        "mean_change": -0.01327113837211572,
+        "mae_change": 0.502349140450835
+      },
+      "blocks_per_75": {
+        "n": 997,
+        "correlation": 0.6696857396042364,
+        "mean_change": -0.014549038064496813,
+        "mae_change": 0.3400216472162471
+      },
+      "defensive_rebounds_per_75": {
+        "n": 997,
+        "correlation": 0.5695744256906956,
+        "mean_change": -0.02537345971919489,
+        "mae_change": 1.2969059753177268
+      },
+      "age": {
+        "n": 997,
+        "correlation": 0.9960266015011009,
+        "mean_change": 1.086258776328987,
+        "mae_change": 1.086258776328987
+      },
+      "defensive_environment": {
+        "n": 997,
+        "correlation": 0.07956871174092825,
+        "mean_change": -0.0052383867784275605,
+        "mae_change": 2.5914836718192964
+      }
+    },
+    "star_transfers": {
+      "usage_pct": {
+        "n": 26,
+        "correlation": 0.6474025181459594,
+        "mean_change": -3.2576923076923086,
+        "mae_change": 3.4884615384615385
+      },
+      "true_shooting_pct": {
+        "n": 26,
+        "correlation": 0.5384485573399501,
+        "mean_change": -0.02261538461538461,
+        "mae_change": 0.03753846153846153
+      },
+      "relative_ts": {
+        "n": 26,
+        "correlation": 0.5849314046707332,
+        "mean_change": -0.02650064684290632,
+        "mae_change": 0.037436700076360914
+      },
+      "assist_pct": {
+        "n": 26,
+        "correlation": 0.7530106349978489,
+        "mean_change": -3.0153846153846158,
+        "mae_change": 5.153846153846154
+      },
+      "turnover_pct": {
+        "n": 26,
+        "correlation": 0.5156816419575501,
+        "mean_change": 0.10384615384615378,
+        "mae_change": 2.426923076923077
+      },
+      "three_point_attempt_rate": {
+        "n": 26,
+        "correlation": 0.7977473393990191,
+        "mean_change": 0.033480788698760304,
+        "mae_change": 0.07331535871144039
+      },
+      "minutes_per_game": {
+        "n": 26,
+        "correlation": 0.40151361260732454,
+        "mean_change": -4.275437348480474,
+        "mae_change": 4.470614535530023
+      },
+      "defensive_box_plus_minus": {
+        "n": 26,
+        "correlation": 0.6616570866953039,
+        "mean_change": 0.10769230769230768,
+        "mae_change": 0.9076923076923078
+      },
+      "defensive_win_shares": {
+        "n": 26,
+        "correlation": 0.4012158426417047,
+        "mean_change": -0.4384615384615384,
+        "mae_change": 1.1538461538461537
+      },
+      "steal_pct": {
+        "n": 26,
+        "correlation": 0.7560652829495408,
+        "mean_change": -0.06538461538461537,
+        "mae_change": 0.3653846153846153
+      },
+      "block_pct": {
+        "n": 26,
+        "correlation": 0.9232742169651071,
+        "mean_change": 0.34230769230769226,
+        "mae_change": 0.5038461538461537
+      },
+      "defensive_rebound_pct": {
+        "n": 26,
+        "correlation": 0.9206654110814814,
+        "mean_change": 0.22307692307692337,
+        "mae_change": 2.4384615384615387
+      },
+      "steals_per_75": {
+        "n": 26,
+        "correlation": 0.766771993621105,
+        "mean_change": -0.042124567641865576,
+        "mae_change": 0.25710431349323215
+      },
+      "blocks_per_75": {
+        "n": 26,
+        "correlation": 0.9317728228857665,
+        "mean_change": 0.12888373961548133,
+        "mae_change": 0.2043425654448527
+      },
+      "defensive_rebounds_per_75": {
+        "n": 26,
+        "correlation": 0.9263031222066884,
+        "mean_change": 0.08066213165172592,
+        "mae_change": 0.7689784046835259
+      },
+      "age": {
+        "n": 26,
+        "correlation": 1.0,
+        "mean_change": 1.0,
+        "mae_change": 1.0
+      },
+      "defensive_environment": {
+        "n": 26,
+        "correlation": 0.09935551544459598,
+        "mean_change": -0.9992324677937976,
+        "mae_change": 2.657989408806003
+      }
+    },
+    "ordinary_transfers": {
+      "usage_pct": {
+        "n": 829,
+        "correlation": 0.5575024861486733,
+        "mean_change": -0.4066344993968637,
+        "mae_change": 3.221351025331725
+      },
+      "true_shooting_pct": {
+        "n": 824,
+        "correlation": 0.24244260700232298,
+        "mean_change": -0.00946116504854369,
+        "mae_change": 0.06726456310679611
+      },
+      "relative_ts": {
+        "n": 824,
+        "correlation": 0.23533387458988636,
+        "mean_change": -0.013369236822766958,
+        "mae_change": 0.06759840358941001
+      },
+      "assist_pct": {
+        "n": 829,
+        "correlation": 0.7607977680297353,
+        "mean_change": -0.41025331724969843,
+        "mae_change": 4.246200241254523
+      },
+      "turnover_pct": {
+        "n": 824,
+        "correlation": 0.5227200097571411,
+        "mean_change": -0.1098300970873787,
+        "mae_change": 3.617839805825242
+      },
+      "three_point_attempt_rate": {
+        "n": 824,
+        "correlation": 0.8297761589565655,
+        "mean_change": 0.031172658312797412,
+        "mae_change": 0.08794148698065106
+      },
+      "minutes_per_game": {
+        "n": 829,
+        "correlation": 0.5767524631239691,
+        "mean_change": -2.9317473478087375,
+        "mae_change": 5.800847655534066
+      },
+      "defensive_box_plus_minus": {
+        "n": 829,
+        "correlation": 0.2837931185405474,
+        "mean_change": -0.08045838359469241,
+        "mae_change": 1.1028950542822678
+      },
+      "defensive_win_shares": {
+        "n": 829,
+        "correlation": 0.4734986423387544,
+        "mean_change": -0.43462002412545236,
+        "mae_change": 0.7193003618817853
+      },
+      "steal_pct": {
+        "n": 829,
+        "correlation": 0.2890798455401831,
+        "mean_change": 0.0021712907117008517,
+        "mae_change": 0.5645355850422195
+      },
+      "block_pct": {
+        "n": 829,
+        "correlation": 0.707042702882168,
+        "mean_change": -0.023039806996381175,
+        "mae_change": 0.6512665862484923
+      },
+      "defensive_rebound_pct": {
+        "n": 829,
+        "correlation": 0.6914731653497627,
+        "mean_change": -0.011700844390832358,
+        "mae_change": 3.3342581423401687
+      },
+      "steals_per_75": {
+        "n": 829,
+        "correlation": 0.29033024372411254,
+        "mean_change": 0.0015047620780366997,
+        "mae_change": 0.4223826826535199
+      },
+      "blocks_per_75": {
+        "n": 829,
+        "correlation": 0.711210738252539,
+        "mean_change": -0.026039486961489354,
+        "mae_change": 0.29934392365091683
+      },
+      "defensive_rebounds_per_75": {
+        "n": 829,
+        "correlation": 0.6961885796182035,
+        "mean_change": -0.013663051862959429,
+        "mae_change": 1.1311311270049373
+      },
+      "age": {
+        "n": 829,
+        "correlation": 0.9973348805609343,
+        "mean_change": 1.060313630880579,
+        "mae_change": 1.060313630880579
+      },
+      "defensive_environment": {
+        "n": 829,
+        "correlation": 0.04972848400080526,
+        "mean_change": -0.056279621550171695,
+        "mae_change": 2.6021627739720867
+      }
+    },
+    "large_role_changes": {
+      "usage_pct": {
+        "n": 414,
+        "correlation": 0.314886298935158,
+        "mean_change": -0.789855072463768,
+        "mae_change": 5.394202898550724
+      },
+      "true_shooting_pct": {
+        "n": 408,
+        "correlation": 0.13339242702685555,
+        "mean_change": -0.013541666666666669,
+        "mae_change": 0.10988480392156863
+      },
+      "relative_ts": {
+        "n": 408,
+        "correlation": 0.12847725020622486,
+        "mean_change": -0.017345513318323992,
+        "mae_change": 0.11019097021711291
+      },
+      "assist_pct": {
+        "n": 414,
+        "correlation": 0.5927321587725561,
+        "mean_change": -1.1193236714975847,
+        "mae_change": 5.941062801932367
+      },
+      "turnover_pct": {
+        "n": 408,
+        "correlation": 0.3291080898228126,
+        "mean_change": -0.440686274509804,
+        "mae_change": 5.319607843137254
+      },
+      "three_point_attempt_rate": {
+        "n": 408,
+        "correlation": 0.6776918319661316,
+        "mean_change": 0.04210585762167679,
+        "mae_change": 0.12232931107134822
+      },
+      "minutes_per_game": {
+        "n": 414,
+        "correlation": 0.2912180658207476,
+        "mean_change": -3.353581465938822,
+        "mae_change": 9.561780406419386
+      },
+      "defensive_box_plus_minus": {
+        "n": 414,
+        "correlation": 0.11213899212671347,
+        "mean_change": -0.16256038647343,
+        "mae_change": 1.7152173913043476
+      },
+      "defensive_win_shares": {
+        "n": 414,
+        "correlation": 0.4262157340440959,
+        "mean_change": -0.372463768115942,
+        "mae_change": 0.6922705314009661
+      },
+      "steal_pct": {
+        "n": 414,
+        "correlation": 0.11045784915690911,
+        "mean_change": -0.01739130434782609,
+        "mae_change": 0.9159420289855074
+      },
+      "block_pct": {
+        "n": 414,
+        "correlation": 0.5904904296415902,
+        "mean_change": 0.011835748792270544,
+        "mae_change": 0.9263285024154589
+      },
+      "defensive_rebound_pct": {
+        "n": 414,
+        "correlation": 0.4288546223660997,
+        "mean_change": -0.014251207729468467,
+        "mae_change": 5.282850241545894
+      },
+      "steals_per_75": {
+        "n": 414,
+        "correlation": 0.11258038410133094,
+        "mean_change": -0.014005403328056654,
+        "mae_change": 0.6866681903370053
+      },
+      "blocks_per_75": {
+        "n": 414,
+        "correlation": 0.5866022983005932,
+        "mean_change": -0.009622954183278902,
+        "mae_change": 0.42558899634711894
+      },
+      "defensive_rebounds_per_75": {
+        "n": 414,
+        "correlation": 0.41774068618780597,
+        "mean_change": -0.022807508742129452,
+        "mae_change": 1.7852999203189204
+      },
+      "age": {
+        "n": 414,
+        "correlation": 0.9939330683442009,
+        "mean_change": 1.1328502415458936,
+        "mae_change": 1.1328502415458936
+      },
+      "defensive_environment": {
+        "n": 414,
+        "correlation": 0.030909583576421883,
+        "mean_change": -0.18432475224328446,
+        "mae_change": 2.629268485998776
+      }
+    },
+    "transfers_500_minutes_both_seasons": {
+      "usage_pct": {
+        "n": 471,
+        "correlation": 0.7235065108370344,
+        "mean_change": -0.5386411889596603,
+        "mae_change": 2.7178343949044583
+      },
+      "true_shooting_pct": {
+        "n": 471,
+        "correlation": 0.42777564405911267,
+        "mean_change": 0.002061571125265394,
+        "mae_change": 0.037645435244161356
+      },
+      "relative_ts": {
+        "n": 471,
+        "correlation": 0.40625069792997787,
+        "mean_change": -0.0014359575744930923,
+        "mae_change": 0.037350703826781045
+      },
+      "assist_pct": {
+        "n": 471,
+        "correlation": 0.8387794403589279,
+        "mean_change": -0.2140127388535031,
+        "mae_change": 3.6997876857749468
+      },
+      "turnover_pct": {
+        "n": 471,
+        "correlation": 0.7513000264474282,
+        "mean_change": -0.04755838641188966,
+        "mae_change": 2.224203821656051
+      },
+      "three_point_attempt_rate": {
+        "n": 471,
+        "correlation": 0.8943857611478804,
+        "mean_change": 0.025014883434745585,
+        "mae_change": 0.07056496334851756
+      },
+      "minutes_per_game": {
+        "n": 471,
+        "correlation": 0.6551518906731343,
+        "mean_change": -0.8045785041643463,
+        "mae_change": 4.296916190896691
+      },
+      "defensive_box_plus_minus": {
+        "n": 471,
+        "correlation": 0.5995865603365905,
+        "mean_change": 0.033121019108280254,
+        "mae_change": 0.7397027600849256
+      },
+      "defensive_win_shares": {
+        "n": 471,
+        "correlation": 0.4585494731263658,
+        "mean_change": -0.294692144373673,
+        "mae_change": 0.732908704883227
+      },
+      "steal_pct": {
+        "n": 471,
+        "correlation": 0.7403133104002454,
+        "mean_change": -0.0019108280254777068,
+        "mae_change": 0.32292993630573247
+      },
+      "block_pct": {
+        "n": 471,
+        "correlation": 0.8744226917206323,
+        "mean_change": 0.041825902335456466,
+        "mae_change": 0.4605095541401274
+      },
+      "defensive_rebound_pct": {
+        "n": 471,
+        "correlation": 0.8756541929237599,
+        "mean_change": 0.12314225053078559,
+        "mae_change": 2.344373673036094
+      },
+      "steals_per_75": {
+        "n": 471,
+        "correlation": 0.7439332165219205,
+        "mean_change": -0.003507825258146037,
+        "mae_change": 0.2418870355704616
+      },
+      "blocks_per_75": {
+        "n": 471,
+        "correlation": 0.8731190822099365,
+        "mean_change": 0.0011354846407638966,
+        "mae_change": 0.21453320486041857
+      },
+      "defensive_rebounds_per_75": {
+        "n": 471,
+        "correlation": 0.8720423170669913,
+        "mean_change": 0.02747703908785967,
+        "mae_change": 0.8120429254351946
+      },
+      "age": {
+        "n": 471,
+        "correlation": 1.0,
+        "mean_change": 1.0,
+        "mae_change": 1.0
+      },
+      "defensive_environment": {
+        "n": 471,
+        "correlation": 0.04929516337423243,
+        "mean_change": 0.08366642265514623,
+        "mae_change": 2.695962501399792
+      }
+    },
+    "returning": {
+      "usage_pct": {
+        "n": 1358,
+        "correlation": 0.7888553546608337,
+        "mean_change": 0.08203240058910163,
+        "mae_change": 2.463328424153166
+      },
+      "true_shooting_pct": {
+        "n": 1352,
+        "correlation": 0.2700681323476507,
+        "mean_change": -0.0021612426035502964,
+        "mae_change": 0.04818343195266272
+      },
+      "relative_ts": {
+        "n": 1352,
+        "correlation": 0.2574231368839196,
+        "mean_change": -0.005911820816442732,
+        "mae_change": 0.04812295415760389
+      },
+      "assist_pct": {
+        "n": 1358,
+        "correlation": 0.8732524212906237,
+        "mean_change": 0.47378497790868934,
+        "mae_change": 3.2371134020618557
+      },
+      "turnover_pct": {
+        "n": 1352,
+        "correlation": 0.5312810719862846,
+        "mean_change": -0.2775147928994082,
+        "mae_change": 2.6189349112426035
+      },
+      "three_point_attempt_rate": {
+        "n": 1352,
+        "correlation": 0.8979328037555467,
+        "mean_change": 0.016208169219169413,
+        "mae_change": 0.06202569646686594
+      },
+      "minutes_per_game": {
+        "n": 1358,
+        "correlation": 0.7894431009227654,
+        "mean_change": -0.2588184487230251,
+        "mae_change": 4.107681894943947
+      },
+      "defensive_box_plus_minus": {
+        "n": 1358,
+        "correlation": 0.38618796847266984,
+        "mean_change": -0.0606038291605302,
+        "mae_change": 0.8555964653902799
+      },
+      "defensive_win_shares": {
+        "n": 1358,
+        "correlation": 0.6786952346065278,
+        "mean_change": -0.08217967599410898,
+        "mae_change": 0.6995581737849779
+      },
+      "steal_pct": {
+        "n": 1358,
+        "correlation": 0.6046544214313229,
+        "mean_change": -0.04631811487481591,
+        "mae_change": 0.4178939617083947
+      },
+      "block_pct": {
+        "n": 1358,
+        "correlation": 0.7951325855271032,
+        "mean_change": -0.026656848306332845,
+        "mae_change": 0.5839469808541974
+      },
+      "defensive_rebound_pct": {
+        "n": 1358,
+        "correlation": 0.7941497384682283,
+        "mean_change": 0.10559646539027982,
+        "mae_change": 2.6503681885125183
+      },
+      "steals_per_75": {
+        "n": 1358,
+        "correlation": 0.605347710050476,
+        "mean_change": -0.034374228816436696,
+        "mae_change": 0.3135140720978133
+      },
+      "blocks_per_75": {
+        "n": 1358,
+        "correlation": 0.799393820624553,
+        "mean_change": -0.03300913942035175,
+        "mae_change": 0.2684388823964818
+      },
+      "defensive_rebounds_per_75": {
+        "n": 1358,
+        "correlation": 0.7931882609817281,
+        "mean_change": 0.03150319159909461,
+        "mae_change": 0.8992410867427105
+      },
+      "age": {
+        "n": 1358,
+        "correlation": 1.0,
+        "mean_change": 1.0,
+        "mae_change": 1.0
+      },
+      "defensive_environment": {
+        "n": 1358,
+        "correlation": 0.5196816031199557,
+        "mean_change": 0.040890977541572324,
+        "mae_change": 2.0282947727712255
+      }
+    },
+    "defensive_era_stability": {
+      "(1979, 1989]": {
+        "defensive_box_plus_minus": {
+          "n": 805,
+          "correlation": 0.3669909584049248,
+          "mean_change": -0.07478260869565218,
+          "mae_change": 1.1127950310559007
+        },
+        "defensive_win_shares": {
+          "n": 805,
+          "correlation": 0.553926923062206,
+          "mean_change": -0.32944099378881986,
+          "mae_change": 0.7331677018633541
+        },
+        "steal_pct": {
+          "n": 805,
+          "correlation": 0.3460239168589516,
+          "mean_change": -0.02422360248447205,
+          "mae_change": 0.6729192546583852
+        },
+        "block_pct": {
+          "n": 805,
+          "correlation": 0.6871770705103295,
+          "mean_change": 0.012795031055900633,
+          "mae_change": 0.5901863354037268
+        },
+        "defensive_rebound_pct": {
+          "n": 805,
+          "correlation": 0.7274574669432188,
+          "mean_change": -0.09416149068322979,
+          "mae_change": 3.171925465838509
+        }
+      },
+      "(1989, 1999]": {
+        "defensive_box_plus_minus": {
+          "n": 1437,
+          "correlation": 0.1703676173809558,
+          "mean_change": -0.22143354210160054,
+          "mae_change": 1.56687543493389
+        },
+        "defensive_win_shares": {
+          "n": 1437,
+          "correlation": 0.5472373693402789,
+          "mean_change": -0.27272094641614475,
+          "mae_change": 0.6931802366040362
+        },
+        "steal_pct": {
+          "n": 1437,
+          "correlation": 0.3035651167343229,
+          "mean_change": -0.04565066109951288,
+          "mae_change": 0.7660403618649965
+        },
+        "block_pct": {
+          "n": 1437,
+          "correlation": 0.29065198250128954,
+          "mean_change": -0.1369519832985386,
+          "mae_change": 0.8232428670842032
+        },
+        "defensive_rebound_pct": {
+          "n": 1437,
+          "correlation": 0.6013033474258966,
+          "mean_change": -0.007446068197633892,
+          "mae_change": 3.621920668058455
+        }
+      },
+      "(1999, 2009]": {
+        "defensive_box_plus_minus": {
+          "n": 1733,
+          "correlation": 0.19882314657918138,
+          "mean_change": 0.031102135025966534,
+          "mae_change": 1.3579342181188692
+        },
+        "defensive_win_shares": {
+          "n": 1733,
+          "correlation": 0.4671002385567878,
+          "mean_change": -0.22637045585689552,
+          "mae_change": 0.7328909405654934
+        },
+        "steal_pct": {
+          "n": 1733,
+          "correlation": 0.2626470672139558,
+          "mean_change": -0.02481246393537218,
+          "mae_change": 0.6976341604154646
+        },
+        "block_pct": {
+          "n": 1733,
+          "correlation": 0.6742690353256328,
+          "mean_change": -0.035372186959030584,
+          "mae_change": 0.7213502596653202
+        },
+        "defensive_rebound_pct": {
+          "n": 1733,
+          "correlation": 0.6496037436870756,
+          "mean_change": 0.05516445470282748,
+          "mae_change": 3.3322562031159833
+        }
+      },
+      "(2009, 2014]": {
+        "defensive_box_plus_minus": {
+          "n": 983,
+          "correlation": 0.31806179893027037,
+          "mean_change": -0.08860630722278738,
+          "mae_change": 1.2763987792472025
+        },
+        "defensive_win_shares": {
+          "n": 983,
+          "correlation": 0.4850330585601598,
+          "mean_change": -0.3220752797558495,
+          "mae_change": 0.708443540183113
+        },
+        "steal_pct": {
+          "n": 983,
+          "correlation": 0.32409515623998175,
+          "mean_change": 0.019837232960325545,
+          "mae_change": 0.6340793489318413
+        },
+        "block_pct": {
+          "n": 983,
+          "correlation": 0.6869171777602068,
+          "mean_change": -0.032756866734486266,
+          "mae_change": 0.7544252288911496
+        },
+        "defensive_rebound_pct": {
+          "n": 983,
+          "correlation": 0.6335855796160642,
+          "mean_change": 0.1602238046795525,
+          "mae_change": 3.5311291963377416
+        }
+      },
+      "(2014, 2019]": {
+        "defensive_box_plus_minus": {
+          "n": 997,
+          "correlation": 0.2166405338751609,
+          "mean_change": -0.09548645937813442,
+          "mae_change": 1.2473420260782346
+        },
+        "defensive_win_shares": {
+          "n": 997,
+          "correlation": 0.5299814430284693,
+          "mean_change": -0.3592778335005016,
+          "mae_change": 0.6694082246740221
+        },
+        "steal_pct": {
+          "n": 997,
+          "correlation": 0.21735442398323773,
+          "mean_change": -0.018054162487462392,
+          "mae_change": 0.6712136409227684
+        },
+        "block_pct": {
+          "n": 997,
+          "correlation": 0.6690489219876175,
+          "mean_change": 0.008726178535606817,
+          "mae_change": 0.7387161484453361
+        },
+        "defensive_rebound_pct": {
+          "n": 997,
+          "correlation": 0.5786132931405927,
+          "mean_change": -0.02186559679037107,
+          "mae_change": 3.822868605817453
+        }
+      }
+    },
+    "position_stability": {
+      "validation_transfer_exact_position_match": 0.8495486459378134
+    }
+  },
+  "star_combinations": {
+    "validation_cohorts": [
+      {
+        "cohort": "0-1 high-usage players",
+        "n": 123,
+        "change_usage_pct": 0.0987343458654554,
+        "change_true_shooting_pct": -0.005804532426830503,
+        "change_relative_ts": -0.009561543079822536,
+        "change_assist_pct": 0.2541668802273096,
+        "change_turnover_pct": -0.08054484368080009
+      },
+      {
+        "cohort": "2+ high-usage players",
+        "n": 27,
+        "change_usage_pct": -1.0679564375015227,
+        "change_true_shooting_pct": 0.0027737726898641323,
+        "change_relative_ts": -0.0017947552377521987,
+        "change_assist_pct": -1.1004329460894104,
+        "change_turnover_pct": -0.0547043705418171
+      }
+    ],
+    "named_cases": [
+      {
+        "season": "2007-08",
+        "season_end_year": 2008,
+        "team": "Boston Celtics",
+        "high_usage_players": 3,
+        "change_usage_pct": -2.2761332556604637,
+        "change_true_shooting_pct": 0.00972387206122859,
+        "change_relative_ts": 0.010943835453677804,
+        "change_assist_pct": -1.1624005569596094,
+        "change_turnover_pct": -0.131039616125703
+      },
+      {
+        "season": "2010-11",
+        "season_end_year": 2011,
+        "team": "Miami Heat",
+        "high_usage_players": 3,
+        "change_usage_pct": -2.5406824065120537,
+        "change_true_shooting_pct": -0.004204925201083587,
+        "change_relative_ts": -0.0026705183728897718,
+        "change_assist_pct": -5.041340862010668,
+        "change_turnover_pct": 0.9289656372273258
+      },
+      {
+        "season": "2016-17",
+        "season_end_year": 2017,
+        "team": "Golden State Warriors",
+        "high_usage_players": 2,
+        "change_usage_pct": -1.57747315655378,
+        "change_true_shooting_pct": 0.004058275404124025,
+        "change_relative_ts": -0.007077759871594454,
+        "change_assist_pct": -0.15834827007261693,
+        "change_turnover_pct": 0.5384972709911593
+      }
+    ],
+    "automatically_identified_validation_cases": [
+      {
+        "season": "2015-16",
+        "season_end_year": 2016,
+        "team": "Los Angeles Lakers",
+        "high_usage_players": 2,
+        "change_usage_pct": -2.867250715940813,
+        "change_true_shooting_pct": 0.0064201392110398055,
+        "change_relative_ts": -0.00028469512852682494,
+        "change_assist_pct": -2.192446943706761,
+        "change_turnover_pct": -0.4483612169806992
+      },
+      {
+        "season": "2015-16",
+        "season_end_year": 2016,
+        "team": "Miami Heat",
+        "high_usage_players": 2,
+        "change_usage_pct": -2.486410552887525,
+        "change_true_shooting_pct": null,
+        "change_relative_ts": null,
+        "change_assist_pct": 0.8053255333555771,
+        "change_turnover_pct": null
+      },
+      {
+        "season": "2015-16",
+        "season_end_year": 2016,
+        "team": "Oklahoma City Thunder",
+        "high_usage_players": 2,
+        "change_usage_pct": -2.417181562424952,
+        "change_true_shooting_pct": 0.006980229257547578,
+        "change_relative_ts": -7.090484825590952e-05,
+        "change_assist_pct": -1.9713439567848197,
+        "change_turnover_pct": 1.414535756746174
+      },
+      {
+        "season": "2017-18",
+        "season_end_year": 2018,
+        "team": "Minnesota Timberwolves",
+        "high_usage_players": 2,
+        "change_usage_pct": -1.868939083706492,
+        "change_true_shooting_pct": 0.004837659666210992,
+        "change_relative_ts": 0.001046970322167307,
+        "change_assist_pct": -2.35306774590215,
+        "change_turnover_pct": -1.3545150392817111
+      },
+      {
+        "season": "2017-18",
+        "season_end_year": 2018,
+        "team": "Oklahoma City Thunder",
+        "high_usage_players": 3,
+        "change_usage_pct": -1.8362195560727463,
+        "change_true_shooting_pct": 0.000801823889965852,
+        "change_relative_ts": -0.0029888654540778485,
+        "change_assist_pct": -2.2086177547074626,
+        "change_turnover_pct": -0.09093838502223123
+      },
+      {
+        "season": "2016-17",
+        "season_end_year": 2017,
+        "team": "Golden State Warriors",
+        "high_usage_players": 2,
+        "change_usage_pct": -1.57747315655378,
+        "change_true_shooting_pct": 0.004058275404124025,
+        "change_relative_ts": -0.007077759871594454,
+        "change_assist_pct": -0.15834827007261693,
+        "change_turnover_pct": 0.5384972709911593
+      },
+      {
+        "season": "2014-15",
+        "season_end_year": 2015,
+        "team": "Cleveland Cavaliers",
+        "high_usage_players": 3,
+        "change_usage_pct": -1.5507496713718165,
+        "change_true_shooting_pct": -0.004808842643693673,
+        "change_relative_ts": 0.001721051624762265,
+        "change_assist_pct": -2.1811660289524366,
+        "change_turnover_pct": 0.6334932230724263
+      },
+      {
+        "season": "2014-15",
+        "season_end_year": 2015,
+        "team": "Los Angeles Clippers",
+        "high_usage_players": 2,
+        "change_usage_pct": -1.545125670005373,
+        "change_true_shooting_pct": -0.014492544920621226,
+        "change_relative_ts": -0.008225776772265407,
+        "change_assist_pct": -1.9840152001955424,
+        "change_turnover_pct": -1.6283669379934522
+      },
+      {
+        "season": "2017-18",
+        "season_end_year": 2018,
+        "team": "Cleveland Cavaliers",
+        "high_usage_players": 2,
+        "change_usage_pct": -1.5178545772154484,
+        "change_true_shooting_pct": -0.009897484044226945,
+        "change_relative_ts": -0.013711568420362487,
+        "change_assist_pct": -2.142669994033613,
+        "change_turnover_pct": 0.7058558213465461
+      },
+      {
+        "season": "2017-18",
+        "season_end_year": 2018,
+        "team": "Los Angeles Lakers",
+        "high_usage_players": 2,
+        "change_usage_pct": -1.4956776049873675,
+        "change_true_shooting_pct": 0.003677832420657563,
+        "change_relative_ts": -0.0013248004538258993,
+        "change_assist_pct": -0.24914968162826792,
+        "change_turnover_pct": 3.485318598987298
+      }
+    ],
+    "conclusion": "Descriptive associations only; selection, role changes and coaching confound effects. No causal star-stacking efficiency penalty is imposed."
+  },
+  "defensive_feature_audit": [
+    {
+      "feature": "defensive_box_plus_minus",
+      "provenance": "Cached Basketball-Reference advanced DBPM; source-estimated box/context impact",
+      "context": "team-dependent estimate",
+      "training_transfer_correlation": 0.22119343681950895,
+      "availability_by_era": {
+        "1980": 1.0,
+        "1990": 1.0,
+        "2000": 0.9997759354694152,
+        "2010": 0.9995870328308899
+      }
+    },
+    {
+      "feature": "defensive_win_shares",
+      "provenance": "Cached advanced DWS; cumulative, strongly team/minutes dependent; excluded",
+      "context": "team-dependent estimate",
+      "training_transfer_correlation": 0.5077491373007936,
+      "availability_by_era": {
+        "1980": 1.0,
+        "1990": 1.0,
+        "2000": 1.0,
+        "2010": 1.0
+      }
+    },
+    {
+      "feature": "steal_pct",
+      "provenance": "Cached advanced STL%; source-computed player box rate",
+      "context": "player attribute/rate with role and opponent context",
+      "training_transfer_correlation": 0.3001582926192764,
+      "availability_by_era": {
+        "1980": 1.0,
+        "1990": 1.0,
+        "2000": 0.9997759354694152,
+        "2010": 0.9995870328308899
+      }
+    },
+    {
+      "feature": "block_pct",
+      "provenance": "Cached advanced BLK%; source-computed player box rate",
+      "context": "player attribute/rate with role and opponent context",
+      "training_transfer_correlation": 0.49084019073639673,
+      "availability_by_era": {
+        "1980": 1.0,
+        "1990": 1.0,
+        "2000": 0.9997759354694152,
+        "2010": 0.9995870328308899
+      }
+    },
+    {
+      "feature": "defensive_rebound_pct",
+      "provenance": "Cached advanced DRB%; source-computed player opportunity rate",
+      "context": "player attribute/rate with role and opponent context",
+      "training_transfer_correlation": 0.6463923118010998,
+      "availability_by_era": {
+        "1980": 1.0,
+        "1990": 1.0,
+        "2000": 0.9997759354694152,
+        "2010": 0.9995870328308899
+      }
+    },
+    {
+      "feature": "steals_per_75",
+      "provenance": "Canonical totals/advanced; per75 uses prior minutes and prior team pace",
+      "context": "player attribute/rate with role and opponent context",
+      "training_transfer_correlation": 0.2990289648738478,
+      "availability_by_era": {
+        "1980": 1.0,
+        "1990": 1.0,
+        "2000": 0.9997759354694152,
+        "2010": 0.9995870328308899
+      }
+    },
+    {
+      "feature": "blocks_per_75",
+      "provenance": "Canonical totals/advanced; per75 uses prior minutes and prior team pace",
+      "context": "player attribute/rate with role and opponent context",
+      "training_transfer_correlation": 0.4843946863510656,
+      "availability_by_era": {
+        "1980": 1.0,
+        "1990": 1.0,
+        "2000": 0.9997759354694152,
+        "2010": 0.9995870328308899
+      }
+    },
+    {
+      "feature": "defensive_rebounds_per_75",
+      "provenance": "Canonical totals/advanced; per75 uses prior minutes and prior team pace",
+      "context": "player attribute/rate with role and opponent context",
+      "training_transfer_correlation": 0.6466502696679803,
+      "availability_by_era": {
+        "1980": 1.0,
+        "1990": 1.0,
+        "2000": 0.9997759354694152,
+        "2010": 0.9995870328308899
+      }
+    },
+    {
+      "feature": "age",
+      "provenance": "Canonical source age/position",
+      "context": "player attribute/rate with role and opponent context",
+      "training_transfer_correlation": 0.9945004016127685,
+      "availability_by_era": {
+        "1980": 1.0,
+        "1990": 1.0,
+        "2000": 1.0,
+        "2010": 1.0
+      }
+    },
+    {
+      "feature": "position",
+      "provenance": "Canonical source age/position",
+      "context": "player attribute/rate with role and opponent context",
+      "training_transfer_correlation": null,
+      "availability_by_era": {
+        "1980": 1.0,
+        "1990": 1.0,
+        "2000": 1.0,
+        "2010": 1.0
+      }
+    },
+    {
+      "feature": "rotation_hhi",
+      "provenance": "Proposed named-player minutes",
+      "context": "roster structure; no realized target inputs",
+      "transfer_stability": "Not an individual metric; evaluated through team validation, not player correlation"
+    },
+    {
+      "feature": "prior_defensive_environment",
+      "provenance": "Prior team DRtg minus prior league anchor, weighted by prior player team minutes",
+      "context": "intentionally context-heavy; lagged only",
+      "training_transfer_correlation": 0.06246268967516248
+    }
+  ],
+  "defense_acceptance": {
+    "tolerances": {
+      "overall_mae_max": 2.2896266864236936,
+      "anchor_validation_mae": 2.410133354130204,
+      "elite_poor_mae_max": 5.0,
+      "worst_bucket_abs_bias_max": 3.0,
+      "abs_error_p90_max": 5.5,
+      "subera_mae_over_anchor_max": 0.15,
+      "box_heavy_abs_bias_max": 2.0,
+      "rationale": "Require >=5% validation MAE improvement on league anchor, <=5 extreme-bucket MAE, <=3 bucket bias, <=5.5 p90 error, <=0.15 subera regression, <=2 box-heavy bias. Practical bounds declared before candidate evaluation; no final-test values used."
+    },
+    "candidates": {
+      "league_anchor": {
+        "diagnostics": {
+          "overall": {
+            "mae": 2.410133354130204,
+            "rmse": 2.953655843656998,
+            "r2": 0.13330405094358766
+          },
+          "abs_error_p90": 4.740158307505818,
+          "buckets": {
+            "elite": {
+              "n": 20,
+              "mae": 4.205039451133307,
+              "bias": 4.205039451133307
+            },
+            "above_average": {
+              "n": 34,
+              "mae": 2.1917679153451286,
+              "bias": 2.1625506037953177
+            },
+            "average": {
+              "n": 39,
+              "mae": 1.2235728553077427,
+              "bias": 0.011831078323400955
+            },
+            "below_average": {
+              "n": 38,
+              "mae": 1.9058121754557378,
+              "bias": -1.8454751348984195
+            },
+            "poor": {
+              "n": 19,
+              "mae": 4.355731628990003,
+              "bias": -4.355731628990003
+            }
+          },
+          "suberas": {
+            "2015-2016": {
+              "mae": 2.555791446274582,
+              "anchor_mae": 2.555791446274582
+            },
+            "2017-2019": {
+              "mae": 2.3130279593672847,
+              "anchor_mae": 2.3130279593672847
+            }
+          },
+          "box_heavy": {
+            "n": 12,
+            "bias": 3.8319775534773797,
+            "threshold": 0.6466391403988502
+          }
+        },
+        "accepted": false,
+        "checks": {
+          "overall": false,
+          "extremes": true,
+          "bucket_bias": false,
+          "p90": true,
+          "suberas": true,
+          "box_heavy": false
+        }
+      },
+      "previous_formula": {
+        "diagnostics": {
+          "overall": {
+            "mae": 2.296110211068668,
+            "rmse": 2.756644891594138,
+            "r2": 0.24506660981063944
+          },
+          "abs_error_p90": 4.278957355848696,
+          "buckets": {
+            "elite": {
+              "n": 20,
+              "mae": 2.451085264604591,
+              "bias": 1.4988374152137987
+            },
+            "above_average": {
+              "n": 34,
+              "mae": 1.5745422860700098,
+              "bias": 0.6801177173021763
+            },
+            "average": {
+              "n": 39,
+              "mae": 2.0786183636823363,
+              "bias": -0.9297414017152218
+            },
+            "below_average": {
+              "n": 38,
+              "mae": 2.469815751645159,
+              "bias": -2.249683106251573
+            },
+            "poor": {
+              "n": 19,
+              "mae": 3.523224941878992,
+              "bias": -3.523224941878992
+            }
+          },
+          "suberas": {
+            "2015-2016": {
+              "mae": 2.24766120245675,
+              "anchor_mae": 2.555791446274582
+            },
+            "2017-2019": {
+              "mae": 2.3284095501432795,
+              "anchor_mae": 2.3130279593672847
+            }
+          },
+          "box_heavy": {
+            "n": 12,
+            "bias": -0.9762004428507621,
+            "threshold": 0.6466391403988502
+          }
+        },
+        "accepted": false,
+        "checks": {
+          "overall": false,
+          "extremes": true,
+          "bucket_bias": false,
+          "p90": true,
+          "suberas": true,
+          "box_heavy": true
+        }
+      },
+      "stable_rates": {
+        "diagnostics": {
+          "overall": {
+            "mae": 2.5349852873033343,
+            "rmse": 3.0739782676375884,
+            "r2": 0.061252980034638194
+          },
+          "abs_error_p90": 4.907067224506918,
+          "buckets": {
+            "elite": {
+              "n": 20,
+              "mae": 2.7110049845491675,
+              "bias": 2.2704470589257766
+            },
+            "above_average": {
+              "n": 34,
+              "mae": 1.5327527949764412,
+              "bias": 0.9749201479843455
+            },
+            "average": {
+              "n": 39,
+              "mae": 2.0368719472049337,
+              "bias": -1.0880898461273836
+            },
+            "below_average": {
+              "n": 38,
+              "mae": 2.6256890258859897,
+              "bias": -2.6256890258859897
+            },
+            "poor": {
+              "n": 19,
+              "mae": 4.984205760560934,
+              "bias": -4.984205760560934
+            }
+          },
+          "suberas": {
+            "2015-2016": {
+              "mae": 2.375402749272022,
+              "anchor_mae": 2.555791446274582
+            },
+            "2017-2019": {
+              "mae": 2.6413736459908757,
+              "anchor_mae": 2.3130279593672847
+            }
+          },
+          "box_heavy": {
+            "n": 12,
+            "bias": 1.4453220230927062,
+            "threshold": 0.6466391403988502
+          }
+        },
+        "accepted": false,
+        "checks": {
+          "overall": false,
+          "extremes": true,
+          "bucket_bias": false,
+          "p90": true,
+          "suberas": false,
+          "box_heavy": true
+        }
+      },
+      "prior_environment": {
+        "diagnostics": {
+          "overall": {
+            "mae": 2.1914314858829864,
+            "rmse": 2.6526655788794664,
+            "r2": 0.30094396438977766
+          },
+          "abs_error_p90": 4.302005653416688,
+          "buckets": {
+            "elite": {
+              "n": 20,
+              "mae": 2.5383382783932773,
+              "bias": 1.804122667549676
+            },
+            "above_average": {
+              "n": 34,
+              "mae": 1.6177921750379507,
+              "bias": 0.994081478391626
+            },
+            "average": {
+              "n": 39,
+              "mae": 2.087446390914192,
+              "bias": -0.7048479204999194
+            },
+            "below_average": {
+              "n": 38,
+              "mae": 2.103703942986964,
+              "bias": -1.8980875322157997
+            },
+            "poor": {
+              "n": 19,
+              "mae": 3.2416770675859996,
+              "bias": -3.2416770675859996
+            }
+          },
+          "suberas": {
+            "2015-2016": {
+              "mae": 2.2264664048761555,
+              "anchor_mae": 2.555791446274582
+            },
+            "2017-2019": {
+              "mae": 2.1680748732208737,
+              "anchor_mae": 2.3130279593672847
+            }
+          },
+          "box_heavy": {
+            "n": 12,
+            "bias": -0.6284721639249575,
+            "threshold": 0.6466391403988502
+          }
+        },
+        "accepted": false,
+        "checks": {
+          "overall": true,
+          "extremes": true,
+          "bucket_bias": false,
+          "p90": true,
+          "suberas": true,
+          "box_heavy": true
+        }
+      }
+    },
+    "stable_transfer_fields": [
+      "block_pct",
+      "defensive_rebound_pct"
+    ],
+    "box_threshold": 0.6466391403988502
+  },
+  "validation_candidates": {
+    "ortg": {
+      "league_anchor": {
+        "mae": 2.775229640382784,
+        "rmse": 3.5063479882291557,
+        "r2": 0.09780671360667825
+      },
+      "formula": {
+        "mae": 2.171277388765249,
+        "rmse": 2.7951736154426468,
+        "r2": 0.42666674039492003
+      },
+      "ridge_compact": {
+        "mae": 2.1725549149883503,
+        "rmse": 2.789706912144631,
+        "r2": 0.4289071578647472
+      }
+    },
+    "drtg": {
+      "league_anchor": {
+        "mae": 2.410133354130204,
+        "rmse": 2.953655843656998,
+        "r2": 0.13330405094358766
+      },
+      "previous_formula": {
+        "mae": 2.296110211068668,
+        "rmse": 2.756644891594138,
+        "r2": 0.24506660981063944
+      },
+      "stable_rates": {
+        "mae": 2.5349852873033343,
+        "rmse": 3.0739782676375884,
+        "r2": 0.061252980034638194
+      },
+      "prior_environment": {
+        "mae": 2.1914314858829864,
+        "rmse": 2.6526655788794664,
+        "r2": 0.30094396438977766
+      }
+    },
+    "pace": {
+      "league_anchor": {
+        "mae": 1.9808602150537642,
+        "rmse": 2.54069526537422,
+        "r2": 0.20253081036176634
+      },
+      "compact": {
+        "mae": 1.502690635426718,
+        "rmse": 1.9902300027393711,
+        "r2": 0.510654843167533
+      },
+      "previous_ridge": {
+        "mae": 1.4838325229251208,
+        "rmse": 1.8959876125996573,
+        "r2": 0.5559010487505769
+      }
+    }
+  },
+  "selected_models": {
+    "ortg": "formula",
+    "drtg": "prior_environment",
+    "pace": "compact"
+  },
+  "model_equations": {
+    "ortg": {
+      "intercept": -2.5000601699344167,
+      "coefficients": {
+        "usage_weighted_relative_ts": 135.95275573190582,
+        "usage_weighted_3par": -0.9634059984073073,
+        "usage_weighted_ftr": -6.706249019274192,
+        "w_assist_pct": 0.35955166012503664,
+        "w_turnover_pct": -0.45040955459135834,
+        "w_offensive_rebounds_per_75": 2.5912045480028096,
+        "usage_compression": -0.05951054233549369
+      },
+      "missing_value_medians": {
+        "usage_weighted_relative_ts": -0.001540278584145629,
+        "usage_weighted_3par": 0.14601403047985437,
+        "usage_weighted_ftr": 0.32266930462989113,
+        "w_assist_pct": 14.983457476140636,
+        "w_turnover_pct": 14.030456471507303,
+        "w_offensive_rebounds_per_75": 1.9899381012878485,
+        "usage_compression": 0.1805963173265663
+      },
+      "equation": "anchor + intercept + sum(coefficient * imputed feature)"
+    },
+    "drtg": {
+      "intercept": 9.04044118184852,
+      "coefficients": {
+        "w_defensive_box_plus_minus": -1.9501575921979675,
+        "w_steal_pct": 0.11429488829810337,
+        "w_block_pct": -1.0220398858320066,
+        "w_defensive_rebound_pct": -0.073921740910608,
+        "prior_defensive_environment": 0.3382377338375834,
+        "w_age": -0.18921093037919673,
+        "rotation_hhi": -23.007757108473527
+      },
+      "missing_value_medians": {
+        "w_defensive_box_plus_minus": -0.05597649877961613,
+        "w_steal_pct": 1.6901589889568158,
+        "w_block_pct": 1.3945066838034208,
+        "w_defensive_rebound_pct": 13.876321980402174,
+        "prior_defensive_environment": -0.5136035232660895,
+        "w_age": 27.606575345474646,
+        "rotation_hhi": 0.09134597148342506
+      },
+      "equation": "anchor + intercept + sum(coefficient * imputed feature)"
+    },
+    "pace": {
+      "intercept": 1.4296146807799703,
+      "coefficients": {
+        "prior_pace_delta": 0.942270471016722,
+        "w_three_point_attempt_rate": 3.6080640264306356,
+        "w_assist_pct": -0.032157433344021914,
+        "rotation_hhi": -18.932564944845147
+      },
+      "missing_value_medians": {
+        "prior_pace_delta": -0.022849655154449575,
+        "w_three_point_attempt_rate": 0.14487373686524763,
+        "w_assist_pct": 14.983457476140636,
+        "rotation_hhi": 0.09134597148342506
+      },
+      "equation": "anchor + intercept + sum(coefficient * imputed feature)"
+    }
+  },
+  "selected_validation": {
+    "ortg": {
+      "mae": 2.171277388765249,
+      "rmse": 2.7951736154426468,
+      "r2": 0.42666674039492003
+    },
+    "drtg": {
+      "mae": 2.1914314858829864,
+      "rmse": 2.6526655788794664,
+      "r2": 0.30094396438977766
+    },
+    "pace": {
+      "mae": 1.502690635426718,
+      "rmse": 1.9902300027393711,
+      "r2": 0.510654843167533
+    }
+  },
+  "readiness_checks": {
+    "defensive_tolerances_pass": false,
+    "rotation_not_worse": true,
+    "usage_not_worse": true,
+    "offense_within_10pct_prior_validation": true,
+    "pace_within_10pct_prior_validation": true
+  },
+  "custom_lineup": {
+    "semantics": "Five named players, 48 minutes each; ironman hypothetical only; not a game simulation",
+    "target_era": "2016-17 preseason using prior league anchors, no fatigue/bench model",
+    "players": [
+      {
+        "player": "Stephen Curry",
+        "season": "2015-16",
+        "minutes": 48.0,
+        "usage_pct": 20.973214409903832,
+        "possession_share": 0.20973214409903831
+      },
+      {
+        "player": "Michael Jordan",
+        "season": "1990-91",
+        "minutes": 48.0,
+        "usage_pct": 21.15343930062676,
+        "possession_share": 0.2115343930062676
+      },
+      {
+        "player": "LeBron James",
+        "season": "2012-13",
+        "minutes": 48.0,
+        "usage_pct": 19.531415284120378,
+        "possession_share": 0.1953141528412038
+      },
+      {
+        "player": "Tim Duncan",
+        "season": "2002-03",
+        "minutes": 48.0,
+        "usage_pct": 18.209766085485548,
+        "possession_share": 0.1820976608548555
+      },
+      {
+        "player": "Shaquille O'Neal",
+        "season": "1999-00",
+        "minutes": 48.0,
+        "usage_pct": 20.13216491986348,
+        "possession_share": 0.20132164919863482
+      }
+    ],
+    "projections": {
+      "ortg": 122.62733440950142,
+      "drtg": 96.3266179193926,
+      "pace": 92.99036643740251
+    },
+    "extrapolation": {
+      "risk": "high",
+      "rms_outside_domain_distance": 3.468201900994293,
+      "maximum_exceed_iqr_units": 13.377689000134255,
+      "fraction_outside": 0.4444444444444444,
+      "features": [
+        {
+          "feature": "w_relative_ts",
+          "value": 0.08071694658270726,
+          "status": "outside",
+          "exceed_iqr_units": 1.7447736352803533,
+          "min": -0.04656343626716594,
+          "max": 0.04486625096195591,
+          "p01": -0.03687610607328033,
+          "p99": 0.033205256532280895,
+          "scale": 0.020547476701750365
+        },
+        {
+          "feature": "w_assist_pct",
+          "value": 26.82,
+          "status": "outside",
+          "exceed_iqr_units": 2.680076974878466,
+          "min": 8.578422374996048,
+          "max": 20.799592780731842,
+          "p01": 10.894570085726981,
+          "p99": 19.21023269209273,
+          "scale": 2.2463560844334207
+        },
+        {
+          "feature": "w_turnover_pct",
+          "value": 11.360000000000001,
+          "status": "near_edge",
+          "exceed_iqr_units": 0.0,
+          "min": 10.646741484423023,
+          "max": 18.51813160584758,
+          "p01": 11.423536811853959,
+          "p99": 17.33949282047488,
+          "scale": 1.519001122628131
+        },
+        {
+          "feature": "w_usage_pct",
+          "value": 30.980000000000004,
+          "status": "outside",
+          "exceed_iqr_units": 7.665748840213452,
+          "min": 16.726269586459118,
+          "max": 23.135300664290778,
+          "p01": 17.91292270986307,
+          "p99": 22.197750321380383,
+          "scale": 1.0233441636591358
+        },
+        {
+          "feature": "w_three_point_attempt_rate",
+          "value": 0.16181331837191504,
+          "status": "inside",
+          "exceed_iqr_units": 0.0,
+          "min": 0.009947239394831527,
+          "max": 0.3927110418645605,
+          "p01": 0.013783132588217112,
+          "p99": 0.30059544433281377,
+          "scale": 0.13576827388590282
+        },
+        {
+          "feature": "w_free_throw_rate",
+          "value": 0.39221251422318043,
+          "status": "inside",
+          "exceed_iqr_units": 0.0,
+          "min": 0.2065559090552986,
+          "max": 0.5489183257887491,
+          "p01": 0.2396106403726369,
+          "p99": 0.41535926787624555,
+          "scale": 0.0500421687435908
+        },
+        {
+          "feature": "w_offensive_rebounds_per_75",
+          "value": 2.214305410813706,
+          "status": "inside",
+          "exceed_iqr_units": 0.0,
+          "min": 1.1823021732135293,
+          "max": 2.821024864336091,
+          "p01": 1.424300518587467,
+          "p99": 2.6289706892530593,
+          "scale": 0.351985534179466
+        },
+        {
+          "feature": "w_defensive_rebounds_per_75",
+          "value": 7.098033251001157,
+          "status": "outside",
+          "exceed_iqr_units": 1.8424811646109094,
+          "min": 3.4656440880722736,
+          "max": 6.00425436563547,
+          "p01": 3.7046289253469293,
+          "p99": 5.564907890268214,
+          "scale": 0.5936445410537852
+        },
+        {
+          "feature": "w_steals_per_75",
+          "value": 1.589494678276071,
+          "status": "inside",
+          "exceed_iqr_units": 0.0,
+          "min": 0.9046779604265549,
+          "max": 1.9594315968031455,
+          "p01": 0.9796842931501457,
+          "p99": 1.6627458908974788,
+          "scale": 0.18760923277181263
+        },
+        {
+          "feature": "w_blocks_per_75",
+          "value": 1.6103301901598672,
+          "status": "outside",
+          "exceed_iqr_units": 0.9757638486393071,
+          "min": 0.335969874784325,
+          "max": 1.41412634205397,
+          "p01": 0.412775951925196,
+          "p99": 1.211829814346151,
+          "scale": 0.20107718520162587
+        },
+        {
+          "feature": "w_defensive_box_plus_minus",
+          "value": 2.3400000000000003,
+          "status": "outside",
+          "exceed_iqr_units": 1.3893326670507007,
+          "min": -1.2332222052316886,
+          "max": 1.44005793111239,
+          "p01": -1.05510781021616,
+          "p99": 1.084550464598829,
+          "scale": 0.647751319918233
+        },
+        {
+          "feature": "w_steal_pct",
+          "value": 2.1200000000000006,
+          "status": "inside",
+          "exceed_iqr_units": 0.0,
+          "min": 1.2044417505095748,
+          "max": 2.6226806374322913,
+          "p01": 1.301042321550659,
+          "p99": 2.214526858672162,
+          "scale": 0.2547694115933241
+        },
+        {
+          "feature": "w_block_pct",
+          "value": 2.9000000000000004,
+          "status": "outside",
+          "exceed_iqr_units": 1.143504507904728,
+          "min": 0.5535985911266137,
+          "max": 2.4304761857892156,
+          "p01": 0.767502147452242,
+          "p99": 2.171950636303064,
+          "scale": 0.41060075492934
+        },
+        {
+          "feature": "w_defensive_rebound_pct",
+          "value": 20.160000000000004,
+          "status": "outside",
+          "exceed_iqr_units": 2.0035534136249016,
+          "min": 10.80864783478482,
+          "max": 17.646702900796555,
+          "p01": 11.606463729654028,
+          "p99": 16.381750648022916,
+          "scale": 1.2544198133736302
+        },
+        {
+          "feature": "usage_weighted_relative_ts",
+          "value": 0.08155491327535827,
+          "status": "outside",
+          "exceed_iqr_units": 1.5004568958284854,
+          "min": -0.04569459530832381,
+          "max": 0.0494402002443262,
+          "p01": -0.03568463310377064,
+          "p99": 0.0348170503639952,
+          "scale": 0.021403289304955178
+        },
+        {
+          "feature": "usage_weighted_3par",
+          "value": 0.1666320040652599,
+          "status": "inside",
+          "exceed_iqr_units": 0.0,
+          "min": 0.009698861175371491,
+          "max": 0.36941528456560785,
+          "p01": 0.014073423242816503,
+          "p99": 0.2886042433034003,
+          "scale": 0.13633642881718624
+        },
+        {
+          "feature": "usage_weighted_ftr",
+          "value": 0.3895105410821089,
+          "status": "inside",
+          "exceed_iqr_units": 0.0,
+          "min": 0.20679934449349757,
+          "max": 0.4458350058200489,
+          "p01": 0.23899953143755823,
+          "p99": 0.4092537216136203,
+          "scale": 0.04962316322174837
+        },
+        {
+          "feature": "usage_compression",
+          "value": 10.98,
+          "status": "outside",
+          "exceed_iqr_units": 13.377689000134255,
+          "min": 0.0,
+          "max": 3.1353006642907806,
+          "p01": 0.0,
+          "p99": 2.197750321380378,
+          "scale": 0.5864016823556365
+        },
+        {
+          "feature": "usage_concentration",
+          "value": 0.20057195451785512,
+          "status": "outside",
+          "exceed_iqr_units": 3.39485425620348,
+          "min": 0.0614506161672686,
+          "max": 0.14615531170327822,
+          "p01": 0.07570213008598344,
+          "p99": 0.1310010849389223,
+          "scale": 0.01602915433413389
+        },
+        {
+          "feature": "rotation_hhi",
+          "value": 0.20000000000000004,
+          "status": "outside",
+          "exceed_iqr_units": 7.172085558643411,
+          "min": 0.05672740219437897,
+          "max": 0.11472789260972135,
+          "p01": 0.07020214196832238,
+          "p99": 0.11017444812998582,
+          "scale": 0.011889443690129065
+        },
+        {
+          "feature": "prior_pace_delta",
+          "value": -0.1573850163890767,
+          "status": "inside",
+          "exceed_iqr_units": 0.0,
+          "min": -7.6661563161781405,
+          "max": 8.05076031337455,
+          "p01": -3.6470410351442415,
+          "p99": 4.801888338840611,
+          "scale": 2.0541343300838233
+        },
+        {
+          "feature": "known_prior_minutes_share",
+          "value": 1.0,
+          "status": "inside",
+          "exceed_iqr_units": 0.0,
+          "min": 0.6937354526815747,
+          "max": 1.0000000000000002,
+          "p01": 0.8111603603142318,
+          "p99": 1.0,
+          "scale": 0.046881454648563525
+        },
+        {
+          "feature": "returner_minutes_share",
+          "value": 0.0,
+          "status": "inside",
+          "exceed_iqr_units": 0.0,
+          "min": 0.0,
+          "max": 0.2049703298696486,
+          "p01": 0.0,
+          "p99": 0.13013868503866716,
+          "scale": 0.024342984535610027
+        },
+        {
+          "feature": "prior_age_years",
+          "value": 1.0,
+          "status": "inside",
+          "exceed_iqr_units": 0.0,
+          "min": 0.7282893056321635,
+          "max": 1.2561416577678517,
+          "p01": 0.8227721944862871,
+          "p99": 1.1491023093679293,
+          "scale": 0.04973677911122276
+        },
+        {
+          "feature": "w_age",
+          "value": 27.0,
+          "status": "inside",
+          "exceed_iqr_units": 0.0,
+          "min": 23.720811448181948,
+          "max": 32.51990553949584,
+          "p01": 24.87629859968812,
+          "p99": 31.38542019595565,
+          "scale": 2.02036850856544
+        },
+        {
+          "feature": "center_minutes_share",
+          "value": 0.2,
+          "status": "inside",
+          "exceed_iqr_units": 0.0,
+          "min": 0.0,
+          "max": 0.4937682868701394,
+          "p01": 0.023139584034934272,
+          "p99": 0.33406277891866454,
+          "scale": 0.08715977386722085
+        },
+        {
+          "feature": "prior_defensive_environment",
+          "value": -4.227760125705632,
+          "status": "inside",
+          "exceed_iqr_units": 0.0,
+          "min": -7.080664575398844,
+          "max": 5.253343167876489,
+          "p01": -5.788547289492109,
+          "p99": 3.696639780892198,
+          "scale": 2.759014728503538
+        }
+      ],
+      "interpretation": "Feature coverage/uncertainty only, not quality or probability; correlated features and unobserved lineup interactions limit interpretation."
+    },
+    "defensive_uncertainty": "High: box/context estimates plus a cross-era five-star roster outside ordinary-team support; validation residual bounds are not calibrated ironman coverage."
+  },
+  "verdict_before_test": "B. NEEDS ONE MORE TARGETED MODEL FIX",
+  "baseline_mae": {
+    "validation": {
+      "ortg": 2.2,
+      "drtg": 2.275,
+      "pace": 1.519
+    },
+    "test": {
+      "ortg": 2.45,
+      "drtg": 2.392,
+      "pace": 1.688
+    }
+  },
+  "quarantine": [
+    {
+      "player_id": "br:johnsge03",
+      "player_name": "George Johnson",
+      "season": "1980-81",
+      "team": "SAS",
+      "minutes": 1935.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:johnsed02",
+      "player_name": "Eddie Johnson",
+      "season": "1982-83",
+      "team": "KCK",
+      "minutes": 2933.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:johnsge02",
+      "player_name": "George Johnson",
+      "season": "1982-83",
+      "team": "IND",
+      "minutes": 2297.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:johnsed02",
+      "player_name": "Eddie Johnson",
+      "season": "1984-85",
+      "team": "KCK",
+      "minutes": 3029.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:jonesch02",
+      "player_name": "Charles Jones",
+      "season": "1984-85",
+      "team": "2TM",
+      "minutes": 667.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:johnsed03",
+      "player_name": "Eddie Johnson",
+      "season": "1985-86",
+      "team": "2TM",
+      "minutes": 1477.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:johnsge03",
+      "player_name": "George Johnson",
+      "season": "1985-86",
+      "team": "SEA",
+      "minutes": 264.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:johnsed02",
+      "player_name": "Eddie Johnson",
+      "season": "1986-87",
+      "team": "SAC",
+      "minutes": 2457.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:jonesch02",
+      "player_name": "Charles Jones",
+      "season": "1987-88",
+      "team": "WSB",
+      "minutes": 1313.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:jonesch02",
+      "player_name": "Charles Jones",
+      "season": "1988-89",
+      "team": "WSB",
+      "minutes": 1154.0,
+      "source_minutes": 516.0
+    },
+    {
+      "player_id": "br:smithch02",
+      "player_name": "Charles Smith",
+      "season": "1989-90",
+      "team": "LAC",
+      "minutes": 2732.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:smithch02",
+      "player_name": "Charles Smith",
+      "season": "1990-91",
+      "team": "LAC",
+      "minutes": 2703.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:smithmi01",
+      "player_name": "Michael Smith",
+      "season": "1994-95",
+      "team": "SAC",
+      "minutes": 1736.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:willima04",
+      "player_name": "Marcus Williams",
+      "season": "2008-09",
+      "team": "GSW",
+      "minutes": 54.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:johnsch04",
+      "player_name": "Chris Johnson",
+      "season": "2012-13",
+      "team": "MIN",
+      "minutes": 284.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:mitchto03",
+      "player_name": "Tony Mitchell",
+      "season": "2013-14",
+      "team": "DET",
+      "minutes": 79.0,
+      "source_minutes": null
+    }
+  ]
+}

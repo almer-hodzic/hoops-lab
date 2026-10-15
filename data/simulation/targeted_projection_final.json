@@ -1,0 +1,41 @@
+{
+  "evaluation_count": 1,
+  "population": 210,
+  "metrics": {
+    "ortg": {
+      "mae": 2.3618531402877934,
+      "rmse": 2.9644359967709923,
+      "r2": 0.3939165942513124
+    },
+    "drtg": {
+      "mae": 2.3157700624988697,
+      "rmse": 2.7789847058827712,
+      "r2": 0.32214647589713385
+    },
+    "pace": {
+      "mae": 1.6677835048244214,
+      "rmse": 2.0521201425875164,
+      "r2": -0.062464808600916966
+    }
+  },
+  "prior_test_mae": {
+    "ortg": 2.45,
+    "drtg": 2.392,
+    "pace": 1.688
+  },
+  "lakers_2019_20": [
+    {
+      "season": "2019-20",
+      "team_name": "Los Angeles Lakers",
+      "actual_ortg": 112.0,
+      "actual_drtg": 106.3,
+      "actual_pace": 100.9,
+      "predicted_ortg": 110.70963247667383,
+      "predicted_drtg": 109.55133110686461,
+      "predicted_pace": 102.53976703538481
+    }
+  ],
+  "verdict": "B. NEEDS ONE MORE TARGETED MODEL FIX",
+  "protocol_sha256": "688e69ae66be11a252ab4c9732f897a3e6a9e59513cd8baf63634001dbe0b475",
+  "retuning_after_test": false
+}
