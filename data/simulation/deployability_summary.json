@@ -1,0 +1,2554 @@
+{
+  "population": {
+    "eligible_team_seasons": 1291,
+    "rows_including_both_modes": 2582,
+    "splits_per_mode": {
+      "train": 931,
+      "validation": 150,
+      "test": 210
+    },
+    "seasons": [
+      "1980-81",
+      "1981-82",
+      "1982-83",
+      "1983-84",
+      "1984-85",
+      "1985-86",
+      "1986-87",
+      "1987-88",
+      "1988-89",
+      "1989-90",
+      "1990-91",
+      "1991-92",
+      "1992-93",
+      "1993-94",
+      "1994-95",
+      "1995-96",
+      "1996-97",
+      "1997-98",
+      "1998-99",
+      "1999-00",
+      "2000-01",
+      "2001-02",
+      "2002-03",
+      "2003-04",
+      "2004-05",
+      "2005-06",
+      "2006-07",
+      "2007-08",
+      "2008-09",
+      "2009-10",
+      "2010-11",
+      "2011-12",
+      "2012-13",
+      "2013-14",
+      "2014-15",
+      "2015-16",
+      "2016-17",
+      "2017-18",
+      "2018-19",
+      "2019-20",
+      "2020-21",
+      "2021-22",
+      "2022-23",
+      "2023-24",
+      "2024-25",
+      "2025-26"
+    ],
+    "coverage_threshold": 0.8
+  },
+  "coverage_comparison": [
+    {
+      "max_profile_lag": 1,
+      "candidate_teams": 1292,
+      "eligible_teams": 1291,
+      "mean_projected_coverage": 0.9957038006964782,
+      "mean_actual_coverage": 0.8875805745385862,
+      "projected_coverage_p10": 0.9999999999999999,
+      "actual_coverage_p10": 0.7573670282334117,
+      "teams_actual_coverage_below_80": 235
+    },
+    {
+      "max_profile_lag": 3,
+      "candidate_teams": 1292,
+      "eligible_teams": 1291,
+      "mean_projected_coverage": 0.9968480589860722,
+      "mean_actual_coverage": 0.9003825782308339,
+      "projected_coverage_p10": 0.9999999999999999,
+      "actual_coverage_p10": 0.7743152875281232,
+      "teams_actual_coverage_below_80": 183
+    }
+  ],
+  "deployable_feature_set": [
+    "w_relative_ts",
+    "w_assist_pct",
+    "w_turnover_pct",
+    "w_usage_pct",
+    "w_three_point_attempt_rate",
+    "w_free_throw_rate",
+    "w_offensive_rebounds_per_75",
+    "w_defensive_rebounds_per_75",
+    "w_steals_per_75",
+    "w_blocks_per_75",
+    "w_defensive_box_plus_minus",
+    "w_steal_pct",
+    "w_block_pct",
+    "w_defensive_rebound_pct",
+    "usage_weighted_relative_ts",
+    "usage_weighted_3par",
+    "usage_weighted_ftr",
+    "usage_compression",
+    "usage_concentration",
+    "rotation_hhi",
+    "prior_pace_delta",
+    "known_prior_minutes_share",
+    "returner_minutes_share",
+    "prior_age_years"
+  ],
+  "usage_calibration": {
+    "selected_exponent": 1.0,
+    "training_scores": {
+      "0.5": {
+        "weighted_usage_mae": 2.507943451270574,
+        "teams": 931
+      },
+      "0.75": {
+        "weighted_usage_mae": 2.050626178461826,
+        "teams": 931
+      },
+      "1.0": {
+        "weighted_usage_mae": 1.9298649552993505,
+        "teams": 931
+      }
+    }
+  },
+  "reconstruction_feature_set": [
+    "league_ortg_estimate",
+    "league_pace",
+    "league_ts_pct",
+    "w_points_per_75",
+    "w_assists_per_75",
+    "w_rebounds_per_75",
+    "w_turnovers_per_75",
+    "w_steals_per_75",
+    "w_blocks_per_75",
+    "w_offensive_rebounds_per_75",
+    "w_defensive_rebounds_per_75",
+    "w_relative_ts",
+    "w_true_shooting_pct",
+    "w_usage_pct",
+    "w_assist_pct",
+    "w_turnover_pct",
+    "w_total_rebound_pct",
+    "w_three_point_attempt_rate",
+    "w_free_throw_rate",
+    "w_age",
+    "w_per",
+    "team_3par_from_players",
+    "team_ftr_from_players",
+    "team_ast_to_tov_from_players",
+    "minutes_top1_share",
+    "minutes_top3_share",
+    "minutes_top5_share",
+    "minutes_hhi",
+    "rotation_players_500",
+    "rotation_players_1000",
+    "weighted_usage_top3",
+    "usage_pressure",
+    "spacing_proxy",
+    "rebounding_proxy",
+    "defense_box_proxy"
+  ],
+  "feature_audit": [
+    {
+      "feature": "w_relative_ts",
+      "source": "sum(minutes/240 * prior.relative_ts) over non-null source values",
+      "target_performance_required": false,
+      "synthetic_available": true
+    },
+    {
+      "feature": "w_assist_pct",
+      "source": "sum(minutes/240 * prior.assist_pct) over non-null source values",
+      "target_performance_required": false,
+      "synthetic_available": true
+    },
+    {
+      "feature": "w_turnover_pct",
+      "source": "sum(minutes/240 * prior.turnover_pct) over non-null source values",
+      "target_performance_required": false,
+      "synthetic_available": true
+    },
+    {
+      "feature": "w_usage_pct",
+      "source": "sum(minutes/240 * prior.usage_pct) over non-null source values",
+      "target_performance_required": false,
+      "synthetic_available": true
+    },
+    {
+      "feature": "w_three_point_attempt_rate",
+      "source": "sum(minutes/240 * prior.three_point_attempt_rate) over non-null source values",
+      "target_performance_required": false,
+      "synthetic_available": true
+    },
+    {
+      "feature": "w_free_throw_rate",
+      "source": "sum(minutes/240 * prior.free_throw_rate) over non-null source values",
+      "target_performance_required": false,
+      "synthetic_available": true
+    },
+    {
+      "feature": "w_offensive_rebounds_per_75",
+      "source": "sum(minutes/240 * prior.offensive_rebounds_per_75) over non-null source values",
+      "target_performance_required": false,
+      "synthetic_available": true
+    },
+    {
+      "feature": "w_defensive_rebounds_per_75",
+      "source": "sum(minutes/240 * prior.defensive_rebounds_per_75) over non-null source values",
+      "target_performance_required": false,
+      "synthetic_available": true
+    },
+    {
+      "feature": "w_steals_per_75",
+      "source": "sum(minutes/240 * prior.steals_per_75) over non-null source values",
+      "target_performance_required": false,
+      "synthetic_available": true
+    },
+    {
+      "feature": "w_blocks_per_75",
+      "source": "sum(minutes/240 * prior.blocks_per_75) over non-null source values",
+      "target_performance_required": false,
+      "synthetic_available": true
+    },
+    {
+      "feature": "w_defensive_box_plus_minus",
+      "source": "sum(minutes/240 * prior.defensive_box_plus_minus) over non-null source values",
+      "target_performance_required": false,
+      "synthetic_available": true
+    },
+    {
+      "feature": "w_steal_pct",
+      "source": "sum(minutes/240 * prior.steal_pct) over non-null source values",
+      "target_performance_required": false,
+      "synthetic_available": true
+    },
+    {
+      "feature": "w_block_pct",
+      "source": "sum(minutes/240 * prior.block_pct) over non-null source values",
+      "target_performance_required": false,
+      "synthetic_available": true
+    },
+    {
+      "feature": "w_defensive_rebound_pct",
+      "source": "sum(minutes/240 * prior.defensive_rebound_pct) over non-null source values",
+      "target_performance_required": false,
+      "synthetic_available": true
+    },
+    {
+      "feature": "usage_weighted_relative_ts",
+      "source": "sum(normalized possession share * prior.relative_ts)",
+      "target_performance_required": false,
+      "synthetic_available": true
+    },
+    {
+      "feature": "usage_weighted_3par",
+      "source": "sum(normalized possession share * prior.three_point_attempt_rate)",
+      "target_performance_required": false,
+      "synthetic_available": true
+    },
+    {
+      "feature": "usage_weighted_ftr",
+      "source": "sum(normalized possession share * prior.free_throw_rate)",
+      "target_performance_required": false,
+      "synthetic_available": true
+    },
+    {
+      "feature": "usage_compression",
+      "source": "sum(minutes/240 * max(prior.USG - normalized USG,0))",
+      "target_performance_required": false,
+      "synthetic_available": true
+    },
+    {
+      "feature": "usage_concentration",
+      "source": "sum(normalized possession share squared)",
+      "target_performance_required": false,
+      "synthetic_available": true
+    },
+    {
+      "feature": "rotation_hhi",
+      "source": "sum((proposed minutes/240) squared)",
+      "target_performance_required": false,
+      "synthetic_available": true
+    },
+    {
+      "feature": "prior_pace_delta",
+      "source": "sum(minutes/240 * (prior.team_pace - prior.league_pace))",
+      "target_performance_required": false,
+      "synthetic_available": true
+    },
+    {
+      "feature": "known_prior_minutes_share",
+      "source": "sum(proposed minutes/240 for sourced prior profiles)",
+      "target_performance_required": false,
+      "synthetic_available": true
+    },
+    {
+      "feature": "returner_minutes_share",
+      "source": "sum(proposed minutes/240 for prior lag >1)",
+      "target_performance_required": false,
+      "synthetic_available": true
+    },
+    {
+      "feature": "prior_age_years",
+      "source": "sum(minutes/240 * sourced prior profile lag in years); unknown=0",
+      "target_performance_required": false,
+      "synthetic_available": true
+    }
+  ],
+  "formula_terms": {
+    "ortg": [
+      "usage_weighted_relative_ts",
+      "usage_weighted_3par",
+      "usage_weighted_ftr",
+      "w_assist_pct",
+      "w_turnover_pct",
+      "w_offensive_rebounds_per_75",
+      "usage_compression"
+    ],
+    "drtg": [
+      "w_defensive_box_plus_minus",
+      "w_steal_pct",
+      "w_block_pct",
+      "w_defensive_rebound_pct"
+    ],
+    "pace": [
+      "prior_pace_delta",
+      "w_three_point_attempt_rate",
+      "w_assist_pct",
+      "rotation_hhi"
+    ]
+  },
+  "metrics": {
+    "oracle": {
+      "ortg": {
+        "league_anchor": {
+          "validation": {
+            "mae": 2.7752296403827845,
+            "rmse": 3.5063479882291553,
+            "r2": 0.09780671360667836
+          },
+          "test": {
+            "mae": 2.7888769510334006,
+            "rmse": 3.535568082619553,
+            "r2": 0.13788213191682508
+          }
+        },
+        "transparent_formula": {
+          "validation": {
+            "mae": 1.857293598896263,
+            "rmse": 2.5071562223551576,
+            "r2": 0.5387330356737992
+          },
+          "test": {
+            "mae": 2.03957235975074,
+            "rmse": 2.545718834039517,
+            "r2": 0.5530395369925035
+          }
+        },
+        "linear": {
+          "validation": {
+            "mae": 2.1093386305734723,
+            "rmse": 2.6813879536064347,
+            "r2": 0.4723950422946849
+          },
+          "test": {
+            "mae": 2.4177053507257122,
+            "rmse": 2.9768867795666756,
+            "r2": 0.38881474007789474
+          }
+        },
+        "ridge": {
+          "validation": {
+            "mae": 2.073216639393458,
+            "rmse": 2.6483598239456283,
+            "r2": 0.48531259368391744
+          },
+          "test": {
+            "mae": 2.3579897175882274,
+            "rmse": 2.904159028759512,
+            "r2": 0.4183134454261166
+          }
+        },
+        "nonlinear": {
+          "validation": {
+            "mae": 1.8122817123921884,
+            "rmse": 2.2982023936799574,
+            "r2": 0.6124157637322711
+          },
+          "test": {
+            "mae": 2.207933682445836,
+            "rmse": 2.6795588867386324,
+            "r2": 0.5048065993166637
+          }
+        }
+      },
+      "drtg": {
+        "league_anchor": {
+          "validation": {
+            "mae": 2.410133354130203,
+            "rmse": 2.9536558436569975,
+            "r2": 0.13330405094358777
+          },
+          "test": {
+            "mae": 2.4508125134337533,
+            "rmse": 3.0880280155962563,
+            "r2": 0.16299893914003794
+          }
+        },
+        "transparent_formula": {
+          "validation": {
+            "mae": 2.33547435046349,
+            "rmse": 2.771501438282309,
+            "r2": 0.23690746975392574
+          },
+          "test": {
+            "mae": 2.423987123964044,
+            "rmse": 2.9059824938070964,
+            "r2": 0.25877589843425364
+          }
+        },
+        "linear": {
+          "validation": {
+            "mae": 2.205554760540701,
+            "rmse": 2.6743574414878886,
+            "r2": 0.2894643208083424
+          },
+          "test": {
+            "mae": 2.3224172679453075,
+            "rmse": 2.8141840866378955,
+            "r2": 0.3048659683515115
+          }
+        },
+        "ridge": {
+          "validation": {
+            "mae": 2.165336480574679,
+            "rmse": 2.620838681385702,
+            "r2": 0.3176179949186033
+          },
+          "test": {
+            "mae": 2.2587214545729815,
+            "rmse": 2.7362915100564282,
+            "r2": 0.3428140487895339
+          }
+        }
+      },
+      "pace": {
+        "league_anchor": {
+          "validation": {
+            "mae": 1.9808602150537646,
+            "rmse": 2.54069526537422,
+            "r2": 0.20253081036176657
+          },
+          "test": {
+            "mae": 1.6937279891988932,
+            "rmse": 2.033999443655705,
+            "r2": -0.04378402862981168
+          }
+        },
+        "transparent_formula": {
+          "validation": {
+            "mae": 1.498214085895576,
+            "rmse": 1.9749959403501964,
+            "r2": 0.5181174820273828
+          },
+          "test": {
+            "mae": 1.684257887120657,
+            "rmse": 2.061918286619061,
+            "r2": -0.07263481323981757
+          }
+        },
+        "linear": {
+          "validation": {
+            "mae": 1.497914323714071,
+            "rmse": 1.9390148185417164,
+            "r2": 0.5355157281840502
+          },
+          "test": {
+            "mae": 1.8102171156409277,
+            "rmse": 2.1863444573751267,
+            "r2": -0.20599681092921496
+          }
+        },
+        "ridge": {
+          "validation": {
+            "mae": 1.4827168225693848,
+            "rmse": 1.9349149722324892,
+            "r2": 0.5374778595423717
+          },
+          "test": {
+            "mae": 1.7020265099915983,
+            "rmse": 2.0755607793510373,
+            "r2": -0.08687574902617845
+          }
+        }
+      }
+    },
+    "deployable": {
+      "ortg": {
+        "league_anchor": {
+          "validation": {
+            "mae": 2.7752296403827845,
+            "rmse": 3.5063479882291553,
+            "r2": 0.09780671360667836
+          },
+          "test": {
+            "mae": 2.7888769510334006,
+            "rmse": 3.535568082619553,
+            "r2": 0.13788213191682508
+          }
+        },
+        "transparent_formula": {
+          "validation": {
+            "mae": 2.1999572582444817,
+            "rmse": 2.849061868890634,
+            "r2": 0.40434701779210813
+          },
+          "test": {
+            "mae": 2.4498871815245127,
+            "rmse": 3.074696587018751,
+            "r2": 0.34799223408586333
+          }
+        },
+        "linear": {
+          "validation": {
+            "mae": 2.3520426396920877,
+            "rmse": 2.993971931406729,
+            "r2": 0.34221341992402554
+          },
+          "test": {
+            "mae": 2.7230601051411507,
+            "rmse": 3.3925506558563785,
+            "r2": 0.20621859845048995
+          }
+        },
+        "ridge": {
+          "validation": {
+            "mae": 2.302328999468354,
+            "rmse": 2.947659594211996,
+            "r2": 0.36240600743762263
+          },
+          "test": {
+            "mae": 2.5624237748990843,
+            "rmse": 3.2167513671705543,
+            "r2": 0.2863533599382234
+          }
+        },
+        "nonlinear": {
+          "validation": {
+            "mae": 2.3283889897057053,
+            "rmse": 2.9089474279619116,
+            "r2": 0.37904331778904665
+          },
+          "test": {
+            "mae": 2.5058574301217993,
+            "rmse": 3.1386167453087284,
+            "r2": 0.320601142877331
+          }
+        }
+      },
+      "drtg": {
+        "league_anchor": {
+          "validation": {
+            "mae": 2.410133354130203,
+            "rmse": 2.9536558436569975,
+            "r2": 0.13330405094358777
+          },
+          "test": {
+            "mae": 2.4508125134337533,
+            "rmse": 3.0880280155962563,
+            "r2": 0.16299893914003794
+          }
+        },
+        "transparent_formula": {
+          "validation": {
+            "mae": 2.27521122710708,
+            "rmse": 2.7441164475277198,
+            "r2": 0.25191308323671036
+          },
+          "test": {
+            "mae": 2.391545350036826,
+            "rmse": 2.8751190445291006,
+            "r2": 0.2744368664703256
+          }
+        },
+        "linear": {
+          "validation": {
+            "mae": 2.3504398635515615,
+            "rmse": 2.8589992837018667,
+            "r2": 0.18796438220043055
+          },
+          "test": {
+            "mae": 2.8541370928452343,
+            "rmse": 3.448183730195605,
+            "r2": -0.043624681875479965
+          }
+        },
+        "ridge": {
+          "validation": {
+            "mae": 2.307384326229454,
+            "rmse": 2.8073436406372876,
+            "r2": 0.21704258843977065
+          },
+          "test": {
+            "mae": 2.712705000368484,
+            "rmse": 3.276922165684648,
+            "r2": 0.05746866603341372
+          }
+        }
+      },
+      "pace": {
+        "league_anchor": {
+          "validation": {
+            "mae": 1.9808602150537646,
+            "rmse": 2.54069526537422,
+            "r2": 0.20253081036176657
+          },
+          "test": {
+            "mae": 1.6937279891988932,
+            "rmse": 2.033999443655705,
+            "r2": -0.04378402862981168
+          }
+        },
+        "transparent_formula": {
+          "validation": {
+            "mae": 1.5551375918720096,
+            "rmse": 2.0676571374629744,
+            "r2": 0.4718396359915171
+          },
+          "test": {
+            "mae": 1.581963482835074,
+            "rmse": 1.957398995997835,
+            "r2": 0.033353439244570016
+          }
+        },
+        "linear": {
+          "validation": {
+            "mae": 1.5345737117823137,
+            "rmse": 1.9812516468710417,
+            "r2": 0.5150599671066605
+          },
+          "test": {
+            "mae": 1.6997451237506844,
+            "rmse": 2.0981127132221373,
+            "r2": -0.11062288550105959
+          }
+        },
+        "ridge": {
+          "validation": {
+            "mae": 1.5187948973601892,
+            "rmse": 1.9687582490396756,
+            "r2": 0.5211565644107443
+          },
+          "test": {
+            "mae": 1.6884094146314976,
+            "rmse": 2.084322639184326,
+            "r2": -0.09607148405150756
+          }
+        }
+      }
+    }
+  },
+  "selected_models": {
+    "oracle": {
+      "ortg": "nonlinear",
+      "drtg": "ridge",
+      "pace": "ridge"
+    },
+    "deployable": {
+      "ortg": "transparent_formula",
+      "drtg": "transparent_formula",
+      "pace": "ridge"
+    }
+  },
+  "equation_parameters": {
+    "oracle": {
+      "ortg": {
+        "league_anchor": null,
+        "transparent_formula": {
+          "intercept": -5.982358203176582,
+          "coefficients": {
+            "usage_weighted_relative_ts": 110.31490357978154,
+            "usage_weighted_3par": 0.7934049241637824,
+            "usage_weighted_ftr": -1.4587203260710346,
+            "w_assist_pct": 0.4954910610795738,
+            "w_turnover_pct": -0.417456037783092,
+            "w_offensive_rebounds_per_75": 2.126614262281614,
+            "usage_compression": 0.3736662839007142
+          },
+          "missing_value_medians": {
+            "usage_weighted_relative_ts": -0.002931689860346548,
+            "usage_weighted_3par": 0.1354369817596056,
+            "usage_weighted_ftr": 0.32442447075095315,
+            "w_assist_pct": 14.681567239635998,
+            "w_turnover_pct": 14.057060861471639,
+            "w_offensive_rebounds_per_75": 2.022815621383036,
+            "usage_compression": 0.0318106270460845
+          },
+          "equation": "anchor + intercept + sum(coefficient * imputed feature)"
+        },
+        "linear": {
+          "intercept": -24.561687462365825,
+          "coefficients": {
+            "w_relative_ts": 48.559894840897556,
+            "w_assist_pct": 0.22280275312149772,
+            "w_turnover_pct": -0.2658602261478537,
+            "w_usage_pct": 0.4117135768968185,
+            "w_three_point_attempt_rate": 6.473830253767605,
+            "w_free_throw_rate": -12.397689891377162,
+            "w_offensive_rebounds_per_75": 1.2619229435669808,
+            "w_defensive_rebounds_per_75": -0.9731210474978494,
+            "w_steals_per_75": -11.249966287948393,
+            "w_blocks_per_75": 4.001847070629947,
+            "w_defensive_box_plus_minus": -0.5421411988132455,
+            "w_steal_pct": 8.396710130648701,
+            "w_block_pct": -2.3128275462804244,
+            "w_defensive_rebound_pct": 0.34085415700912525,
+            "usage_weighted_relative_ts": 43.56801449910681,
+            "usage_weighted_3par": -2.6467245995063395,
+            "usage_weighted_ftr": 8.135544672123093,
+            "usage_compression": -0.5042864602036164,
+            "usage_concentration": 66.42434820423223,
+            "rotation_hhi": 7.95074560903577,
+            "prior_pace_delta": 0.14087894749354285,
+            "known_prior_minutes_share": 6.287840495390867,
+            "returner_minutes_share": -2.640550192039576,
+            "prior_age_years": 1.1295102181012668
+          },
+          "missing_value_medians": {
+            "w_relative_ts": -0.0038432431196753227,
+            "w_assist_pct": 14.681567239635998,
+            "w_turnover_pct": 14.057060861471639,
+            "w_usage_pct": 20.031810627046088,
+            "w_three_point_attempt_rate": 0.13273461322254299,
+            "w_free_throw_rate": 0.3244331555754804,
+            "w_offensive_rebounds_per_75": 2.022815621383036,
+            "w_defensive_rebounds_per_75": 4.661262331692583,
+            "w_steals_per_75": 1.2673608274950297,
+            "w_blocks_per_75": 0.784312581326346,
+            "w_defensive_box_plus_minus": -0.027039685737308645,
+            "w_steal_pct": 1.6868078668683812,
+            "w_block_pct": 1.4042517694641055,
+            "w_defensive_rebound_pct": 13.917771053958647,
+            "usage_weighted_relative_ts": -0.002931689860346548,
+            "usage_weighted_3par": 0.1354369817596056,
+            "usage_weighted_ftr": 0.32442447075095315,
+            "usage_compression": 0.0318106270460845,
+            "usage_concentration": 0.11063849636899722,
+            "rotation_hhi": 0.09968237715354011,
+            "prior_pace_delta": -0.011921091786455427,
+            "known_prior_minutes_share": 0.9206740442655935,
+            "returner_minutes_share": 0.0,
+            "prior_age_years": 0.9323753702653306
+          },
+          "equation": "anchor + intercept + sum(coefficient * imputed feature)"
+        },
+        "ridge": {
+          "intercept": -23.28027855186961,
+          "coefficients": {
+            "w_relative_ts": 43.73882657407718,
+            "w_assist_pct": 0.20833969916365608,
+            "w_turnover_pct": -0.2563862932066691,
+            "w_usage_pct": 0.38747281641053516,
+            "w_three_point_attempt_rate": 2.180995783026994,
+            "w_free_throw_rate": -9.556023534215239,
+            "w_offensive_rebounds_per_75": 1.1678192716716576,
+            "w_defensive_rebounds_per_75": -0.500185738893221,
+            "w_steals_per_75": -0.32404307205511246,
+            "w_blocks_per_75": 1.2159384426025646,
+            "w_defensive_box_plus_minus": -0.4827050318755118,
+            "w_steal_pct": 0.18526522302400003,
+            "w_block_pct": -0.8297730730299913,
+            "w_defensive_rebound_pct": 0.16381379996546022,
+            "usage_weighted_relative_ts": 48.10297881367559,
+            "usage_weighted_3par": -0.6764449329344382,
+            "usage_weighted_ftr": 5.329836668830787,
+            "usage_compression": -0.4238907779774311,
+            "usage_concentration": 60.05502612611568,
+            "rotation_hhi": 16.333856271648187,
+            "prior_pace_delta": 0.1381871247266963,
+            "known_prior_minutes_share": 4.571342554858537,
+            "returner_minutes_share": -4.644713601468341,
+            "prior_age_years": 2.857207063543778
+          },
+          "missing_value_medians": {
+            "w_relative_ts": -0.0038432431196753227,
+            "w_assist_pct": 14.681567239635998,
+            "w_turnover_pct": 14.057060861471639,
+            "w_usage_pct": 20.031810627046088,
+            "w_three_point_attempt_rate": 0.13273461322254299,
+            "w_free_throw_rate": 0.3244331555754804,
+            "w_offensive_rebounds_per_75": 2.022815621383036,
+            "w_defensive_rebounds_per_75": 4.661262331692583,
+            "w_steals_per_75": 1.2673608274950297,
+            "w_blocks_per_75": 0.784312581326346,
+            "w_defensive_box_plus_minus": -0.027039685737308645,
+            "w_steal_pct": 1.6868078668683812,
+            "w_block_pct": 1.4042517694641055,
+            "w_defensive_rebound_pct": 13.917771053958647,
+            "usage_weighted_relative_ts": -0.002931689860346548,
+            "usage_weighted_3par": 0.1354369817596056,
+            "usage_weighted_ftr": 0.32442447075095315,
+            "usage_compression": 0.0318106270460845,
+            "usage_concentration": 0.11063849636899722,
+            "rotation_hhi": 0.09968237715354011,
+            "prior_pace_delta": -0.011921091786455427,
+            "known_prior_minutes_share": 0.9206740442655935,
+            "returner_minutes_share": 0.0,
+            "prior_age_years": 0.9323753702653306
+          },
+          "equation": "anchor + intercept + sum(coefficient * imputed feature)"
+        },
+        "nonlinear": null
+      },
+      "drtg": {
+        "league_anchor": null,
+        "transparent_formula": {
+          "intercept": 4.16536848289619,
+          "coefficients": {
+            "w_defensive_box_plus_minus": -3.6400536550613904,
+            "w_steal_pct": 0.12979608386791475,
+            "w_block_pct": -0.004538488454476861,
+            "w_defensive_rebound_pct": -0.36539200027026253
+          },
+          "missing_value_medians": {
+            "w_defensive_box_plus_minus": -0.027039685737308645,
+            "w_steal_pct": 1.6868078668683812,
+            "w_block_pct": 1.4042517694641055,
+            "w_defensive_rebound_pct": 13.917771053958647
+          },
+          "equation": "anchor + intercept + sum(coefficient * imputed feature)"
+        },
+        "linear": {
+          "intercept": 9.55065735638576,
+          "coefficients": {
+            "w_relative_ts": 21.267882022174803,
+            "w_assist_pct": -0.2667993261582836,
+            "w_turnover_pct": 0.1591870994977087,
+            "w_usage_pct": 0.14823023382079,
+            "w_three_point_attempt_rate": -16.780405761199404,
+            "w_free_throw_rate": -1.9447137214709647,
+            "w_offensive_rebounds_per_75": -0.2245823286654633,
+            "w_defensive_rebounds_per_75": 0.7747114990754841,
+            "w_steals_per_75": -12.923285560880053,
+            "w_blocks_per_75": -0.5360473014911382,
+            "w_defensive_box_plus_minus": -3.3050326383015194,
+            "w_steal_pct": 10.441503897081619,
+            "w_block_pct": 0.034024913550009014,
+            "w_defensive_rebound_pct": -0.5725342662616749,
+            "usage_weighted_relative_ts": -9.051380802007463,
+            "usage_weighted_3par": 14.961667783416347,
+            "usage_weighted_ftr": -2.528359421151788,
+            "usage_compression": -0.4999568783709571,
+            "usage_concentration": 12.443803436983627,
+            "rotation_hhi": -55.735299957813666,
+            "prior_pace_delta": 0.010120381030998228,
+            "known_prior_minutes_share": -4.381862742485544,
+            "returner_minutes_share": -5.664260618529121,
+            "prior_age_years": 2.612863227665821
+          },
+          "missing_value_medians": {
+            "w_relative_ts": -0.0038432431196753227,
+            "w_assist_pct": 14.681567239635998,
+            "w_turnover_pct": 14.057060861471639,
+            "w_usage_pct": 20.031810627046088,
+            "w_three_point_attempt_rate": 0.13273461322254299,
+            "w_free_throw_rate": 0.3244331555754804,
+            "w_offensive_rebounds_per_75": 2.022815621383036,
+            "w_defensive_rebounds_per_75": 4.661262331692583,
+            "w_steals_per_75": 1.2673608274950297,
+            "w_blocks_per_75": 0.784312581326346,
+            "w_defensive_box_plus_minus": -0.027039685737308645,
+            "w_steal_pct": 1.6868078668683812,
+            "w_block_pct": 1.4042517694641055,
+            "w_defensive_rebound_pct": 13.917771053958647,
+            "usage_weighted_relative_ts": -0.002931689860346548,
+            "usage_weighted_3par": 0.1354369817596056,
+            "usage_weighted_ftr": 0.32442447075095315,
+            "usage_compression": 0.0318106270460845,
+            "usage_concentration": 0.11063849636899722,
+            "rotation_hhi": 0.09968237715354011,
+            "prior_pace_delta": -0.011921091786455427,
+            "known_prior_minutes_share": 0.9206740442655935,
+            "returner_minutes_share": 0.0,
+            "prior_age_years": 0.9323753702653306
+          },
+          "equation": "anchor + intercept + sum(coefficient * imputed feature)"
+        },
+        "ridge": {
+          "intercept": 10.07954523176321,
+          "coefficients": {
+            "w_relative_ts": 9.879309555643689,
+            "w_assist_pct": -0.2510447021148183,
+            "w_turnover_pct": 0.15203642553242708,
+            "w_usage_pct": 0.1260006271666541,
+            "w_three_point_attempt_rate": -3.649680117330901,
+            "w_free_throw_rate": 0.19162087607463973,
+            "w_offensive_rebounds_per_75": -0.07065135641343717,
+            "w_defensive_rebounds_per_75": 0.23680712671735007,
+            "w_steals_per_75": -0.12393736465092783,
+            "w_blocks_per_75": -0.5629028575644941,
+            "w_defensive_box_plus_minus": -3.127175627055916,
+            "w_steal_pct": 0.5883336794089415,
+            "w_block_pct": 0.010330356013511737,
+            "w_defensive_rebound_pct": -0.4020768556790601,
+            "usage_weighted_relative_ts": 0.3088248060491898,
+            "usage_weighted_3par": 2.673002962938504,
+            "usage_weighted_ftr": -4.214437777893032,
+            "usage_compression": -0.43124391504031157,
+            "usage_concentration": 5.9567702974785774,
+            "rotation_hhi": -47.374888456452375,
+            "prior_pace_delta": 0.01462996014638778,
+            "known_prior_minutes_share": -1.862981494900797,
+            "returner_minutes_share": -1.8260449750881829,
+            "prior_age_years": -0.22760111227446947
+          },
+          "missing_value_medians": {
+            "w_relative_ts": -0.0038432431196753227,
+            "w_assist_pct": 14.681567239635998,
+            "w_turnover_pct": 14.057060861471639,
+            "w_usage_pct": 20.031810627046088,
+            "w_three_point_attempt_rate": 0.13273461322254299,
+            "w_free_throw_rate": 0.3244331555754804,
+            "w_offensive_rebounds_per_75": 2.022815621383036,
+            "w_defensive_rebounds_per_75": 4.661262331692583,
+            "w_steals_per_75": 1.2673608274950297,
+            "w_blocks_per_75": 0.784312581326346,
+            "w_defensive_box_plus_minus": -0.027039685737308645,
+            "w_steal_pct": 1.6868078668683812,
+            "w_block_pct": 1.4042517694641055,
+            "w_defensive_rebound_pct": 13.917771053958647,
+            "usage_weighted_relative_ts": -0.002931689860346548,
+            "usage_weighted_3par": 0.1354369817596056,
+            "usage_weighted_ftr": 0.32442447075095315,
+            "usage_compression": 0.0318106270460845,
+            "usage_concentration": 0.11063849636899722,
+            "rotation_hhi": 0.09968237715354011,
+            "prior_pace_delta": -0.011921091786455427,
+            "known_prior_minutes_share": 0.9206740442655935,
+            "returner_minutes_share": 0.0,
+            "prior_age_years": 0.9323753702653306
+          },
+          "equation": "anchor + intercept + sum(coefficient * imputed feature)"
+        }
+      },
+      "pace": {
+        "league_anchor": null,
+        "transparent_formula": {
+          "intercept": 2.1157191464263727,
+          "coefficients": {
+            "prior_pace_delta": 1.0002107293367621,
+            "w_three_point_attempt_rate": 3.6217520970567842,
+            "w_assist_pct": -0.04708535896792713,
+            "rotation_hhi": -22.219037797368745
+          },
+          "missing_value_medians": {
+            "prior_pace_delta": -0.011921091786455427,
+            "w_three_point_attempt_rate": 0.13273461322254299,
+            "w_assist_pct": 14.681567239635998,
+            "rotation_hhi": 0.09968237715354011
+          },
+          "equation": "anchor + intercept + sum(coefficient * imputed feature)"
+        },
+        "linear": {
+          "intercept": -5.070042910067356,
+          "coefficients": {
+            "w_relative_ts": 50.496736048652814,
+            "w_assist_pct": -0.12040190253983155,
+            "w_turnover_pct": 0.0805431406954501,
+            "w_usage_pct": 0.3742252708680828,
+            "w_three_point_attempt_rate": 1.9511081729483062,
+            "w_free_throw_rate": -13.702565588686697,
+            "w_offensive_rebounds_per_75": -0.3628957313198557,
+            "w_defensive_rebounds_per_75": 0.6184895959043442,
+            "w_steals_per_75": 13.76442145671991,
+            "w_blocks_per_75": -2.795661315172451,
+            "w_defensive_box_plus_minus": -0.45141596845505544,
+            "w_steal_pct": -9.424443686890449,
+            "w_block_pct": 1.790101234209578,
+            "w_defensive_rebound_pct": -0.15585531916149986,
+            "usage_weighted_relative_ts": -48.09079684008248,
+            "usage_weighted_3par": -1.7648493107422834,
+            "usage_weighted_ftr": 10.244021474409054,
+            "usage_compression": 0.043702600069046825,
+            "usage_concentration": 6.817073409030011,
+            "rotation_hhi": -25.196586026819304,
+            "prior_pace_delta": 0.981677868110829,
+            "known_prior_minutes_share": 3.4334395880438593,
+            "returner_minutes_share": 4.114474082181668,
+            "prior_age_years": -4.552475413418927
+          },
+          "missing_value_medians": {
+            "w_relative_ts": -0.0038432431196753227,
+            "w_assist_pct": 14.681567239635998,
+            "w_turnover_pct": 14.057060861471639,
+            "w_usage_pct": 20.031810627046088,
+            "w_three_point_attempt_rate": 0.13273461322254299,
+            "w_free_throw_rate": 0.3244331555754804,
+            "w_offensive_rebounds_per_75": 2.022815621383036,
+            "w_defensive_rebounds_per_75": 4.661262331692583,
+            "w_steals_per_75": 1.2673608274950297,
+            "w_blocks_per_75": 0.784312581326346,
+            "w_defensive_box_plus_minus": -0.027039685737308645,
+            "w_steal_pct": 1.6868078668683812,
+            "w_block_pct": 1.4042517694641055,
+            "w_defensive_rebound_pct": 13.917771053958647,
+            "usage_weighted_relative_ts": -0.002931689860346548,
+            "usage_weighted_3par": 0.1354369817596056,
+            "usage_weighted_ftr": 0.32442447075095315,
+            "usage_compression": 0.0318106270460845,
+            "usage_concentration": 0.11063849636899722,
+            "rotation_hhi": 0.09968237715354011,
+            "prior_pace_delta": -0.011921091786455427,
+            "known_prior_minutes_share": 0.9206740442655935,
+            "returner_minutes_share": 0.0,
+            "prior_age_years": 0.9323753702653306
+          },
+          "equation": "anchor + intercept + sum(coefficient * imputed feature)"
+        },
+        "ridge": {
+          "intercept": -5.47637913602162,
+          "coefficients": {
+            "w_relative_ts": 19.268704448495658,
+            "w_assist_pct": -0.11235713498224695,
+            "w_turnover_pct": 0.07197748489710103,
+            "w_usage_pct": 0.3502646256215263,
+            "w_three_point_attempt_rate": 1.714076196507951,
+            "w_free_throw_rate": -8.178534499275651,
+            "w_offensive_rebounds_per_75": -0.4114937271681343,
+            "w_defensive_rebounds_per_75": 0.31885783686948566,
+            "w_steals_per_75": 1.0666088601316175,
+            "w_blocks_per_75": -0.5872274792400798,
+            "w_defensive_box_plus_minus": -0.45798282861342193,
+            "w_steal_pct": 0.11997313394738676,
+            "w_block_pct": 0.6407469844974734,
+            "w_defensive_rebound_pct": -0.029326405115355888,
+            "usage_weighted_relative_ts": -18.89426156554875,
+            "usage_weighted_3par": 0.4283159374104261,
+            "usage_weighted_ftr": 5.317966409691689,
+            "usage_compression": 0.1047769583705966,
+            "usage_concentration": 3.17646623175436,
+            "rotation_hhi": -21.56430755308717,
+            "prior_pace_delta": 0.9486345030590925,
+            "known_prior_minutes_share": 0.24386122233244492,
+            "returner_minutes_share": 0.047620473040654185,
+            "prior_age_years": -1.3746204474437302
+          },
+          "missing_value_medians": {
+            "w_relative_ts": -0.0038432431196753227,
+            "w_assist_pct": 14.681567239635998,
+            "w_turnover_pct": 14.057060861471639,
+            "w_usage_pct": 20.031810627046088,
+            "w_three_point_attempt_rate": 0.13273461322254299,
+            "w_free_throw_rate": 0.3244331555754804,
+            "w_offensive_rebounds_per_75": 2.022815621383036,
+            "w_defensive_rebounds_per_75": 4.661262331692583,
+            "w_steals_per_75": 1.2673608274950297,
+            "w_blocks_per_75": 0.784312581326346,
+            "w_defensive_box_plus_minus": -0.027039685737308645,
+            "w_steal_pct": 1.6868078668683812,
+            "w_block_pct": 1.4042517694641055,
+            "w_defensive_rebound_pct": 13.917771053958647,
+            "usage_weighted_relative_ts": -0.002931689860346548,
+            "usage_weighted_3par": 0.1354369817596056,
+            "usage_weighted_ftr": 0.32442447075095315,
+            "usage_compression": 0.0318106270460845,
+            "usage_concentration": 0.11063849636899722,
+            "rotation_hhi": 0.09968237715354011,
+            "prior_pace_delta": -0.011921091786455427,
+            "known_prior_minutes_share": 0.9206740442655935,
+            "returner_minutes_share": 0.0,
+            "prior_age_years": 0.9323753702653306
+          },
+          "equation": "anchor + intercept + sum(coefficient * imputed feature)"
+        }
+      }
+    },
+    "deployable": {
+      "ortg": {
+        "league_anchor": null,
+        "transparent_formula": {
+          "intercept": -2.201563852336274,
+          "coefficients": {
+            "usage_weighted_relative_ts": 116.34943759926985,
+            "usage_weighted_3par": -1.585286772255807,
+            "usage_weighted_ftr": -6.927099364959581,
+            "w_assist_pct": 0.3018796090865655,
+            "w_turnover_pct": -0.35014820691512766,
+            "w_offensive_rebounds_per_75": 1.865717759199541,
+            "usage_compression": 0.12535994118408056
+          },
+          "missing_value_medians": {
+            "usage_weighted_relative_ts": 0.0024604526014729454,
+            "usage_weighted_3par": 0.14632735538615582,
+            "usage_weighted_ftr": 0.3241447205203344,
+            "w_assist_pct": 15.745820987270488,
+            "w_turnover_pct": 13.864064892436279,
+            "w_offensive_rebounds_per_75": 1.9647187648154816,
+            "usage_compression": 0.44762629419953665
+          },
+          "equation": "anchor + intercept + sum(coefficient * imputed feature)"
+        },
+        "linear": {
+          "intercept": -42.52569093925832,
+          "coefficients": {
+            "w_relative_ts": -38.294504202063294,
+            "w_assist_pct": 0.17906680203054978,
+            "w_turnover_pct": -0.265128965588113,
+            "w_usage_pct": 0.9510505956336169,
+            "w_three_point_attempt_rate": 10.360294599391477,
+            "w_free_throw_rate": 16.78712202709448,
+            "w_offensive_rebounds_per_75": 1.6256365486273756,
+            "w_defensive_rebounds_per_75": 0.6832854578548563,
+            "w_steals_per_75": -5.198506189810128,
+            "w_blocks_per_75": 2.972739720739335,
+            "w_defensive_box_plus_minus": 0.1756425734514425,
+            "w_steal_pct": 4.7737777388992795,
+            "w_block_pct": -2.3759991889181364,
+            "w_defensive_rebound_pct": -0.15931321378118926,
+            "usage_weighted_relative_ts": 142.41987695424828,
+            "usage_weighted_3par": -10.408868493713301,
+            "usage_weighted_ftr": -24.714138556873273,
+            "usage_compression": -0.9903360648721541,
+            "usage_concentration": 69.10545091630897,
+            "rotation_hhi": -35.32822277900704,
+            "prior_pace_delta": 0.07814397055590729,
+            "known_prior_minutes_share": 12.48846995304029,
+            "returner_minutes_share": -7.996887410729295,
+            "prior_age_years": 4.098129990363726
+          },
+          "missing_value_medians": {
+            "w_relative_ts": 0.0014584932360201738,
+            "w_assist_pct": 15.745820987270488,
+            "w_turnover_pct": 13.864064892436279,
+            "w_usage_pct": 20.447626294199537,
+            "w_three_point_attempt_rate": 0.1452063136761388,
+            "w_free_throw_rate": 0.3238419627017546,
+            "w_offensive_rebounds_per_75": 1.9647187648154816,
+            "w_defensive_rebounds_per_75": 4.667127000155826,
+            "w_steals_per_75": 1.2779860846015456,
+            "w_blocks_per_75": 0.7719978077104073,
+            "w_defensive_box_plus_minus": -0.04487237640340209,
+            "w_steal_pct": 1.6993369563458198,
+            "w_block_pct": 1.3916550433522714,
+            "w_defensive_rebound_pct": 13.957438465863277,
+            "usage_weighted_relative_ts": 0.0024604526014729454,
+            "usage_weighted_3par": 0.14632735538615582,
+            "usage_weighted_ftr": 0.3241447205203344,
+            "usage_compression": 0.44762629419953665,
+            "usage_concentration": 0.13450239781112372,
+            "rotation_hhi": 0.1215363642706786,
+            "prior_pace_delta": -0.0877689163914151,
+            "known_prior_minutes_share": 1.0,
+            "returner_minutes_share": 0.0,
+            "prior_age_years": 1.0
+          },
+          "equation": "anchor + intercept + sum(coefficient * imputed feature)"
+        },
+        "ridge": {
+          "intercept": -39.08213369766947,
+          "coefficients": {
+            "w_relative_ts": 28.967199603751027,
+            "w_assist_pct": 0.17645160038824703,
+            "w_turnover_pct": -0.2623283536861675,
+            "w_usage_pct": 0.6716525550758051,
+            "w_three_point_attempt_rate": 0.21251486333601785,
+            "w_free_throw_rate": 2.46748587394956,
+            "w_offensive_rebounds_per_75": 1.4829790290587295,
+            "w_defensive_rebounds_per_75": 0.46882974462484783,
+            "w_steals_per_75": 0.2632886928757565,
+            "w_blocks_per_75": 0.9727413812018195,
+            "w_defensive_box_plus_minus": 0.25774993174096245,
+            "w_steal_pct": 0.5166529239836634,
+            "w_block_pct": -1.2487156230533778,
+            "w_defensive_rebound_pct": -0.10824969774982011,
+            "usage_weighted_relative_ts": 75.42917070663263,
+            "usage_weighted_3par": -1.6159541198240595,
+            "usage_weighted_ftr": -9.761897696442176,
+            "usage_compression": -0.6516261141730795,
+            "usage_concentration": 68.21805578341205,
+            "rotation_hhi": -20.296954663188078,
+            "prior_pace_delta": 0.08225344907517042,
+            "known_prior_minutes_share": 16.03874565686598,
+            "returner_minutes_share": -5.320063893276985,
+            "prior_age_years": 1.750899349213437
+          },
+          "missing_value_medians": {
+            "w_relative_ts": 0.0014584932360201738,
+            "w_assist_pct": 15.745820987270488,
+            "w_turnover_pct": 13.864064892436279,
+            "w_usage_pct": 20.447626294199537,
+            "w_three_point_attempt_rate": 0.1452063136761388,
+            "w_free_throw_rate": 0.3238419627017546,
+            "w_offensive_rebounds_per_75": 1.9647187648154816,
+            "w_defensive_rebounds_per_75": 4.667127000155826,
+            "w_steals_per_75": 1.2779860846015456,
+            "w_blocks_per_75": 0.7719978077104073,
+            "w_defensive_box_plus_minus": -0.04487237640340209,
+            "w_steal_pct": 1.6993369563458198,
+            "w_block_pct": 1.3916550433522714,
+            "w_defensive_rebound_pct": 13.957438465863277,
+            "usage_weighted_relative_ts": 0.0024604526014729454,
+            "usage_weighted_3par": 0.14632735538615582,
+            "usage_weighted_ftr": 0.3241447205203344,
+            "usage_compression": 0.44762629419953665,
+            "usage_concentration": 0.13450239781112372,
+            "rotation_hhi": 0.1215363642706786,
+            "prior_pace_delta": -0.0877689163914151,
+            "known_prior_minutes_share": 1.0,
+            "returner_minutes_share": 0.0,
+            "prior_age_years": 1.0
+          },
+          "equation": "anchor + intercept + sum(coefficient * imputed feature)"
+        },
+        "nonlinear": null
+      },
+      "drtg": {
+        "league_anchor": null,
+        "transparent_formula": {
+          "intercept": -0.5895525196768655,
+          "coefficients": {
+            "w_defensive_box_plus_minus": -3.3867063658984504,
+            "w_steal_pct": 0.7374661184192735,
+            "w_block_pct": -0.35035358676818223,
+            "w_defensive_rebound_pct": -0.07342279905104852
+          },
+          "missing_value_medians": {
+            "w_defensive_box_plus_minus": -0.04487237640340209,
+            "w_steal_pct": 1.6993369563458198,
+            "w_block_pct": 1.3916550433522714,
+            "w_defensive_rebound_pct": 13.957438465863277
+          },
+          "equation": "anchor + intercept + sum(coefficient * imputed feature)"
+        },
+        "linear": {
+          "intercept": -31.525132749846758,
+          "coefficients": {
+            "w_relative_ts": 49.311927780030395,
+            "w_assist_pct": -0.15012456307317015,
+            "w_turnover_pct": 0.24487953573073168,
+            "w_usage_pct": -0.2026678382126475,
+            "w_three_point_attempt_rate": -4.775606267134566,
+            "w_free_throw_rate": 2.248400073962573,
+            "w_offensive_rebounds_per_75": -1.1731706691449284,
+            "w_defensive_rebounds_per_75": 0.9977149263663154,
+            "w_steals_per_75": -8.698760334591904,
+            "w_blocks_per_75": 0.6775371182482409,
+            "w_defensive_box_plus_minus": -3.55344564491145,
+            "w_steal_pct": 7.818605645627118,
+            "w_block_pct": -0.9602497065500734,
+            "w_defensive_rebound_pct": -0.29525728178233346,
+            "usage_weighted_relative_ts": -51.22352987284503,
+            "usage_weighted_3par": 3.0104875626176826,
+            "usage_weighted_ftr": -8.301027776955456,
+            "usage_compression": -0.07716785374402925,
+            "usage_concentration": 6.670794247630845,
+            "rotation_hhi": 121.24692138066209,
+            "prior_pace_delta": -0.007457641521143705,
+            "known_prior_minutes_share": 24.042002205788158,
+            "returner_minutes_share": 2.852055502758221,
+            "prior_age_years": -3.1535670380927807
+          },
+          "missing_value_medians": {
+            "w_relative_ts": 0.0014584932360201738,
+            "w_assist_pct": 15.745820987270488,
+            "w_turnover_pct": 13.864064892436279,
+            "w_usage_pct": 20.447626294199537,
+            "w_three_point_attempt_rate": 0.1452063136761388,
+            "w_free_throw_rate": 0.3238419627017546,
+            "w_offensive_rebounds_per_75": 1.9647187648154816,
+            "w_defensive_rebounds_per_75": 4.667127000155826,
+            "w_steals_per_75": 1.2779860846015456,
+            "w_blocks_per_75": 0.7719978077104073,
+            "w_defensive_box_plus_minus": -0.04487237640340209,
+            "w_steal_pct": 1.6993369563458198,
+            "w_block_pct": 1.3916550433522714,
+            "w_defensive_rebound_pct": 13.957438465863277,
+            "usage_weighted_relative_ts": 0.0024604526014729454,
+            "usage_weighted_3par": 0.14632735538615582,
+            "usage_weighted_ftr": 0.3241447205203344,
+            "usage_compression": 0.44762629419953665,
+            "usage_concentration": 0.13450239781112372,
+            "rotation_hhi": 0.1215363642706786,
+            "prior_pace_delta": -0.0877689163914151,
+            "known_prior_minutes_share": 1.0,
+            "returner_minutes_share": 0.0,
+            "prior_age_years": 1.0
+          },
+          "equation": "anchor + intercept + sum(coefficient * imputed feature)"
+        },
+        "ridge": {
+          "intercept": -28.472247004750304,
+          "coefficients": {
+            "w_relative_ts": 15.49425405293989,
+            "w_assist_pct": -0.13835577129273183,
+            "w_turnover_pct": 0.228981973379229,
+            "w_usage_pct": -0.1837675787824226,
+            "w_three_point_attempt_rate": -1.515009253166067,
+            "w_free_throw_rate": 2.7526873241529706,
+            "w_offensive_rebounds_per_75": -0.9391680056081825,
+            "w_defensive_rebounds_per_75": 0.4354869767419958,
+            "w_steals_per_75": 0.33268858432749004,
+            "w_blocks_per_75": -0.19289017722748936,
+            "w_defensive_box_plus_minus": -3.3089624826470354,
+            "w_steal_pct": 0.7345138758678621,
+            "w_block_pct": -0.5242537713369104,
+            "w_defensive_rebound_pct": -0.14608959882929398,
+            "usage_weighted_relative_ts": -18.04365243516671,
+            "usage_weighted_3par": 0.2146684415673377,
+            "usage_weighted_ftr": -8.65939313459283,
+            "usage_compression": -0.08337289408930837,
+            "usage_concentration": 3.4733290282162885,
+            "rotation_hhi": 117.19789204397895,
+            "prior_pace_delta": -0.004369277364177903,
+            "known_prior_minutes_share": 20.096937866161923,
+            "returner_minutes_share": 0.5456516440834888,
+            "prior_age_years": -1.1435405009560344
+          },
+          "missing_value_medians": {
+            "w_relative_ts": 0.0014584932360201738,
+            "w_assist_pct": 15.745820987270488,
+            "w_turnover_pct": 13.864064892436279,
+            "w_usage_pct": 20.447626294199537,
+            "w_three_point_attempt_rate": 0.1452063136761388,
+            "w_free_throw_rate": 0.3238419627017546,
+            "w_offensive_rebounds_per_75": 1.9647187648154816,
+            "w_defensive_rebounds_per_75": 4.667127000155826,
+            "w_steals_per_75": 1.2779860846015456,
+            "w_blocks_per_75": 0.7719978077104073,
+            "w_defensive_box_plus_minus": -0.04487237640340209,
+            "w_steal_pct": 1.6993369563458198,
+            "w_block_pct": 1.3916550433522714,
+            "w_defensive_rebound_pct": 13.957438465863277,
+            "usage_weighted_relative_ts": 0.0024604526014729454,
+            "usage_weighted_3par": 0.14632735538615582,
+            "usage_weighted_ftr": 0.3241447205203344,
+            "usage_compression": 0.44762629419953665,
+            "usage_concentration": 0.13450239781112372,
+            "rotation_hhi": 0.1215363642706786,
+            "prior_pace_delta": -0.0877689163914151,
+            "known_prior_minutes_share": 1.0,
+            "returner_minutes_share": 0.0,
+            "prior_age_years": 1.0
+          },
+          "equation": "anchor + intercept + sum(coefficient * imputed feature)"
+        }
+      },
+      "pace": {
+        "league_anchor": null,
+        "transparent_formula": {
+          "intercept": 3.55474226345104,
+          "coefficients": {
+            "prior_pace_delta": 0.8902430042137836,
+            "w_three_point_attempt_rate": 3.525773695839572,
+            "w_assist_pct": -0.045987554355501295,
+            "rotation_hhi": -29.379464880956288
+          },
+          "missing_value_medians": {
+            "prior_pace_delta": -0.0877689163914151,
+            "w_three_point_attempt_rate": 0.1452063136761388,
+            "w_assist_pct": 15.745820987270488,
+            "rotation_hhi": 0.1215363642706786
+          },
+          "equation": "anchor + intercept + sum(coefficient * imputed feature)"
+        },
+        "linear": {
+          "intercept": -19.630383885582724,
+          "coefficients": {
+            "w_relative_ts": 32.6996574808666,
+            "w_assist_pct": -0.07235219994466362,
+            "w_turnover_pct": 0.16823862425385525,
+            "w_usage_pct": 0.020147321677243587,
+            "w_three_point_attempt_rate": 3.0885183918229715,
+            "w_free_throw_rate": -15.132500601520979,
+            "w_offensive_rebounds_per_75": -0.8576411185861073,
+            "w_defensive_rebounds_per_75": 0.9014869390469217,
+            "w_steals_per_75": 11.491906458819457,
+            "w_blocks_per_75": -1.6662242941228034,
+            "w_defensive_box_plus_minus": -0.6048956890119339,
+            "w_steal_pct": -7.8924938163153895,
+            "w_block_pct": 0.5729976439847756,
+            "w_defensive_rebound_pct": 0.019225351575394407,
+            "usage_weighted_relative_ts": -40.70583073424055,
+            "usage_weighted_3par": -3.697164093452438,
+            "usage_weighted_ftr": 12.162585263702589,
+            "usage_compression": 0.15003367173507828,
+            "usage_concentration": 5.21442405533085,
+            "rotation_hhi": 17.33726380090363,
+            "prior_pace_delta": 0.8676335828953562,
+            "known_prior_minutes_share": 7.9631891111945015,
+            "returner_minutes_share": -4.504604357537782,
+            "prior_age_years": 4.425950089417935
+          },
+          "missing_value_medians": {
+            "w_relative_ts": 0.0014584932360201738,
+            "w_assist_pct": 15.745820987270488,
+            "w_turnover_pct": 13.864064892436279,
+            "w_usage_pct": 20.447626294199537,
+            "w_three_point_attempt_rate": 0.1452063136761388,
+            "w_free_throw_rate": 0.3238419627017546,
+            "w_offensive_rebounds_per_75": 1.9647187648154816,
+            "w_defensive_rebounds_per_75": 4.667127000155826,
+            "w_steals_per_75": 1.2779860846015456,
+            "w_blocks_per_75": 0.7719978077104073,
+            "w_defensive_box_plus_minus": -0.04487237640340209,
+            "w_steal_pct": 1.6993369563458198,
+            "w_block_pct": 1.3916550433522714,
+            "w_defensive_rebound_pct": 13.957438465863277,
+            "usage_weighted_relative_ts": 0.0024604526014729454,
+            "usage_weighted_3par": 0.14632735538615582,
+            "usage_weighted_ftr": 0.3241447205203344,
+            "usage_compression": 0.44762629419953665,
+            "usage_concentration": 0.13450239781112372,
+            "rotation_hhi": 0.1215363642706786,
+            "prior_pace_delta": -0.0877689163914151,
+            "known_prior_minutes_share": 1.0,
+            "returner_minutes_share": 0.0,
+            "prior_age_years": 1.0
+          },
+          "equation": "anchor + intercept + sum(coefficient * imputed feature)"
+        },
+        "ridge": {
+          "intercept": -18.81480293585342,
+          "coefficients": {
+            "w_relative_ts": 5.445391234743177,
+            "w_assist_pct": -0.06806953746641285,
+            "w_turnover_pct": 0.16003125178055438,
+            "w_usage_pct": 0.06440472139757811,
+            "w_three_point_attempt_rate": 1.5696408166651399,
+            "w_free_throw_rate": -8.548133098338843,
+            "w_offensive_rebounds_per_75": -0.7798235444709523,
+            "w_defensive_rebounds_per_75": 0.6016325619591382,
+            "w_steals_per_75": 0.8965060541888846,
+            "w_blocks_per_75": -0.6988801815896554,
+            "w_defensive_box_plus_minus": -0.5704252999039953,
+            "w_steal_pct": 0.018671378944807016,
+            "w_block_pct": 0.09160930025791873,
+            "w_defensive_rebound_pct": 0.11025597801138781,
+            "usage_weighted_relative_ts": -12.848960025952358,
+            "usage_weighted_3par": -0.92619580254694,
+            "usage_weighted_ftr": 5.144418085682744,
+            "usage_compression": 0.11348131469206348,
+            "usage_concentration": 5.720647727125783,
+            "rotation_hhi": 8.783723048626946,
+            "prior_pace_delta": 0.8391463838522268,
+            "known_prior_minutes_share": 8.402471379022238,
+            "returner_minutes_share": -3.1464934954168884,
+            "prior_age_years": 3.220253134557122
+          },
+          "missing_value_medians": {
+            "w_relative_ts": 0.0014584932360201738,
+            "w_assist_pct": 15.745820987270488,
+            "w_turnover_pct": 13.864064892436279,
+            "w_usage_pct": 20.447626294199537,
+            "w_three_point_attempt_rate": 0.1452063136761388,
+            "w_free_throw_rate": 0.3238419627017546,
+            "w_offensive_rebounds_per_75": 1.9647187648154816,
+            "w_defensive_rebounds_per_75": 4.667127000155826,
+            "w_steals_per_75": 1.2779860846015456,
+            "w_blocks_per_75": 0.7719978077104073,
+            "w_defensive_box_plus_minus": -0.04487237640340209,
+            "w_steal_pct": 1.6993369563458198,
+            "w_block_pct": 1.3916550433522714,
+            "w_defensive_rebound_pct": 13.957438465863277,
+            "usage_weighted_relative_ts": 0.0024604526014729454,
+            "usage_weighted_3par": 0.14632735538615582,
+            "usage_weighted_ftr": 0.3241447205203344,
+            "usage_compression": 0.44762629419953665,
+            "usage_concentration": 0.13450239781112372,
+            "rotation_hhi": 0.1215363642706786,
+            "prior_pace_delta": -0.0877689163914151,
+            "known_prior_minutes_share": 1.0,
+            "returner_minutes_share": 0.0,
+            "prior_age_years": 1.0
+          },
+          "equation": "anchor + intercept + sum(coefficient * imputed feature)"
+        }
+      }
+    }
+  },
+  "quarantined_canonical_profiles": [
+    {
+      "player_id": "br:johnsge03",
+      "player_name": "George Johnson",
+      "season": "1980-81",
+      "team": "SAS",
+      "minutes": 1935.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:johnsed02",
+      "player_name": "Eddie Johnson",
+      "season": "1982-83",
+      "team": "KCK",
+      "minutes": 2933.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:johnsge02",
+      "player_name": "George Johnson",
+      "season": "1982-83",
+      "team": "IND",
+      "minutes": 2297.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:johnsed02",
+      "player_name": "Eddie Johnson",
+      "season": "1984-85",
+      "team": "KCK",
+      "minutes": 3029.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:jonesch02",
+      "player_name": "Charles Jones",
+      "season": "1984-85",
+      "team": "2TM",
+      "minutes": 667.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:johnsed03",
+      "player_name": "Eddie Johnson",
+      "season": "1985-86",
+      "team": "2TM",
+      "minutes": 1477.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:johnsge03",
+      "player_name": "George Johnson",
+      "season": "1985-86",
+      "team": "SEA",
+      "minutes": 264.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:johnsed02",
+      "player_name": "Eddie Johnson",
+      "season": "1986-87",
+      "team": "SAC",
+      "minutes": 2457.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:jonesch02",
+      "player_name": "Charles Jones",
+      "season": "1987-88",
+      "team": "WSB",
+      "minutes": 1313.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:jonesch02",
+      "player_name": "Charles Jones",
+      "season": "1988-89",
+      "team": "WSB",
+      "minutes": 1154.0,
+      "source_minutes": 516.0
+    },
+    {
+      "player_id": "br:smithch02",
+      "player_name": "Charles Smith",
+      "season": "1989-90",
+      "team": "LAC",
+      "minutes": 2732.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:smithch02",
+      "player_name": "Charles Smith",
+      "season": "1990-91",
+      "team": "LAC",
+      "minutes": 2703.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:smithmi01",
+      "player_name": "Michael Smith",
+      "season": "1994-95",
+      "team": "SAC",
+      "minutes": 1736.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:willima04",
+      "player_name": "Marcus Williams",
+      "season": "2008-09",
+      "team": "GSW",
+      "minutes": 54.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:johnsch04",
+      "player_name": "Chris Johnson",
+      "season": "2012-13",
+      "team": "MIN",
+      "minutes": 284.0,
+      "source_minutes": null
+    },
+    {
+      "player_id": "br:mitchto03",
+      "player_name": "Tony Mitchell",
+      "season": "2013-14",
+      "team": "DET",
+      "minutes": 79.0,
+      "source_minutes": null
+    }
+  ],
+  "breakdowns": {
+    "oracle": {
+      "era": {
+        "(1979, 1989]": {
+          "n": 208,
+          "split": "train/in-sample",
+          "ortg": {
+            "mae": 1.3510300959168438,
+            "rmse": 1.7383152558270611,
+            "r2": 0.7560926279272628
+          },
+          "drtg": {
+            "mae": 1.9262598289995219,
+            "rmse": 2.4510175152257245,
+            "r2": 0.34366450345529975
+          },
+          "pace": {
+            "mae": 1.9153685686086268,
+            "rmse": 2.422404491583357,
+            "r2": 0.3241410992309781
+          }
+        },
+        "(1989, 1999]": {
+          "n": 278,
+          "split": "train/in-sample",
+          "ortg": {
+            "mae": 1.5572295902235804,
+            "rmse": 1.9827671911570932,
+            "r2": 0.7524534077254583
+          },
+          "drtg": {
+            "mae": 2.0516548335489766,
+            "rmse": 2.659082913575267,
+            "r2": 0.4578009398282544
+          },
+          "pace": {
+            "mae": 1.6415858431901218,
+            "rmse": 2.1695345993578483,
+            "r2": 0.7437947042546483
+          }
+        },
+        "(1999, 2009]": {
+          "n": 295,
+          "split": "train/in-sample",
+          "ortg": {
+            "mae": 1.5488888206933578,
+            "rmse": 1.9313909959598352,
+            "r2": 0.7281355758520219
+          },
+          "drtg": {
+            "mae": 2.1568215336725505,
+            "rmse": 2.6785915504907547,
+            "r2": 0.45686714774525106
+          },
+          "pace": {
+            "mae": 1.7624692825203672,
+            "rmse": 2.3800617647563875,
+            "r2": 0.12290931340380484
+          }
+        },
+        "(2009, 2014]": {
+          "n": 150,
+          "split": "train/in-sample",
+          "ortg": {
+            "mae": 1.458661426585627,
+            "rmse": 1.7745226154313458,
+            "r2": 0.7332803268955949
+          },
+          "drtg": {
+            "mae": 2.1256240237514628,
+            "rmse": 2.6472968895299926,
+            "r2": 0.3669035424880299
+          },
+          "pace": {
+            "mae": 1.4255048567312656,
+            "rmse": 1.882967136130592,
+            "r2": 0.37484063236939424
+          }
+        },
+        "(2014, 2019]": {
+          "n": 150,
+          "split": "validation",
+          "ortg": {
+            "mae": 1.8122817123921884,
+            "rmse": 2.2982023936799574,
+            "r2": 0.6124157637322711
+          },
+          "drtg": {
+            "mae": 2.165336480574679,
+            "rmse": 2.620838681385702,
+            "r2": 0.3176179949186033
+          },
+          "pace": {
+            "mae": 1.4827168225693848,
+            "rmse": 1.9349149722324892,
+            "r2": 0.5374778595423717
+          }
+        },
+        "(2019, 2022]": {
+          "n": 90,
+          "split": "test",
+          "ortg": {
+            "mae": 2.0314553751725795,
+            "rmse": 2.4599600055741297,
+            "r2": 0.46906797998755
+          },
+          "drtg": {
+            "mae": 2.068217314808907,
+            "rmse": 2.478169668050611,
+            "r2": 0.2118917343080421
+          },
+          "pace": {
+            "mae": 2.0243622498942693,
+            "rmse": 2.3973547368066157,
+            "r2": -0.30629289097686985
+          }
+        },
+        "(2022, 2026]": {
+          "n": 120,
+          "split": "test",
+          "ortg": {
+            "mae": 2.3402924129007787,
+            "rmse": 2.833109647782231,
+            "r2": 0.3080544466375904
+          },
+          "drtg": {
+            "mae": 2.4015995593960375,
+            "rmse": 2.914921263306695,
+            "r2": 0.06328257934814607
+          },
+          "pace": {
+            "mae": 1.460274705064595,
+            "rmse": 1.796784533492723,
+            "r2": 0.10435271341321606
+          }
+        }
+      },
+      "test_quality_tier": {
+        "poor": {
+          "n": 58,
+          "ortg": {
+            "mae": 2.528179200222201,
+            "rmse": 2.903924506594161,
+            "r2": 0.03186804686583411
+          },
+          "drtg": {
+            "mae": 2.4055750585318965,
+            "rmse": 2.836169528648169,
+            "r2": 0.0023457093361645143
+          },
+          "pace": {
+            "mae": 1.5575669469078794,
+            "rmse": 1.9284881908516383,
+            "r2": -0.12479224251819465
+          }
+        },
+        "average": {
+          "n": 97,
+          "ortg": {
+            "mae": 1.7823516959394592,
+            "rmse": 2.219561089832168,
+            "r2": 0.22900925131126648
+          },
+          "drtg": {
+            "mae": 2.1082658625507333,
+            "rmse": 2.6207398336150702,
+            "r2": -0.18696587021743793
+          },
+          "pace": {
+            "mae": 1.740847191921016,
+            "rmse": 2.154030775862935,
+            "r2": -0.2002394995213006
+          }
+        },
+        "elite": {
+          "n": 55,
+          "ortg": {
+            "mae": 2.6207920944474608,
+            "rmse": 3.135835795793517,
+            "r2": -0.35384312856967703
+          },
+          "drtg": {
+            "mae": 2.3692066072373636,
+            "rmse": 2.82702709777277,
+            "r2": 0.03865154250812486
+          },
+          "pace": {
+            "mae": 1.785900119295274,
+            "rmse": 2.084134238944495,
+            "r2": -0.010154017876861765
+          }
+        }
+      },
+      "test_absolute_error_quantiles": {
+        "ortg": {
+          "0.1": 0.465523794165857,
+          "0.5": 1.9890409957793551,
+          "0.9": 4.195627556550917,
+          "0.95": 5.276887546755674,
+          "1.0": 7.481433880527447
+        },
+        "drtg": {
+          "0.1": 0.35956679434349187,
+          "0.5": 2.1101430627074507,
+          "0.9": 4.5846306194133675,
+          "0.95": 5.0934467541956305,
+          "1.0": 6.568722432888762
+        },
+        "pace": {
+          "0.1": 0.29539260683590385,
+          "0.5": 1.5186603093905404,
+          "0.9": 3.378122128692011,
+          "0.95": 3.752426267735942,
+          "1.0": 5.479890887759936
+        }
+      },
+      "defense_test_era_candidates": {
+        "league_anchor": {
+          "test_2020_2022": {
+            "mae": 2.272729707486458,
+            "rmse": 2.8341334936965805,
+            "r2": -0.030776273745587446
+          },
+          "test_2023_2026": {
+            "mae": 2.584374617894224,
+            "rmse": 3.265519912489936,
+            "r2": -0.17560009713493607
+          },
+          "validation_2015_2019": {
+            "mae": 2.410133354130203,
+            "rmse": 2.9536558436569975,
+            "r2": 0.13330405094358777
+          }
+        },
+        "transparent_formula": {
+          "test_2020_2022": {
+            "mae": 2.20677053776732,
+            "rmse": 2.6099666112469215,
+            "r2": 0.12583440169716653
+          },
+          "test_2023_2026": {
+            "mae": 2.586899563611586,
+            "rmse": 3.1095563447508865,
+            "r2": -0.06598673826758206
+          },
+          "validation_2015_2019": {
+            "mae": 2.33547435046349,
+            "rmse": 2.771501438282309,
+            "r2": 0.23690746975392574
+          }
+        },
+        "linear": {
+          "test_2020_2022": {
+            "mae": 2.133625768727256,
+            "rmse": 2.5447208554372454,
+            "r2": 0.1689941013158629
+          },
+          "test_2023_2026": {
+            "mae": 2.4640108923588455,
+            "rmse": 3.0004421265086076,
+            "r2": 0.0075115775701557475
+          },
+          "validation_2015_2019": {
+            "mae": 2.205554760540701,
+            "rmse": 2.6743574414878886,
+            "r2": 0.2894643208083424
+          }
+        },
+        "ridge": {
+          "test_2020_2022": {
+            "mae": 2.068217314808907,
+            "rmse": 2.478169668050611,
+            "r2": 0.2118917343080421
+          },
+          "test_2023_2026": {
+            "mae": 2.4015995593960375,
+            "rmse": 2.914921263306695,
+            "r2": 0.06328257934814607
+          },
+          "validation_2015_2019": {
+            "mae": 2.165336480574679,
+            "rmse": 2.620838681385702,
+            "r2": 0.3176179949186033
+          }
+        }
+      }
+    },
+    "deployable": {
+      "era": {
+        "(1979, 1989]": {
+          "n": 208,
+          "split": "train/in-sample",
+          "ortg": {
+            "mae": 2.3903746673255952,
+            "rmse": 2.9552061308064057,
+            "r2": 0.2950742064785723
+          },
+          "drtg": {
+            "mae": 2.1030739862379075,
+            "rmse": 2.608333580224082,
+            "r2": 0.2567082226271018
+          },
+          "pace": {
+            "mae": 1.94786338538376,
+            "rmse": 2.4483904395979494,
+            "r2": 0.3095629926116641
+          }
+        },
+        "(1989, 1999]": {
+          "n": 278,
+          "split": "train/in-sample",
+          "ortg": {
+            "mae": 2.310726630644542,
+            "rmse": 2.9185467930482916,
+            "r2": 0.46365180222617
+          },
+          "drtg": {
+            "mae": 2.2965020266419995,
+            "rmse": 2.954586187360101,
+            "r2": 0.33059596165626615
+          },
+          "pace": {
+            "mae": 1.6934356508106372,
+            "rmse": 2.26136292404819,
+            "r2": 0.7216472757573003
+          }
+        },
+        "(1999, 2009]": {
+          "n": 295,
+          "split": "train/in-sample",
+          "ortg": {
+            "mae": 2.468325390539367,
+            "rmse": 3.11647355831499,
+            "r2": 0.29215385992619125
+          },
+          "drtg": {
+            "mae": 2.2718947866177195,
+            "rmse": 2.8660638599998225,
+            "r2": 0.37817982414558626
+          },
+          "pace": {
+            "mae": 1.820741450899233,
+            "rmse": 2.4084473051563844,
+            "r2": 0.10186350921296228
+          }
+        },
+        "(2009, 2014]": {
+          "n": 150,
+          "split": "train/in-sample",
+          "ortg": {
+            "mae": 2.394353300777621,
+            "rmse": 3.0531329200134913,
+            "r2": 0.21044316586240575
+          },
+          "drtg": {
+            "mae": 2.273011604021816,
+            "rmse": 2.778415464558721,
+            "r2": 0.30263690595247617
+          },
+          "pace": {
+            "mae": 1.4504928480209267,
+            "rmse": 1.9129098102997497,
+            "r2": 0.3548001591542629
+          }
+        },
+        "(2014, 2019]": {
+          "n": 150,
+          "split": "validation",
+          "ortg": {
+            "mae": 2.1999572582444817,
+            "rmse": 2.849061868890634,
+            "r2": 0.40434701779210813
+          },
+          "drtg": {
+            "mae": 2.27521122710708,
+            "rmse": 2.7441164475277198,
+            "r2": 0.25191308323671036
+          },
+          "pace": {
+            "mae": 1.5187948973601892,
+            "rmse": 1.9687582490396756,
+            "r2": 0.5211565644107443
+          }
+        },
+        "(2019, 2022]": {
+          "n": 90,
+          "split": "test",
+          "ortg": {
+            "mae": 2.2675772525910762,
+            "rmse": 2.806478754548477,
+            "r2": 0.3089549775065169
+          },
+          "drtg": {
+            "mae": 2.1663909711772007,
+            "rmse": 2.6270577210147885,
+            "r2": 0.11434814114602221
+          },
+          "pace": {
+            "mae": 2.000098469926824,
+            "rmse": 2.3966558483886726,
+            "r2": -0.30553136838390227
+          }
+        },
+        "(2022, 2026]": {
+          "n": 120,
+          "split": "test",
+          "ortg": {
+            "mae": 2.58661962822459,
+            "rmse": 3.261416284238236,
+            "r2": 0.0830247215095451
+          },
+          "drtg": {
+            "mae": 2.560411134181545,
+            "rmse": 3.047944792514591,
+            "r2": -0.02416312098238782
+          },
+          "pace": {
+            "mae": 1.4546426231600025,
+            "rmse": 1.8151396835138691,
+            "r2": 0.0859601788232468
+          }
+        }
+      },
+      "test_quality_tier": {
+        "poor": {
+          "n": 58,
+          "ortg": {
+            "mae": 2.7217871118795487,
+            "rmse": 3.3140838787776716,
+            "r2": -0.2609297830856321
+          },
+          "drtg": {
+            "mae": 3.068826350666488,
+            "rmse": 3.617471788167414,
+            "r2": -0.6230279802523584
+          },
+          "pace": {
+            "mae": 1.5585240090048067,
+            "rmse": 1.9646181976935224,
+            "r2": -0.16733274943396337
+          }
+        },
+        "average": {
+          "n": 97,
+          "ortg": {
+            "mae": 2.17673566121373,
+            "rmse": 2.7965211286520093,
+            "r2": -0.22391475686129003
+          },
+          "drtg": {
+            "mae": 2.091287167629231,
+            "rmse": 2.5328073955991526,
+            "r2": -0.10865071968539941
+          },
+          "pace": {
+            "mae": 1.7041803083774318,
+            "rmse": 2.082897246799184,
+            "r2": -0.12227631885580448
+          }
+        },
+        "elite": {
+          "n": 55,
+          "ortg": {
+            "mae": 2.6448962998800383,
+            "rmse": 3.274349753665697,
+            "r2": -0.4760866517258602
+          },
+          "drtg": {
+            "mae": 2.2068679983462145,
+            "rmse": 2.539381044197042,
+            "r2": 0.22433063762880878
+          },
+          "pace": {
+            "mae": 1.7975653570495413,
+            "rmse": 2.2058988676980684,
+            "r2": -0.13163771809941904
+          }
+        }
+      },
+      "test_absolute_error_quantiles": {
+        "ortg": {
+          "0.1": 0.45564103698103225,
+          "0.5": 2.052632555673206,
+          "0.9": 5.212527866721668,
+          "0.95": 6.23383255997003,
+          "1.0": 8.478491946544167
+        },
+        "drtg": {
+          "0.1": 0.3649690077172224,
+          "0.5": 2.3697295084407273,
+          "0.9": 4.54626150277927,
+          "0.95": 5.4872285939486085,
+          "1.0": 7.662888836277631
+        },
+        "pace": {
+          "0.1": 0.2515238450771434,
+          "0.5": 1.4393954861149894,
+          "0.9": 3.377772427882432,
+          "0.95": 4.032745609262046,
+          "1.0": 5.485022054888262
+        }
+      },
+      "defense_test_era_candidates": {
+        "league_anchor": {
+          "test_2020_2022": {
+            "mae": 2.272729707486458,
+            "rmse": 2.8341334936965805,
+            "r2": -0.030776273745587446
+          },
+          "test_2023_2026": {
+            "mae": 2.584374617894224,
+            "rmse": 3.265519912489936,
+            "r2": -0.17560009713493607
+          },
+          "validation_2015_2019": {
+            "mae": 2.410133354130203,
+            "rmse": 2.9536558436569975,
+            "r2": 0.13330405094358777
+          }
+        },
+        "transparent_formula": {
+          "test_2020_2022": {
+            "mae": 2.1663909711772007,
+            "rmse": 2.6270577210147885,
+            "r2": 0.11434814114602221
+          },
+          "test_2023_2026": {
+            "mae": 2.560411134181545,
+            "rmse": 3.047944792514591,
+            "r2": -0.02416312098238782
+          },
+          "validation_2015_2019": {
+            "mae": 2.27521122710708,
+            "rmse": 2.7441164475277198,
+            "r2": 0.25191308323671036
+          }
+        },
+        "linear": {
+          "test_2020_2022": {
+            "mae": 2.5872737149636342,
+            "rmse": 3.126950334475121,
+            "r2": -0.2547747624274459
+          },
+          "test_2023_2026": {
+            "mae": 3.0542846262564334,
+            "rmse": 3.6707064060435814,
+            "r2": -0.48543700932939116
+          },
+          "validation_2015_2019": {
+            "mae": 2.3504398635515615,
+            "rmse": 2.8589992837018667,
+            "r2": 0.18796438220043055
+          }
+        },
+        "ridge": {
+          "test_2020_2022": {
+            "mae": 2.4788049911960646,
+            "rmse": 2.979528146811471,
+            "r2": -0.13924935976490427
+          },
+          "test_2023_2026": {
+            "mae": 2.8881300072477982,
+            "rmse": 3.483344952296649,
+            "r2": -0.3376666798577468
+          },
+          "validation_2015_2019": {
+            "mae": 2.307384326229454,
+            "rmse": 2.8073436406372876,
+            "r2": 0.21704258843977065
+          }
+        }
+      }
+    }
+  },
+  "major_roster_changes": [
+    {
+      "season": "2007-08",
+      "season_end_year": 2008,
+      "team_name": "Boston Celtics",
+      "mode": "oracle",
+      "known_prior_minutes_share": 0.9476082004555808,
+      "actual_ortg": 110.2,
+      "actual_drtg": 98.9,
+      "actual_pace": 90.9,
+      "predicted_ortg": 109.36106985396596,
+      "predicted_drtg": 103.90991772157575,
+      "predicted_pace": 92.43824962333694
+    },
+    {
+      "season": "2010-11",
+      "season_end_year": 2011,
+      "team_name": "Miami Heat",
+      "mode": "oracle",
+      "known_prior_minutes_share": 0.9994439108235176,
+      "actual_ortg": 111.7,
+      "actual_drtg": 103.5,
+      "actual_pace": 90.9,
+      "predicted_ortg": 111.73422852044985,
+      "predicted_drtg": 102.62393574650076,
+      "predicted_pace": 91.30796676521743
+    },
+    {
+      "season": "2016-17",
+      "season_end_year": 2017,
+      "team_name": "Golden State Warriors",
+      "mode": "oracle",
+      "known_prior_minutes_share": 0.9414054600606674,
+      "actual_ortg": 115.6,
+      "actual_drtg": 104.0,
+      "actual_pace": 99.8,
+      "predicted_ortg": 111.42545328219366,
+      "predicted_drtg": 103.22113105044355,
+      "predicted_pace": 98.641098094778
+    },
+    {
+      "season": "2019-20",
+      "season_end_year": 2020,
+      "team_name": "Los Angeles Lakers",
+      "mode": "oracle",
+      "known_prior_minutes_share": 0.9944408683948739,
+      "actual_ortg": 112.0,
+      "actual_drtg": 106.3,
+      "actual_pace": 100.9,
+      "predicted_ortg": 114.75629867475453,
+      "predicted_drtg": 107.82113263068888,
+      "predicted_pace": 103.56375267830016
+    },
+    {
+      "season": "2007-08",
+      "season_end_year": 2008,
+      "team_name": "Boston Celtics",
+      "mode": "deployable",
+      "known_prior_minutes_share": 1.0000000000000002,
+      "actual_ortg": 110.2,
+      "actual_drtg": 98.9,
+      "actual_pace": 90.9,
+      "predicted_ortg": 107.02526096973988,
+      "predicted_drtg": 104.9822831897554,
+      "predicted_pace": 92.8970452693215
+    },
+    {
+      "season": "2010-11",
+      "season_end_year": 2011,
+      "team_name": "Miami Heat",
+      "mode": "deployable",
+      "known_prior_minutes_share": 0.9999999999999999,
+      "actual_ortg": 111.7,
+      "actual_drtg": 103.5,
+      "actual_pace": 90.9,
+      "predicted_ortg": 112.3384653632157,
+      "predicted_drtg": 105.02147720573605,
+      "predicted_pace": 91.69793959976218
+    },
+    {
+      "season": "2016-17",
+      "season_end_year": 2017,
+      "team_name": "Golden State Warriors",
+      "mode": "deployable",
+      "known_prior_minutes_share": 1.0,
+      "actual_ortg": 115.6,
+      "actual_drtg": 104.0,
+      "actual_pace": 99.8,
+      "predicted_ortg": 112.70666313120886,
+      "predicted_drtg": 102.67969296951469,
+      "predicted_pace": 97.86735633159907
+    },
+    {
+      "season": "2019-20",
+      "season_end_year": 2020,
+      "team_name": "Los Angeles Lakers",
+      "mode": "deployable",
+      "known_prior_minutes_share": 1.0,
+      "actual_ortg": 112.0,
+      "actual_drtg": 106.3,
+      "actual_pace": 100.9,
+      "predicted_ortg": 111.490341409677,
+      "predicted_drtg": 108.77740106599963,
+      "predicted_pace": 103.01030483056199
+    }
+  ],
+  "custom_lineup": {
+    "semantics": "Five-player ironman lineup hypothetical; NOT an ordinary full-game roster projection",
+    "target_era": "2016-17 preseason, 2015-16 league anchors; no game logs, fatigue or bench model",
+    "inputs": [
+      {
+        "player": "Stephen Curry",
+        "season": "2015-16",
+        "minutes": 48.0,
+        "historical_usage_pct": 32.6,
+        "normalized_usage_pct": 21.0458360232408,
+        "team_possession_share_pct": 21.0458360232408,
+        "relative_ts": 0.1277795618161413,
+        "assist_pct": 33.7,
+        "turnover_pct": 12.9,
+        "usage_pct": 32.6,
+        "three_point_attempt_rate": 0.5544430538172715,
+        "free_throw_rate": 0.2503128911138924,
+        "offensive_rebounds_per_75": 0.9130580731789191,
+        "defensive_rebounds_per_75": 4.8606915072171875,
+        "steals_per_75": 2.269217858341725,
+        "blocks_per_75": 0.2014098690835851,
+        "defensive_box_plus_minus": 1.6,
+        "steal_pct": 3.0,
+        "block_pct": 0.4,
+        "defensive_rebound_pct": 13.6
+      },
+      {
+        "player": "Michael Jordan",
+        "season": "1990-91",
+        "minutes": 48.0,
+        "historical_usage_pct": 32.9,
+        "normalized_usage_pct": 21.239509360877985,
+        "team_possession_share_pct": 21.239509360877985,
+        "relative_ts": 0.0706100785395792,
+        "assist_pct": 25.2,
+        "turnover_pct": 8.7,
+        "usage_pct": 32.9,
+        "three_point_attempt_rate": 0.0506260206859009,
+        "free_throw_rate": 0.3652694610778443,
+        "offensive_rebounds_per_75": 1.4645730535107002,
+        "defensive_rebounds_per_75": 4.641951881466118,
+        "steals_per_75": 2.7677948384142894,
+        "blocks_per_75": 1.0301657918761706,
+        "defensive_box_plus_minus": 3.2,
+        "steal_pct": 3.7,
+        "block_pct": 1.7,
+        "defensive_rebound_pct": 14.3
+      },
+      {
+        "player": "LeBron James",
+        "season": "2012-13",
+        "minutes": 48.0,
+        "historical_usage_pct": 30.2,
+        "normalized_usage_pct": 19.496449322143317,
+        "team_possession_share_pct": 19.496449322143317,
+        "relative_ts": 0.1053819452904435,
+        "assist_pct": 36.4,
+        "turnover_pct": 12.4,
+        "usage_pct": 30.2,
+        "three_point_attempt_rate": 0.1875923190546528,
+        "free_throw_rate": 0.3951255539143279,
+        "offensive_rebounds_per_75": 1.338218674588676,
+        "defensive_rebounds_per_75": 7.077383299628771,
+        "steals_per_75": 1.779692876514837,
+        "blocks_per_75": 0.9243366102829,
+        "defensive_box_plus_minus": 2.4,
+        "steal_pct": 2.4,
+        "block_pct": 1.9,
+        "defensive_rebound_pct": 20.8
+      },
+      {
+        "player": "Tim Duncan",
+        "season": "2002-03",
+        "minutes": 48.0,
+        "historical_usage_pct": 28.0,
+        "normalized_usage_pct": 18.076178179470624,
+        "team_possession_share_pct": 18.076178179470624,
+        "relative_ts": 0.0446401170121264,
+        "assist_pct": 19.5,
+        "turnover_pct": 12.9,
+        "usage_pct": 28.0,
+        "three_point_attempt_rate": 0.0158045977011494,
+        "free_throw_rate": 0.4554597701149425,
+        "offensive_rebounds_per_75": 3.2568374724929265,
+        "defensive_rebounds_per_75": 9.858535051870481,
+        "steals_per_75": 0.6916064130776486,
+        "blocks_per_75": 2.9801949072618674,
+        "defensive_box_plus_minus": 2.5,
+        "steal_pct": 0.9,
+        "block_pct": 5.2,
+        "defensive_rebound_pct": 27.3
+      },
+      {
+        "player": "Shaquille O'Neal",
+        "season": "1999-00",
+        "minutes": 48.0,
+        "historical_usage_pct": 31.2,
+        "normalized_usage_pct": 20.142027114267268,
+        "team_possession_share_pct": 20.142027114267268,
+        "relative_ts": 0.0551730302552458,
+        "assist_pct": 19.3,
+        "turnover_pct": 9.9,
+        "usage_pct": 31.2,
+        "three_point_attempt_rate": 0.0006006006006006,
+        "free_throw_rate": 0.4948948948948949,
+        "offensive_rebounds_per_75": 4.098839780297308,
+        "defensive_rebounds_per_75": 9.051604514823223,
+        "steals_per_75": 0.4391614050318545,
+        "blocks_per_75": 2.915543772294812,
+        "defensive_box_plus_minus": 2.0,
+        "steal_pct": 0.6,
+        "block_pct": 5.3,
+        "defensive_rebound_pct": 24.8
+      }
+    ],
+    "total_minutes": 240.0,
+    "features": {
+      "w_relative_ts": 0.08071694658270726,
+      "w_assist_pct": 26.82,
+      "w_turnover_pct": 11.360000000000001,
+      "w_usage_pct": 30.980000000000004,
+      "w_three_point_attempt_rate": 0.16181331837191504,
+      "w_free_throw_rate": 0.39221251422318043,
+      "w_offensive_rebounds_per_75": 2.214305410813706,
+      "w_defensive_rebounds_per_75": 7.098033251001157,
+      "w_steals_per_75": 1.589494678276071,
+      "w_blocks_per_75": 1.6103301901598672,
+      "w_defensive_box_plus_minus": 2.3400000000000003,
+      "w_steal_pct": 2.1200000000000006,
+      "w_block_pct": 2.9000000000000004,
+      "w_defensive_rebound_pct": 20.160000000000004,
+      "usage_weighted_relative_ts": 0.08161744265482868,
+      "usage_weighted_3par": 0.16699157614480717,
+      "usage_weighted_ftr": 0.38930891886330393,
+      "usage_compression": 10.98,
+      "usage_concentration": 0.2006604981826714,
+      "rotation_hhi": 0.20000000000000004,
+      "prior_pace_delta": -0.1573850163890767,
+      "known_prior_minutes_share": 1.0,
+      "returner_minutes_share": 0.0,
+      "prior_age_years": 1.0,
+      "anchor_ortg": 107.20165285182661,
+      "anchor_drtg": 107.20165285182661,
+      "anchor_pace": 95.77419354838707
+    },
+    "projections": {
+      "ortg": 121.16117001789252,
+      "drtg": 97.75440657649936,
+      "pace": 96.76497266841987
+    },
+    "uncertainty_reference": {
+      "ortg": {
+        "validation_abs_error_p90": 4.556722899384564,
+        "reference_interval": [
+          116.60444711850795,
+          125.71789291727708
+        ]
+      },
+      "drtg": {
+        "validation_abs_error_p90": 4.332467927292531,
+        "reference_interval": [
+          93.42193864920684,
+          102.08687450379189
+        ]
+      },
+      "pace": {
+        "validation_abs_error_p90": 3.311451616155041,
+        "reference_interval": [
+          93.45352105226483,
+          100.07642428457491
+        ]
+      }
+    },
+    "warning": "Validation intervals describe ordinary historical teams, NOT coverage guarantees for this out-of-distribution lineup",
+    "out_of_training_range": {
+      "w_relative_ts": {
+        "value": 0.08071694658270726,
+        "min": -0.05696158253832797,
+        "max": 0.05301263433019937
+      },
+      "w_assist_pct": {
+        "value": 26.82,
+        "min": 8.22820478204788,
+        "max": 22.194652673595886
+      },
+      "w_usage_pct": {
+        "value": 30.980000000000004,
+        "min": 15.119824646915042,
+        "max": 24.626230103992192
+      },
+      "w_defensive_rebounds_per_75": {
+        "value": 7.098033251001157,
+        "min": 3.216545545748502,
+        "max": 6.432660172098833
+      },
+      "w_defensive_box_plus_minus": {
+        "value": 2.3400000000000003,
+        "min": -1.495591533600204,
+        "max": 1.5061422451366184
+      },
+      "w_defensive_rebound_pct": {
+        "value": 20.160000000000004,
+        "min": 10.09726210110326,
+        "max": 19.459467259050285
+      },
+      "usage_weighted_relative_ts": {
+        "value": 0.08161744265482868,
+        "min": -0.05661050528347352,
+        "max": 0.058107770890613406
+      },
+      "usage_compression": {
+        "value": 10.98,
+        "min": 0.0,
+        "max": 4.626230103992194
+      },
+      "usage_concentration": {
+        "value": 0.2006604981826714,
+        "min": 0.11615244991309345,
+        "max": 0.1722496872704493
+      },
+      "rotation_hhi": {
+        "value": 0.20000000000000004,
+        "min": 0.11618904269661952,
+        "max": 0.1329968909255105
+      }
+    }
+  },
+  "defensive_source_availability": {
+    "1980": {
+      "defensive_box_plus_minus": 1.0,
+      "defensive_win_shares": 1.0,
+      "steal_pct": 1.0,
+      "block_pct": 1.0,
+      "defensive_rebound_pct": 1.0
+    },
+    "1990": {
+      "defensive_box_plus_minus": 1.0,
+      "defensive_win_shares": 1.0,
+      "steal_pct": 1.0,
+      "block_pct": 1.0,
+      "defensive_rebound_pct": 1.0
+    },
+    "2000": {
+      "defensive_box_plus_minus": 0.9997759354694152,
+      "defensive_win_shares": 1.0,
+      "steal_pct": 0.9997759354694152,
+      "block_pct": 0.9997759354694152,
+      "defensive_rebound_pct": 0.9997759354694152
+    },
+    "2010": {
+      "defensive_box_plus_minus": 0.9995870328308899,
+      "defensive_win_shares": 1.0,
+      "steal_pct": 0.9995870328308899,
+      "block_pct": 0.9995870328308899,
+      "defensive_rebound_pct": 0.9995870328308899
+    },
+    "2020": {
+      "defensive_box_plus_minus": 1.0,
+      "defensive_win_shares": 1.0,
+      "steal_pct": 1.0,
+      "block_pct": 1.0,
+      "defensive_rebound_pct": 1.0
+    }
+  },
+  "verdict": "B. NEEDS TARGETED IMPROVEMENT"
+}
