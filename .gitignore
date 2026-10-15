@@ -42,6 +42,9 @@ data/processed/
 data/analysis/
 data/historical/raw/
 artifacts/
+data/simulation/raw/
+data/simulation/game_logs_processed.csv
+data/simulation/game_calibration_predictions.csv
 nba-clutch-agent/**/Dataset/
 
 # Generated large processed/analysis outputs

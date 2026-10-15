@@ -1,0 +1,8 @@
+{
+  "status": "complete",
+  "evaluation_count": 1,
+  "protocol_sha256": "b6e5b0911ab3fa31b53b01f104cd73a1c95c41a9ee9bf4865bbec37a0deef20d",
+  "summary_sha256": "57af910875256da9dc7d811e5f6483e40d17de2e3a0ed55a371e8fde5c618316",
+  "previous_team_model_test_evaluations": 0,
+  "new_game_test_evaluations": 1
+}

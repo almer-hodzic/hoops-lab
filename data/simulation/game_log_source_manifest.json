@@ -1,0 +1,33 @@
+{
+  "source": "https://www.kaggle.com/datasets/eoinamoore/historical-nba-data-and-player-box-scores",
+  "version": 515,
+  "upstream": "NBA.com, per dataset author",
+  "license": "CC0: Public Domain",
+  "source_updated": "2026-06-15T11:08:10.51Z",
+  "acquired_utc": "2026-10-15T10:42:01.810203+00:00",
+  "method": "Anonymous public Kaggle file endpoint, pinned datasetVersionNumber; no scraping/authentication",
+  "raw_directory": "data/simulation/raw/game_logs",
+  "initial_pipeline_requests": 4,
+  "files": [
+    {
+      "file": "Games.csv",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/eoinamoore/historical-nba-data-and-player-box-scores/Games.csv?datasetVersionNumber=515",
+      "sha256": "8b21e7e0ebfe25f1de48c18ec701e08a47974d32be006be044b85b2661dfff29",
+      "bytes": 11208824
+    },
+    {
+      "file": "TeamStatistics.csv",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/eoinamoore/historical-nba-data-and-player-box-scores/TeamStatistics.csv?datasetVersionNumber=515",
+      "sha256": "37df1d8096252a9a38a1162872fdf85a2e413ea978c8b1d70edd3bd7f4399be9",
+      "bytes": 36020027
+    },
+    {
+      "file": "TeamStatisticsExtended.csv",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/eoinamoore/historical-nba-data-and-player-box-scores/TeamStatisticsExtended.csv?datasetVersionNumber=515",
+      "sha256": "dcec2a05c11214ea77617e6c38f4fb4cce6162375175f2022690e463f02c47db",
+      "bytes": 38186927
+    }
+  ],
+  "probes": "Basketball-Reference reachable; obsolete 538 forecast CSV redirected to HTML and was rejected",
+  "cache_policy": "Existing bytes must match SHA256; offline reruns make zero requests"
+}
