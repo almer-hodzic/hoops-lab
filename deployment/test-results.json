@@ -1,0 +1,30 @@
+{
+  "containerInference": {
+    "exitCode": 0,
+    "output": "...........\n----------------------------------------------------------------------\nRan 11 tests in 1.391s\n\nOK\n"
+  },
+  "historicalExistingAssertions": {
+    "status": "pass",
+    "adaptation": "Only process launch/termination replaced with existing-server adapter; all original HTTP calls and assertions unchanged."
+  },
+  "containerSimulationAll": {
+    "exitCode": 1,
+    "output": ".......s...........E........s....s................s.............................................\n======================================================================\nERROR: test_source_identity_does_not_merge_same_name_players (test_deployability.DeployabilityTests.test_source_identity_does_not_merge_same_name_players)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/app/scripts/simulation/test_deployability.py\", line 110, in test_source_identity_does_not_merge_same_name_players\n    source = export_cached_profiles([1989]).set_index([\"player_id\", \"team\"])\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/scripts/historical/export_cached_defensive_profiles.py\", line 27, in export_cached_profiles\n    raise FileNotFoundError(f\"Offline audit requires existing cache: {path}\")\nFileNotFoundError: Offline audit requires existing cache: /app/data/historical/raw/basketball-reference/NBA_1989_advanced.html\n\n----------------------------------------------------------------------\nRan 96 tests in 30.286s\n\nFAILED (errors=1, skipped=4)\n"
+  },
+  "containerProductionSimulator": {
+    "exitCode": 0,
+    "output": ".................................\n----------------------------------------------------------------------\nRan 33 tests in 32.143s\n\nOK\n"
+  },
+  "hostChecks": {
+    "simulationSuite": "96 run; 93 passed, 3 errors: missing NBA_1989_advanced.html, missing game_logs_processed.csv, Windows HTTP connection abort.",
+    "historicalFullDataset": "pass: 20,526 player-season rows, 3,818 unique players, 47 seasons",
+    "historicalPrototype": "pass",
+    "teamBuilderNodeLogic": "pass",
+    "javascriptSyntax": "app.js and teamBuilder.js pass",
+    "defenseDataScript": "failed: matchups_canonical.parquet missing",
+    "defenseExperimentScript": "failed: prediction parquet missing",
+    "dotnetWebRelease": "build/publish passed; zero warnings/errors; dotnet test passed with no test projects",
+    "dotnetFullSolution": "failed: original Console references absent Infrastructure.Dataset sources; excluded unchanged Console from deployment",
+    "originalSimulationApiHarness": "run inside container; fails before API assertions because it requires unpublished development build directory /app/nba-clutch-agent/AiAgents.NbaClutchAgent.Web. Also hardcodes net9.0, expects now-disabled agent/status, and has a repeated-request benchmark inconsistent with demo budgets. Superseded for this release by deployment/validate_container.py."
+  }
+}

@@ -53,7 +53,7 @@ public static class SimulationEndpoints
             {
                 using var response = await client.SendAsync(message, ct);
                 var body = await response.Content.ReadAsStringAsync(ct);
-                return Results.Content(body, "application/json", statusCode: (int)response.StatusCode);
+                return AiAgents.NbaClutchAgent.Web.Deployment.PublicDemo.Upstream(response, body);
             }
             catch (HttpRequestException)
             {

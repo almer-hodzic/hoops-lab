@@ -64,3 +64,18 @@ temp/
 
 # Generated submission/render QA output
 submission/docs/_render_check/
+
+# Verified public V1 deployment runtime allowlist (see deployment/PROVENANCE.md).
+!artifacts/
+artifacts/*
+!artifacts/inference/
+artifacts/inference/*
+!artifacts/inference/production_inference_bundle.joblib
+!artifacts/inference/player_profiles.parquet
+!artifacts/inference/player_metadata.json
+!data/analysis/
+data/analysis/*
+!data/analysis/decision_2025_26_regular.csv
+
+# Local review exports (not application source).
+deployment/review/

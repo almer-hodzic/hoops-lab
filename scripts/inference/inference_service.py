@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlparse
 
@@ -13,6 +14,10 @@ from inference_core import InferenceError, ProductionInferenceEngine
 
 class Handler(BaseHTTPRequestHandler):
     engine: ProductionInferenceEngine
+
+    def setup(self):
+        super().setup()
+        self.connection.settimeout(10)
 
     def _json(self, status: int, payload: dict) -> None:
         body = json.dumps(payload, default=str).encode("utf-8")
@@ -23,7 +28,14 @@ class Handler(BaseHTTPRequestHandler):
         self.wfile.write(body)
 
     def _read_json(self) -> dict:
-        length = int(self.headers.get("Content-Length", "0"))
+        if self.headers.get("Transfer-Encoding"):
+            raise InferenceError(400, "Chunked requests are not supported")
+        try:
+            length = int(self.headers.get("Content-Length", "0"))
+        except ValueError as exc:
+            raise InferenceError(400, "Invalid Content-Length") from exc
+        if not 0 < length <= 65536:
+            raise InferenceError(413, "Request body must contain 1-65536 bytes")
         raw = self.rfile.read(length) if length else b"{}"
         try:
             return json.loads(raw.decode("utf-8"))
@@ -50,7 +62,8 @@ class Handler(BaseHTTPRequestHandler):
         except InferenceError as exc:
             self._json(exc.status_code, {"error": exc.message})
         except Exception as exc:  # pragma: no cover - defensive HTTP boundary
-            self._json(500, {"error": str(exc)})
+            logging.exception("Inference request failed")
+            self._json(500, {"error": "Inference unavailable"})
 
     def do_POST(self) -> None:  # noqa: N802
         try:
@@ -63,7 +76,8 @@ class Handler(BaseHTTPRequestHandler):
         except InferenceError as exc:
             self._json(exc.status_code, {"error": exc.message})
         except Exception as exc:  # pragma: no cover - defensive HTTP boundary
-            self._json(500, {"error": str(exc)})
+            logging.exception("Inference request failed")
+            self._json(500, {"error": "Inference unavailable"})
 
     def log_message(self, format: str, *args) -> None:  # noqa: A002
         return

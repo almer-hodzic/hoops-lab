@@ -6,17 +6,10 @@
     <ProjectReference Include="..\AiAgents.NbaClutchAgent.Infrastructure\AiAgents.NbaClutchAgent.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="Dataset\shots.tsv" CopyToOutputDirectory="PreserveNewest" />
-  </ItemGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0" />
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
-	</ItemGroup>
 
 	<PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>

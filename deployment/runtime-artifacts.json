@@ -1,0 +1,75 @@
+{
+  "base_commit": "86a1821e8874d49a72f5300a8f6d7ace1150fe33",
+  "files": [
+    {
+      "path": "artifacts/inference/production_inference_bundle.joblib",
+      "sha256": "b6ad864066e097a260dc88e4fee92c031895cab239fe3eb3e4c80ccfcd70efa9",
+      "bytes": 543879
+    },
+    {
+      "path": "artifacts/inference/player_profiles.parquet",
+      "sha256": "4a97b5aa52b3f1a1f0ffae177ea60c5bfe766c7f5d413233eb4f40f00c53977d",
+      "bytes": 503249
+    },
+    {
+      "path": "artifacts/inference/player_metadata.json",
+      "sha256": "ddaead2c5d4b6a3806c54b10d84f2890b616b6491939fed92dd71d98addb44d9",
+      "bytes": 156331,
+      "text_sha256": "995ef7fb546ad1181d2a61b7f3c78f829de9527cb9977bb5616a5bc791a63630"
+    },
+    {
+      "path": "data/analysis/decision_2025_26_regular.csv",
+      "sha256": "76237d3466b8f57fd56840ea5d088fb47769624aa69369cd8a53610331337417",
+      "bytes": 34991630,
+      "text_sha256": "bb360ecabb6dd2cea0c377c1aa87e152e7fdf08ecbdaa8c98f156ef993a43416"
+    },
+    {
+      "path": "data/historical/processed/player_seasons.csv",
+      "sha256": "fc7da096c7274af19de867dbdc92f862529e03a87899c831f001c93da5185e6d",
+      "bytes": 21521288,
+      "text_sha256": "27bc1f9eec715a51e9316eacc3e1cdf34b83d357625f9f59bb5f20a4193160e8"
+    },
+    {
+      "path": "data/historical/processed/player_team_splits.csv",
+      "sha256": "15975dc1a122df5065be1a9a40400822d057dcaa6b1bdd3aa3e850e51a17b52f",
+      "bytes": 3615002,
+      "text_sha256": "057bb5fa9be7c48e8a0785d16013eb726850dc3cd8747485e1882f7b9a02344c"
+    },
+    {
+      "path": "data/historical/processed/team_seasons.csv",
+      "sha256": "2a0ce558a2acf0d6b1e0c6063cb05a3b7f2e931e98126b2f0bf16414614755b1",
+      "bytes": 276732,
+      "text_sha256": "3e5130c6555c0f29bc0f736b852c9bd090a66e925c02a288a854a2288af5a9f1"
+    },
+    {
+      "path": "data/historical/processed/league_seasons.csv",
+      "sha256": "5630d6733447ccbfdb74ad5e6dbdaaa3d5d5a46daa94a0a62758b8b21500bb4b",
+      "bytes": 7190,
+      "text_sha256": "9c1297f7521bef509d72f56681748451112034c2048283b2397e9bb3326354fa"
+    },
+    {
+      "path": "data/simulation/production_v1/config.json",
+      "sha256": "7412c18370219f400070bfe6f96c6ac0f0ea5bb2d67d5203c4237bae464fd341",
+      "bytes": 23045,
+      "text_sha256": "4cf620e2cce4ccddd83d128b94857fae0407561f3051bb954fc429a476873557"
+    },
+    {
+      "path": "data/simulation/production_v1/defensive_profiles.csv",
+      "sha256": "30ef2bbdcbd4e1bc9f749e9db2b257f97bc6bbe69dbc7cd544d81118d2869c7e",
+      "bytes": 1279461,
+      "text_sha256": "6bc42f5a1a3df3df2890b3a51112541dfcc9dca0401d5947facc198c06726bde"
+    },
+    {
+      "path": "data/simulation/production_v1/joint_residuals.csv",
+      "sha256": "65e565992b13ca986884fcef46f792f619d59c1ea63c488d70e16567ab20f590",
+      "bytes": 398837,
+      "text_sha256": "d448fd6bfc630db134c1dc7855ba76f39f474e9f109a3172a3c310d0ec3cebb7"
+    },
+    {
+      "path": "data/simulation/production_v1/overtime_residuals.csv",
+      "sha256": "2085ed92917e6f6c3329953a9378d52da792f7fa34f20dcf938a6565084cffde",
+      "bytes": 12690,
+      "text_sha256": "af53f97d98cccc54f19a63e14236aa6fc53974b3a6dfed23b48aa03389743baf"
+    }
+  ]
+}

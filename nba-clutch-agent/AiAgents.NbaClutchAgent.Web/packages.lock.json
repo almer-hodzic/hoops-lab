@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net10.0": {
+      "CsvHelper": {
+        "type": "Transitive",
+        "resolved": "33.1.0",
+        "contentHash": "kqfTOZGrn7NarNeXgjh86JcpTHUoeQDMB8t9NVa/ZtlSYiV1rxfRnQ49WaJsob4AiGrbK0XDzpyKkBwai4F8eg=="
+      },
+      "aiagents.nbaclutchagent.application": {
+        "type": "Project",
+        "dependencies": {
+          "AiAgents.NbaClutchAgent.Domain": "[1.0.0, )"
+        }
+      },
+      "aiagents.nbaclutchagent.domain": {
+        "type": "Project"
+      },
+      "aiagents.nbaclutchagent.infrastructure": {
+        "type": "Project",
+        "dependencies": {
+          "AiAgents.NbaClutchAgent.Application": "[1.0.0, )",
+          "AiAgents.NbaClutchAgent.Domain": "[1.0.0, )",
+          "CsvHelper": "[33.1.0, )"
+        }
+      }
+    }
+  }
+}

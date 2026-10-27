@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:18080",
+  "image": "hoopslab-v1:local",
+  "checks": {
+    "homepageAndStaticAssets": "pass",
+    "historicalExplorerAndCompare": "pass",
+    "shotLabProfilesAndAnalysis": "pass",
+    "singleGameSimulation": "pass",
+    "legacyBlocked": "pass",
+    "bodyLimitAndErrorSanitizing": "pass",
+    "expensiveRateLimit": "pass",
+    "privateLoopbackBindings": "{8011: '0100007F', 8012: '0100007F', 8080: '00000000'}",
+    "childFailureFailsContainer": "pass",
+    "gracefulTermination": "pass",
+    "cleanRestart": "pass"
+  },
+  "coldStartupSeconds": 11.515,
+  "idleMiB": 713.06,
+  "inference": {
+    "peakMiB": 714.13,
+    "afterMiB": 713.92,
+    "requestSeconds": 0.05
+  },
+  "simulation": {
+    "peakMiB": 714.21,
+    "afterMiB": 713.44,
+    "requestSeconds": 0.133
+  },
+  "restartStartupSeconds": 9.531,
+  "containerStillRunning": true,
+  "measurementNotes": "Linux cgroup memory.current, including charged cache and sampler overhead; one CPU / 2 GiB container; one warm inference and one 10,000-draw simulation; 20 ms sampling for 3 s. Cold startup excludes image download/build.",
+  "visualQA": "Edge was detected, but computer-use app approval timed out. Rendered browser QA and browser-only interactions remain unverified.",
+  "nonDefaultPortCheck": "PORT=9123 with /ready via mapped port 18081: pass; temporary container stopped and auto-removed.",
+  "runtime": "ASP.NET Core / .NET 10.0.14, CPython 3.12.10",
+  "imageId": "sha256:5709c12749e3362aad434fe190b498b30e38d5cb4712355462385c107107c385"
+}
