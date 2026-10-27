@@ -1,0 +1,18 @@
+# Deployment credentials and review exports must never leave this machine.
+deployment/review/
+.git/
+.vercel/
+**/.env
+**/.env.*
+**/bin/
+**/obj/
+**/__pycache__/
+reports/
+submission/
+data/raw/
+data/interim/
+data/processed/
+
+# Preserve the audited Docker build context rules.
+!.dockerignore
+!Dockerfile

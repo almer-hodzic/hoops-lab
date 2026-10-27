@@ -79,3 +79,6 @@ data/analysis/*
 
 # Local review exports (not application source).
 deployment/review/
+
+# Vercel project linkage is local metadata.
+.vercel/
